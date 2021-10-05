@@ -4,16 +4,20 @@ from ift6758.data import *
 from ift6758.data.api_requester import *
 from ift6758.data.question_2 import *
 from ift6758.data.question_4 import Tidyfier
+from ift6758.data.question_5 import *
 
 def test_question4():
     tdf = Tidyfier()
-    df = tdf.game_event_to_panda_df(2017)
+    df = tdf.game_event_to_panda_df(2018)
 
     pd.set_option("max_rows", None)
     pd.set_option("max_columns", None)
     print(df.head(10))
 
-test_question4()
+def test_question5():
+    histo_shot(2018)
+
+test_question5()
 '''
 import requests
 response = requests.get(url=("https://statsapi.web.nhl.com/api/v1/game/" + str(2017) + "02" + str(1).zfill(4) +"/feed/live"))
