@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 from ift6758.data.question_2 import *
 
@@ -35,8 +36,8 @@ class Tidyfier:
                     data['teamName'].append(play['team']['name'])
                     data['teamLink'].append(play['team']['link'])
                     data['teamTriCode'].append(play['team']['triCode'])
-                    data['coordX'].append(play['coordinates']['x'] if 'x' in play['coordinates'].keys() else None)
-                    data['coordY'].append(play['coordinates']['y'] if 'y' in play['coordinates'].keys() else None)
+                    data['coordX'].append(play['coordinates']['x'] if 'x' in play['coordinates'].keys() else np.nan)
+                    data['coordY'].append(play['coordinates']['y'] if 'y' in play['coordinates'].keys() else np.nan)
                     if len(play['players']) == 2:
                         player0Type = play['players'][0]['playerType']
                         data['shooterName' if player0Type == "Shooter" else 'goalieName'].append(play['players'][0]['player']['fullName'])
@@ -44,7 +45,7 @@ class Tidyfier:
                     else:
                         data['shooterName'].append(None)
                         data['goalieName'].append(None)
-                    data['shotSecondaryType'].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else None)
+                    data['shotSecondaryType'].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else np.nan)
 
         for column in data.items():
             column = pd.Series(column)
