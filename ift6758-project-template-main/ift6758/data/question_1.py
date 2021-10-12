@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def get_player_stats(year: int, player_type: str) -> pd.DataFrame:
     """
 
@@ -53,4 +54,5 @@ sortedGoalStat = goalieStats.sort_values(by="SV%")
 print("SORTED")
 
 print(sortedGoalStat[["Player", "SV%"]])
+
 '''

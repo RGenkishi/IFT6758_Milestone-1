@@ -22,6 +22,7 @@ class Tidyfier:
                             'coordY',
                             'shooterName',
                             'goalieName',
+                            'strength',
                             'shotSecondaryType']
 
         data = dict(zip(elementToRetrive, [[] for i in range(len(elementToRetrive))]))
@@ -45,6 +46,10 @@ class Tidyfier:
                     else:
                         data['shooterName'].append(None)
                         data['goalieName'].append(None)
+                    if play['result']['event'] == "Goal":
+                        data['strength'].append(play['result']['strength']['name'])
+                    else:
+                        data['strength'].append(None)
                     data['shotSecondaryType'].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else np.nan)
 
         for column in data.items():

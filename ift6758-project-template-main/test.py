@@ -6,6 +6,9 @@ from ift6758.data.question_2 import *
 from ift6758.data.question_4 import Tidyfier
 from ift6758.data.question_5 import *
 
+
+dataA = DataAquirer('/Users/macbook/Documents/Cours Automne_2021/')
+dataA.get_data_from_api(2016)
 def test_question4():
     tdf = Tidyfier()
     df = tdf.game_event_to_panda_df(2018)
