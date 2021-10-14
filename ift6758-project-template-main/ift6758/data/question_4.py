@@ -3,6 +3,7 @@ import numpy as np
 
 from ift6758.data.question_2 import *
 
+pandasDatabasePath = os.path.dirname(__file__)+"/database/Panda"  # chemin par défaut pour l'enregistrement des données
 
 class Tidyfier:
     def game_event_to_panda_df(self, year):
@@ -12,6 +13,9 @@ class Tidyfier:
         season_data = dataGetter.season_data
 
         elementToRetrive = ['matchId',
+                            'dateYear',
+                            'dateMonth',
+                            'dateDay',
                             'event',
                             'period',
                             'teamId',
@@ -30,6 +34,9 @@ class Tidyfier:
             for play in season_data[matchKey]['liveData']['plays']['allPlays']:
                 if play['result']['event'] in ["Shot", "Goal"]:
                     data['matchId'].append(matchKey)
+                    data['dateYear'].append(season_data[matchKey]['gameData']['datetime']['dateTime'][0:4])
+                    data['dateMonth'].append(season_data[matchKey]['gameData']['datetime']['dateTime'][5:7])
+                    data['dateDay'].append(season_data[matchKey]['gameData']['datetime']['dateTime'][8:10])
                     data['event'].append(play['result']['event'])
                     data['period'].append(play['about']['periodTime'])
                     data['teamId'].append(play['team']['id'])
