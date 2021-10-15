@@ -15,6 +15,18 @@ class debugWidget:
 
 
     def drawIceRink(self, i):
+        print("Event Type : " + self.subDf.iloc[int(i)]["event"])
+        print("Shot Type : " + self.subDf.iloc[int(i)]["shotSecondaryType"])
+        print("Coord : (x=" + str(self.subDf.iloc[int(i)]["coordX"]) + ", y=" + str(self.subDf.iloc[int(i)]["coordY"]) + ")")
+        try:
+            print("Shooter : " + self.subDf.iloc[int(i)]["shooterName"])
+        except:
+            print("Shooter : ?")
+        try:
+            print("Goalie : " + self.subDf.iloc[int(i)]["goalieName"])
+        except:
+            print("Goalie : ?")
+
         fig, ax = plt.subplots()
         img = Image.open('../../figures/nhl_rink.png')
         ax.imshow(img, extent=[-100, 100, -43, 43])
