@@ -15,7 +15,7 @@ Trions les goals en fonction de leur SV%
 import pandas as pd
 from ift6758.data import get_player_stats
 
-df = get_player_stats(2017, 'goalies')
+df = get_player_stats(2018, 'goalies')
 
 pd.set_option("max_rows", None)  # Affiche toute les lignes
 
