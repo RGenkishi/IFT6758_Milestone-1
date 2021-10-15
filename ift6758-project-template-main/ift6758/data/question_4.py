@@ -97,6 +97,10 @@ class Tidyer:
 
             for gameType, games in data.items():
                 for gameId, game in games.items():
+                    try:
+                        game['liveData']
+                    except:
+                        break
                     for play in game['liveData']['plays']['allPlays']:
                         if play['result']['event'] in ["Shot", "Goal"]:
                             tidyData[gameType][GAME_ID].append(gameId)
