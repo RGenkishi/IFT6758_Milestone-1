@@ -17,6 +17,7 @@ whether or not a goal was at even strength, shorthanded, or on the power play.
 import os
 import numpy as np
 from ift6758.data.question_2 import *
+from ift6758.data.tidyDataKeys import *
 
 pandasDatabasePath = os.path.dirname(__file__)+"/database/panda"  # chemin par défaut pour l'enregistrement des données tidyfiées
 
@@ -25,8 +26,26 @@ class Tidyfier:
     def list_player_types(self, players):
         return set((player["playerType"] for player in players))
 
+
     def there_is_no_goalie(self, players):
         return not ("Goalie" in self.list_player_types(players))
+
+
+    def get_ring_side(self, game, team, period):
+        home_team = game["gameData"]["teams"]["home"]["name"]
+        away_team = game["gameData"]["teams"]["away"]["name"]
+        periods = game["liveData"]["linescore"]["periods"]
+        try:
+            if team == home_team:
+                return periods[period - 1]["home"]["rinkSide"] if "rinkSide" in periods[period - 1]["home"].keys() else np.nan
+            else:
+                return periods[period - 1]["away"]["rinkSide"] if "rinkSide" in periods[period - 1]["home"].keys() else np.nan
+        except:
+            print(game["gamePk"])
+            print(team)
+            print(period)
+            return np.nan
+
 
     def game_event_to_panda_df(self, year):
         # Création du dossier database/panda si inexistant
@@ -52,21 +71,27 @@ class Tidyfier:
                     'playoff' : dataGetter.playoffs_data
                     }
 
-            elementToRetrive = ['matchId',
-                                'dateYear',
-                                'dateMonth',
-                                'dateDay',
-                                'event',
-                                'period',
-                                'teamId',
-                                'teamName',
-                                'teamLink',
-                                'teamTriCode',
-                                'coordX',
-                                'coordY',
-                                'shooterName',
-                                'goalieName',
-                                'shotSecondaryType']
+            elementToRetrive = [GAME_ID,
+                                GAME_TIME,
+                                DATE_YEAR,
+                                DATE_MONTH,
+                                DATE_DAY,
+                                PERIOD_TIME,
+                                PERIOD_WHICH,
+                                PERIOD_TYPE,
+                                EVENT_TYPE,
+                                IS_GOAL,
+                                SHOT_TYPE,
+                                STRENGTH,
+                                TEAM_ID,
+                                TEAM_NAME,
+                                TEAM_LINK,
+                                TEAM_TRI_CODE,
+                                SHOOTER_NAME,
+                                GOALIE_NAME,
+                                RINK_SIDE,
+                                COORD_X,
+                                COORD_Y]
 
             tidyData = {key: dict(zip(elementToRetrive, [[] for i in range(len(elementToRetrive))])) for key in data}
 
@@ -74,26 +99,44 @@ class Tidyfier:
                 for gameId, game in games.items():
                     for play in game['liveData']['plays']['allPlays']:
                         if play['result']['event'] in ["Shot", "Goal"]:
-                            tidyData[gameType]['matchId'].append(gameId)
-                            tidyData[gameType]['dateYear'].append(game['gameData']['datetime']['dateTime'][0:4])
-                            tidyData[gameType]['dateMonth'].append(game['gameData']['datetime']['dateTime'][5:7])
-                            tidyData[gameType]['dateDay'].append(game['gameData']['datetime']['dateTime'][8:10])
-                            tidyData[gameType]['event'].append(play['result']['event'])
-                            tidyData[gameType]['period'].append(play['about']['periodTime'])
-                            tidyData[gameType]['teamId'].append(play['team']['id'])
-                            tidyData[gameType]['teamName'].append(play['team']['name'])
-                            tidyData[gameType]['teamLink'].append(play['team']['link'])
-                            tidyData[gameType]['teamTriCode'].append(play['team']['triCode'])
-                            tidyData[gameType]['coordX'].append(play['coordinates']['x'] if 'x' in play['coordinates'].keys() else np.nan)
-                            tidyData[gameType]['coordY'].append(play['coordinates']['y'] if 'y' in play['coordinates'].keys() else np.nan)
-                            if len(play['players']) == 2:
-                                player0Type = play['players'][0]['playerType']
-                                tidyData[gameType]['shooterName' if player0Type == "Shooter" else 'goalieName'].append(play['players'][0]['player']['fullName'])
-                                tidyData[gameType]['goalieName' if player0Type == "Shooter" else 'shooterName'].append(play['players'][1]['player']['fullName'])
+                            tidyData[gameType][GAME_ID].append(gameId)
+                            tidyData[gameType][GAME_TIME].append(play['about']['dateTime'])
+                            tidyData[gameType][DATE_YEAR].append(game['gameData']['datetime']['dateTime'][0:4])
+                            tidyData[gameType][DATE_MONTH].append(game['gameData']['datetime']['dateTime'][5:7])
+                            tidyData[gameType][DATE_DAY].append(game['gameData']['datetime']['dateTime'][8:10])
+
+                            tidyData[gameType][PERIOD_TIME].append(play['about']['periodTime'])
+                            tidyData[gameType][PERIOD_WHICH].append(play['about']['period'])
+                            tidyData[gameType][PERIOD_TYPE].append(play['about']['periodType'])
+
+                            tidyData[gameType][EVENT_TYPE].append(play['result']['event'])
+                            tidyData[gameType][IS_GOAL].append((play['result']['event'] == "Goal"))
+
+                            tidyData[gameType][TEAM_ID].append(play['team']['id'])
+                            tidyData[gameType][TEAM_NAME].append(play['team']['name'])
+                            tidyData[gameType][TEAM_LINK].append(play['team']['link'])
+                            tidyData[gameType][TEAM_TRI_CODE].append(play['team']['triCode'])
+                            tidyData[gameType][COORD_X].append(play['coordinates']['x'] if 'x' in play['coordinates'].keys() else np.nan)
+                            tidyData[gameType][COORD_Y].append(play['coordinates']['y'] if 'y' in play['coordinates'].keys() else np.nan)
+                            tidyData[gameType][SHOT_TYPE].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else np.nan)
+
+                            for player in play['players']:
+                                if player['playerType'] == "Shooter":
+                                    tidyData[gameType][SHOOTER_NAME].append(player['player']['fullName'])
+                                    tidyData[gameType][STRENGTH].append(None)
+                                if player['playerType'] == "Scorer":
+                                    tidyData[gameType][SHOOTER_NAME].append(player['player']['fullName'])
+                                    tidyData[gameType][STRENGTH].append(play['result']['strength']['name'])
+                                    if self.there_is_no_goalie(play['players']):
+                                        tidyData[gameType][GOALIE_NAME].append(None)
+                                if player['playerType'] == "Goalie":
+                                    tidyData[gameType][GOALIE_NAME].append(player['player']['fullName'])
+
+                            if play['about']['periodType'] != 'SHOOTOUT':
+                                rink_side = self.get_ring_side(game, play['team']['name'], play['about']['period'])
+                                tidyData[gameType][RINK_SIDE].append(rink_side)
                             else:
-                                tidyData[gameType]['shooterName'].append(None)
-                                tidyData[gameType]['goalieName'].append(None)
-                            tidyData[gameType]['shotSecondaryType'].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else np.nan)
+                                tidyData[gameType][RINK_SIDE].append(np.nan)
 
             for games in tidyData.values():
                 for column in games.items():
