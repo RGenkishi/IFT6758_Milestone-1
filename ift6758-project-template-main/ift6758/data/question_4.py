@@ -120,17 +120,34 @@ class Tidyer:
                             tidyData[gameType][COORD_Y].append(play['coordinates']['y'] if 'y' in play['coordinates'].keys() else np.nan)
                             tidyData[gameType][SHOT_TYPE].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else np.nan)
 
+
+                            isGoalieSet = False
+                            isShooterSet = False
+                            isStrengthSet = False
                             for player in play['players']:
-                                if player['playerType'] == "Shooter":
+                                if (not isShooterSet) and (player['playerType'] == "Shooter"):
                                     tidyData[gameType][SHOOTER_NAME].append(player['player']['fullName'])
                                     tidyData[gameType][STRENGTH].append(None)
-                                if player['playerType'] == "Scorer":
+                                    isShooterSet = True
+                                    isStrengthSet = True
+                                if (not isShooterSet) and (player['playerType'] == "Scorer"):
                                     tidyData[gameType][SHOOTER_NAME].append(player['player']['fullName'])
                                     tidyData[gameType][STRENGTH].append(play['result']['strength']['name'])
                                     if self.there_is_no_goalie(play['players']):
                                         tidyData[gameType][GOALIE_NAME].append(None)
-                                if player['playerType'] == "Goalie":
+                                        isGoalieSet = True
+                                    isShooterSet = True
+                                    isStrengthSet = True
+                                if (not isGoalieSet) and (player['playerType'] == "Goalie"):
                                     tidyData[gameType][GOALIE_NAME].append(player['player']['fullName'])
+                                    isGoalieSet = True
+
+                            if not isShooterSet:
+                                tidyData[gameType][SHOOTER_NAME].append(None)
+                            if not isGoalieSet:
+                                tidyData[gameType][GOALIE_NAME].append(None)
+                            if not isStrengthSet:
+                                tidyData[gameType][STRENGTH].append(None)
 
                             if play['about']['periodType'] != 'SHOOTOUT':
                                 rink_side = self.get_ring_side(game, play['team']['name'], play['about']['period'])
@@ -141,6 +158,11 @@ class Tidyer:
             for games in tidyData.values():
                 for column in games.items():
                     column = pd.Series(column)
+
+            for gameType, games in tidyData.items():
+                for column in games.items():
+                    print(column[0], len(column[1]))
+                print("//////////////")
 
             dfs = {gameType : pd.DataFrame(games) for gameType, games in tidyData.items()}
             for gameType, games in dfs.items():
