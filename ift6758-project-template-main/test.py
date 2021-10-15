@@ -5,7 +5,7 @@ import pandas as pd
 from ift6758.data import *
 from ift6758.data.api_requester import *
 from ift6758.data.question_2 import *
-from ift6758.data.question_3 import Tidyer
+#from ift6758.data.question_3 import Tidyer
 from ift6758.data.question_4 import Tidyfier
 from ift6758.data.question_5 import *
 from PIL import Image
@@ -20,7 +20,7 @@ from scipy.stats import pointbiserialr
 
 def test_question4():
     tdf = Tidyfier()
-    df = tdf.game_event_to_panda_df(2017)
+    df = tdf.game_event_to_panda_df(2018)
 
     pd.set_option("max_rows", None)
     pd.set_option("max_columns", None)
@@ -48,7 +48,7 @@ def test_question3():
 #df = pd.read_json("ift6758/data/database/2017_season_data.json")
 #df.info()
 
-test_question3()
+test_question4()
 
 
 
