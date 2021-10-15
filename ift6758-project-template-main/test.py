@@ -20,7 +20,7 @@ from scipy.stats import pointbiserialr
 
 def test_question4():
     tdf = Tidyer()
-    dfs = tdf.game_event_to_panda_df(2018)
+    dfs = tdf.game_event_to_panda_df(2019)
     df1 = dfs['regular']
     df2 = dfs['playoff']
     pd.set_option("max_rows", None)
