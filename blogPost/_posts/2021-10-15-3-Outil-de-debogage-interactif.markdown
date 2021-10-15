@@ -12,5 +12,14 @@ categories: jekyll update
 ### Capture d'ecran de l'outil de debogage
 
 <p align="center">
-  <img src="/assets/echauffement/pourcentage_d'arrets_sur_le_classement_des_20_meilleurs_gardiens.png" alt="Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens"/>
+  <img src="/assets/debugTool/debugTool.jpg" alt="debugTool"/>
 </p>
+
+
+### Description
+
+Les différents menus dropdown permettent de choisir l'année, le type de saison et un match en particulier.
+Le slider permet de selectionner le numéro de l'événement par ordre temporel pour les tirs et les buts.
+Le widget affiche la date du match et les noms des équipes qui affrontent.
+Pour chaque événement, sont affichés : le tuype d'événement (but / tir), les coordonnées sur la glace, le nom du tireur et celui du goal.
+Le widget affiche également une représentation du terrain avec un point magenta à l'emplacement correspondant à l'événement.
