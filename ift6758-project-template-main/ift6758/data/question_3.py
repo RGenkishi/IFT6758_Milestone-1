@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import ipywidgets as widgets
 from IPython.display import display
+from tidyDataKeys import *
 
 
 
@@ -16,15 +17,15 @@ class debugWidget:
 
 
     def drawIceRink(self, i):
-        print("Event Type : " + self.subDf.iloc[int(i)]["event"])
-        print("Shot Type : " + self.subDf.iloc[int(i)]["shotSecondaryType"])
-        print("Coord : (x=" + str(self.subDf.iloc[int(i)]["coordX"]) + ", y=" + str(self.subDf.iloc[int(i)]["coordY"]) + ")")
+        print("Event Type : " + self.subDf.iloc[int(i)][EVENT_TYPE])
+        print("Shot Type : " + self.subDf.iloc[int(i)][SHOT_TYPE])
+        print("Coord : (x=" + str(self.subDf.iloc[int(i)][COORD_X]) + ", y=" + str(self.subDf.iloc[int(i)][COORD_Y]) + ")")
         try:
-            print("Shooter : " + self.subDf.iloc[int(i)]["shooterName"])
+            print("Shooter : " + self.subDf.iloc[int(i)][SHOOTER_NAME])
         except:
             print("Shooter : ?")
         try:
-            print("Goalie : " + self.subDf.iloc[int(i)]["goalieName"])
+            print("Goalie : " + self.subDf.iloc[int(i)][GOALIE_NAME])
         except:
             print("Goalie : ?")
 
@@ -32,19 +33,19 @@ class debugWidget:
         img = Image.open('../../figures/nhl_rink.png')
         ax.imshow(img, extent=[-100, 100, -43, 43])
         # Add scatter point on the image.
-        imgx, imgy = [float(self.subDf.iloc[int(i)]["coordX"])], [float(self.subDf.iloc[int(i)]["coordY"])]
+        imgx, imgy = [float(self.subDf.iloc[int(i)][COORD_X])], [float(self.subDf.iloc[int(i)][COORD_Y])]
         ax.scatter(imgx, imgy, s=5, lw=5, facecolor="none", edgecolor="magenta")
 
 
     def selectMatch(self, m):
-        self.subDf = self.df[self.df["matchId"] == m]
+        self.subDf = self.df[self.df[GAME_ID] == m]
         # print(subDf)
         print("Date : "
-              + str(self.subDf.iloc[0]['dateYear'])
-              + '_' + str(self.subDf.iloc[0]['dateMonth'])
-              + '_' + str(self.subDf.iloc[0]['dateDay']))
-        print("Team One : " + self.subDf["teamName"].drop_duplicates().iloc[0])
-        print("Team Two : " + self.subDf["teamName"].drop_duplicates().iloc[1])
+              + str(self.subDf.iloc[0][DATE_YEAR])
+              + '_' + str(self.subDf.iloc[0][DATE_MONTH])
+              + '_' + str(self.subDf.iloc[0][DATE_DAY]))
+        print("Team One : " + self.subDf[TEAM_NAME].drop_duplicates().iloc[0])
+        print("Team Two : " + self.subDf[TEAM_NAME].drop_duplicates().iloc[1])
         lenDf = len(self.subDf)
         w = widgets.IntSlider(value=0, min=0, max=lenDf - 1, description='event:', continuous_update=False)
         interactive_IceRinkPlot = widgets.interactive(self.drawIceRink, i=w)
@@ -53,13 +54,14 @@ class debugWidget:
 
     def selectGameType(self, t):
         self.df = self.dfs[t]
-        matchIdList = self.df['matchId'].drop_duplicates()
-        sliderSelectMatch = widgets.interactive(self.selectMatch, m=matchIdList)
-        display(sliderSelectMatch)
+        gameIdList = self.df[GAME_ID].drop_duplicates()
+        m = widgets.Dropdown(options=gameIdList, value=gameIdList[0], description='Match:', disabled=False)
+        dropDownSelectMatch = widgets.interactive(self.selectMatch, m=m)
+        display(dropDownSelectMatch)
 
     def selectYear(self, y):
         self.dfs = self.tdf.game_event_to_panda_df(y)
-        t = widgets.Dropdown(options=self.dfs.keys(), value=list(self.dfs.keys())[1], description='GameType:', disabled=False)
+        t = widgets.Dropdown(options=self.dfs.keys(), value=list(self.dfs.keys())[0], description='GameType:', disabled=False)
         dropDownGameTypeSelect = widgets.interactive(self.selectGameType, t=t)
         display(dropDownGameTypeSelect)
 
