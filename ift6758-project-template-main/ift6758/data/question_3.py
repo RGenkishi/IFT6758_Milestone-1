@@ -1,4 +1,4 @@
-from ift6758.data import tidyDataKeys
+from ift6758.data.tidyDataKeys import *
 from ift6758.data.question_4 import Tidyer
 import matplotlib.pyplot as plt
 from PIL import Image
