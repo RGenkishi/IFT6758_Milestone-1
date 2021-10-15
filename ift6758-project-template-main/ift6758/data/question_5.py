@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def histo_shot(year):
     tdf = Tidyfier()
-    df = tdf.game_event_to_panda_df(2017)
+    df = tdf.game_event_to_panda_df(2017)['regular']
     df = df.astype('str')
 
     x1 = df['shotSecondaryType']
