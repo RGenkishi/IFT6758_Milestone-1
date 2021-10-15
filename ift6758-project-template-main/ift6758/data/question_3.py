@@ -10,6 +10,7 @@ class debugWidget:
 
     def __init__(self):
         self.tdf = Tidyfier()
+        self.dfs = None
         self.df = None
         self.subDf = []
 
@@ -50,12 +51,17 @@ class debugWidget:
         display(interactive_IceRinkPlot)
 
 
-    def selectYear(self, y):
-        global df
-        self.df = self.tdf.game_event_to_panda_df(y)
+    def selectGameType(self, t):
+        self.df = self.dfs[t]
         matchIdList = self.df['matchId'].drop_duplicates()
         sliderSelectMatch = widgets.interactive(self.selectMatch, m=matchIdList)
         display(sliderSelectMatch)
+
+    def selectYear(self, y):
+        self.dfs = self.tdf.game_event_to_panda_df(y)
+        t = widgets.Dropdown(options=self.dfs.keys(), value=list(self.dfs.keys())[1], description='GameType:', disabled=False)
+        dropDownGameTypeSelect = widgets.interactive(self.selectGameType, t=t)
+        display(dropDownGameTypeSelect)
 
 
     def lauchWidget(self):
