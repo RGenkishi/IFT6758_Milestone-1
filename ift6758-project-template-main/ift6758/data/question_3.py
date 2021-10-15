@@ -1,11 +1,9 @@
+from ift6758.data import tidyDataKeys
 from ift6758.data.question_4 import Tidyer
 import matplotlib.pyplot as plt
 from PIL import Image
 import ipywidgets as widgets
 from IPython.display import display
-from tidyDataKeys import *
-
-
 
 class debugWidget:
 
