@@ -26,6 +26,12 @@ class debugWidget:
     def selectMatch(self, m):
         self.subDf = self.df[self.df["matchId"] == m]
         # print(subDf)
+        print("Date : "
+              + str(self.subDf.iloc[0]['dateYear'])
+              + '_' + str(self.subDf.iloc[0]['dateMonth'])
+              + '_' + str(self.subDf.iloc[0]['dateDay']))
+        print("Team One : " + self.subDf["teamName"].drop_duplicates().iloc[0])
+        print("Team Two : " + self.subDf["teamName"].drop_duplicates().iloc[1])
         lenDf = len(self.subDf)
         w = widgets.IntSlider(value=0, min=0, max=lenDf - 1, description='event:', continuous_update=False)
         interactive_IceRinkPlot = widgets.interactive(self.drawIceRink, i=w)
