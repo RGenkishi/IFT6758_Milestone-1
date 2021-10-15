@@ -6,7 +6,7 @@ from ift6758.data import *
 from ift6758.data.api_requester import *
 from ift6758.data.question_2 import *
 #from ift6758.data.question_3 import Tidyer
-from ift6758.data.question_4 import Tidyfier
+from ift6758.data.question_4 import Tidyer
 from ift6758.data.question_5 import *
 from PIL import Image
 import ipywidgets as widgets
@@ -19,20 +19,24 @@ import matplotlib.pyplot as plt
 from scipy.stats import pointbiserialr
 
 def test_question4():
-    tdf = Tidyfier()
-    df = tdf.game_event_to_panda_df(2018)
-
+    tdf = Tidyer()
+    dfs = tdf.game_event_to_panda_df(2018)
+    df1 = dfs['regular']
+    df2 = dfs['playoff']
     pd.set_option("max_rows", None)
     pd.set_option("max_columns", None)
-    print(df.head(200))
-    print(df.info())
+    print("REGULAR :")
+    print(df1.head(10))
+    print("\n PLAYOFF :")
+    print(df2.head(10))
+    print(df1.info())
 
 def test_question5():
     histo_shot(2018)
 
 
 def test_question3():
-    tdf = Tidyfier()
+    tdf = Tidyer()
     df = tdf.game_event_to_panda_df(2017)
 
     df = df[df['dateYear'] == "2017"]
