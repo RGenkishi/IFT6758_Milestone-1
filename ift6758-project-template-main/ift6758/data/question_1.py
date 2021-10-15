@@ -5,7 +5,7 @@ def get_player_stats(year: int, player_type: str) -> pd.DataFrame:
     """
 
     Uses Pandas' built in HTML parser to scrape the tabular player statistics from
-    https://www.hockey-reference.com/leagues/ . If the player played on multiple 
+    https://www.hockey-reference.com/leagues/ . If the player played on multiple
     teams in a single season, the individual team's statistics are discarded and
     the total ('TOT') statistics are retained (the multiple team names are discarded)
 
@@ -38,4 +38,3 @@ def get_player_stats(year: int, player_type: str) -> pd.DataFrame:
     df = df.append(players_multiple_teams, ignore_index=True)
 
     return df
-
