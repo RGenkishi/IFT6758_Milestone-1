@@ -21,7 +21,7 @@ from ift6758.data.tidyDataKeys import *
 
 pandasDatabasePath = os.path.dirname(__file__)+"/database/panda"  # chemin par défaut pour l'enregistrement des données tidyfiées
 
-class Tidyfier:
+class Tidyer:
 
     def list_player_types(self, players):
         return set((player["playerType"] for player in players))

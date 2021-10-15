@@ -1,4 +1,4 @@
-from ift6758.data.question_4 import Tidyfier
+from ift6758.data.question_4 import Tidyer
 import matplotlib.pyplot as plt
 from PIL import Image
 import ipywidgets as widgets
@@ -10,7 +10,7 @@ from tidyDataKeys import *
 class debugWidget:
 
     def __init__(self):
-        self.tdf = Tidyfier()
+        self.tdf = Tidyer()
         self.dfs = None
         self.df = None
         self.subDf = []
