@@ -1,53 +1,149 @@
-import pandas as pd
+''' --------------------------------------------------------------------------
+Data we want :
+game time / period information,
+gameID,
+team information(which team took the shot),
+indicator if its a shot or a goal,
+the on-ice coordinates,
+the shooter name and
+goalie name,
+shot type,
+if it was on an empty net, and
+whether or not a goal was at even strength, shorthanded, or on the power play.
+-------------------------------------------------------------------------------
+'''
+
+
+import os
 import numpy as np
-
 from ift6758.data.question_2 import *
+from ift6758.data.tidyDataKeys import *
+
+pandasDatabasePath = os.path.dirname(__file__)+"/database/panda"  # chemin par défaut pour l'enregistrement des données tidyfiées
+
+class Tidyer:
+
+    def list_player_types(self, players):
+        return set((player["playerType"] for player in players))
 
 
-class Tidyfier:
+    def there_is_no_goalie(self, players):
+        return not ("Goalie" in self.list_player_types(players))
+
+
+    def get_ring_side(self, game, team, period):
+        home_team = game["gameData"]["teams"]["home"]["name"]
+        away_team = game["gameData"]["teams"]["away"]["name"]
+        periods = game["liveData"]["linescore"]["periods"]
+        try:
+            if team == home_team:
+                return periods[period - 1]["home"]["rinkSide"] if "rinkSide" in periods[period - 1]["home"].keys() else np.nan
+            else:
+                return periods[period - 1]["away"]["rinkSide"] if "rinkSide" in periods[period - 1]["home"].keys() else np.nan
+        except:
+            print(game["gamePk"])
+            print(team)
+            print(period)
+            return np.nan
+
+
     def game_event_to_panda_df(self, year):
-        dataGetter = DataAquirer()
-        dataGetter.get_all_games_data_for_a_year(year)
+        # Création du dossier database/panda si inexistant
+        if not os.path.isdir(pandasDatabasePath):
+            os.makedirs(pandasDatabasePath)
 
-        season_data = dataGetter.season_data
+        # Chemin pour l'enregistrement des données tidyfiées
+        basePath = pandasDatabasePath + '/' + str(year) + '_'
+        extension = '_tidydata.csv'
+        filePaths = {'regular' : basePath + 'regular' + extension,
+                     'playoff' : basePath + 'playoff' + extension
+                     }
 
-        elementToRetrive = ['matchId',
-                            'event',
-                            'period',
-                            'teamId',
-                            'teamName',
-                            'teamLink',
-                            'teamTriCode',
-                            'coordX',
-                            'coordY',
-                            'shooterName',
-                            'goalieName',
-                            'shotSecondaryType']
+        # Si les fichiers csv existent déjà, on les récupère sans tout re-tidyfier
+        if not False in set((os.path.isfile(filePath) for filePath in filePaths.values())):
+            dfs = {dataType : pd.read_csv(filePath) for dataType, filePath in filePaths.items()}
+            return dfs  # DataFrameS (dictionnaire de dataFrames)
+        else:
+            dataGetter = DataAquirer()
+            dataGetter.get_all_games_data_for_a_year(year)
 
-        data = dict(zip(elementToRetrive, [[] for i in range(len(elementToRetrive))]))
+            data = {'regular' : dataGetter.season_data,
+                    'playoff' : dataGetter.playoffs_data
+                    }
 
-        for matchKey in season_data:
-            for play in season_data[matchKey]['liveData']['plays']['allPlays']:
-                if play['result']['event'] in ["Shot", "Goal"]:
-                    data['matchId'].append(matchKey)
-                    data['event'].append(play['result']['event'])
-                    data['period'].append(play['about']['periodTime'])
-                    data['teamId'].append(play['team']['id'])
-                    data['teamName'].append(play['team']['name'])
-                    data['teamLink'].append(play['team']['link'])
-                    data['teamTriCode'].append(play['team']['triCode'])
-                    data['coordX'].append(play['coordinates']['x'] if 'x' in play['coordinates'].keys() else np.nan)
-                    data['coordY'].append(play['coordinates']['y'] if 'y' in play['coordinates'].keys() else np.nan)
-                    if len(play['players']) == 2:
-                        player0Type = play['players'][0]['playerType']
-                        data['shooterName' if player0Type == "Shooter" else 'goalieName'].append(play['players'][0]['player']['fullName'])
-                        data['goalieName' if player0Type == "Shooter" else 'shooterName'].append(play['players'][1]['player']['fullName'])
-                    else:
-                        data['shooterName'].append(None)
-                        data['goalieName'].append(None)
-                    data['shotSecondaryType'].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else np.nan)
+            elementToRetrive = [GAME_ID,
+                                GAME_TIME,
+                                DATE_YEAR,
+                                DATE_MONTH,
+                                DATE_DAY,
+                                PERIOD_TIME,
+                                PERIOD_WHICH,
+                                PERIOD_TYPE,
+                                EVENT_TYPE,
+                                IS_GOAL,
+                                SHOT_TYPE,
+                                STRENGTH,
+                                TEAM_ID,
+                                TEAM_NAME,
+                                TEAM_LINK,
+                                TEAM_TRI_CODE,
+                                SHOOTER_NAME,
+                                GOALIE_NAME,
+                                RINK_SIDE,
+                                COORD_X,
+                                COORD_Y]
 
-        for column in data.items():
-            column = pd.Series(column)
+            tidyData = {key: dict(zip(elementToRetrive, [[] for i in range(len(elementToRetrive))])) for key in data}
 
-        return pd.DataFrame(data)
+            for gameType, games in data.items():
+                for gameId, game in games.items():
+                    for play in game['liveData']['plays']['allPlays']:
+                        if play['result']['event'] in ["Shot", "Goal"]:
+                            tidyData[gameType][GAME_ID].append(gameId)
+                            tidyData[gameType][GAME_TIME].append(play['about']['dateTime'])
+                            tidyData[gameType][DATE_YEAR].append(game['gameData']['datetime']['dateTime'][0:4])
+                            tidyData[gameType][DATE_MONTH].append(game['gameData']['datetime']['dateTime'][5:7])
+                            tidyData[gameType][DATE_DAY].append(game['gameData']['datetime']['dateTime'][8:10])
+
+                            tidyData[gameType][PERIOD_TIME].append(play['about']['periodTime'])
+                            tidyData[gameType][PERIOD_WHICH].append(play['about']['period'])
+                            tidyData[gameType][PERIOD_TYPE].append(play['about']['periodType'])
+
+                            tidyData[gameType][EVENT_TYPE].append(play['result']['event'])
+                            tidyData[gameType][IS_GOAL].append((play['result']['event'] == "Goal"))
+
+                            tidyData[gameType][TEAM_ID].append(play['team']['id'])
+                            tidyData[gameType][TEAM_NAME].append(play['team']['name'])
+                            tidyData[gameType][TEAM_LINK].append(play['team']['link'])
+                            tidyData[gameType][TEAM_TRI_CODE].append(play['team']['triCode'])
+                            tidyData[gameType][COORD_X].append(play['coordinates']['x'] if 'x' in play['coordinates'].keys() else np.nan)
+                            tidyData[gameType][COORD_Y].append(play['coordinates']['y'] if 'y' in play['coordinates'].keys() else np.nan)
+                            tidyData[gameType][SHOT_TYPE].append(play['result']['secondaryType'] if 'secondaryType' in play['result'].keys() else np.nan)
+
+                            for player in play['players']:
+                                if player['playerType'] == "Shooter":
+                                    tidyData[gameType][SHOOTER_NAME].append(player['player']['fullName'])
+                                    tidyData[gameType][STRENGTH].append(None)
+                                if player['playerType'] == "Scorer":
+                                    tidyData[gameType][SHOOTER_NAME].append(player['player']['fullName'])
+                                    tidyData[gameType][STRENGTH].append(play['result']['strength']['name'])
+                                    if self.there_is_no_goalie(play['players']):
+                                        tidyData[gameType][GOALIE_NAME].append(None)
+                                if player['playerType'] == "Goalie":
+                                    tidyData[gameType][GOALIE_NAME].append(player['player']['fullName'])
+
+                            if play['about']['periodType'] != 'SHOOTOUT':
+                                rink_side = self.get_ring_side(game, play['team']['name'], play['about']['period'])
+                                tidyData[gameType][RINK_SIDE].append(rink_side)
+                            else:
+                                tidyData[gameType][RINK_SIDE].append(np.nan)
+
+            for games in tidyData.values():
+                for column in games.items():
+                    column = pd.Series(column)
+
+            dfs = {gameType : pd.DataFrame(games) for gameType, games in tidyData.items()}
+            for gameType, games in dfs.items():
+                games.to_csv(filePaths[gameType], index=False, header=True)
+
+            return dfs  # DataFrameS (dictionnaire de dataFrames)

@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def get_player_stats(year: int, player_type: str) -> pd.DataFrame:
     """
 
@@ -17,7 +18,7 @@ def get_player_stats(year: int, player_type: str) -> pd.DataFrame:
 
     if player_type not in ["skaters", "goalies"]:
         raise RuntimeError("'player_type' must be either 'skaters' or 'goalies'")
-    
+
     url = f'https://www.hockey-reference.com/leagues/NHL_{year}_{player_type}.html'
 
     print(f"Retrieving data from '{url}'...")
@@ -38,19 +39,3 @@ def get_player_stats(year: int, player_type: str) -> pd.DataFrame:
 
     return df
 
-'''
-goalieStats = get_player_stats(2016, "goalies")
-
-print("panda.columns")
-print(goalieStats.columns)
-
-print("PLAYER BASE")
-print(goalieStats)
-
-
-sortedGoalStat = goalieStats.sort_values(by="SV%")
-
-print("SORTED")
-
-print(sortedGoalStat[["Player", "SV%"]])
-'''
