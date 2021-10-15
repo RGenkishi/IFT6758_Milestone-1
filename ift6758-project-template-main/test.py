@@ -52,7 +52,7 @@ def test_question3():
 #df = pd.read_json("ift6758/data/database/2017_season_data.json")
 #df.info()
 
-test_question4()
+test_question5()
 
 
 
