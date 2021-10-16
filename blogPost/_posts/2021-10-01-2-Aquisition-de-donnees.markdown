@@ -9,14 +9,14 @@ categories: jekyll update
 
 ##### <span style="color:grey">Rédigez un bref tutoriel sur la façon dont votre équipe a téléchargé l'ensemble de données. Imaginez :) que vous cherchiez un guide sur la façon de télécharger les données play-by-play ; votre guide devrait vous faire dire "Parfait - c'est exactement ce que je cherchais!". Cela peut être aussi simple que de copier votre fonction et un exemple d'utilisation, et d'écrire une ou deux phrases la décrivant.</span>
 
-L’API qui permet d’accéder aux données des parties de la LNH est assez facile d’utilisation. L’url de l’API a le format suivant : https://statsapi.web.nhl.com/api/v1/game/ID/feed/live où ID représente l’identifiant unique de la partie.
-L’identifiant de la partie est séparé en trois parties. L’année de la saison, le type de partie (01 pour la pré-saison, 02 pour la saison régulière, et 03 pour les séries éliminatoires), et l’identifiant de la partie comme tel. 
+>L’API qui permet d’accéder aux données des parties de la LNH est assez facile d’utilisation. L’url de l’API a le format suivant : https://statsapi.web.nhl.com/api/v1/game/ID/feed/live où ID représente l’identifiant unique de la partie.
+>L’identifiant de la partie est séparé en trois parties. L’année de la saison, le type de partie (01 pour la pré-saison, 02 pour la saison régulière, et 03 pour les séries éliminatoires), et l’identifiant de la partie comme tel. 
 
-Pour la saison régulière, l’identifiant de la partie est un nombre à 4 chiffres, de 0001 à 1271 (puisqu’il y a 1271 parties dans une saison régulière depuis la saison 2016-2017). Ainsi, pour prendre un exemple, la quatrième partie de la saison régulière de 2016-2017 aurait l’identifiant 2017020004.
+>Pour la saison régulière, l’identifiant de la partie est un nombre à 4 chiffres, de 0001 à 1271 (puisqu’il y a 1271 parties dans une saison régulière depuis la saison 2016-2017). Ainsi, pour prendre un exemple, la quatrième partie de la saison régulière de 2016-2017 aurait l’identifiant 2017020004.
 
-Les choses se compliquent un peu pour l’identifiant de partie des séries éliminatoires. Les séries éliminatoires voient s’affronter 16 équipes et se déroule en 4 tours. Chaque tour (round) les équipes s’affronter dans un 4 de 7. La première à remporter 4 parties (game) l’emporte. Lors du premier tour, il y a 8 affrontements (matchup) entre 2 équipes, puis 4 au tour suivant, puis 2 et finalement 1. L’identifiant d’une partie en série éliminatoire est aussi un nombre de 4 chiffre. Le premier chiffre est un 0, le second est le numéro du tour, le troisième le numéro de l’affrontement, puis le dernier est le numéro de partie. Ainsi, pour prendre un exemple, le troisième match du deuxième affrontement du premier tour des séries éliminatoire de la saison 2016-2017 aurait l’identifiant 2017030123.
+>Les choses se compliquent un peu pour l’identifiant de partie des séries éliminatoires. Les séries éliminatoires voient s’affronter 16 équipes et se déroule en 4 tours. Chaque tour (round) les équipes s’affronter dans un 4 de 7. La première à remporter 4 parties (game) l’emporte. Lors du premier tour, il y a 8 affrontements (matchup) entre 2 équipes, puis 4 au tour suivant, puis 2 et finalement 1. L’identifiant d’une partie en série éliminatoire est aussi un nombre de 4 chiffre. Le premier chiffre est un 0, le second est le numéro du tour, le troisième le numéro de l’affrontement, puis le dernier est le numéro de partie. Ainsi, pour prendre un exemple, le troisième match du deuxième affrontement du premier tour des séries éliminatoire de la saison 2016-2017 aurait l’identifiant 2017030123.
 
-En python, on peut faire des requêtes à un API grâce à la librairie `requests` et sa méthode `get()`. En passant l’url de la requête en paramètre, on recevra les données sous format json. Voici le code que l’on peut utiliser pour aller chercher toutes les données des parties pour une année en saison réguliere.
+>En python, on peut faire des requêtes à un API grâce à la librairie `requests` et sa méthode `get()`. En passant l’url de la requête en paramètre, on recevra les données sous format json. Voici le code que l’on peut utiliser pour aller chercher toutes les données des parties pour une année en saison réguliere.
 
 ```Python
 game_data = {}
@@ -29,9 +29,9 @@ for i in range(1, (max_game+1)):
     time.sleep(0.1)
 ```
 
-Il est recommandé une faire un time.sleep() d’au moins un dixième de seconde entre chaque requête afin de ne pas surchargé l’API et risquer de se faire bannir.
+>Il est recommandé une faire un time.sleep() d’au moins un dixième de seconde entre chaque requête afin de ne pas surchargé l’API et risquer de se faire bannir.
 
-Pour aller chercher les données pour les séries éliminatoires, on peut utiliser le code suivant :
+>Pour aller chercher les données pour les séries éliminatoires, on peut utiliser le code suivant :
 
 ```Python
 game_data = {}
@@ -55,7 +55,7 @@ for round in range(1, 5):
 
 ### Partie pratique
 
-Pour récupérer les données de la NHL avec nos fonctions, il suffit de procéder ainsi:
+>Pour récupérer les données de la NHL avec nos fonctions, il suffit de procéder ainsi:
 
 ```Python
 from ift6758.data.question_2 import *
@@ -67,12 +67,12 @@ regularGames = dataGetter.season_data
 playoffGames = dataGetter.playoffs_data
 ```
 
-regularGames contient alors l'ensemble des match de la saison régulière correspondant à 2017, indexés par id.
-playoffGames, quant à lui, contient les match des playoffs et présente la même structure.
+>regularGames contient alors l'ensemble des match de la saison régulière correspondant à 2017, indexés par id.
+>playoffGames, quant à lui, contient les match des playoffs et présente la même structure.
 
-Mais nous pouvons aller plus loin ! Travailler avec des données tidyfiée est beaucoup plus pratique dans certains cas. Vous pouvez choisir votre propre méthode mais nous en proposons également une.
+>Mais nous pouvons aller plus loin ! Travailler avec des données tidyfiée est beaucoup plus pratique dans certains cas. Vous pouvez choisir votre propre méthode mais nous en proposons également une.
 
-Par exemple: 
+### Par exemple: 
 
 ```Python
 from ift6758.data.question_4 import Tidyer
@@ -84,9 +84,9 @@ regular = dfs['regular']
 playoff = dfs['playoff']
 ```
 
-Ici, dfs est un dictionnaire indexé par type de saison (regular et playoff).
+>Ici, dfs est un dictionnaire indexé par type de saison (regular et playoff).
 regular = dfs['regular'] contient alors un DataFrame de la saison régulière et il en même avec playoff = dfs['playoff'] et les données de la saison pllayoff.
 
 ### Note sur l'optimisation
 
-La récupération des données est optimisée. Si notre Tidyer a déjà tidyfié les données d'une saison, il va directement récupérer les fichiers .csv du dossier database/panda correspondant à la saison voulue. Sinon, il demande à récupérer les données brut en .json. Une fois encore, si les fichiers .json correspondant existent dans le dossier database, ils sont directement récupérés. Sinon, l'apiRequester récupère les données via l'API de la NHL.
+>La récupération des données est optimisée. Si notre Tidyer a déjà tidyfié les données d'une saison, il va directement récupérer les fichiers .csv du dossier database/panda correspondant à la saison voulue. Sinon, il demande à récupérer les données brut en .json. Une fois encore, si les fichiers .json correspondant existent dans le dossier database, ils sont directement récupérés. Sinon, l'apiRequester récupère les données via l'API de la NHL.
