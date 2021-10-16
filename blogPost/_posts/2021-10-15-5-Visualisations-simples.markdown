@@ -46,9 +46,12 @@ Bien que les tirs du poignet sont les plus fréquent, ce ne sont pas les tirs le
   <img src="/assets/distanceBut.png" alt="Distance des buts"/>
 </p>
 
-Nous pouvons remarquer que la majorité des buts sont marqué grâce à des tirs près de la ligne bleue. Une fois que l'on s'éloigne de cette ligne bleue, le nombre de but marqués chute drastiquement pour remonter petit à petit lorsque l'on se rapproche des cages pour atteindre un nouveau pic. À l'inverse, si l'on s'éloigne des cages on compte très peu de but marqués depuis l'autre côté du terrain. On remarque cependant que la la majorité des buts marqués de l'autre côté du terrain sont tiré depuis la distance la plus grande, quasiment depuis les cages de l'équipe qui marque. (Le goal doit alors certainement profiter de l'effet de surprise pour marquer lui même)
+>Nous pouvons remarquer que la majorité des buts sont marqué grâce à des tirs près de la ligne bleue. Une fois que l'on s'éloigne de cette ligne bleue, le nombre de but marqués chute drastiquement pour remonter petit à petit lorsque l'on se rapproche des cages pour atteindre un nouveau pic. À l'inverse, si l'on s'éloigne des cages on compte très peu de but marqués depuis l'autre côté du terrain. On remarque cependant que la la majorité des buts marqués de l'autre côté du terrain sont tiré depuis la distance la plus grande, quasiment depuis les cages de l'équipe qui marque. (Le goal doit alors certainement profiter de l'effet de surprise pour marquer lui même)
 
-Remarque d'Olivier sur la cohérence de la répartition des tirs : 
+<br>
+
+### Remarque d'Olivier sur la cohérence de la répartition des tirs : 
+
 > Ouais ca a du sens avec le heatmap. 
 > La case qui a le plus de tirs c’est près de la ligne bleu. 
 > C’est de là d’où tirent les défenseurs
