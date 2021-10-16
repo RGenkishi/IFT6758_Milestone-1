@@ -12,8 +12,8 @@ categories: jekyll update
 | Membres   | Olivier | Romeo | Nathanael | Ebeyo |
 |-----------|---------|-------|-----------|-------|
 | Olivier   |   20    |  20   |   20      | 20    |
-| Romeo     |   20    |   20  |     20    |   20  |
-| Nathanael |         |       |           |       |
-| Ebeyo     |         |       |           |       |
+| Romeo     |   20    |  20   |   20      | 20    |
+| Nathanael |   20    |  20   |   20      | 20    |
+| Ebeyo     |   20    |  20   |   20      | 20    |
 |-----------|---------|-------|-----------|-------|
 
