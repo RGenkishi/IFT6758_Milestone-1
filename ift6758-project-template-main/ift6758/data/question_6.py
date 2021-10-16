@@ -13,9 +13,10 @@ pd.set_option("display.max_columns", None)
 
 class HeatMapShots:
 
-    def __init__(self):
+    def __init__(self, year):
+        self.year = year
         tidyer = Tidyer()
-        dfs = tidyer.game_event_to_panda_df(2017)
+        dfs = tidyer.game_event_to_panda_df(year)
         self.season_data = dfs['regular']
         self.playoffs_data = dfs['playoff']
 
@@ -72,31 +73,37 @@ class HeatMapShots:
         team_data.counts_per_hour = team_data.counts_per_hour - self.counts_for_season.counts_per_hour
         return (team_data)
 
-heatmaper = HeatMapShots()
+    def plot_heat_map(self, team):
+
+        team_average_difference = heatmaper.get_above_average_for_team(team)
+        team_average_difference = round(team_average_difference, 2)
+        img = mpimg.imread('./figures/nhl_rink.png')
+        matrix_for_heatmap = np.array(team_average_difference.counts_per_hour).reshape((10, 5))
+
+        ## Inspiré par https://stackoverflow.com/questions/50091591/plotting-seaborn-heatmap-on-top-of-a-background-picture
+        hmax = sns.heatmap(np.transpose(matrix_for_heatmap),
+                           alpha=0.5,  # whole heatmap is translucent
+                           annot=True,
+                           zorder=2,
+                           vmin=-1.0,
+                           vmax=1.0,
+                           cmap="vlag")
+
+        # heatmap uses pcolormesh instead of imshow, so we can't pass through
+        # extent as a kwarg, so we can't mmatch the heatmap to the map. Instead,
+        # match the map to the heatmap:
+
+        hmax.imshow(img,
+                    aspect=hmax.get_aspect(),
+                    extent=hmax.get_xlim() + hmax.get_ylim(),
+                    zorder=1)  # put the map under the heatmap
+        hmax.set_title("Nombre de tirs au dessus de la moyenne\n" + team + " saison " + str(self.year) + "-" + str(self.year + 1))
+        plt.show()
+heatmaper = HeatMapShots(2020)
 heatmaper.prepare_data()
+heatmaper.plot_heat_map("Buffalo Sabres")
+heatmaper.plot_heat_map("Tampa Bay Lightning")
 
-team_average_difference = heatmaper.get_above_average_for_team("Pittsburgh Penguins")
-team_average_difference = heatmaper.get_above_average_for_team("Buffalo Sabres")
 
-img = mpimg.imread('../../figures/nhl_rink.png')
-matrix_for_heatmap = np.array(team_average_difference.counts_per_hour).reshape((10,5))
+img = mpimg.imread('./figures/nhl_rink.png')
 
-## Inspiré par https://stackoverflow.com/questions/50091591/plotting-seaborn-heatmap-on-top-of-a-background-picture
-hmax = sns.heatmap(np.transpose(matrix_for_heatmap),
-            alpha = 0.5, # whole heatmap is translucent
-            annot = True,
-            zorder = 2,
-            vmin=-1.0,
-            vmax=1.0,
-            cmap="vlag")
-
-# heatmap uses pcolormesh instead of imshow, so we can't pass through
-# extent as a kwarg, so we can't mmatch the heatmap to the map. Instead,
-# match the map to the heatmap:
-
-hmax.imshow(img,
-          aspect = hmax.get_aspect(),
-          extent = hmax.get_xlim() + hmax.get_ylim(),
-          zorder = 1) #put the map under the heatmap
-
-plt.show()
