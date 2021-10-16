@@ -11,7 +11,7 @@ categories: jekyll update
 
 <br> 
 
-####  Tableau des 20 premiers éléments de la saison 2019 rangés selon les indications
+####  Tableau des 10 premiers éléments de la saison 2019 rangés selon les indications
 
 
 |   | game_id           | game_time            | date_year | date_month | date_day | period_time | which_period | period_type | event_type | is_goal | shot_type  | strength | team_id | team_name           | team_link        | team_tri_code | shooter_name     | goalie_name       | rink_side | coord_x | coord_y |

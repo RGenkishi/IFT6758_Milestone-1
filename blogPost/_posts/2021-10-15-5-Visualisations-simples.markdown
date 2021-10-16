@@ -7,7 +7,7 @@ categories: jekyll update
 
 # Question 1
 
-##### <span style="color:grey">Produisez un histogramme ou un BARPLOT  des types de tirs sur toutes les équipes dans une saison de votre choix. Superposez le nombre de buts sur le nombre de tirs. Quel semble être le type de tir le plus dangereux ? Le type de tir le plus courant ? Ajoutez cette figure et cette discussion à votre article de blog.</span>
+#### <span style="color:grey">Produisez un histogramme ou un BARPLOT  des types de tirs sur toutes les équipes dans une saison de votre choix. Superposez le nombre de buts sur le nombre de tirs. Quel semble être le type de tir le plus dangereux ? Le type de tir le plus courant ? Ajoutez cette figure et cette discussion à votre article de blog.</span>
 
 <br>
 
