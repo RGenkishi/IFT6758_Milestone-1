@@ -11,7 +11,7 @@ categories: jekyll update
 
 <br> 
 
-####  Tableau des 20 premiers éléments de la saison 2019 rangés selon les indications
+####  Tableau des 10 premiers éléments de la saison 2019 rangés selon les indications
 
 
 |   | game_id           | game_time            | date_year | date_month | date_day | period_time | which_period | period_type | event_type | is_goal | shot_type  | strength | team_id | team_name           | team_link        | team_tri_code | shooter_name     | goalie_name       | rink_side | coord_x | coord_y |
@@ -44,7 +44,7 @@ Comment obtenir une information plus précise sur la force réelle des joueurs s
 >Pour chaque game, dans le json retourné par l'API, dans gameData/Players, on a accès à la liste des joueurs >participants. Il est égallement possible de récupéré l'équipe pour chaque joueur avec la clé 'currentTeam' qui existe pour chacune des personnes participant au match.
 >A partir de ces données, on peut compter le nombre de joueurs qui apparaissent dans les événements pour chaque équipe jusqu'a ce qu'un but soit marqué. On estime alors le nombre de joueur présent dans chaque équipe. Cependant on ne sait pas vraiment quand réinitilialiser les compte des joueurs.
 >
->Une meilleure méthode consisterai à considérer qu'il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d'un but, on compte le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
+>Une meilleure méthode consisterai à considérer qu'il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d'un but, on pourrait compter le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
 >On fait de même pour les pénalités majeure survenues dans les 5 minutes avant le but et pour les Inconduite dans les 10 minutes. Pour chaque équipe, on compte un nombre maximum de pénalité de 2 puiqu'une équipe ne peut avoir moins de 4 joueurs sur la glace.
 >Ainsi, si l'équipe A a eu deux pénalités, et l'équipe B une seule, alors l'équipe A a encore 4 joueurs sur la glace et l'équipe B en a 5. Si le but est de l'équipe A, elle a donc marqué un but à 4 contre 5.
 
@@ -56,4 +56,9 @@ Comment obtenir une information plus précise sur la force réelle des joueurs s
 
 ##### <span style="color:grey">En quelques phrases, discutez de certaines fonctionnalités supplémentaires que vous pourriez envisager de créer à partir des données disponibles dans cet ensemble de données. Nous ne cherchons pas de réponses particulières, mais si vous avez besoin d'inspiration, un tir ou un but pourrait-il être classé comme un rebond ou un tir dans le rush?</span>
 <br>
+
+Dans la base de données de la LNH à laquelle on a accès, il y plusieurs autres attributs que l'on pourrait aller chercher qui permettraient d'ajouter d'autres analyses. Un premier attribut que l’on pourrait ajouter est la rôle du joueur qui fait le tir, à savoir s’il s’agit d’un défenseur ou d’un attaquant (ou même d'un gardien). Grâce à cette donnée, on pourrait faire plusieurs comparaisons. Par exemple, quel est le ratio de tir entre les défenseurs et les attaquants. Cela permettrait de répondre à la question de savoir si les équipes qui marquent beaucoup ont tendance à avoir un ratio qui penche plus en faveur des attaquants que des défenseurs ou bien est-ce que le ratio est essentiellement le même pour toutes les équipes? Est-ce qu’au final, c’est le nombre absolu de tir qui compte? On pourrait aussi regarder où les attaquants ont tendance à se trouver sur la patinoire lorsqu’ils marquent, et comparer cela avec la position des défenseurs.
+
+D’autres informations à propos des joueurs pourraient aussi être intéressantes. Par exemple, leur taille et leur âge. On pourrait, par exemple, faire des analyses corrélationnelles entre la taille, l’âge et la tendance à marquer. On pourrait ainsi agréger ces mesures par équipe en faisant la moyenne par exemple. Cela nous permettrait de voir si la moyenne d’âge d’une équipe a une influence sur leur perfomances ou si les équipes avec de grands joueurs sont généralement meilleurs que les équipes avec des joueurs plus petit. On pourrait aussi s'intéresser à la distribution de ces attributs. On pourrait calculer la variance de la taille et de l'âge d'une équipe. Cela nous permettrait, par exemple, de voir si une équipe qui à une grande variance sur le plan de l'âge et de la grandeurs performe généralement mieux qu'une équipe avec uniquement des jeunes, ou uniquement des vieux. 
+
 
