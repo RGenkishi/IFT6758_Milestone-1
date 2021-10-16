@@ -19,18 +19,16 @@ categories: jekyll update
   <img src="/assets/simpleVisualisation/nombre_de_tire_et_de_but_par_type_de_tire.png" alt="Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens"/>
 </p>
 
+<br>
+
 <p align="center">
   <img src="/assets/percentageByShotType.png" alt="Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens"/>
 </p>
 
-Les tirs les plus courants et de très loin sont les tirs du poignet suivis dans l'ordre : des tirs frappés, des tirs du rever, des tirs pointé, des tirs déviés et enfin des tirs enroulés.
-
-Bien que les tirs du poignet sont les plus fréquent, ce ne sont pas les tirs les plus dangereux. Pour celà il faut regarder le pourcentage de tirs réussi par type de tir. Le grand vainceur est le tir pointé avec presque 20% de réussite, suivi du tir dévié avec presque 18% de réussite.
-
-
 <br>
 
->Sur la figure si dessus on peut observer la superposition du nombre de buts sur le nombre totale de tires effectués durant la saison 2018-2019. en s'y rapportant nous povons en deduire que le type de tire le plus courant est le "wrist shot" cependant , il n'est pas pour autant le plus dangereux car son taux de succès est très bas. le tire dont'il faut le plus se méfier c'est le "Deflected" en raison de son rapport goal/shot plus importatnt. ca veux dire qu'il est le tire qui a le plsu de chance d'occasionner un but.
+>Les tirs les plus courants et de très loin sont les tirs du poignet suivis dans l'ordre : des tirs frappés, des tirs du rever, des tirs pointé, des tirs déviés et enfin des tirs enroulés.
+Bien que les tirs du poignet sont les plus fréquent, ce ne sont pas les tirs les plus dangereux. Pour celà il faut regarder le pourcentage de tirs réussi par type de tir. Le grand vainceur est le tir pointé avec presque 20% de réussite, suivi du tir dévié avec presque 18% de réussite.
 
 <br>
 
