@@ -18,7 +18,7 @@ Les choses se compliquent un peu pour l’identifiant de partie des séries éli
 
 En python, on peut faire des requêtes à un API grâce à la librairie `requests` et sa méthode `get()`. En passant l’url de la requête en paramètre, on recevra les données sous format json. Voici le code que l’on peut utiliser pour aller chercher toutes les données des parties pour une année en saison réguliere.
 
-```
+```Python
 game_data = {}
 max_game = 1271
 season_type = "02"
@@ -33,7 +33,7 @@ Il est recommandé une faire un time.sleep() d’au moins un dixième de seconde
 
 Pour aller chercher les données pour les séries éliminatoires, on peut utiliser le code suivant :
 
-```
+```Python
 game_data = {}
 first_digit = 0
 season_type = "03"
