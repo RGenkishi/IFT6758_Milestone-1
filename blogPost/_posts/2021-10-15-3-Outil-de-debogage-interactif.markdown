@@ -18,7 +18,7 @@ categories: jekyll update
 
 ### Description
 
-Les différents menus dropdown permettent de choisir l'année, le type de saison et un match en particulier.
+>Les différents menus dropdown permettent de choisir l'année, le type de saison et un match en particulier.
 Le slider permet de selectionner le numéro de l'événement par ordre temporel pour les tirs et les buts.
 Le widget affiche la date du match et les noms des équipes qui affrontent.
 Pour chaque événement, sont affichés : le tuype d'événement (but / tir), les coordonnées sur la glace, le nom du tireur et celui du goal.

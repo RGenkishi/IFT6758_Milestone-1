@@ -7,15 +7,19 @@ categories: jekyll update
 
 # Question 1
 
-#### <span style="color:grey">Produisez un histogramme ou un BARPLOT  des types de tirs sur toutes les équipes dans une saison de votre choix. Superposez le nombre de buts sur le nombre de tirs. Quel semble être le type de tir le plus dangereux ? Le type de tir le plus courant ? Ajoutez cette figure et cette discussion à votre article de blog.</span>
+##### <span style="color:grey">Produisez un histogramme ou un BARPLOT  des types de tirs sur toutes les équipes dans une saison de votre choix. Superposez le nombre de buts sur le nombre de tirs. Quel semble être le type de tir le plus dangereux ? Le type de tir le plus courant ? Ajoutez cette figure et cette discussion à votre article de blog.</span>
 
 <br>
 
 [//]: <> Nombre de tires et de buts par type de tires pour la saison 2018
 
 <p align="center">
-  <img src="/assets/echauffement/nombre_de_tire_et_de_but_par_type_de_tire.png" alt="Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens"/>
+  <img src="/assets/simpleVisualisation/nombre_de_tire_et_de_but_par_type_de_tire.png" alt="Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens"/>
 </p>
+
+<br>
+
+>Sur la figure si dessus on peut observer la superposition du nombre de buts sur le nombre totale de tires effectués durant la saison 2018-2019. en s'y rapportant nous povons en deduire que le type de tire le plus courant est le "wrist shot" cependant , il n'est pas pour autant le plus dangereux car son taux de succès est très bas. le tire dont'il faut le plus se méfier c'est le "Deflected" en raison de son rapport goal/shot plus importatnt. ca veux dire qu'il est le tire qui a le plsu de chance d'occasionner un but.
 
 <br>
 
