@@ -52,3 +52,41 @@ for round in range(1, 5):
             time.sleep(0.1)
 ```
 
+
+### Partie pratique
+
+Pour récupérer les données de la NHL avec nos fonctions, il suffit de procéder ainsi:
+
+```Python
+from ift6758.data.question_2 import *
+
+dataGetter = DataAquirer()
+dataGetter.get_all_games_data_for_a_year(2017)
+
+regularGames = dataGetter.season_data
+playoffGames = dataGetter.playoffs_data
+```
+
+regularGames contient alors l'ensemble des match de la saison régulière correspondant à 2017, indexés par id.
+playoffGames, quant à lui, contient les match des playoffs et présente la même structure.
+
+Mais nous pouvons aller plus loin ! Travailler avec des données tidyfiée est beaucoup plus pratique dans certains cas. Vous pouvez choisir votre propre méthode mais nous en proposons également une.
+
+Par exemple: 
+
+```Python
+from ift6758.data.question_4 import Tidyer
+
+tdf = Tidyer()
+dfs = tdf.game_event_to_panda_df(2019)
+
+regular = dfs['regular']
+playoff = dfs['playoff']
+```
+
+Ici, dfs est un dictionnaire indexé par type de saison (regular et playoff).
+regular = dfs['regular'] contient alors un DataFrame de la saison régulière et il en même avec playoff = dfs['playoff'] et les données de la saison pllayoff.
+
+### Note sur l'optimisation
+
+La récupération des données est optimisée. Si notre Tidyer a déjà tidyfié les données d'une saison, il va directement récupérer les fichiers .csv du dossier database/panda correspondant à la saison voulue. Sinon, il demande à récupérer les données brut en .json. Une fois encore, si les fichiers .json correspondant existent dans le dossier database, ils sont directement récupérés. Sinon, l'apiRequester récupère les données via l'API de la NHL.
