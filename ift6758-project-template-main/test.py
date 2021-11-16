@@ -8,6 +8,7 @@ from ift6758.data.question_2 import *
 #from ift6758.data.question_3 import Tidyer
 from ift6758.data.question_4 import Tidyer
 from ift6758.data.question_5 import *
+from ift6758.data.milestone2.question_1 import Featurizer
 from PIL import Image
 import ipywidgets as widgets
 import json
@@ -18,23 +19,33 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import pointbiserialr
 
+
+def test_MS2_q1():
+    ftz = Featurizer(2015,2019)
+    df = ftz.get_feature()
+    print(df.head(50))
+
+test_MS2_q1()
+
 def test_question4():
     tdf = Tidyer()
-    dfs = tdf.game_event_to_panda_df(2019)
+    dfs = tdf.game_event_to_panda_df(2015)
     df1 = dfs['regular']
     df2 = dfs['playoff']
     pd.set_option("max_rows", None)
     pd.set_option("max_columns", None)
     print("REGULAR :")
-    print(df1.head(10))
-    print("\n PLAYOFF :")
-    print(df2.head(10))
-    print(df1.info())
+    print(df1.head(50))
+    #print("\n PLAYOFF :")
+    #print(df2.head(10))
+    #print(type(df1))
+
+#test_question4()
 
 def test_question5():
     histo_shot(2018)
-
-
+    
+    
 def test_question3():
     tdf = Tidyer()
     df = tdf.game_event_to_panda_df(2017)
@@ -52,7 +63,7 @@ def test_question3():
 #df = pd.read_json("ift6758/data/database/2017_season_data.json")
 #df.info()
 
-test_question5()
+#test_question5()
 
 
 
