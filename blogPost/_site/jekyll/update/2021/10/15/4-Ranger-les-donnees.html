@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Ranger les données | Projet IFT-6758 _ Milestone 1</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Ranger les données" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Question 1" />
+<meta property="og:description" content="Question 1" />
+<link rel="canonical" href="http://localhost:4000/jekyll/update/2021/10/15/4-Ranger-les-donnees.html" />
+<meta property="og:url" content="http://localhost:4000/jekyll/update/2021/10/15/4-Ranger-les-donnees.html" />
+<meta property="og:site_name" content="Projet IFT-6758 _ Milestone 1" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-15T10:41:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Ranger les données" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/jekyll/update/2021/10/15/4-Ranger-les-donnees.html","datePublished":"2021-10-15T10:41:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2021/10/15/4-Ranger-les-donnees.html"},"description":"Question 1","headline":"Ranger les données","dateModified":"2021-10-15T10:41:00-04:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Projet IFT-6758 _ Milestone 1" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Projet IFT-6758 _ Milestone 1</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Ranger les données</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-10-15T10:41:00-04:00" itemprop="datePublished">Oct 15, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="question-1">Question 1</h1>
+
+<h5 id="dans-votre-article-de-blog-incluez-un-petit-extrait-de-votre-cadre-de-données-final-par-exemple-en-utilisant-head10-vous-pouvez-simplement-inclure-une-capture-décran-plutôt-que-de-vous-battre-pour-que-les-tableaux-soient-soigneusement-formatés-en-htmlmarkdown"><span style="color:grey">Dans votre article de blog, incluez un petit extrait de votre cadre de données final (par exemple, en utilisant head(10)). Vous pouvez simplement inclure une capture d’écran plutôt que de vous battre pour que les tableaux soient soigneusement formatés en HTML/markdown.</span></h5>
+
+<p><br /></p>
+
+<h4 id="tableau-des-10-premiers-éléments-de-la-saison-2019-rangés-selon-les-indications">Tableau des 10 premiers éléments de la saison 2019 rangés selon les indications</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>game_id</th>
+      <th>game_time</th>
+      <th>date_year</th>
+      <th>date_month</th>
+      <th>date_day</th>
+      <th>period_time</th>
+      <th>which_period</th>
+      <th>period_type</th>
+      <th>event_type</th>
+      <th>is_goal</th>
+      <th>shot_type</th>
+      <th>strength</th>
+      <th>team_id</th>
+      <th>team_name</th>
+      <th>team_link</th>
+      <th>team_tri_code</th>
+      <th>shooter_name</th>
+      <th>goalie_name</th>
+      <th>rink_side</th>
+      <th>coord_x</th>
+      <th>coord_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:15:32Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>00:25</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Goal</td>
+      <td>True</td>
+      <td>Tip-In</td>
+      <td>Even</td>
+      <td>9</td>
+      <td>Ottawa Senators</td>
+      <td>/api/v1/teams/9</td>
+      <td>OTT</td>
+      <td>Brady Tkachuk</td>
+      <td>Frederik Andersen</td>
+      <td>left</td>
+      <td>85.0</td>
+      <td>-1.0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:18:23Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>01:31</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Snap Shot</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>Morgan Rielly</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-32.0</td>
+      <td>-2.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:20:45Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>03:23</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Snap Shot</td>
+      <td> </td>
+      <td>9</td>
+      <td>Ottawa Senators</td>
+      <td>/api/v1/teams/9</td>
+      <td>OTT</td>
+      <td>Dylan DeMelo</td>
+      <td>Frederik Andersen</td>
+      <td>left</td>
+      <td>63.0</td>
+      <td>-6.0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:21:17Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>03:56</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Wrist Shot</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>Morgan Rielly</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-59.0</td>
+      <td>-20.0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:22:36Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>04:47</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Slap Shot</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>Tyson Barrie</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-42.0</td>
+      <td>-29.0</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:22:41Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>04:53</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Slap Shot</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>Tyson Barrie</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-52.0</td>
+      <td>-7.0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:23:19Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>05:31</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Wrist Shot</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>Cody Ceci</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-38.0</td>
+      <td>38.0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:23:40Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>05:52</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Wrist Shot</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>Andreas Johnsson</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-76.0</td>
+      <td>-14.0</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:24:37Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>06:02</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Slap Shot</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>Mitchell Marner</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-63.0</td>
+      <td>-31.0</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>regular2019020001</td>
+      <td>2019-10-02T23:26:14Z</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>2</td>
+      <td>07:11</td>
+      <td>1</td>
+      <td>REGULAR</td>
+      <td>Shot</td>
+      <td>False</td>
+      <td>Tip-In</td>
+      <td> </td>
+      <td>10</td>
+      <td>Toronto Maple Leafs</td>
+      <td>/api/v1/teams/10</td>
+      <td>TOR</td>
+      <td>William Nylander</td>
+      <td>Craig Anderson</td>
+      <td>right</td>
+      <td>-78.0</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<hr />
+
+<h1 id="question-2">Question 2</h1>
+
+<h5 id="vous-remarquerez-que-le-champ-de--force--c-à-d-égal-avantage-numérique-en-désavantage-numérique-nexiste-que-pour-les-buts-pas-pour-les-tirs-de-plus-il-ninclut-pas-la-force-réelle-des-joueurs-sur-la-glace-cest-à-dire-5-contre-4-ou-5-contre-3-etc-discutez-de-la-façon-dont-vous-pourriez-ajouter-les-informations-sur-la-force-réelle-cest-à-dire-5-contre-4-etc-aux-tirs-et-aux-buts-compte-tenu-des-autres-types-dévénements-au-delà-des-tirs-et-des-buts-et-des-fonctionnalités-disponibles-vous-navez-pas-besoin-de-limplémenter-pour-ce-jalon-"><span style="color:grey">Vous remarquerez que le champ de « force » (c.-à-d. égal, avantage numérique, en désavantage numérique) n’existe que pour les buts, pas pour les tirs. De plus, il n’inclut pas la force réelle des joueurs sur la glace (c’est-à-dire 5 contre 4, ou 5 contre 3, etc.). Discutez de la façon dont vous pourriez ajouter les informations sur la force réelle (c’est-à-dire 5 contre 4, etc.) aux tirs et aux buts, compte tenu des autres types d’événements (au-delà des tirs et des buts) et des fonctionnalités disponibles. Vous n’avez pas besoin de l’implémenter pour ce jalon. </span></h5>
+<p><br /></p>
+
+<p>Comment obtenir une information plus précise sur la force réelle des joueurs sur la glace ?</p>
+
+<blockquote>
+  <p>Pour chaque game, dans le json retourné par l’API, dans gameData/Players, on a accès à la liste des joueurs participants. Il est égallement possible de récupéré l’équipe pour chaque joueur avec la clé ‘currentTeam’ qui existe pour chacune des personnes participant au match.
+A partir de ces données, on peut compter le nombre de joueurs qui apparaissent dans les événements pour chaque équipe jusqu’a ce qu’un but soit marqué. On estime alors le nombre de joueur présent dans chaque équipe. Cependant on ne sait pas vraiment quand réinitilialiser les compte des joueurs.</p>
+
+  <p>Une meilleure méthode consisterai à considérer qu’il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d’un but, on pourrait compter le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
+On fait de même pour les pénalités majeure survenues dans les 5 minutes avant le but et pour les Inconduite dans les 10 minutes. Pour chaque équipe, on compte un nombre maximum de pénalité de 2 puiqu’une équipe ne peut avoir moins de 4 joueurs sur la glace.
+Ainsi, si l’équipe A a eu deux pénalités, et l’équipe B une seule, alors l’équipe A a encore 4 joueurs sur la glace et l’équipe B en a 5. Si le but est de l’équipe A, elle a donc marqué un but à 4 contre 5.</p>
+</blockquote>
+
+<p><br /></p>
+
+<h1 id="question-3">Question 3</h1>
+
+<h5 id="en-quelques-phrases-discutez-de-certaines-fonctionnalités-supplémentaires-que-vous-pourriez-envisager-de-créer-à-partir-des-données-disponibles-dans-cet-ensemble-de-données-nous-ne-cherchons-pas-de-réponses-particulières-mais-si-vous-avez-besoin-dinspiration-un-tir-ou-un-but-pourrait-il-être-classé-comme-un-rebond-ou-un-tir-dans-le-rush"><span style="color:grey">En quelques phrases, discutez de certaines fonctionnalités supplémentaires que vous pourriez envisager de créer à partir des données disponibles dans cet ensemble de données. Nous ne cherchons pas de réponses particulières, mais si vous avez besoin d’inspiration, un tir ou un but pourrait-il être classé comme un rebond ou un tir dans le rush?</span></h5>
+<p><br /></p>
+
+<blockquote>
+  <p>Dans la base de données de la LNH à laquelle on a accès, il y plusieurs autres attributs que l’on pourrait aller chercher qui permettraient d’ajouter d’autres analyses. Un premier attribut que l’on pourrait ajouter est la rôle du joueur qui fait le tir, à savoir s’il s’agit d’un défenseur ou d’un attaquant (ou même d’un gardien). Grâce à cette donnée, on pourrait faire plusieurs comparaisons. Par exemple, quel est le ratio de tir entre les défenseurs et les attaquants. Cela permettrait de répondre à la question de savoir si les équipes qui marquent beaucoup ont tendance à avoir un ratio qui penche plus en faveur des attaquants que des défenseurs ou bien est-ce que le ratio est essentiellement le même pour toutes les équipes? Est-ce qu’au final, c’est le nombre absolu de tir qui compte? On pourrait aussi regarder où les attaquants ont tendance à se trouver sur la patinoire lorsqu’ils marquent, et comparer cela avec la position des défenseurs.</p>
+</blockquote>
+
+<blockquote>
+  <p>D’autres informations à propos des joueurs pourraient aussi être intéressantes. Par exemple, leur taille et leur âge. On pourrait, par exemple, faire des analyses corrélationnelles entre la taille, l’âge et la tendance à marquer. On pourrait ainsi agréger ces mesures par équipe en faisant la moyenne par exemple. Cela nous permettrait de voir si la moyenne d’âge d’une équipe a une influence sur leur perfomances ou si les équipes avec de grands joueurs sont généralement meilleurs que les équipes avec des joueurs plus petit. On pourrait aussi s’intéresser à la distribution de ces attributs. On pourrait calculer la variance de la taille et de l’âge d’une équipe. Cela nous permettrait, par exemple, de voir si une équipe qui à une grande variance sur le plan de l’âge et de la grandeurs performe généralement mieux qu’une équipe avec uniquement des jeunes, ou uniquement des vieux.</p>
+</blockquote>
+
+  </div><a class="u-url" href="/jekyll/update/2021/10/15/4-Ranger-les-donnees.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Projet IFT-6758 _ Milestone 1</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Projet IFT-6758 _ Milestone 1</li><li><a class="u-email" href="mailto:your-email@example.com">your-email@example.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jekyll"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jekyll</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Science des données appliquées au jeu de hockey</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
