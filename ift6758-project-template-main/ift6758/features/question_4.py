@@ -1,20 +1,20 @@
-import pandas as pd
-import numpy as np
-import math
-from ift6758.data.question_2 import DataAquirer
-from ift6758.data.question_4 import Tidyer
-from ift6758.data.tidyDataKeys import *
+from ift6758.data.question_4 import *
 from ift6758.data.question_6 import HeatMapShots
 pd.set_option("display.max_columns", 100)
+from sklearn import preprocessing
+from sklearn import feature_extraction
 
-x_net_coordinate = 10
-year = 2017
-tidyer = Tidyer()
-heatmap_function = HeatMapShots(year)
-shots_and_goals = tidyer.game_event_to_panda_df(year)
-other_events = tidyer.other_events_to_panda_df(year)
 
-def prepare_data_for_feature_engineering(shots_and_goals, other_events)
+
+X_NET_COORDINATE = 10
+
+def load_data(year):
+    tidyer = Tidyer()
+    shots_and_goals = tidyer.game_event_to_panda_df(year)
+    other_events = tidyer.other_events_to_panda_df(year)
+    return shots_and_goals, other_events
+
+def prepare_data_for_feature_engineering(shots_and_goals, other_events):
 
     season_data = pd.concat([shots_and_goals["regular"], other_events["regular"]])
     season_data = season_data.sort_values(by=["game_id", "which_period", "period_time"])
@@ -33,13 +33,14 @@ def prepare_data_for_feature_engineering(shots_and_goals, other_events)
     return season_data
 
 def calculate_distance_from_net(season_data):
+    heatmap_function = HeatMapShots(2017)
     season_data = heatmap_function.rearange_coordinates(season_data)
-    season_data["distance_from_net"] = np.sqrt((season_data.coord_x - x_net_coordinate) ** 2 + season_data.coord_y ** 2)
+    season_data["distance_from_net"] = np.sqrt((season_data.coord_x - X_NET_COORDINATE) ** 2 + season_data.coord_y ** 2)
     return season_data
 
 def calculate_angle(season_data):
     season_data.loc[:, "angle_from_net"] = np.arccos(
-        (season_data.coord_x - x_net_coordinate) / season_data.distance_from_net)
+        (season_data.coord_x - X_NET_COORDINATE) / season_data.distance_from_net)
     season_data.loc[season_data.coord_y < 0, "angle_from_net"] = -season_data.loc[season_data.coord_y < 0,
                                                                                   "angle_from_net"]
     return season_data
@@ -81,7 +82,33 @@ def calculate_distance_from_last_event(season_data):
                                                       (season_data.coord_y - season_data.pre_coord_y) ** 2)
     return season_data
 
+def engineer_features(season_data):
+    categorial_features = ['which_period', 'event_type', 'shot_type', 'pre_event_type', 'rebound']
+    continuous_features = ['game_seconds', 'coord_x', 'coord_y', 'distance_from_net', 'angle_from_net',
+                           'pre_coord_x', 'pre_coord_y', 'time_since_last_event', 'distance_from_last_event',
+                           'change_in_shot_angle', 'speed']
+    engineered_data = pd.DataFrame()
+    for feat in continuous_features:
+        minmax_scaled_col = preprocessing.minmax_scale(season_data.loc[:, feat])
+        engineered_data.loc[:, feat] = minmax_scaled_col
 
+    dv = feature_extraction.DictVectorizer(sparse=False)
+    for feat in categorial_features:
+        feature_column = season_data[[feat]]
+        feature_column.loc[:, feat] = feature_column[feat].astype(str)
+        one_hot_features = dv.fit_transform(feature_column.to_dict("index").values())
+        number_of_feature_type = feature_column.drop_duplicates().shape[0]
+        one_hot_features = pd.DataFrame(one_hot_features,
+                                        columns=[feat + "_" + str(i) for i in range(number_of_feature_type)])
+        engineered_data = engineered_data.join(one_hot_features)
 
+    return engineered_data
 
+data = pd.DataFrame()
+for year in [2016,2017,2018,2019,2020]:
+    shots_and_goals, other_events = load_data(year)
+    season_data = prepare_data_for_feature_engineering(shots_and_goals, other_events)
+    season_data = engineer_features(season_data)
+    data = pd.concat([data, season_data])
 
+data.to_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
