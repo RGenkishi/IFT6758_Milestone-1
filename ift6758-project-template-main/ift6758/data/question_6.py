@@ -99,11 +99,11 @@ class HeatMapShots:
                     zorder=1)  # put the map under the heatmap
         hmax.set_title("Nombre de tirs au dessus de la moyenne\n" + team + " saison " + str(self.year) + "-" + str(self.year + 1))
         plt.show()
-heatmaper = HeatMapShots(2020)
-heatmaper.prepare_data()
-heatmaper.plot_heat_map("Buffalo Sabres")
-heatmaper.plot_heat_map("Tampa Bay Lightning")
+#heatmaper = HeatMapShots(2020)
+#heatmaper.prepare_data()
+#heatmaper.plot_heat_map("Buffalo Sabres")
+#heatmaper.plot_heat_map("Tampa Bay Lightning")
 
 
-img = mpimg.imread('./figures/nhl_rink.png')
+#img = mpimg.imread('./figures/nhl_rink.png')
 

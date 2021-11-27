@@ -16,15 +16,24 @@ import math
 
 from ift6758.data import *
 import pandas as pd
-import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
 from scipy.stats import pointbiserialr
 
 
 def test_MS2_q1():
     ftz = Featurizer(2015,2019)
-    df = ftz.get_feature()
-    print(df.head(50))
-
+    features_df = ftz.get_feature()
+    print(features_df)
+    '''nombre de tire(but et tire separe) regrouper par distance'''
+    #sns.displot(features_df, x="Distance_from_net", col="is_goal")
+    '''nombre de tire(but et tire separe) regrouper par angle'''
+    #sns.displot(features_df, x="Angle_from_net", col="is_goal")
+    '''Histograme 2D '''
+    #sns.jointplot(data=features_df,x="Distance_from_net",y="Angle_from_net",hue="is_goal")
+    ''' histograme de but par filet vide et non vide '''
+    features_by_goal = features_df[features_df['is_goal'] == 1]
+    sns.displot(features_by_goal, x="Distance_from_net", hue="Empty_net")
 test_MS2_q1()
 
 def test_question4():
