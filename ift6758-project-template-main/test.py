@@ -8,7 +8,7 @@ from ift6758.data.question_2 import *
 #from ift6758.data.question_3 import Tidyer
 from ift6758.data.question_4 import Tidyer
 from ift6758.data.question_5 import *
-from ift6758.data.milestone2.question_1 import Featurizer
+from ift6758.data.milestone2.question_2 import Featurizer
 from PIL import Image
 import ipywidgets as widgets
 import json

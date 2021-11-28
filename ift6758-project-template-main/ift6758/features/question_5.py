@@ -7,7 +7,7 @@ exp = Experiment(
     project_name='milestone_2',
     workspace="genkishi"
 )
-from ift6758.data.milestone2.question_2 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve
+from ift6758.data.milestone2.question_3 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve
 import pandas as pd
 import os
 import xgboost as xgb
