@@ -39,7 +39,7 @@ Fonction pour tracer la courbe du taux de but
 en fonctiion du centile du modele de probabilite de tire 
 '''
 # Taux de but en fonction du centile
-def goal_rate_curve(proba,Y_test,label):
+def goal_rate_curve(proba,Y_test):
     proba_df = pd.DataFrame(proba[:,1],columns=['proba'])
     Y_test_df = pd.DataFrame(Y_test.to_numpy(),columns=['label'])
     label_proba_concate = pd.concat([Y_test_df,proba_df],axis=1)
@@ -60,9 +60,11 @@ def goal_rate_curve(proba,Y_test,label):
     plt.plot(percent_arr,goal_rate_arr,color="blue",label="logistic regression by distance" )
     plt.xlim([100, -5])
     plt.ylim([0, 100])
+    plt.yticks(np.arange(0, 110, 10), ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'])
+    plt.xticks(np.arange(0, 110, 10))
     plt.xlabel("shot probability model percentile")
     plt.ylabel("Goals/(Goals+rate)")
-    plt.title("courbe du taux de buts en fonctuion  du centile du modele de probabiites de tires")
+    plt.title("Taux de but ")
     plt.legend(loc="upper right")
     plt.show()
 '''
@@ -87,16 +89,18 @@ def goal_cumulative_proportion_curve(proba,Y_test):
         val -= 5
     #Cumultive % of goal figure
     plt.figure()
-    plt.plot(percent_arr,goal_prop_arr,color="blue",label="logistic regression by distance" )
+    plt.plot(percent_arr, goal_prop_arr, color="blue", label="logistic regression by distance" )
     plt.xlim([105, -5])
     plt.ylim([0, 105])
+    plt.yticks(np.arange(0, 110, 10), ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'])
+    plt.xticks(np.arange(0, 110, 10))
     plt.xlabel("shot probability model percentile")
     plt.ylabel("Goals cumulative proportion")
-    plt.title("courbe de la proportion cumulee de but buts en fonctuion du centile du modele de probabiites de tires")
-    plt.legend(loc="upper right")
+    plt.title("% cumulé de but")
+    plt.legend(loc="upper left")
     plt.show()
 
-def  calibration_display_curve(proba, Y_test):
+def calibration_display_curve(proba, Y_test):
     disp = CalibrationDisplay.from_predictions(Y_test,proba[:,1])
     plt.show()
 
@@ -115,4 +119,7 @@ if __name__ == "__main__":
     log_reg.fit(X_train, Y_train)
     proba = log_reg.predict_proba(X_test)
     print(accuracy_score(Y_test, log_reg.predict(X_test)))
-    # print(confusion_matrix(Y_test,log_reg.predict(X_test)))
+    roc_curve_and_auc_metrique(proba,Y_test)
+    goal_rate_curve(proba, Y_test)
+    goal_cumulative_proportion_curve(proba, Y_test)
+    calibration_display_curve(proba, Y_test)

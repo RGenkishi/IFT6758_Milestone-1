@@ -56,3 +56,4 @@ class Featurizer():
                 feature_df['Empty_net'].loc[j] = 1
             j+=1
 
+        return feature_df
