@@ -11,22 +11,6 @@ import seaborn as sns
 sns.set()
 
 
-ftz = Featurizer(2015,2019)
-features_df = ftz.get_feature()
-print(features_df)
-
-X = features_df[['Distance_from_net']]#.to_numpy()
-X.fillna(X.median(),inplace=True)
-Y = features_df['is_goal']#.to_numpy()
-X_train,X_test,Y_train,Y_test = train_test_split(X, Y, test_size=0.30)
-X_train = X_train.to_numpy().reshape(-1,1)
-X_test = X_test.to_numpy().reshape(-1,1)
-log_reg = LogisticRegression()
-log_reg.fit(X_train,Y_train)
-proba = log_reg.predict_proba(X_test)
-print(accuracy_score(Y_test,log_reg.predict(X_test)))
-print(confusion_matrix(Y_test,log_reg.predict(X_test)))
-
 '''
 Fonction pour tracer la courbe ROC et calculer la metrique AUC
 '''
@@ -110,3 +94,20 @@ def goal_cumulative_proportion_curve(proba,Y_test):
     plt.title("courbe de la proportion cumulee de but buts en fonctuion du centile du modele de probabiites de tires")
     plt.legend(loc="upper right")
     plt.show()
+
+if __name__ == "__main__":
+    ftz = Featurizer(2015, 2019)
+    features_df = ftz.get_feature()
+    print(features_df)
+
+    X = features_df[['Distance_from_net']]  # .to_numpy()
+    X.fillna(X.median(), inplace=True)
+    Y = features_df['is_goal']  # .to_numpy()
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
+    X_train = X_train.to_numpy().reshape(-1, 1)
+    X_test = X_test.to_numpy().reshape(-1, 1)
+    log_reg = LogisticRegression()
+    log_reg.fit(X_train, Y_train)
+    proba = log_reg.predict_proba(X_test)
+    print(accuracy_score(Y_test, log_reg.predict(X_test)))
+    print(confusion_matrix(Y_test, log_reg.predict(X_test)))

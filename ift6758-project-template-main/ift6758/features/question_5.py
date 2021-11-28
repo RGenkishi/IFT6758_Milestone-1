@@ -7,7 +7,7 @@ exp = Experiment(
     project_name='milestone_2',
     workspace="genkishi"
 )
-
+from ift6758.data.milestone2.question_2 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve
 import pandas as pd
 import os
 import xgboost as xgb
@@ -37,7 +37,10 @@ clf_xgb.fit(X_train,
             early_stopping_rounds=10,
             eval_metric="aucpr",
             eval_set=[(X_test, y_test)])
-clf_xgb.predict_proba(X_test)
+proba = clf_xgb.predict_proba(X_test)
+roc_curve_and_auc_metrique(proba, y_test)
+goal_rate_curve(proba,y_test, "goal")
+goal_cumulative_proportion_curve(proba, y_test)
 acc = accuracy_score(y_test,clf_xgb.predict(X_test))
 prec = precision_score(y_test,clf_xgb.predict(X_test))
 recall = recall_score(y_test,clf_xgb.predict(X_test))
