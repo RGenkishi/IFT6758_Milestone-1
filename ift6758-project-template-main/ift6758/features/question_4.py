@@ -105,10 +105,16 @@ def engineer_features(season_data):
     return engineered_data
 
 data = pd.DataFrame()
-for year in [2016,2017,2018,2019,2020]:
+for year in [2016,2017,2018,2019]:
     shots_and_goals, other_events = load_data(year)
     season_data = prepare_data_for_feature_engineering(shots_and_goals, other_events)
     season_data = engineer_features(season_data)
     data = pd.concat([data, season_data])
+
+#dealing with nas
+data.loc[data.change_in_shot_angle.isna(), "change_in_shot_angle"] = 0
+for col in data.columns:
+    median = np.median(data.loc[~data[col].isna(),col])
+    data.loc[data[col].isna(),col] = median
 
 data.to_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
