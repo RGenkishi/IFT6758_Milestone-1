@@ -100,4 +100,3 @@ class HeatMapShots:
         hmax.set_title("Nombre de tirs au dessus de la moyenne\n" + team + " saison " + str(self.year) + "-" + str(self.year + 1))
         plt.show()
 
-

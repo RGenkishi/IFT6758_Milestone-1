@@ -8,6 +8,7 @@ from ift6758.data.question_2 import *
 #from ift6758.data.question_3 import Tidyer
 from ift6758.data.question_4 import Tidyer
 from ift6758.data.question_5 import *
+from ift6758.data.milestone2.question_1 import Featurizer
 from PIL import Image
 import ipywidgets as widgets
 import json
@@ -15,26 +16,45 @@ import math
 
 from ift6758.data import *
 import pandas as pd
-import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
 from scipy.stats import pointbiserialr
+
+
+def test_MS2_q1():
+    ftz = Featurizer(2015,2019)
+    features_df = ftz.get_feature()
+    print(features_df)
+    '''nombre de tire(but et tire separe) regrouper par distance'''
+    #sns.displot(features_df, x="Distance_from_net", col="is_goal")
+    '''nombre de tire(but et tire separe) regrouper par angle'''
+    #sns.displot(features_df, x="Angle_from_net", col="is_goal")
+    '''Histograme 2D '''
+    #sns.jointplot(data=features_df,x="Distance_from_net",y="Angle_from_net",hue="is_goal")
+    ''' histograme de but par filet vide et non vide '''
+    features_by_goal = features_df[features_df['is_goal'] == 1]
+    sns.displot(features_by_goal, x="Distance_from_net", hue="Empty_net")
+test_MS2_q1()
 
 def test_question4():
     tdf = Tidyer()
-    dfs = tdf.game_event_to_panda_df(2019)
+    dfs = tdf.game_event_to_panda_df(2015)
     df1 = dfs['regular']
     df2 = dfs['playoff']
     pd.set_option("max_rows", None)
     pd.set_option("max_columns", None)
     print("REGULAR :")
-    print(df1.head(10))
-    print("\n PLAYOFF :")
-    print(df2.head(10))
-    print(df1.info())
+    print(df1.head(50))
+    #print("\n PLAYOFF :")
+    #print(df2.head(10))
+    #print(type(df1))
+
+#test_question4()
 
 def test_question5():
     histo_shot(2018)
-
-
+    
+    
 def test_question3():
     tdf = Tidyer()
     df = tdf.game_event_to_panda_df(2017)
@@ -52,7 +72,7 @@ def test_question3():
 #df = pd.read_json("ift6758/data/database/2017_season_data.json")
 #df.info()
 
-test_question5()
+#test_question5()
 
 
 
