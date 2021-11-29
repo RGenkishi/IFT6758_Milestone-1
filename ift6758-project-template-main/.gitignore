@@ -5,6 +5,8 @@
 *.pkl
 *.json
 *.csv
+*.pickle
+*.sav
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

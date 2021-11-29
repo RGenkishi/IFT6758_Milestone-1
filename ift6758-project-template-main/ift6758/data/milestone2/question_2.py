@@ -36,7 +36,7 @@ class Featurizer():
     def calculate_angle(self,season_data):
         season_data["Angle_from_net"] = np.arccos(
             (season_data.coord_x - x_net_coordinate) / season_data.Distance_from_net)
-        season_data.loc[season_data.coord_y < 0,"Angle_from_net"] = -season_data.loc[season_data.coord_y < 0,"Angle_from_net"]
+        season_data.loc[season_data.coord_x < 0,"Angle_from_net"] = -season_data.loc[season_data.coord_x < 0,"Angle_from_net"]
         return season_data
 
     def get_feature(self):

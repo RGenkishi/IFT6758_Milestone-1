@@ -1,7 +1,3 @@
-import json
-
-import pandas as pd
-
 from ift6758.data import *
 from ift6758.data.api_requester import *
 from ift6758.data.question_2 import *
@@ -9,6 +5,7 @@ from ift6758.data.question_2 import *
 from ift6758.data.question_4 import Tidyer
 from ift6758.data.question_5 import *
 from ift6758.data.milestone2.question_2 import Featurizer
+from ift6758.data.milestone2.question_3 import *
 from PIL import Image
 import ipywidgets as widgets
 import json
@@ -21,20 +18,51 @@ sns.set()
 from scipy.stats import pointbiserialr
 
 
-def test_MS2_q1():
+def test_MS2_q2():
+
     ftz = Featurizer(2015,2019)
     features_df = ftz.get_feature()
-    print(features_df)
-    '''nombre de tire(but et tire separe) regrouper par distance'''
-    #sns.displot(features_df, x="Distance_from_net", col="is_goal")
-    '''nombre de tire(but et tire separe) regrouper par angle'''
-    #sns.displot(features_df, x="Angle_from_net", col="is_goal")
+    #print(features_df)
+    '''nombre de tire(but et tire separé) regroupé par distance'''
+    sns.displot(features_df, x="Distance_from_net", col="is_goal")
+    '''nombre de tire(but et tire separé) regroupé par angle'''
+    sns.displot(features_df, x="Angle_from_net", col="is_goal")
     '''Histograme 2D '''
-    #sns.jointplot(data=features_df,x="Distance_from_net",y="Angle_from_net",hue="is_goal")
+    sns.jointplot(data=features_df,x="Distance_from_net",y="Angle_from_net",hue="is_goal")
+    '''goal rate by distance'''
+    features_df.sort_values(by='Distance_from_net', inplace=True)
+    features_df['distance_binned'] = pd.cut(features_df['Distance_from_net'], 10)
+    goal = features_df[['is_goal', 'distance_binned']].groupby(by=["distance_binned"]).sum()
+    goal_shot = features_df[['is_goal', 'distance_binned']].groupby(by=["distance_binned"]).count()
+    goal_rate_distance = goal/goal_shot
+    goal_rate_distance = goal_rate_distance.reset_index()
+    goal_rate_distance['distance_binned'] = goal_rate_distance.distance_binned.astype(str)
+    goal_rate_distance.plot.bar(x='distance_binned',
+                                y='is_goal',
+                                xlabel='binned distance',
+                                legend=False,
+                                figsize=(8, 7),
+                                ylabel='Goal rate',
+                                title='goal rate by distance', rot=20, fontsize=8)
+    '''goal rate by angle'''
+    features_df['angle_binned'] = pd.cut(features_df['Angle_from_net'], 10)
+    goal = features_df[['is_goal', 'angle_binned']].groupby(by=["angle_binned"]).sum()
+    goal_shot = features_df[['is_goal', 'angle_binned']].groupby(by=["angle_binned"]).count()
+    goal_rate_distance = goal / goal_shot
+    goal_rate_distance = goal_rate_distance.reset_index()
+    goal_rate_distance['angle_binned'] = goal_rate_distance.angle_binned.astype(str)
+    goal_rate_distance.plot.bar(x='angle_binned',
+                                y='is_goal',
+                                xlabel='binned angle',
+                                legend=False,
+                                figsize=(8, 7),
+                                ylabel='Goal rate',
+                                title='goal rate by angle', rot=20, fontsize=8)
     ''' histograme de but par filet vide et non vide '''
     features_by_goal = features_df[features_df['is_goal'] == 1]
     sns.displot(features_by_goal, x="Distance_from_net", hue="Empty_net")
-test_MS2_q1()
+
+test_MS2_q2()
 
 def test_question4():
     tdf = Tidyer()
@@ -49,7 +77,7 @@ def test_question4():
     #print(df2.head(10))
     #print(type(df1))
 
-#test_question4()
+test_question4()
 
 def test_question5():
     histo_shot(2018)
