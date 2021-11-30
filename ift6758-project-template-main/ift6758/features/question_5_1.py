@@ -1,13 +1,3 @@
-#Comet wants to be logged before I import xgboos and sklearn
-from comet_ml import API
-from comet_ml import Experiment
-with open("API_KEY", "r") as f:
-    API_KEY = f.readline()
-exp = Experiment(
-    api_key=API_KEY, # don’t hardcode!!
-    project_name='milestone_2',
-    workspace="genkishi"
-)
 from ift6758.data.milestone2.question_3 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve, calibration_display_curve
 import pandas as pd
 import os
@@ -23,7 +13,7 @@ from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve, auc
 
 
-#__file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
+__file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
 data = pd.read_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
 
 
@@ -41,16 +31,12 @@ clf_xgb.fit(X_train,
             eval_set=[(X_test, y_test)])
 proba = clf_xgb.predict_proba(X_test)
 df_proba = pd.DataFrame(proba)
-roc_curve_and_auc_metrique(proba, y_test)
-goal_rate_curve(proba, y_test, "goal")
-goal_cumulative_proportion_curve(proba, y_test)
-calibration_display_curve(proba, y_test)
+roc_curve_and_auc_metrique(proba, y_test, "baseline_XGBoost")
+goal_rate_curve(proba, y_test, "baseline_XGBoost")
+goal_cumulative_proportion_curve(proba, y_test, "baseline_XGBoost")
+calibration_display_curve(proba, y_test, "baseline_XGBoost")
+plt.show()
 
-auc = roc_auc_score(y_test, proba[:,1])
-clf_xgb.save_model(os.path.dirname(__file__) + "/models/XGBoost_base_model/base_model.json")
-
-
-exp.log_model("XGBoost_base_model", os.path.dirname(__file__) + "/models/XGBoost_base_model/")
 
 
 

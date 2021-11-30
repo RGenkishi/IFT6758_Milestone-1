@@ -22,9 +22,9 @@ exp = Experiment(
 
 #We keep the same model as before
 param = {}
-param['max_depth'] = 7
-param["scale_pos_weight"] = 7
-param['min_child_weight'] = 7
+param['max_depth'] = 6
+param["scale_pos_weight"] = 5
+param['min_child_weight'] = 4
 param["eval_metric"] = "auc"
 
 __file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
@@ -66,11 +66,14 @@ clf_xgb.fit(X_train[selected_features],
             )
 clf_xgb.save_model(os.path.dirname(__file__) + "/models/XGBoost_feat_select/mutual_info.json")
 proba = clf_xgb.predict_proba(X_test[selected_features])
-roc_curve_and_auc_metrique(proba, y_test)
-goal_rate_curve(proba,y_test, "goal")
-goal_cumulative_proportion_curve(proba, y_test, "goal")
-calibration_display_curve(proba, y_test)
+roc_curve_and_auc_metrique(proba, y_test, "XGB_MI")
+goal_rate_curve(proba,y_test, "XGB_MI")
+goal_cumulative_proportion_curve(proba, y_test, "XGB_MI")
+calibration_display_curve(proba, y_test, "XGB_MI")
 exp.log_model("XGBoost_mutual_info", os.path.dirname(__file__) + "/models/XGBoost_feat_select/mutual_info.json")
-
+plt.figure(1).savefig("/home/olivier/Documents/XGBoost_MI_roc_curve.png")
+plt.figure(2).savefig("/home/olivier/Documents/XGBoost_MI_rate_curve.png")
+plt.figure(3).savefig("/home/olivier/Documents/XGBoost_MI_goal_cumul.png")
+plt.figure(4).savefig("/home/olivier/Documents/XGBoost_MI_calibration.png")
 
 
