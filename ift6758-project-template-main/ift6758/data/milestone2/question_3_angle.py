@@ -1,5 +1,6 @@
 from comet_ml import Experiment
 import pickle
+import os
 from ift6758.data.milestone2.question_3 import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -10,8 +11,8 @@ sns.set()
 
 def angle_feature(features_df):
     # exp = Experiment(
-    #    api_key=os.environ.get('COMET_API_KEY'),  # ne pas coder en dur!
-    #    project_name='milestone_2',
+    #     api_key=os.environ.get('COMET_API_KEY'),  # ne pas coder en dur!
+    #     project_name='milestone_2',
     #     workspace= 'genkishi',
     # )
     X = features_df[['Angle_from_net']]
@@ -30,7 +31,7 @@ def angle_feature(features_df):
     # exp.log_model("log-reg_angle", "log-reg_angle.pkl")
     # exp.log_dataset_hash(X_train)
     # exp.log_metrics(metrics)
-    # tracage de courbe
+    #tracage de courbe
     roc_curve_and_auc_metrique(proba, Y_test,"log-reg_angle")
     goal_rate_curve(proba, Y_test,"log-reg_angle")
     goal_cumulative_proportion_curve(proba, Y_test,"log-reg_angle")

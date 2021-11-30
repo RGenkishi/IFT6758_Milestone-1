@@ -1,5 +1,6 @@
 from comet_ml import Experiment
 import pickle
+import os
 from ift6758.data.milestone2.question_3 import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split

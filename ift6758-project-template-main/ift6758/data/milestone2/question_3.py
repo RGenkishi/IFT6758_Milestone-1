@@ -38,17 +38,16 @@ def goal_rate_curve(proba, Y_test, label):
     Y_test_df = pd.DataFrame(Y_test.to_numpy(), columns=['label'])
     label_proba_concate = pd.concat([Y_test_df, proba_df], axis=1)
     label_proba_concate = label_proba_concate.sort_values(by='proba')
-    val = 95
+    val = 0
     percent_arr = []
     goal_rate_arr = []
-    goal_rate = 0
-    while val >= 0:
+    while val <= 100:
         percent = np.percentile(label_proba_concate['proba'].to_numpy(), val)
-        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] >= percent]
+        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] < percent]
         goal_rate = (goal_percent.sum() / goal_percent.count()) * 100
         percent_arr.append(val)
         goal_rate_arr.append(goal_rate)
-        val -= 5
+        val += 5
     # Goal rate figure
     plt.figure(2)
     plt.plot(percent_arr, goal_rate_arr,
@@ -77,7 +76,7 @@ def goal_cumulative_proportion_curve(proba, Y_test, label):
     goal_prop_arr = []
     while val >= 0:
         percent = np.percentile(label_proba_concate['proba'].to_numpy(), val)
-        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] >= percent]
+        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] > percent]
         goal_nb_all = label_proba_concate['label'][label_proba_concate['label'] == 1]
         goal_prop = (goal_percent.sum() / goal_nb_all.count()) * 100
         percent_arr.append(val)

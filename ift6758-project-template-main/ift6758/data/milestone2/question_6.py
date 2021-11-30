@@ -8,7 +8,7 @@ from ift6758.data.milestone2.question_3 import *
 from sklearn.neural_network import MLPClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import VotingClassifier
-from sklearn.preprocessing import power_transform
+from sklearn.preprocessing import power_transform,minmax_scale
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import cross_val_score,cross_val_predict
 import multiprocessing
@@ -44,7 +44,7 @@ def classifers(classifier, title):
     print(f1_accuracy)
     metrics = {"f1_accuracy": f1_accuracy,
                "auc_accuracy":auc_accuracy}
-    pickle.dump(classifier, open(title+'.pkl', 'wb'))
+   # pickle.dump(classifier, open(title+'.pkl', 'wb'))
     # exp.log_model(title, title+'.pkl')
     # exp.log_dataset_hash( X_train_all)
     # exp.log_metrics(metrics)
@@ -59,7 +59,7 @@ des_tree_title = 'DecisionTreeClassifier'
 
 
 #MLPClassifier
-MLP = MLPClassifier(hidden_layer_sizes=(70, 70, 70),
+MLP = MLPClassifier(hidden_layer_sizes=(70, 70, 70), #(70, 70, 70)
                     activation='tanh',
                     solver='adam',
                     alpha=0.01, learning_rate='adaptive', max_iter=1000, early_stopping=True)
@@ -74,7 +74,7 @@ clf_vote_title = 'VotingClassifier'
 
 
 #choix du classifieur
-classifers(des_tree, des_tree_title)
+#classifers(des_tree, des_tree_title)
 classifers(MLP, MLP_title)
-classifers(clf_vote, clf_vote_title)
+#classifers(clf_vote, clf_vote_title)
 plt.show()

@@ -1,6 +1,7 @@
 import numpy as np
 from comet_ml import Experiment
 import pickle
+import os
 from ift6758.data.milestone2.question_3 import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -13,7 +14,7 @@ def angle_distance_feature(features_df):
     # exp = Experiment(
     #    api_key=os.environ.get('COMET_API_KEY'),  # ne pas coder en dur!
     #    project_name='milestone_2',
-    #     workspace= 'genkishi',
+    #    workspace= 'genkishi',
     # )
     X = features_df[['Angle_from_net', 'Distance_from_net']]
     X.fillna(X.median(), inplace=True)
