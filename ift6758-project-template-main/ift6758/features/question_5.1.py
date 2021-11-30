@@ -42,7 +42,7 @@ clf_xgb.fit(X_train,
 proba = clf_xgb.predict_proba(X_test)
 df_proba = pd.DataFrame(proba)
 roc_curve_and_auc_metrique(proba, y_test)
-goal_rate_curve(proba,y_test, "goal")
+goal_rate_curve(proba, y_test, "goal")
 goal_cumulative_proportion_curve(proba, y_test)
 calibration_display_curve(proba, y_test)
 

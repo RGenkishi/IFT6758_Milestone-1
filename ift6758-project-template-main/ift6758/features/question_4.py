@@ -1,10 +1,11 @@
 from ift6758.data.question_4 import *
 from ift6758.data.question_6 import HeatMapShots
+import os
 pd.set_option("display.max_columns", 100)
 from sklearn import preprocessing
 from sklearn import feature_extraction
 
-
+dataformodelpath = os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features')+"/data_for_models"
 
 X_NET_COORDINATE = 10
 
@@ -105,7 +106,7 @@ def engineer_features(season_data):
     return engineered_data
 
 data = pd.DataFrame()
-for year in [2016,2017,2018,2019]:
+for year in [2015, 2016, 2017, 2018]:
     shots_and_goals, other_events = load_data(year)
     season_data = prepare_data_for_feature_engineering(shots_and_goals, other_events)
     season_data = engineer_features(season_data)
@@ -117,4 +118,7 @@ for col in data.columns:
     median = np.median(data.loc[~data[col].isna(),col])
     data.loc[data[col].isna(),col] = median
 
-data.to_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
+if not os.path.isdir(dataformodelpath):
+    os.makedirs(dataformodelpath)
+
+data.to_pickle(dataformodelpath + "/data.pkl")
