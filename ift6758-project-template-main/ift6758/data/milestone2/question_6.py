@@ -8,9 +8,9 @@ from ift6758.data.milestone2.question_3 import *
 from sklearn.neural_network import MLPClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import VotingClassifier
-from sklearn.preprocessing import power_transform,minmax_scale
+from sklearn.preprocessing import power_transform
 from sklearn.metrics import roc_auc_score
-from sklearn.model_selection import cross_val_score,cross_val_predict
+from sklearn.model_selection import cross_val_score,cross_val_predict,cross_validate
 import multiprocessing
 cores = multiprocessing.cpu_count()
 
@@ -30,24 +30,24 @@ les algorithmes d'apprentissage et validation croisée stratifiée
 '''
 
 def classifers(classifier, title):
-    # exp = Experiment(
-    #    api_key=os.environ.get('COMET_API_KEY'),  # ne pas coder en dur!
-    #    project_name='milestone_2',
-    #     workspace= 'genkishi',
-    # )
+    exp = Experiment(
+       api_key=os.environ.get('COMET_API_KEY'),  # ne pas coder en dur!
+       project_name='milestone_2',
+        workspace= 'genkishi',
+    )
     print('----------------- '+title+' ----------------------')
     proba = cross_val_predict(classifier, X_train_all, Y_train_all, cv=5, method='predict_proba')
-    score = cross_val_score(classifier, X_train_all, Y_train_all, cv=5, scoring='f1')
-    f1_accuracy = score.mean()
+    score = cross_validate(classifier, X_train_all, Y_train_all, cv=5, scoring='f1',n_jobs=cores,return_estimator=True)
+    f1_accuracy = score['test_score'].mean()
     auc_accuracy = roc_auc_score(Y_train_all, proba[:, 1])
     print(auc_accuracy)
     print(f1_accuracy)
     metrics = {"f1_accuracy": f1_accuracy,
-               "auc_accuracy":auc_accuracy}
-   # pickle.dump(classifier, open(title+'.pkl', 'wb'))
-    # exp.log_model(title, title+'.pkl')
-    # exp.log_dataset_hash( X_train_all)
-    # exp.log_metrics(metrics)
+               "auc_accuracy": auc_accuracy}
+    pickle.dump(score['estimator'], open(title+'.pkl', 'wb'))
+    exp.log_model(title, title+'.pkl')
+    exp.log_dataset_hash( X_train_all)
+    exp.log_metrics(metrics)
     roc_curve_and_auc_metrique(proba, Y_train_all, title)
     goal_rate_curve(proba, Y_train_all, title)
     goal_cumulative_proportion_curve(proba, Y_train_all, title)
@@ -74,7 +74,7 @@ clf_vote_title = 'VotingClassifier'
 
 
 #choix du classifieur
-#classifers(des_tree, des_tree_title)
+classifers(des_tree, des_tree_title)
 classifers(MLP, MLP_title)
-#classifers(clf_vote, clf_vote_title)
+classifers(clf_vote, clf_vote_title)
 plt.show()
