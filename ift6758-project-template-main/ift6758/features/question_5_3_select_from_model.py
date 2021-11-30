@@ -60,6 +60,10 @@ best_features = feature_selector.get_support(indices=True)
 best_features = X_train.columns[best_features]
 
 feature_selection_results = cross_validator.cross_validation_on_best_features(best_features, X, y, exp, "select_from_model")
+for auc in feature_selection_results.auc:
+    print(auc)
+    exp.log_metric("auc for each feature added", auc)
+
 selected_features = best_features[:3]
 X = data.loc[:, selected_features]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
