@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-15T23:42:56-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Visualisations Avancées</title><link href="http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees.html" rel="alternate" type="text/html" title="Visualisations Avancées" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-25T23:00:37-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Visualisations Avancées</title><link href="http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees.html" rel="alternate" type="text/html" title="Visualisations Avancées" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;exportez-le-tracé-au-format-html-et-intégrez-le-dans-votre-article-de-blog-votre-parcelle-doit-permettre-aux-utilisateurs-de-sélectionner-nimporte-quelle-saison-entre-2016-17-et-2020-2021-ainsi-que-nimporte-quelle-équipe-au-cours-de-la-saison-sélectionnée&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Exportez le tracé au format HTML et intégrez-le dans votre article de blog. Votre parcelle doit permettre aux utilisateurs de sélectionner n’importe quelle saison entre 2016-17 et 2020-2021, ainsi que n’importe quelle équipe au cours de la saison sélectionnée.&lt;/span&gt;&lt;/h5&gt;
 
@@ -131,7 +131,7 @@ C’est de là d’où tirent les défenseurs&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;tableau-des-10-premiers-éléments-de-la-saison-2019-rangés-selon-les-indications&quot;&gt;Tableau des 10 premiers éléments de la saison 2019 rangés selon les indications&lt;/h4&gt;
+&lt;h4 id=&quot;tableau-des-10-premiers-éléments-de-la-saison-2019-2020-rangés-selon-les-indications&quot;&gt;Tableau des 10 premiers éléments de la saison 2019-2020 rangés selon les indications&lt;/h4&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -658,17 +658,17 @@ regular = dfs[‘regular’] contient alors un DataFrame de la saison régulièr
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Nathanael&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Ebeyo&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Evaluations de Groupe</summary></entry></feed>
