@@ -1,15 +1,11 @@
 #Comet wants to be logged before I import xgboos and sklearn
-from comet_ml import API
 from comet_ml import Experiment
 from ift6758.data.milestone2.question_3 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve, calibration_display_curve
 import pandas as pd
 import os
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import plot_confusion_matrix
-import sklearn.feature_selection as fs
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_auc_score
 
 
 with open("API_KEY", "r") as f:
