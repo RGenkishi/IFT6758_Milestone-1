@@ -28,7 +28,7 @@ class Featurizer():
         return df
 
     def calculate_distance_from_net(self,season_data):
-        season_data = HeatMapShots().rearange_coordinates(season_data)
+        season_data = HeatMapShots(2017).rearange_coordinates(season_data)
         season_data['Distance_from_net'] = np.sqrt(
             (season_data.coord_x - x_net_coordinate) ** 2 + season_data.coord_y ** 2)
         return season_data
