@@ -5,7 +5,8 @@ pd.set_option("display.max_columns", 100)
 from sklearn import preprocessing
 from sklearn import feature_extraction
 
-dataformodelpath = os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features')+"/data_for_models"
+#dataformodelpath = os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features')+"/data_for_models"
+dataformodelpath ='/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/data_for_models'
 
 X_NET_COORDINATE = 10
 
@@ -15,9 +16,9 @@ def load_data(year):
     other_events = tidyer.other_events_to_panda_df(year)
     return shots_and_goals, other_events
 
-def prepare_data_for_feature_engineering(shots_and_goals, other_events):
+def prepare_data_for_feature_engineering(shots_and_goals, other_events, season_period = "regular"):
 
-    season_data = pd.concat([shots_and_goals["regular"], other_events["regular"]])
+    season_data = pd.concat([shots_and_goals[season_period], other_events[season_period]])
     season_data = season_data.sort_values(by=["game_id", "which_period", "period_time"])
     season_data = calculate_distance_from_net(season_data)
     season_data = calculate_angle(season_data)
@@ -105,20 +106,22 @@ def engineer_features(season_data):
 
     return engineered_data
 
-data = pd.DataFrame()
-for year in [2015, 2016, 2017, 2018]:
-    shots_and_goals, other_events = load_data(year)
-    season_data = prepare_data_for_feature_engineering(shots_and_goals, other_events)
-    season_data = engineer_features(season_data)
-    data = pd.concat([data, season_data])
 
-#dealing with nas
-data.loc[data.change_in_shot_angle.isna(), "change_in_shot_angle"] = 0
-for col in data.columns:
-    median = np.median(data.loc[~data[col].isna(),col])
-    data.loc[data[col].isna(),col] = median
+if __name__ == "__main__":
+    data = pd.DataFrame()
+    for year in [2015, 2016, 2017, 2018]:
+        shots_and_goals, other_events = load_data(year)
+        season_data = prepare_data_for_feature_engineering(shots_and_goals, other_events)
+        season_data = engineer_features(season_data)
+        data = pd.concat([data, season_data])
 
-if not os.path.isdir(dataformodelpath):
-    os.makedirs(dataformodelpath)
+    #dealing with nas
+    data.loc[data.change_in_shot_angle.isna(), "change_in_shot_angle"] = 0
+    for col in data.columns:
+        median = np.median(data.loc[~data[col].isna(),col])
+        data.loc[data[col].isna(),col] = median
 
-data.to_pickle(dataformodelpath + "/data.pkl")
+    if not os.path.isdir(dataformodelpath):
+        os.makedirs(dataformodelpath)
+
+    data.to_pickle(dataformodelpath + "/data.pkl")

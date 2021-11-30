@@ -1,15 +1,11 @@
 #Comet wants to be logged before I import xgboos and sklearn
-from comet_ml import API
 from comet_ml import Experiment
 from ift6758.data.milestone2.question_3 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve, calibration_display_curve
 import pandas as pd
 import os
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import plot_confusion_matrix
-import sklearn.feature_selection as fs
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_auc_score
 
 
 with open("API_KEY", "r") as f:
@@ -20,13 +16,11 @@ exp = Experiment(
     workspace="genkishi"
 )
 
-#__file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
+__file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
 data = pd.read_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
 
-slc = list(range(data.shape[1]))
-slc.remove(16)
-slc.remove(17)
-X = data.iloc[:,slc]
+train_feature = ~data.columns.isin(['event_type_0', 'event_type_1'])
+X = data.iloc[:,train_feature]
 y = data.loc[:,["event_type_0"]]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
@@ -86,9 +80,13 @@ clf_xgb.fit(X_train,
             eval_set=[(X_test, y_test)])
 
 proba = clf_xgb.predict_proba(X_test)
-roc_curve_and_auc_metrique(proba, y_test)
-goal_rate_curve(proba,y_test, "goal")
-goal_cumulative_proportion_curve(proba, y_test)
-calibration_display_curve(proba, y_test)
+roc_curve_and_auc_metrique(proba, y_test, "XBoost_HT")
+goal_rate_curve(proba,y_test, "XBoost_HT")
+goal_cumulative_proportion_curve(proba, y_test, "XBoost_HT")
+calibration_display_curve(proba, y_test, "XBoost_HT")
 clf_xgb.save_model(os.path.dirname(__file__) + "/models/XGBoost_hyper_tuning/model.json")
 exp.log_model("XGBoost_hyper_tuning", os.path.dirname(__file__) + "/models/XGBoost_hyper_tuning/")
+plt.figure(1).savefig("/home/olivier/Documents/XGBoost_HT_roc_curve.png")
+plt.figure(2).savefig("/home/olivier/Documents/XGBoost_HT_rate_curve.png")
+plt.figure(3).savefig("/home/olivier/Documents/XGBoost_HT_goal_cumul.png")
+plt.figure(4).savefig("/home/olivier/Documents/XGBoost_HT_calibration.png")

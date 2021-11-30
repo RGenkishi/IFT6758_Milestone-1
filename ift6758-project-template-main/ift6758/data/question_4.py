@@ -220,6 +220,7 @@ class Tidyer:
 
         for gameType, games in data.items():
             for gameId, game in games.items():
+                break
                 try:
                     game['liveData']
                 except:

@@ -15,15 +15,15 @@ class Featurizer():
         self.period_start = period_start
         self.period_end = period_end
         
-    def get_all_in_one(self,period_start,period_end):
+    def get_all_in_one(self,period_start,period_end, season_type="regular"):
         tfd = Tidyer()
         for period in range(period_start,period_end):
             print("----------"+str(period)+"----------")
             dfs = tfd.game_event_to_panda_df(period)
             if period == self.period_start:
-                df = dfs['regular']
+                df = dfs[season_type]
             else:
-                dfs = dfs['regular']
+                dfs = dfs[season_type]
                 df = pd.concat([df,dfs], ignore_index=True)
         return df
 
@@ -39,8 +39,8 @@ class Featurizer():
         season_data.loc[season_data.coord_x < 0,"Angle_from_net"] = -season_data.loc[season_data.coord_x < 0,"Angle_from_net"]
         return season_data
 
-    def get_feature(self):
-        df = self.get_all_in_one(self.period_start, self.period_end)
+    def get_feature(self, season_type="regular"):
+        df = self.get_all_in_one(self.period_start, self.period_end,season_type)
         df['is_goal'] = df['is_goal'].astype(int)
         df = df.assign(Distance_from_net = 0)
         df = df.assign(Angle_from_net = 0)
