@@ -24,3 +24,7 @@ GOALIE_NAME = 'goalie_name'
 RINK_SIDE = 'rink_side'
 COORD_X = 'coord_x'
 COORD_Y = 'coord_y'
+
+ANGLE_FROM_NET = 'angle_from_net'
+DISTANCE_FROM_NET = 'distance_from_net'
+EMPTY_NET = 'empty_net'
