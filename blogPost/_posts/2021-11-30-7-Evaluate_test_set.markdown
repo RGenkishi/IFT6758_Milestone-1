@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Échauffement"
-date:   2021-10-01 11:27:11
+title:  "Évaluer sur l'ensemble de test"
+date:   2021-11-30 10:30:02
 categories: jekyll update
 ---
 

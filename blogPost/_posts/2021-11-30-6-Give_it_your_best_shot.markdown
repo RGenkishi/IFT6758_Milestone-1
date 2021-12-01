@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Donnez-lui votre meilleur coup"
-date:   2021-11-30 11:30:00
+date:   2021-11-30 17:30:03
 categories: jekyll update
 ---
 
@@ -50,5 +50,3 @@ categories: jekyll update
 <br>
 
 #### -Le modèle basé sur le bagging est disponible [ici](https://www.comet.ml/genkishi/milestone-2/e35380f848584d2fa5a7da255ccfbce1?experiment-tab=chart&showOutliers=true&smoothing=0&transformY=smoothing&xAxis=wall)
-
-

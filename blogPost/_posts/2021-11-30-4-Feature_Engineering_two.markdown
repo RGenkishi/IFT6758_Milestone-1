@@ -1,25 +1,35 @@
 ---
 layout: post
-title:  "Outils de débogage interactif"
-date:   2021-10-15 14:16:00
+title:  "Engénierie des caracteristiques 2"
+date:   2021-11-30 17:30:05
 categories: jekyll update
 ---
 
-# Question 1
+# Question 5
 
-##### <span style="color:grey">Prenez une capture d'écran de l'outil et ajoutez-la au blog post, accompagné d'une brève description (1-2 phrases) de ce que fait votre outil. Vous n'avez pas à vous soucier d'intégrer l'outil dans le blog.</span>
-
-### Capture d'ecran de l'outil de debogage
-
-<p align="center">
-  <img src="/assets/debugTool/debugTool.jpg" alt="debugTool"/>
-</p>
+##### <span style="color:grey">Dans votre article de blog, ajoutez une liste de toutes les caractéristiques que vous avez créées pour cette section. Répertoriez chaque caractéristique à la fois par le nom de la colonne dans votre cadre de données ET par une explication simple et lisible par l'humain (c'est-à-dire game_sec : nombre total de secondes écoulées dans le jeu). Si vous avez créé de nouvelles caractéristiques, décrivez brièvement ce qu'elles sont. Ajoutez un lien vers l'expérience qui stocke l'artefact DataFrame filtré pour le jeu spécifié. Notez qu'il ne doit y avoir qu'un seul DataFrame inscrit avec ce nom. Voir l' annexe pour un exemple de ce que nous recherchons.</span>
 
 
-### Description
+Liste des caractéristiques:
 
->Les différents menus dropdown permettent de choisir l'année, le type de saison et un match en particulier.
-Le slider permet de selectionner le numéro de l'événement par ordre temporel pour les tirs et les buts.
-Le widget affiche la date du match et les noms des équipes qui affrontent.
-Pour chaque événement, sont affichés : le tuype d'événement (but / tir), les coordonnées sur la glace, le nom du tireur et celui du goal.
-Le widget affiche également une représentation du terrain avec un point magenta à l'emplacement correspondant à l'événement.
+- "**event_type**" : type de l'événement
+- "**shot_type**" : type de tir
+- "**game_seconds**" : secondes écoulées dans le jeu
+- "**coord_x**" : coordonnée X
+- "**coord_y**" : coordonnée Y
+- "**distance_from_net**" : distance au filet en pieds
+- "**angle_from_net**" : angle de tir en radian (0 : en face du filet)
+- "**which_period**" : période de jeu
+- "**empty_net**" : True si le filet est vide, False sino
+
+- "**pre_event_type**" : type de l'événement précédent
+- "**rebound**" : True si le coup est un rebond (i.e. le coup précédent est un Shot), False sinon.
+- "**pre_coord_x**" : coordonnée X de l'événement précédent
+- "**pre_coord_y**" : coordonnée Y de l'événement précédent
+- "**time_since_last_event**" : temps en seconde écoulé depuis le dernier événement
+- "**distance_from_last_event**" : distance en pieds de l'événement par rapport au récédent
+- "**change_in_shot_angle**" : diférence absolue entre l'angle de tir précédent et le nouveau. 0 si le coup n'est pas un rebond.
+- "**speed**" : vitesse de déplacement en pieds par secondes
+
+
+#### -Le Dataframe filtré est disponible [ici](https://google.com/404)
