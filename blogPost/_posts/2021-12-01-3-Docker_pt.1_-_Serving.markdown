@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "Docker pt.1 - Serving"
+date:   2021-12-01 10:00:00
+categories: Docker
+---
+
+
