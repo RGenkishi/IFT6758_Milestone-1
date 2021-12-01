@@ -43,7 +43,7 @@ def goal_rate_curve(proba, Y_test, label):
     goal_rate_arr = []
     while val <= 100:
         percent = np.percentile(label_proba_concate['proba'].to_numpy(), val)
-        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] < percent]
+        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] > percent]
         goal_rate = (goal_percent.sum() / goal_percent.count()) * 100
         percent_arr.append(val)
         goal_rate_arr.append(goal_rate)
