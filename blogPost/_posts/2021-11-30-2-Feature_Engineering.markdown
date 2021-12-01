@@ -12,7 +12,7 @@ categories: jekyll update
 Nombre de tirs regroupés par distance
 
 <p align="center">
-  <img src="/assets/milestone_2/Q1/nb_shot_by_distance.png" alt="Nombre de tirs regroupés par distance"/>
+  <img src="/assets/milestone_2/Q2/nb_shot_by_distance.png" alt="Nombre de tirs regroupés par distance"/>
 </p>
 
 
@@ -29,7 +29,7 @@ Analyse
 Nombre de tirs regroupés par angle
 
 <p align="center">
-  <img src="/assets/milestone_2/Q1/nb_shot_by_angle.png" alt="Nombre de tirs regroupés par distance"/>
+  <img src="/assets/milestone_2/Q2/nb_shot_by_angle.png" alt="Nombre de tirs regroupés par distance"/>
 </p>
 
 
@@ -48,12 +48,12 @@ Analyse
 Histogramme 2D
 
 <p align="center">
-  <img src="/assets/milestone_2/Q1/histo_2D.png" alt="Nombre de tirs regroupés par distance"/>
+  <img src="/assets/milestone_2/Q2/histo_2D.png" alt="Nombre de tirs regroupés par distance"/>
 </p>
 
 <p align="center">
-  <img src="/assets/milestone_2/Q1/histo_2D_non_goal_only.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
-  <img src="/assets/milestone_2/Q1/histo_2D_goal_only.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
+  <img src="/assets/milestone_2/Q2/histo_2D_non_goal_only.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
+  <img src="/assets/milestone_2/Q2/histo_2D_goal_only.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
 </p>
 
 
@@ -91,8 +91,8 @@ Une table ... générée [ici](https://www.tablesgenerator.com/markdown_tables "
 Nombre de buts en fonction de l'état du filet
 
 <p align="center">
-  <img src="/assets/milestone_2/Q1/goal_rate_by_distance.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
-  <img src="/assets/milestone_2/Q1/goal_rate_by_angle.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
+  <img src="/assets/milestone_2/Q2/goal_rate_by_distance.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
+  <img src="/assets/milestone_2/Q2/goal_rate_by_angle.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
 </p>
 
 
@@ -120,7 +120,7 @@ Analyse
 Nombre de buts en fonction de l'état du filet
 
 <p align="center">
-  <img src="/assets/milestone_2/Q1/nb_goal_by_net_state.png" alt="Nombre de tirs regroupés par distance"/>
+  <img src="/assets/milestone_2/Q2/nb_goal_by_net_state.png" alt="Nombre de tirs regroupés par distance"/>
 </p>
 
 
