@@ -5,7 +5,7 @@ from api_requester import *
 from ift6758.utilitaires.logger import *
 
 
-# chemin par défaut pour l'enregistrement des données : dans le sous-dossier database du dossier contenant le module
+# chemin pour l'enregistrement des données : dans le sous-dossier database du dossier contenant le module
 databasePath = os.path.dirname(__file__)+"/database/"
 
 

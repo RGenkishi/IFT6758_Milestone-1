@@ -1,4 +1,4 @@
-from ift6758.data.question_4 import *
+from ift6758.data.tidyer import *
 from ift6758.data.question_6 import HeatMapShots
 import os
 pd.set_option("display.max_columns", 100)

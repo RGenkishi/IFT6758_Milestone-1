@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import seaborn as sns
 from ift6758.data.question_2 import DataAquirer
-from ift6758.data.question_4 import Tidyer
+from ift6758.data.tidyer import Tidyer
 from ift6758.data.tidyDataKeys import *
 
 pd.set_option("display.max_columns", None)

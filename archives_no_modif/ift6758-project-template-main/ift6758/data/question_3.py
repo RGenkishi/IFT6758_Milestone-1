@@ -1,5 +1,5 @@
 from ift6758.data.tidyDataKeys import *
-from ift6758.data.question_4 import Tidyer
+from ift6758.data.tidyer import Tidyer
 import matplotlib.pyplot as plt
 from PIL import Image
 import ipywidgets as widgets

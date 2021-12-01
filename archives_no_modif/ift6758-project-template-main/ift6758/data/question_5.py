@@ -1,4 +1,4 @@
-from ift6758.data.question_4 import *
+from ift6758.data.tidyer import *
 import matplotlib.pyplot as plt
 
 def histo_shot(year):
