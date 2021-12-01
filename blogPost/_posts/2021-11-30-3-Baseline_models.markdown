@@ -33,30 +33,13 @@ Analyse
  
 
 
-
-
-
-
-####  -Les courbes du taux de buts en fonction du centile du modèle de probabilité de tir
-<p align="center">
-  <img src="/assets/Baseline_modeles/Figure_2.png" alt="Goal_rate_percentile"/>
-</p>
-
 <br>
 
 ---
-####  -Les courbes de la proportion cumulée de buts en fonction du centile du modèle de probabilité de tir.
-<p align="center">
-  <img src="/assets/Baseline_modeles/Figure_3.png" alt="Goal_cumulative_proportion_percentile"/>
-</p>
 
-# Question 2
+# Question 2-3
 
 ##### <span style="color:grey">Entraînez maintenant deux autres classificateurs de régression logistique en utilisant la même configuration que ci-dessus, mais cette fois sur la fonction d'angle, puis à la fois sur la distance et l'angle. Produisez les trois mêmes courbes que celles décrites dans la section précédente pour chaque modèle. Y compris la ligne de base aléatoire, vous devriez avoir un total de 4 lignes sur chaque figure :<br>Régression logistique, entraînée sur la distance uniquement (déjà fait ci-dessus)<br>Régression logistique, entraînée sur l' angle uniquement<br>Régression logistique, entraînée sur la distance et l' angle<br>Ligne de base aléatoire : probabilité prédite est échantillonné à partir d'une distribution uniforme, c'est-à-dire yiU(0,1)<br>Incluez ces quatre figures (chacune avec quatre courbes) dans votre article de blog. En quelques phrases, discutez de votre interprétation de ces résultats.</span>
-####  -Les diagrammes de fiabilité (courbe de calibration)
-<p align="center">
-  <img src="/assets/Baseline_modeles/Figure_4.png" alt="calibration_curve"/>
-</p>
 
 Courbes ROC et métrique AUC
 
@@ -81,6 +64,16 @@ Analyse
 
 <br>
 
+<!--
+####  -Les courbes du taux de buts en fonction du centile du modèle de probabilité de tir
+<p align="center">
+  <img src="/assets/Baseline_modeles/Figure_2.png" alt="Goal_rate_percentile"/>
+</p>
+
+
+<br>
+-->
+
 
 Taux de buts (#buts / (#non_buts + #buts)) en fonction du centile du modèle de probabilité de tir
 
@@ -99,6 +92,13 @@ Analyse
 >
 
 <br>
+
+<!--
+####  -Les courbes de la proportion cumulée de buts en fonction du centile du modèle de probabilité de tir.
+<p align="center">
+  <img src="/assets/Baseline_modeles/Figure_3.png" alt="Goal_cumulative_proportion_percentile"/>
+</p>
+-->
 
 
 Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir
@@ -119,7 +119,14 @@ Analyse
 <br>
 
 
-Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir
+Courbes de Calibration
+
+<!--
+####  -Les diagrammes de fiabilité (courbe de calibration)
+<p align="center">
+  <img src="/assets/Baseline_modeles/Figure_4.png" alt="calibration_curve"/>
+</p>
+-->
 
 <p align="center">
   <img src="/assets/milestone_2/Q3/courbe_calibration.png" alt="Nombre de tirs regroupés par distance"/>
@@ -129,7 +136,7 @@ Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de p
 
 Analyse
 
-> Vu l'étendue des probabilités retorunée par nos différents modèles, il est difficile de statuer sur ce graphique.\
+> Vu l'étendue des probabilités retournée par nos différents modèles, il est difficile de statuer sur ce graphique.\
 > Notons cependant que les courbes de qualibration de nos modèles ne sont pas confondu avec la courbe optimale et penchent plus du côté de la courbe du classifieur aléatoire.
 
 
