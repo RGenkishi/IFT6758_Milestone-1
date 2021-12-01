@@ -11,10 +11,10 @@ It has the correct location of lines, faceoff dots, and length/width ratio as th
 Note that the rink is 200 feet long and 85 feet wide, with the goal line 11 feet from the nearest edge of the rink, and the blue line 75 feet from the nearest edge of the rink.
 
 <p align="center">
-<img src="./figures/nhl_rink.png" alt="NHL Rink is 200ft x 85ft." width="400"/>
+<img src="docker-project-template/figures/nhl_rink.png" alt="NHL Rink is 200ft x 85ft." width="400"/>
 <p>
 
-The image can be found in [`./figures/nhl_rink.png`](./figures/nhl_rink.png).
+The image can be found in [`./figures/nhl_rink.png`](docker-project-template/figures/nhl_rink.png).
 
 ## Installation
 
