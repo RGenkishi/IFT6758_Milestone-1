@@ -1,18 +1,81 @@
 ---
 layout: post
-title:  "Ingenierie des caracteristiques"
-date:   2021-11-30 17:55:00
+title:  "Ingénierie des caractéristiques"
+date:   2021-11-30 11:27:11
 categories: jekyll update
 ---
 
 # Question 1
 
-##### <span style="color:grey">Dans votre article de blog, incluez un petit extrait de votre cadre de données final (par exemple, en utilisant head(10)). Vous pouvez simplement inclure une capture d'écran plutôt que de vous battre pour que les tableaux soient soigneusement formatés en HTML/markdown.</span>
+##### <span style="color:grey">Créez et comprennent les figures suivants dans votre blogpost et brièvement discutez vos observations (quelques phrases): <br>Un histogramme de nombre de tirs (buts et non-buts séparés), regroupées (binned) par distance<br>Un histogramme de nombre de tirs (buts et non-buts séparés), binned par angle <br>Un histogramme 2D où un axe est la distance et l'autre est l'angle. Vous n'avez pas besoin de séparer les buts et les non-buts.</span>
+
+Nombre de tirs regroupés par distance
+
+<p align="center">
+  <img src="/assets/milestone_2/Q1/nb_shot_by_distance.png" alt="Nombre de tirs regroupés par distance"/>
+</p>
+
+
+Analyse
+
+> Comme nous l'avions déjà remarqué lors du milestone 1, le nombre de tirs conduisant à un but est minoritaire.
+>
+> Pour tous les tirs, la distance de tir la plus populaire est de presque 75 pieds, soit au niveau de la ligne bleue. En s'éloignant de la ligne bleue en s'écartant du filet, le nombre de tentative décroit de façon exponentielle.\
+> En se rapprochant du filet, le nombre de tentatives décroit plus doucement jusqu'à une distance de 25 pieds. Les tentatives à une distance inférieure à 25 pieds sont très minoritaire, notamment pour les buts.\
+> Certaines tentatives sont effectuées entre 125 et 175 pieds mais très peu d'entre elles conduisent effectivement à des buts.
 
 <br>
 
-####  Tableau des 10 premiers éléments de la saison 2019-2020 rangés selon les indications
+Nombre de tirs regroupés par angle
 
+<p align="center">
+  <img src="/assets/milestone_2/Q1/nb_shot_by_angle.png" alt="Nombre de tirs regroupés par distance"/>
+</p>
+
+
+Analyse
+
+> La majorité des tirs se font avec un angle compris entre 0 et 1 radian (0 et 57 degrés) par rapport à la normale au filet (i.e. La droite passant par les 2 filets).
+>
+> Dans le cas des buts, la répartition semble suivre une loi normale centrée en 0 et de faible écart type.
+> 
+> Dans le cas des tirs n'ayant pas marqués, la répartition semble suivre une sorte de double loi normale:\
+> Entre -1 et -1/4 ainsi qu'entre 1/4 et 1 radian, environ, on a un écart type plutôt "moyen", et entre -1/4 et 1/4 de radian, l'écart type est très faible.
+> En résumé, Les tirs qui ont le plus de chance de succès sont ceux tentés bien en face du filet et les joueurs le savent : c'est leur angle de tir favori.
+
+<br>
+
+Histogramme 2D
+
+<p align="center">
+  <img src="/assets/milestone_2/Q1/histo_2D.png" alt="Nombre de tirs regroupés par distance"/>
+</p>
+
+<p align="center">
+  <img src="/assets/milestone_2/Q1/histo_2D_non_goal_only.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
+  <img src="/assets/milestone_2/Q1/histo_2D_goal_only.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
+</p>
+
+
+Analyse
+
+> On retrouve les informations que nous avons déjà vu.Compte tenu du nombre important de points, il est difficile de se rendre compte visuellement de la densité pour chaque zone du graphique. Pour nous aider, on s'appuie sur les histogrammes du graphique.
+>
+> On retrouve l'idée que les tirs à une distance inférieure à 25 pieds sont très peu nombreux. (voir histogramme).
+> Les tirs à une distance de 75 pieds sont les plus nombreux et sont préférables pour marquer.
+> 
+> Encore une fois, on remarque une double cloche pour les angles des tirs n'ayant pas marqué. 
+
+<br>
+
+Une table ... générée [ici](https://www.tablesgenerator.com/markdown_tables "oui, ceci est un lien! clique")
+
+|  | Player | W | SV% |
+|---|---|---|---|
+| 85 | Dustin Tokarski | 0 | 1.000 |
+| 11 | Jack Campbell | 0 | 1.000 |
+| 63 | Alex Nedeljkovic | 0 | 1.000 |
+| ...| ... | ... | ... |
 
 
 
@@ -23,27 +86,47 @@ categories: jekyll update
 
 # Question 2
 
-##### <span style="color:grey">Vous remarquerez que le champ de « force » (c.-à-d. égal, avantage numérique, en désavantage numérique) n'existe que pour les buts, pas pour les tirs. De plus, il n'inclut pas la force réelle des joueurs sur la glace (c'est-à-dire 5 contre 4, ou 5 contre 3, etc.). Discutez de la façon dont vous pourriez ajouter les informations sur la force réelle (c'est-à-dire 5 contre 4, etc.) aux tirs et aux buts, compte tenu des autres types d'événements (au-delà des tirs et des buts) et des fonctionnalités disponibles. Vous n'avez pas besoin de l'implémenter pour ce jalon. </span>
+##### <span style="color:grey">Maintenant, créez deux autres figures reliant le taux de but, c'est-à-dire #buts / (#pad_de_buts + #buts), à la distance et le taux de but à l'angle du tir. Incluez ces figures dans votre article de blog et discutez brièvement de vos observations.</span>
+
+Nombre de buts en fonction de l'état du filet
+
+<p align="center">
+  <img src="/assets/milestone_2/Q1/goal_rate_by_distance.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
+  <img src="/assets/milestone_2/Q1/goal_rate_by_angle.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
+</p>
+
+
+Analyse
+
+> Du point de vue de la distance, le plus fort taux de but correspond à une distance de 57 à 76 pieds.
+> On peut donc recommander de tirer au niveau de la ligne bleue.
+> Si très peu de tir sont tenté depuis la zone de défense, il semble que le taux de réussite soit également important. Nous remettrons celà en question dans la section suivante.
+> 
+> Du point de vue de l'angle de tir, le taux de réussite est le plus élevé pour les tirs en face du filet.
+> Il semble que les tir avec un angle extrème d'environ 3 radian (presque 180 degrés) ont égalment un bon taux de réussite. Il se peut que ces tirs en particuliers s'appuyent sur le rebond du palais sur un adversaire ou sur le goal pour le faire entrer dans le filet.
+
+
+
+
+
 <br>
 
-Comment obtenir une information plus précise sur la force réelle des joueurs sur la glace ?
-
-> Pour chaque game, dans le json retourné par l'API, dans gameData/Players, on a accès à la liste des joueurs participants. Il est égallement possible de récupéré l'équipe pour chaque joueur avec la clé 'currentTeam' qui existe pour chacune des personnes participant au match.
->A partir de ces données, on peut compter le nombre de joueurs qui apparaissent dans les événements pour chaque équipe jusqu'a ce qu'un but soit marqué. On estime alors le nombre de joueur présent dans chaque équipe. Cependant on ne sait pas vraiment quand réinitilialiser les compte des joueurs.
->
-> Une meilleure méthode consisterai à considérer qu'il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d'un but, on pourrait compter le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
-> On fait de même pour les pénalités majeure survenues dans les 5 minutes avant le but et pour les Inconduite dans les 10 minutes. Pour chaque équipe, on compte un nombre maximum de pénalité de 2 puiqu'une équipe ne peut avoir moins de 4 joueurs sur la glace.
-> Ainsi, si l'équipe A a eu deux pénalités, et l'équipe B une seule, alors l'équipe A a encore 4 joueurs sur la glace et l'équipe B en a 5. Si le but est de l'équipe A, elle a donc marqué un but à 4 contre 5.
-
-
-<br>
-
+---
 
 # Question 3
 
-##### <span style="color:grey">En quelques phrases, discutez de certaines fonctionnalités supplémentaires que vous pourriez envisager de créer à partir des données disponibles dans cet ensemble de données. Nous ne cherchons pas de réponses particulières, mais si vous avez besoin d'inspiration, un tir ou un but pourrait-il être classé comme un rebond ou un tir dans le rush?</span>
-<br>
+##### <span style="color:grey">Créez un autre histogramme, cette fois de buts uniquement, classés par distance, et séparez les événements nets vides et non vides. Incluez ce chiffre dans votre article de blog et discutez de vos observations. Pouvez-vous trouver des événements qui ont des caractéristiques incorrectes (par exemple, de mauvaises coordonnées x/y) ? Si oui, prouvez qu'un événement a des caractéristiques incorrectes.</span>
 
->Dans la base de données de la LNH à laquelle on a accès, il y plusieurs autres attributs que l'on pourrait aller chercher qui permettraient d'ajouter d'autres analyses. Un premier attribut que l’on pourrait ajouter est la rôle du joueur qui fait le tir, à savoir s’il s’agit d’un défenseur ou d’un attaquant (ou même d'un gardien). Grâce à cette donnée, on pourrait faire plusieurs comparaisons. Par exemple, quel est le ratio de tir entre les défenseurs et les attaquants. Cela permettrait de répondre à la question de savoir si les équipes qui marquent beaucoup ont tendance à avoir un ratio qui penche plus en faveur des attaquants que des défenseurs ou bien est-ce que le ratio est essentiellement le même pour toutes les équipes? Est-ce qu’au final, c’est le nombre absolu de tir qui compte? On pourrait aussi regarder où les attaquants ont tendance à se trouver sur la patinoire lorsqu’ils marquent, et comparer cela avec la position des défenseurs.
+Nombre de buts en fonction de l'état du filet
 
->D’autres informations à propos des joueurs pourraient aussi être intéressantes. Par exemple, leur taille et leur âge. On pourrait, par exemple, faire des analyses corrélationnelles entre la taille, l’âge et la tendance à marquer. On pourrait ainsi agréger ces mesures par équipe en faisant la moyenne par exemple. Cela nous permettrait de voir si la moyenne d’âge d’une équipe a une influence sur leur perfomances ou si les équipes avec de grands joueurs sont généralement meilleurs que les équipes avec des joueurs plus petit. On pourrait aussi s'intéresser à la distribution de ces attributs. On pourrait calculer la variance de la taille et de l'âge d'une équipe. Cela nous permettrait, par exemple, de voir si une équipe qui à une grande variance sur le plan de l'âge et de la grandeurs performe généralement mieux qu'une équipe avec uniquement des jeunes, ou uniquement des vieux.
+<p align="center">
+  <img src="/assets/milestone_2/Q1/nb_goal_by_net_state.png" alt="Nombre de tirs regroupés par distance"/>
+</p>
+
+
+Analyse
+
+> On peut remarquer un certain nombre de buts marqués entre 150 et 175 pieds, soit dans la zone de défense.
+>
+> 
+
