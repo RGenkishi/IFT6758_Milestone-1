@@ -132,5 +132,7 @@ dmypy.json
 *.DS_Store
 *.xcworkspace
 API_KEY
-blogPost/_site/
-blogPost/.jekyll-cache/
+
+
+# IDE (added by NL)
+*.idea
