@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-25T23:00:37-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Visualisations Avancées</title><link href="http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees.html" rel="alternate" type="text/html" title="Visualisations Avancées" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/6-Visualisations-avancees.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-30T18:41:43-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingenierie des caracteristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingenierie des caracteristiques" /><published>2021-11-30T12:55:00-05:00</published><updated>2021-11-30T12:55:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+
+&lt;h5 id=&quot;dans-votre-article-de-blog-incluez-un-petit-extrait-de-votre-cadre-de-données-final-par-exemple-en-utilisant-head10-vous-pouvez-simplement-inclure-une-capture-décran-plutôt-que-de-vous-battre-pour-que-les-tableaux-soient-soigneusement-formatés-en-htmlmarkdown&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Dans votre article de blog, incluez un petit extrait de votre cadre de données final (par exemple, en utilisant head(10)). Vous pouvez simplement inclure une capture d’écran plutôt que de vous battre pour que les tableaux soient soigneusement formatés en HTML/markdown.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;tableau-des-10-premiers-éléments-de-la-saison-2019-2020-rangés-selon-les-indications&quot;&gt;Tableau des 10 premiers éléments de la saison 2019-2020 rangés selon les indications&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
+
+&lt;h5 id=&quot;vous-remarquerez-que-le-champ-de--force--c-à-d-égal-avantage-numérique-en-désavantage-numérique-nexiste-que-pour-les-buts-pas-pour-les-tirs-de-plus-il-ninclut-pas-la-force-réelle-des-joueurs-sur-la-glace-cest-à-dire-5-contre-4-ou-5-contre-3-etc-discutez-de-la-façon-dont-vous-pourriez-ajouter-les-informations-sur-la-force-réelle-cest-à-dire-5-contre-4-etc-aux-tirs-et-aux-buts-compte-tenu-des-autres-types-dévénements-au-delà-des-tirs-et-des-buts-et-des-fonctionnalités-disponibles-vous-navez-pas-besoin-de-limplémenter-pour-ce-jalon-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Vous remarquerez que le champ de « force » (c.-à-d. égal, avantage numérique, en désavantage numérique) n’existe que pour les buts, pas pour les tirs. De plus, il n’inclut pas la force réelle des joueurs sur la glace (c’est-à-dire 5 contre 4, ou 5 contre 3, etc.). Discutez de la façon dont vous pourriez ajouter les informations sur la force réelle (c’est-à-dire 5 contre 4, etc.) aux tirs et aux buts, compte tenu des autres types d’événements (au-delà des tirs et des buts) et des fonctionnalités disponibles. Vous n’avez pas besoin de l’implémenter pour ce jalon. &lt;/span&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Comment obtenir une information plus précise sur la force réelle des joueurs sur la glace ?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pour chaque game, dans le json retourné par l’API, dans gameData/Players, on a accès à la liste des joueurs participants. Il est égallement possible de récupéré l’équipe pour chaque joueur avec la clé ‘currentTeam’ qui existe pour chacune des personnes participant au match.
+A partir de ces données, on peut compter le nombre de joueurs qui apparaissent dans les événements pour chaque équipe jusqu’a ce qu’un but soit marqué. On estime alors le nombre de joueur présent dans chaque équipe. Cependant on ne sait pas vraiment quand réinitilialiser les compte des joueurs.&lt;/p&gt;
+
+  &lt;p&gt;Une meilleure méthode consisterai à considérer qu’il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d’un but, on pourrait compter le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
+On fait de même pour les pénalités majeure survenues dans les 5 minutes avant le but et pour les Inconduite dans les 10 minutes. Pour chaque équipe, on compte un nombre maximum de pénalité de 2 puiqu’une équipe ne peut avoir moins de 4 joueurs sur la glace.
+Ainsi, si l’équipe A a eu deux pénalités, et l’équipe B une seule, alors l’équipe A a encore 4 joueurs sur la glace et l’équipe B en a 5. Si le but est de l’équipe A, elle a donc marqué un but à 4 contre 5.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
+
+&lt;h5 id=&quot;en-quelques-phrases-discutez-de-certaines-fonctionnalités-supplémentaires-que-vous-pourriez-envisager-de-créer-à-partir-des-données-disponibles-dans-cet-ensemble-de-données-nous-ne-cherchons-pas-de-réponses-particulières-mais-si-vous-avez-besoin-dinspiration-un-tir-ou-un-but-pourrait-il-être-classé-comme-un-rebond-ou-un-tir-dans-le-rush&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;En quelques phrases, discutez de certaines fonctionnalités supplémentaires que vous pourriez envisager de créer à partir des données disponibles dans cet ensemble de données. Nous ne cherchons pas de réponses particulières, mais si vous avez besoin d’inspiration, un tir ou un but pourrait-il être classé comme un rebond ou un tir dans le rush?&lt;/span&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Dans la base de données de la LNH à laquelle on a accès, il y plusieurs autres attributs que l’on pourrait aller chercher qui permettraient d’ajouter d’autres analyses. Un premier attribut que l’on pourrait ajouter est la rôle du joueur qui fait le tir, à savoir s’il s’agit d’un défenseur ou d’un attaquant (ou même d’un gardien). Grâce à cette donnée, on pourrait faire plusieurs comparaisons. Par exemple, quel est le ratio de tir entre les défenseurs et les attaquants. Cela permettrait de répondre à la question de savoir si les équipes qui marquent beaucoup ont tendance à avoir un ratio qui penche plus en faveur des attaquants que des défenseurs ou bien est-ce que le ratio est essentiellement le même pour toutes les équipes? Est-ce qu’au final, c’est le nombre absolu de tir qui compte? On pourrait aussi regarder où les attaquants ont tendance à se trouver sur la patinoire lorsqu’ils marquent, et comparer cela avec la position des défenseurs.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;D’autres informations à propos des joueurs pourraient aussi être intéressantes. Par exemple, leur taille et leur âge. On pourrait, par exemple, faire des analyses corrélationnelles entre la taille, l’âge et la tendance à marquer. On pourrait ainsi agréger ces mesures par équipe en faisant la moyenne par exemple. Cela nous permettrait de voir si la moyenne d’âge d’une équipe a une influence sur leur perfomances ou si les équipes avec de grands joueurs sont généralement meilleurs que les équipes avec des joueurs plus petit. On pourrait aussi s’intéresser à la distribution de ces attributs. On pourrait calculer la variance de la taille et de l’âge d’une équipe. Cela nous permettrait, par exemple, de voir si une équipe qui à une grande variance sur le plan de l’âge et de la grandeurs performe généralement mieux qu’une équipe avec uniquement des jeunes, ou uniquement des vieux.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Question 5</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html" rel="alternate" type="text/html" title="Question 5" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;exportez-le-tracé-au-format-html-et-intégrez-le-dans-votre-article-de-blog-votre-parcelle-doit-permettre-aux-utilisateurs-de-sélectionner-nimporte-quelle-saison-entre-2016-17-et-2020-2021-ainsi-que-nimporte-quelle-équipe-au-cours-de-la-saison-sélectionnée&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Exportez le tracé au format HTML et intégrez-le dans votre article de blog. Votre parcelle doit permettre aux utilisateurs de sélectionner n’importe quelle saison entre 2016-17 et 2020-2021, ainsi que n’importe quelle équipe au cours de la saison sélectionnée.&lt;/span&gt;&lt;/h5&gt;
 
@@ -7,64 +48,17 @@
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Avalanche_2016.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
+  &lt;img src=&quot;/assets/question_5/XGBoost_HT_calibration.png&quot; alt=&quot;Calibration&quot; /&gt;
 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Avalanche_2020.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
+  &lt;img src=&quot;/assets/question_5/XGBoost_HT_goal_cumul.png&quot; alt=&quot;Goal cumul&quot; /&gt;
 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Sabres_2018.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
+  &lt;img src=&quot;/assets/question_5/XGBoost_HT_rate_curve.png&quot; alt=&quot;rate curve6&quot; /&gt;
 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Lightning_2018.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
-&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Sabres_2019.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
-&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Lightning_2019.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
-&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Sabres_2020.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
-&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/Lightning_2020.png&quot; alt=&quot;heatmap Avalanche 2016&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
-
-&lt;h5 id=&quot;discutez-en-quelques-phrases-de-ce-que-vous-pouvez-interpréter-à-partir-de-ces-graphiques&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Discutez (en quelques phrases) de ce que vous pouvez interpréter à partir de ces graphiques.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;D’abord, la couleur qui prédomine, le rouge ou le bleu, nous permet de savoir en un coup d’oeil si l’équipe fait plus de tirs que la moyenne de la ligue, ou moins. Ces graphiques nous permettent aussi de constater ce qui distingue l’équipe de la moyenne. L’équipe a-t-elle tendance à tirer en milieu de patinoire ou sur les côtés? Lorsqu’on a accès à d’autres types de données, le classement des équipes par exemple, cela nous permet de tirer des conclusions sur la formule gagnante. Dans ce qui suit, nous verrons que les équipes qui gagnent plus ont tendance à faire plus de tirs que la moyenne.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
-
-&lt;h5 id=&quot;considérez-lavalanche-du-colorado-jetez-un-œil-à-leur-carte-de-tir-au-cours-de-la-saison-2016-17-discutez-de-ce-que-vous-pourriez-dire-sur-léquipe-au-cours-de-cette-saison-regardez-maintenant-la-carte-des-plans-de-lavalanche-du-colorado-pour-la-saison-2020-21-et-discutez-de-ce-que-vous-pourriez-conclure-de-ces-différences-est-ce-que-ça-a-du-sens-astuce--regardez-le-classement&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Considérez l’Avalanche du Colorado; jetez un œil à leur carte de tir au cours de la saison 2016-17. Discutez de ce que vous pourriez dire sur l’équipe au cours de cette saison. Regardez maintenant la carte des plans de l’Avalanche du Colorado pour la saison 2020-21 et discutez de ce que vous pourriez conclure de ces différences. Est-ce que ça a du sens? Astuce : regardez le classement.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Dans la saison 2016-2017, l’Avalanche du Colorado a terminé la saison régulière avec 48 points, le pire résultat de la la ligue. En 2020-2021, la même équipe a terminé première dans la division de l’ouest. Lorsqu’on regarde les deux cartes de chaleur, la différence est assez frapante. Dans la carte de 2016-2017, on voit que le bleu prédomine. On peut voir que la case (3, 2) a un score de -1.2, ce qui signifie que l’équipe tire 1.2 buts de moins par heure de jeu que la moyenne. On voit que l’équipe fait beaucoup plus de tirs devant le filet dans la saison de 2020-2021. On doit comprendre que la recette gagnante pour une équipe est de faire beaucoup de tirs dans cette zone.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;question-4&quot;&gt;Question 4&lt;/h1&gt;
-
-&lt;h5 id=&quot;considérez-les-sabres-de-buffalo-une-équipe-qui-a-connu-des-difficultés-ces-dernières-années-et-comparez-les-au-lightning-de-tampa-bay-une-équipe-qui-a-remporté-le-stanley-au-cours-des-deux-dernières-années-consécutives-regardez-les-plans-de-tir-de-ces-deux-équipes-des-saisons-2018-19-2019-20-et-2020-21-discutez-des-observations-que-vous-pouvez-faire-y-a-t-il-quelque-chose-qui-pourrait-expliquer-le-succès-du-lightning-ou-les-luttes-des-sabres--à-quel-point-une-image-est-elle-complète-selon-vous-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Considérez les Sabres de Buffalo, une équipe qui a connu des difficultés ces dernières années, et comparez-les au Lightning de Tampa Bay, une équipe qui a remporté le Stanley au cours des deux dernières années consécutives. Regardez les plans de tir de ces deux équipes des saisons 2018-19, 2019-20 et 2020-21. Discutez des observations que vous pouvez faire. Y a-t-il quelque chose qui pourrait expliquer le succès du Lightning, ou les luttes des Sabres ? À quel point une image est-elle complète selon vous ?&lt;/span&gt;&lt;/h5&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Encore une fois, ce qui semble différencier une bonne équipe d’une mauvaise équipe est sa tendance à faire beaucoup de tirs devant le filet. Une chose intéressante chez le Lightning dans la saison 2018-19 et 2019-20, c’est sa tendance à moins tirer que la moyenne dans la case du centre juste avant la ligne bleu. On sait que lorsqu’on n’est de l’autre côté de la ligne bleu, nous sommes en territoire centrale. Cette statistique nous laisse croire que le Lightning a tendance à réussir son entré en territoire adverse. C’est sans doute une de ses qualités.
-Le grand problème avec cette carte de chaleur, à notre avis, est qu’on n’a pas d’information sur les buts. Les cases où il y a beaucoup de tirs sont-elles vraiment les endroits les plus payant en terme de buts. On ne le sait pas.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Visualisations simples</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Visualisations-simples.html" rel="alternate" type="text/html" title="Visualisations simples" /><published>2021-10-15T10:49:00-04:00</published><updated>2021-10-15T10:49:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Visualisations-simples</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Visualisations-simples.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+  &lt;img src=&quot;/assets/question_5/XGBoost_HT_roc_curve.png&quot; alt=&quot;roc_curve&quot; /&gt;
+&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Visualisations simples</title><link href="http://localhost:4000/jekyll/update/2021/10/15/6-Give_it_your_best_shot.html" rel="alternate" type="text/html" title="Visualisations simples" /><published>2021-10-15T10:49:00-04:00</published><updated>2021-10-15T10:49:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/6-Give_it_your_best_shot</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/6-Give_it_your_best_shot.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;produisez-un-histogramme-ou-un-barplot--des-types-de-tirs-sur-toutes-les-équipes-dans-une-saison-de-votre-choix-superposez-le-nombre-de-buts-sur-le-nombre-de-tirs-quel-semble-être-le-type-de-tir-le-plus-dangereux--le-type-de-tir-le-plus-courant--ajoutez-cette-figure-et-cette-discussion-à-votre-article-de-blog&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Produisez un histogramme ou un BARPLOT  des types de tirs sur toutes les équipes dans une saison de votre choix. Superposez le nombre de buts sur le nombre de tirs. Quel semble être le type de tir le plus dangereux ? Le type de tir le plus courant ? Ajoutez cette figure et cette discussion à votre article de blog.&lt;/span&gt;&lt;/h5&gt;
 
@@ -125,343 +119,7 @@ C’est de là d’où tirent les défenseurs&lt;/p&gt;
 
 &lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
 
-&lt;h5 id=&quot;combinez-les-informations-des-sections-précédentes-pour-produire-un-graphique-qui-montre-le-pourcentage-de-buts--buts---tirs-en-fonction-à-la-fois-de-la-distance-par-rapport-au-filet-et-de-la-catégorie-de-types-de-tirs-vous-pouvez-choisir-une-seule-saison-de-votre-choix-brièvement-discutez-de-vos-conclusions--par-exemple-quels-pourraient-être-les-types-de-tirs-les-plus-dangereux-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Combinez les informations des sections précédentes pour produire un graphique qui montre le pourcentage de buts (# buts / # tirs) en fonction à la fois de la distance par rapport au filet et de la catégorie de types de tirs (vous pouvez choisir une seule saison de votre choix) brièvement Discutez de vos conclusions ; Par exemple, quels pourraient être les types de tirs les plus dangereux ?&lt;/span&gt;&lt;/h5&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Ranger les données</title><link href="http://localhost:4000/jekyll/update/2021/10/15/4-Ranger-les-donnees.html" rel="alternate" type="text/html" title="Ranger les données" /><published>2021-10-15T10:41:00-04:00</published><updated>2021-10-15T10:41:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/4-Ranger-les-donnees</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/4-Ranger-les-donnees.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
-
-&lt;h5 id=&quot;dans-votre-article-de-blog-incluez-un-petit-extrait-de-votre-cadre-de-données-final-par-exemple-en-utilisant-head10-vous-pouvez-simplement-inclure-une-capture-décran-plutôt-que-de-vous-battre-pour-que-les-tableaux-soient-soigneusement-formatés-en-htmlmarkdown&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Dans votre article de blog, incluez un petit extrait de votre cadre de données final (par exemple, en utilisant head(10)). Vous pouvez simplement inclure une capture d’écran plutôt que de vous battre pour que les tableaux soient soigneusement formatés en HTML/markdown.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;tableau-des-10-premiers-éléments-de-la-saison-2019-2020-rangés-selon-les-indications&quot;&gt;Tableau des 10 premiers éléments de la saison 2019-2020 rangés selon les indications&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th&gt;game_id&lt;/th&gt;
-      &lt;th&gt;game_time&lt;/th&gt;
-      &lt;th&gt;date_year&lt;/th&gt;
-      &lt;th&gt;date_month&lt;/th&gt;
-      &lt;th&gt;date_day&lt;/th&gt;
-      &lt;th&gt;period_time&lt;/th&gt;
-      &lt;th&gt;which_period&lt;/th&gt;
-      &lt;th&gt;period_type&lt;/th&gt;
-      &lt;th&gt;event_type&lt;/th&gt;
-      &lt;th&gt;is_goal&lt;/th&gt;
-      &lt;th&gt;shot_type&lt;/th&gt;
-      &lt;th&gt;strength&lt;/th&gt;
-      &lt;th&gt;team_id&lt;/th&gt;
-      &lt;th&gt;team_name&lt;/th&gt;
-      &lt;th&gt;team_link&lt;/th&gt;
-      &lt;th&gt;team_tri_code&lt;/th&gt;
-      &lt;th&gt;shooter_name&lt;/th&gt;
-      &lt;th&gt;goalie_name&lt;/th&gt;
-      &lt;th&gt;rink_side&lt;/th&gt;
-      &lt;th&gt;coord_x&lt;/th&gt;
-      &lt;th&gt;coord_y&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:15:32Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;00:25&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Goal&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;Tip-In&lt;/td&gt;
-      &lt;td&gt;Even&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;Ottawa Senators&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/9&lt;/td&gt;
-      &lt;td&gt;OTT&lt;/td&gt;
-      &lt;td&gt;Brady Tkachuk&lt;/td&gt;
-      &lt;td&gt;Frederik Andersen&lt;/td&gt;
-      &lt;td&gt;left&lt;/td&gt;
-      &lt;td&gt;85.0&lt;/td&gt;
-      &lt;td&gt;-1.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:18:23Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;01:31&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Snap Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;Morgan Rielly&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-32.0&lt;/td&gt;
-      &lt;td&gt;-2.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:20:45Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;03:23&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Snap Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;Ottawa Senators&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/9&lt;/td&gt;
-      &lt;td&gt;OTT&lt;/td&gt;
-      &lt;td&gt;Dylan DeMelo&lt;/td&gt;
-      &lt;td&gt;Frederik Andersen&lt;/td&gt;
-      &lt;td&gt;left&lt;/td&gt;
-      &lt;td&gt;63.0&lt;/td&gt;
-      &lt;td&gt;-6.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:21:17Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;03:56&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Wrist Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;Morgan Rielly&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-59.0&lt;/td&gt;
-      &lt;td&gt;-20.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:22:36Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;04:47&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Slap Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;Tyson Barrie&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-42.0&lt;/td&gt;
-      &lt;td&gt;-29.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:22:41Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;04:53&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Slap Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;Tyson Barrie&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-52.0&lt;/td&gt;
-      &lt;td&gt;-7.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:23:19Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;05:31&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Wrist Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;Cody Ceci&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-38.0&lt;/td&gt;
-      &lt;td&gt;38.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:23:40Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;05:52&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Wrist Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;Andreas Johnsson&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-76.0&lt;/td&gt;
-      &lt;td&gt;-14.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:24:37Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;06:02&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Slap Shot&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;Mitchell Marner&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-63.0&lt;/td&gt;
-      &lt;td&gt;-31.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;regular2019020001&lt;/td&gt;
-      &lt;td&gt;2019-10-02T23:26:14Z&lt;/td&gt;
-      &lt;td&gt;2019&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;07:11&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;REGULAR&lt;/td&gt;
-      &lt;td&gt;Shot&lt;/td&gt;
-      &lt;td&gt;False&lt;/td&gt;
-      &lt;td&gt;Tip-In&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Toronto Maple Leafs&lt;/td&gt;
-      &lt;td&gt;/api/v1/teams/10&lt;/td&gt;
-      &lt;td&gt;TOR&lt;/td&gt;
-      &lt;td&gt;William Nylander&lt;/td&gt;
-      &lt;td&gt;Craig Anderson&lt;/td&gt;
-      &lt;td&gt;right&lt;/td&gt;
-      &lt;td&gt;-78.0&lt;/td&gt;
-      &lt;td&gt;13.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
-
-&lt;h5 id=&quot;vous-remarquerez-que-le-champ-de--force--c-à-d-égal-avantage-numérique-en-désavantage-numérique-nexiste-que-pour-les-buts-pas-pour-les-tirs-de-plus-il-ninclut-pas-la-force-réelle-des-joueurs-sur-la-glace-cest-à-dire-5-contre-4-ou-5-contre-3-etc-discutez-de-la-façon-dont-vous-pourriez-ajouter-les-informations-sur-la-force-réelle-cest-à-dire-5-contre-4-etc-aux-tirs-et-aux-buts-compte-tenu-des-autres-types-dévénements-au-delà-des-tirs-et-des-buts-et-des-fonctionnalités-disponibles-vous-navez-pas-besoin-de-limplémenter-pour-ce-jalon-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Vous remarquerez que le champ de « force » (c.-à-d. égal, avantage numérique, en désavantage numérique) n’existe que pour les buts, pas pour les tirs. De plus, il n’inclut pas la force réelle des joueurs sur la glace (c’est-à-dire 5 contre 4, ou 5 contre 3, etc.). Discutez de la façon dont vous pourriez ajouter les informations sur la force réelle (c’est-à-dire 5 contre 4, etc.) aux tirs et aux buts, compte tenu des autres types d’événements (au-delà des tirs et des buts) et des fonctionnalités disponibles. Vous n’avez pas besoin de l’implémenter pour ce jalon. &lt;/span&gt;&lt;/h5&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Comment obtenir une information plus précise sur la force réelle des joueurs sur la glace ?&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour chaque game, dans le json retourné par l’API, dans gameData/Players, on a accès à la liste des joueurs participants. Il est égallement possible de récupéré l’équipe pour chaque joueur avec la clé ‘currentTeam’ qui existe pour chacune des personnes participant au match.
-A partir de ces données, on peut compter le nombre de joueurs qui apparaissent dans les événements pour chaque équipe jusqu’a ce qu’un but soit marqué. On estime alors le nombre de joueur présent dans chaque équipe. Cependant on ne sait pas vraiment quand réinitilialiser les compte des joueurs.&lt;/p&gt;
-
-  &lt;p&gt;Une meilleure méthode consisterai à considérer qu’il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d’un but, on pourrait compter le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
-On fait de même pour les pénalités majeure survenues dans les 5 minutes avant le but et pour les Inconduite dans les 10 minutes. Pour chaque équipe, on compte un nombre maximum de pénalité de 2 puiqu’une équipe ne peut avoir moins de 4 joueurs sur la glace.
-Ainsi, si l’équipe A a eu deux pénalités, et l’équipe B une seule, alors l’équipe A a encore 4 joueurs sur la glace et l’équipe B en a 5. Si le but est de l’équipe A, elle a donc marqué un but à 4 contre 5.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
-
-&lt;h5 id=&quot;en-quelques-phrases-discutez-de-certaines-fonctionnalités-supplémentaires-que-vous-pourriez-envisager-de-créer-à-partir-des-données-disponibles-dans-cet-ensemble-de-données-nous-ne-cherchons-pas-de-réponses-particulières-mais-si-vous-avez-besoin-dinspiration-un-tir-ou-un-but-pourrait-il-être-classé-comme-un-rebond-ou-un-tir-dans-le-rush&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;En quelques phrases, discutez de certaines fonctionnalités supplémentaires que vous pourriez envisager de créer à partir des données disponibles dans cet ensemble de données. Nous ne cherchons pas de réponses particulières, mais si vous avez besoin d’inspiration, un tir ou un but pourrait-il être classé comme un rebond ou un tir dans le rush?&lt;/span&gt;&lt;/h5&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Dans la base de données de la LNH à laquelle on a accès, il y plusieurs autres attributs que l’on pourrait aller chercher qui permettraient d’ajouter d’autres analyses. Un premier attribut que l’on pourrait ajouter est la rôle du joueur qui fait le tir, à savoir s’il s’agit d’un défenseur ou d’un attaquant (ou même d’un gardien). Grâce à cette donnée, on pourrait faire plusieurs comparaisons. Par exemple, quel est le ratio de tir entre les défenseurs et les attaquants. Cela permettrait de répondre à la question de savoir si les équipes qui marquent beaucoup ont tendance à avoir un ratio qui penche plus en faveur des attaquants que des défenseurs ou bien est-ce que le ratio est essentiellement le même pour toutes les équipes? Est-ce qu’au final, c’est le nombre absolu de tir qui compte? On pourrait aussi regarder où les attaquants ont tendance à se trouver sur la patinoire lorsqu’ils marquent, et comparer cela avec la position des défenseurs.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;D’autres informations à propos des joueurs pourraient aussi être intéressantes. Par exemple, leur taille et leur âge. On pourrait, par exemple, faire des analyses corrélationnelles entre la taille, l’âge et la tendance à marquer. On pourrait ainsi agréger ces mesures par équipe en faisant la moyenne par exemple. Cela nous permettrait de voir si la moyenne d’âge d’une équipe a une influence sur leur perfomances ou si les équipes avec de grands joueurs sont généralement meilleurs que les équipes avec des joueurs plus petit. On pourrait aussi s’intéresser à la distribution de ces attributs. On pourrait calculer la variance de la taille et de l’âge d’une équipe. Cela nous permettrait, par exemple, de voir si une équipe qui à une grande variance sur le plan de l’âge et de la grandeurs performe généralement mieux qu’une équipe avec uniquement des jeunes, ou uniquement des vieux.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Outils de débogage interactif</title><link href="http://localhost:4000/jekyll/update/2021/10/15/3-Outil-de-debogage-interactif.html" rel="alternate" type="text/html" title="Outils de débogage interactif" /><published>2021-10-15T10:16:00-04:00</published><updated>2021-10-15T10:16:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/3-Outil-de-debogage-interactif</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/3-Outil-de-debogage-interactif.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+&lt;h5 id=&quot;combinez-les-informations-des-sections-précédentes-pour-produire-un-graphique-qui-montre-le-pourcentage-de-buts--buts---tirs-en-fonction-à-la-fois-de-la-distance-par-rapport-au-filet-et-de-la-catégorie-de-types-de-tirs-vous-pouvez-choisir-une-seule-saison-de-votre-choix-brièvement-discutez-de-vos-conclusions--par-exemple-quels-pourraient-être-les-types-de-tirs-les-plus-dangereux-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Combinez les informations des sections précédentes pour produire un graphique qui montre le pourcentage de buts (# buts / # tirs) en fonction à la fois de la distance par rapport au filet et de la catégorie de types de tirs (vous pouvez choisir une seule saison de votre choix) brièvement Discutez de vos conclusions ; Par exemple, quels pourraient être les types de tirs les plus dangereux ?&lt;/span&gt;&lt;/h5&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Outils de débogage interactif</title><link href="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html" rel="alternate" type="text/html" title="Outils de débogage interactif" /><published>2021-10-15T10:16:00-04:00</published><updated>2021-10-15T10:16:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;prenez-une-capture-décran-de-loutil-et-ajoutez-la-au-blog-post-accompagné-dune-brève-description-1-2-phrases-de-ce-que-fait-votre-outil-vous-navez-pas-à-vous-soucier-dintégrer-loutil-dans-le-blog&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Prenez une capture d’écran de l’outil et ajoutez-la au blog post, accompagné d’une brève description (1-2 phrases) de ce que fait votre outil. Vous n’avez pas à vous soucier d’intégrer l’outil dans le blog.&lt;/span&gt;&lt;/h5&gt;
 
@@ -479,56 +137,7 @@ Le slider permet de selectionner le numéro de l’événement par ordre tempore
 Le widget affiche la date du match et les noms des équipes qui affrontent.
 Pour chaque événement, sont affichés : le tuype d’événement (but / tir), les coordonnées sur la glace, le nom du tireur et celui du goal.
 Le widget affiche également une représentation du terrain avec un point magenta à l’emplacement correspondant à l’événement.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Échauffement</title><link href="http://localhost:4000/jekyll/update/2021/10/01/1-Echauffement.html" rel="alternate" type="text/html" title="Échauffement" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/1-Echauffement</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/1-Echauffement.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
-
-&lt;h5 id=&quot;triez-les-gardiens-de-but-par-leur-pourcentage-darrêts--vs---qui-est-le-rapport-de-leurs-tirs-sauvés-sur-le-nombre-total-de-tirs-auxquels-ils-ont-fait-face-quels-problèmes-remarquez-vous-en-utilisant-cette-métrique-pour-classer-les-gardiens-de-but--que-pourrait-on-faire-pour-y-faire-face--ajoutez-cette-discussion-à-votre-article-de-blog-pas-encore-besoin-de-cadre-de-données-ou-de-tracé-remarque--vous-navez-pas-besoin-de-créer-une-nouvelle-métrique-sophistiquée-ici-si-vous-le-souhaitez-vous-pouvez-effectuer-un-contrôle-de-cohérence-par-rapport-à-la-page-web-officielle-des-statistiques-de-la-lnh-vous-navez-pas-non-plus-besoin-de-reproduire-un-classement-particulier-sur-la-page-de-la-lnh--si-votre-approche-est-raisonnable-vous-obtiendrez-toutes-les-notes&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Triez les gardiens de but par leur pourcentage d’arrêts (« VS % »), qui est le rapport de leurs tirs sauvés sur le nombre total de tirs auxquels ils ont fait face. Quels problèmes remarquez-vous en utilisant cette métrique pour classer les gardiens de but ? Que pourrait-on faire pour y faire face ? Ajoutez cette discussion à votre article de blog (pas encore besoin de cadre de données ou de tracé). &lt;br /&gt;Remarque : Vous n’avez pas besoin de créer une nouvelle métrique sophistiquée ici. Si vous le souhaitez, vous pouvez effectuer un contrôle de cohérence par rapport à la &lt;a href=&quot;http://www.nhl.com/stats/goalies?reportType=season&amp;amp;seasonFrom=20172018&amp;amp;seasonTo=20172018&quot; title=&quot;page Web officielle des statistiques de la LNH&quot;&gt;page Web officielle des statistiques de la LNH&lt;/a&gt;. Vous n’avez pas non plus besoin de reproduire un classement particulier sur la page de la LNH ; si votre approche est raisonnable, vous obtiendrez toutes les notes.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;p&gt;Trions les goals en fonction de leur SV%&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/trie_des_goal_en_fonction_du_sv.png&quot; alt=&quot;Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Quelques problèmes apparaîssent puisque qu’en classant les goals comme nous l’avons fait, on se rend compte que ceux en tete de classement n’ont pas beaucoup de matchs à leurs actifs (un seul en l’occurence pour les trois premiers).Ensuite la majorité d’entre eux n’ont remporté aucun match , il serait donc paradoxal qu’ils soient les meilleurs.
-Il serait interessant de considérer leurs classement en fonction de leurs parties gagnées et de leurs SV%&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
-
-&lt;h5 id=&quot;filtrez-les-gardiens-en-utilisant-lapproche-proposée-ci-dessus-et-produisez-un-graphique-à-barres-avec-les-noms-des-joueurs-sur-laxe-des-y-et-enregistrer-le-pourcentage-sv-sur-laxe-des-x-vous-pouvez-garder-les-20-meilleurs-gardiens-incluez-ce-chiffre-dans-votre-article-de-blog-assurez-vous-que-tous-les-axes-sont-étiquetés-et-que-le-titre-est-approprié&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Filtrez les gardiens en utilisant l’approche proposée ci-dessus et produisez un graphique à barres avec les noms des joueurs sur l’axe des y et enregistrer le pourcentage (‘SV%’) sur l’axe des x. Vous pouvez garder les 20 meilleurs gardiens. Incluez ce chiffre dans votre article de blog; assurez-vous que tous les axes sont étiquetés et que le titre est approprié.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;p&gt;Trions les goals en fonction de leur victoires puis de leur SV%
- nous obtenons le graphique suivant :&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/echauffement/pourcentage_d'arrets_sur_le_classement_des_20_meilleurs_gardiens.png&quot; alt=&quot;Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
-
-&lt;h5 id=&quot;le-pourcentage-déconomies-nest-évidemment-pas-une-fonctionnalité-très-complète-discutez-des-autres-caractéristiques-qui-pourraient-être-utiles-pour-déterminer-la-performance-dun-gardien-de-but-vous-navez-pas-besoin-de-mettre-en-œuvre-quoi-que-ce-soit-à-moins-que-vous-ne-le-vouliez-vraiment-tout-ce-qui-est-requis-est-un-court-paragraphe-de-discussion&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Le pourcentage d’économies n’est évidemment pas une fonctionnalité très complète. Discutez des autres caractéristiques qui pourraient être utiles pour déterminer la performance d’un gardien de but. Vous n’avez pas besoin de mettre en œuvre quoi que ce soit à moins que vous ne le vouliez vraiment, tout ce qui est requis est un court paragraphe de discussion.&lt;/span&gt;&lt;/h5&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Comment améliorer notre classement ?&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Une première amélioration de notre classement consisterait à prendre en compte le nombre de match joué. Plus de poids pourrait être accordé aux performances des goals qui démontré leurs compétences sur un nombre de match important. Les performances des goals n’ayant fait qu’un match ou deux peuvent relever de la chance et sont moins significative.&lt;/p&gt;
-
-  &lt;p&gt;Le nombre d’attaques subies par un goal pourrait égamelent être pris en compte. Pour deux goals avec le même SV%, celui ayant subi le plus d’attaques gagnerait des places dans le classement.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Acquisition de données</title><link href="http://localhost:4000/jekyll/update/2021/10/01/2-Aquisition-de-donnees.html" rel="alternate" type="text/html" title="Acquisition de données" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/2-Aquisition-de-donnees</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/2-Aquisition-de-donnees.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Acquisition de données</title><link href="http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models.html" rel="alternate" type="text/html" title="Acquisition de données" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;rédigez-un-bref-tutoriel-sur-la-façon-dont-votre-équipe-a-téléchargé-lensemble-de-données-imaginez--que-vous-cherchiez-un-guide-sur-la-façon-de-télécharger-les-données-play-by-play--votre-guide-devrait-vous-faire-dire-parfait---cest-exactement-ce-que-je-cherchais-cela-peut-être-aussi-simple-que-de-copier-votre-fonction-et-un-exemple-dutilisation-et-décrire-une-ou-deux-phrases-la-décrivant&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Rédigez un bref tutoriel sur la façon dont votre équipe a téléchargé l’ensemble de données. Imaginez :) que vous cherchiez un guide sur la façon de télécharger les données play-by-play ; votre guide devrait vous faire dire “Parfait - c’est exactement ce que je cherchais!”. Cela peut être aussi simple que de copier votre fonction et un exemple d’utilisation, et d’écrire une ou deux phrases la décrivant.&lt;/span&gt;&lt;/h5&gt;
 
@@ -629,46 +238,53 @@ regular = dfs[‘regular’] contient alors un DataFrame de la saison régulièr
 
 &lt;blockquote&gt;
   &lt;p&gt;La récupération des données est optimisée. Si notre Tidyer a déjà tidyfié les données d’une saison, il va directement récupérer les fichiers .csv du dossier database/panda correspondant à la saison voulue. Sinon, il demande à récupérer les données brut en .json. Une fois encore, si les fichiers .json correspondant existent dans le dossier database, ils sont directement récupérés. Sinon, l’apiRequester récupère les données via l’API de la NHL.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Evaluation de Groupe</title><link href="http://localhost:4000/jekyll/update/2021/10/01/TeamEvaluation.html" rel="alternate" type="text/html" title="Evaluation de Groupe" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/TeamEvaluation</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/TeamEvaluation.html">&lt;h1 id=&quot;evaluations-de-groupe&quot;&gt;Evaluations de Groupe&lt;/h1&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Échauffement</title><link href="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html" rel="alternate" type="text/html" title="Échauffement" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Membres&lt;/th&gt;
-      &lt;th&gt;Olivier&lt;/th&gt;
-      &lt;th&gt;Romeo&lt;/th&gt;
-      &lt;th&gt;Nathanael&lt;/th&gt;
-      &lt;th&gt;Ebeyo&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Olivier&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Romeo&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Nathanael&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Ebeyo&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Evaluations de Groupe</summary></entry></feed>
+&lt;h5 id=&quot;triez-les-gardiens-de-but-par-leur-pourcentage-darrêts--vs---qui-est-le-rapport-de-leurs-tirs-sauvés-sur-le-nombre-total-de-tirs-auxquels-ils-ont-fait-face-quels-problèmes-remarquez-vous-en-utilisant-cette-métrique-pour-classer-les-gardiens-de-but--que-pourrait-on-faire-pour-y-faire-face--ajoutez-cette-discussion-à-votre-article-de-blog-pas-encore-besoin-de-cadre-de-données-ou-de-tracé-remarque--vous-navez-pas-besoin-de-créer-une-nouvelle-métrique-sophistiquée-ici-si-vous-le-souhaitez-vous-pouvez-effectuer-un-contrôle-de-cohérence-par-rapport-à-la-page-web-officielle-des-statistiques-de-la-lnh-vous-navez-pas-non-plus-besoin-de-reproduire-un-classement-particulier-sur-la-page-de-la-lnh--si-votre-approche-est-raisonnable-vous-obtiendrez-toutes-les-notes&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Triez les gardiens de but par leur pourcentage d’arrêts (« VS % »), qui est le rapport de leurs tirs sauvés sur le nombre total de tirs auxquels ils ont fait face. Quels problèmes remarquez-vous en utilisant cette métrique pour classer les gardiens de but ? Que pourrait-on faire pour y faire face ? Ajoutez cette discussion à votre article de blog (pas encore besoin de cadre de données ou de tracé). &lt;br /&gt;Remarque : Vous n’avez pas besoin de créer une nouvelle métrique sophistiquée ici. Si vous le souhaitez, vous pouvez effectuer un contrôle de cohérence par rapport à la &lt;a href=&quot;http://www.nhl.com/stats/goalies?reportType=season&amp;amp;seasonFrom=20172018&amp;amp;seasonTo=20172018&quot; title=&quot;page Web officielle des statistiques de la LNH&quot;&gt;page Web officielle des statistiques de la LNH&lt;/a&gt;. Vous n’avez pas non plus besoin de reproduire un classement particulier sur la page de la LNH ; si votre approche est raisonnable, vous obtiendrez toutes les notes.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;Trions les goals en fonction de leur SV%&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/echauffement/trie_des_goal_en_fonction_du_sv.png&quot; alt=&quot;Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Quelques problèmes apparaîssent puisque qu’en classant les goals comme nous l’avons fait, on se rend compte que ceux en tete de classement n’ont pas beaucoup de matchs à leurs actifs (un seul en l’occurence pour les trois premiers).Ensuite la majorité d’entre eux n’ont remporté aucun match , il serait donc paradoxal qu’ils soient les meilleurs.
+Il serait interessant de considérer leurs classement en fonction de leurs parties gagnées et de leurs SV%&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
+
+&lt;h5 id=&quot;filtrez-les-gardiens-en-utilisant-lapproche-proposée-ci-dessus-et-produisez-un-graphique-à-barres-avec-les-noms-des-joueurs-sur-laxe-des-y-et-enregistrer-le-pourcentage-sv-sur-laxe-des-x-vous-pouvez-garder-les-20-meilleurs-gardiens-incluez-ce-chiffre-dans-votre-article-de-blog-assurez-vous-que-tous-les-axes-sont-étiquetés-et-que-le-titre-est-approprié&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Filtrez les gardiens en utilisant l’approche proposée ci-dessus et produisez un graphique à barres avec les noms des joueurs sur l’axe des y et enregistrer le pourcentage (‘SV%’) sur l’axe des x. Vous pouvez garder les 20 meilleurs gardiens. Incluez ce chiffre dans votre article de blog; assurez-vous que tous les axes sont étiquetés et que le titre est approprié.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;Trions les goals en fonction de leur victoires puis de leur SV%
+ nous obtenons le graphique suivant :&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/echauffement/pourcentage_d'arrets_sur_le_classement_des_20_meilleurs_gardiens.png&quot; alt=&quot;Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
+
+&lt;h5 id=&quot;le-pourcentage-déconomies-nest-évidemment-pas-une-fonctionnalité-très-complète-discutez-des-autres-caractéristiques-qui-pourraient-être-utiles-pour-déterminer-la-performance-dun-gardien-de-but-vous-navez-pas-besoin-de-mettre-en-œuvre-quoi-que-ce-soit-à-moins-que-vous-ne-le-vouliez-vraiment-tout-ce-qui-est-requis-est-un-court-paragraphe-de-discussion&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Le pourcentage d’économies n’est évidemment pas une fonctionnalité très complète. Discutez des autres caractéristiques qui pourraient être utiles pour déterminer la performance d’un gardien de but. Vous n’avez pas besoin de mettre en œuvre quoi que ce soit à moins que vous ne le vouliez vraiment, tout ce qui est requis est un court paragraphe de discussion.&lt;/span&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Comment améliorer notre classement ?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Une première amélioration de notre classement consisterait à prendre en compte le nombre de match joué. Plus de poids pourrait être accordé aux performances des goals qui démontré leurs compétences sur un nombre de match important. Les performances des goals n’ayant fait qu’un match ou deux peuvent relever de la chance et sont moins significative.&lt;/p&gt;
+
+  &lt;p&gt;Le nombre d’attaques subies par un goal pourrait égamelent être pris en compte. Pour deux goals avec le même SV%, celui ayant subi le plus d’attaques gagnerait des places dans le classement.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry></feed>

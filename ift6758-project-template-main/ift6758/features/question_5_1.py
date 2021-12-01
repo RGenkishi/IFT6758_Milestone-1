@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 from ift6758.data.milestone2.question_3 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve, calibration_display_curve
 import pandas as pd
 import os
@@ -12,7 +13,13 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve, auc
 
-
+with open("API_KEY", "r") as f:
+    API_KEY = f.readline()
+exp = Experiment(
+    api_key=API_KEY, # don’t hardcode!!
+    project_name='milestone_2',
+    workspace="genkishi"
+)
 __file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
 data = pd.read_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
 
@@ -35,7 +42,7 @@ roc_curve_and_auc_metrique(proba, y_test, "baseline_XGBoost")
 goal_rate_curve(proba, y_test, "baseline_XGBoost")
 goal_cumulative_proportion_curve(proba, y_test, "baseline_XGBoost")
 calibration_display_curve(proba, y_test, "baseline_XGBoost")
-plt.show()
+
 
 
 
