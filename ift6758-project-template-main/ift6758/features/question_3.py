@@ -11,8 +11,8 @@ import numpy as np
 import pandas as pd
 from sklearn.calibration import CalibrationDisplay
 
-from ift6758.features.question_2 import Dataset
-from ift6758.features.Classifier import *
+from ift6758.data.milestone2.question_2 import Dataset
+from ift6758.data.milestone2.Classifier import *
 from ift6758.data.tidyDataKeys import *
 from colorama import Fore, Style
 from sklearn.metrics import roc_curve, auc
