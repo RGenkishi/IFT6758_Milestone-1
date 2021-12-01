@@ -1,11 +1,11 @@
-from comet_ml import Experiment
+'''from comet_ml import Experiment
 with open("API_KEY", "r") as f:
     API_KEY = f.readline()[:-1]
 exp = Experiment(
     api_key=API_KEY, # don’t hardcode!!
     project_name='milestone_2',
     workspace="genkishi"
-)
+)'''
 
 import numpy as np
 import pandas as pd
@@ -127,7 +127,7 @@ def plot_cumulative_goal_rate(y_true, y_probs, names, colors):
     plt.show()
 
 
-def plot_log_reg_calibration(y_true, y_probs, names, colors, zoom=False):
+def plot_calibration(y_true, y_probs, names, colors, zoom=False):
     ref_line = True
 
     _, ax = plt.subplots()
@@ -179,11 +179,12 @@ def plot_four_plots():
     log_reg_clfs = {feature: LogRegClf(datasets[feature]) for feature in datasets}
     log_reg_clfs['random'] = RandomClf(dataset)
 
-    baseName = input("Saisir un nom pour l'enregistrement des modèles : ")
+    '''baseName = input("Saisir un nom pour l'enregistrement des modèles : ")
     dir = "models/"
     for feature in log_reg_clfs:
         dump(log_reg_clfs[feature], dir + baseName + "_" + feature+'.joblib')
         exp.log_model("log Reg (" + feature + ")", dir + baseName + "_" + feature+'.joblib')
+    '''
 
     for log_reg in log_reg_clfs.values():
         log_reg.train()
@@ -201,7 +202,7 @@ def plot_four_plots():
 
     plot_cumulative_goal_rate(y_true=dataset.y_valid, y_probs=predict_proba_goal, names=names, colors=colors)
 
-    plot_log_reg_calibration(y_true=dataset.y_valid, y_probs=predict_proba_goal, names=names, colors=colors)
+    plot_calibration(y_true=dataset.y_valid, y_probs=predict_proba_goal, names=names, colors=colors)
 
 
 if __name__ == "__main__":
