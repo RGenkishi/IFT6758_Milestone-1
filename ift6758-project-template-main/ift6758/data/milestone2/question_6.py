@@ -16,7 +16,6 @@ cores = multiprocessing.cpu_count()
 
 data = pd.read_pickle(os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features') + "/data_for_models/data.pkl")
 
-
 '''
 Les pretraitements
 '''
@@ -31,23 +30,26 @@ les algorithmes d'apprentissage et validation croisée stratifiée
 
 def classifers(classifier, title):
     exp = Experiment(
-       api_key=os.environ.get('COMET_API_KEY'),  # ne pas coder en dur!
-       project_name='milestone_2',
-        workspace= 'genkishi',
+        api_key=os.environ.get('COMET_API_KEY'),  # ne pas coder en dur!
+        project_name='milestone_2',
+        workspace='genkishi',
     )
     print('----------------- '+title+' ----------------------')
     proba = cross_val_predict(classifier, X_train_all, Y_train_all, cv=5, method='predict_proba')
-    score = cross_validate(classifier, X_train_all, Y_train_all, cv=5, scoring='f1',n_jobs=cores,return_estimator=True)
-    f1_accuracy = score['test_score'].mean()
+    score = cross_val_score(classifier, X_train_all, Y_train_all, cv=5, scoring='f1',n_jobs=cores)
+    classifier.fit(X_train_all, Y_train_all)
+    f1_accuracy = score.mean()
     auc_accuracy = roc_auc_score(Y_train_all, proba[:, 1])
     print(auc_accuracy)
     print(f1_accuracy)
     metrics = {"f1_accuracy": f1_accuracy,
                "auc_accuracy": auc_accuracy}
-    pickle.dump(score['estimator'], open(title+'.pkl', 'wb'))
+    pickle.dump(classifier, open(title+'.pkl', 'wb'))
     exp.log_model(title, title+'.pkl')
-    exp.log_dataset_hash( X_train_all)
+    exp.log_dataset_hash(X_train_all)
     exp.log_metrics(metrics)
+    exp.log_parameters(classifier.get_params())
+    exp.set_code(overwrite=True)
     roc_curve_and_auc_metrique(proba, Y_train_all, title)
     goal_rate_curve(proba, Y_train_all, title)
     goal_cumulative_proportion_curve(proba, Y_train_all, title)
@@ -59,7 +61,7 @@ des_tree_title = 'DecisionTreeClassifier'
 
 
 #MLPClassifier
-MLP = MLPClassifier(hidden_layer_sizes=(70, 70, 70), #(70, 70, 70)
+MLP = MLPClassifier(hidden_layer_sizes=(70, 70, 70),
                     activation='tanh',
                     solver='adam',
                     alpha=0.01, learning_rate='adaptive', max_iter=1000, early_stopping=True)
