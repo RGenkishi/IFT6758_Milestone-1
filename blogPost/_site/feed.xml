@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-30T22:25:53-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingénierie des caractéristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques" /><published>2021-11-30T06:27:11-05:00</published><updated>2021-11-30T06:27:11-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T00:59:31-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingénierie des caractéristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques" /><published>2021-11-30T06:27:11-05:00</published><updated>2021-11-30T06:27:11-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;créez-et-comprennent-les-figures-suivants-dans-votre-blogpost-et-brièvement-discutez-vos-observations-quelques-phrases-un-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-regroupées-binned-par-distanceun-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-binned-par-angle-un-histogramme-2d-où-un-axe-est-la-distance-et-lautre-est-langle-vous-navez-pas-besoin-de-séparer-les-buts-et-les-non-buts&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Créez et comprennent les figures suivants dans votre blogpost et brièvement discutez vos observations (quelques phrases): &lt;br /&gt;Un histogramme de nombre de tirs (buts et non-buts séparés), regroupées (binned) par distance&lt;br /&gt;Un histogramme de nombre de tirs (buts et non-buts séparés), binned par angle &lt;br /&gt;Un histogramme 2D où un axe est la distance et l’autre est l’angle. Vous n’avez pas besoin de séparer les buts et les non-buts.&lt;/span&gt;&lt;/h5&gt;
 
 &lt;p&gt;Nombre de tirs regroupés par distance&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/nb_shot_by_distance.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/nb_shot_by_distance.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Analyse&lt;/p&gt;
@@ -23,7 +23,7 @@ Certaines tentatives sont effectuées entre 125 et 175 pieds mais très peu d’
 &lt;p&gt;Nombre de tirs regroupés par angle&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/nb_shot_by_angle.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/nb_shot_by_angle.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Analyse&lt;/p&gt;
@@ -43,12 +43,12 @@ En résumé, Les tirs qui ont le plus de chance de succès sont ceux tentés bie
 &lt;p&gt;Histogramme 2D&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/histo_2D.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/histo_2D.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/histo_2D_non_goal_only.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:left;&quot; /&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/histo_2D_goal_only.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:right;&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/histo_2D_non_goal_only.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:left;&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/histo_2D_goal_only.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:right;&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Analyse&lt;/p&gt;
@@ -114,8 +114,8 @@ Les tirs à une distance de 75 pieds sont les plus nombreux et sont préférable
 &lt;p&gt;Nombre de buts en fonction de l’état du filet&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/goal_rate_by_distance.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:left;&quot; /&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/goal_rate_by_angle.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:right;&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/goal_rate_by_distance.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:left;&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/goal_rate_by_angle.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; style=&quot;display:inline-block; width:50%; float:right;&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Analyse&lt;/p&gt;
@@ -140,13 +140,85 @@ Il semble que les tir avec un angle extrème d’environ 3 radian (presque 180 d
 &lt;p&gt;Nombre de buts en fonction de l’état du filet&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/milestone_2/Q1/nb_goal_by_net_state.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q2/nb_goal_by_net_state.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Analyse&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;On peut remarquer un certain nombre de buts marqués entre 150 et 175 pieds, soit dans la zone de défense.&lt;/p&gt;
+
+&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Modèles de base</title><link href="http://localhost:4000/jekyll/update/2021/11/29/3-Baseline_models.html" rel="alternate" type="text/html" title="Modèles de base" /><published>2021-11-29T06:27:11-05:00</published><updated>2021-11-29T06:27:11-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/29/3-Baseline_models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/29/3-Baseline_models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+
+&lt;h5 id=&quot;évaluez-la-précision-cest-à-dire-correctement-prédite--totale-de-votre-modèle-sur-lensemble-de-validation-que-remarquez-vous--regardez-les-prédictions-et-discutez-de-vos-découvertes-quel-pourrait-être-un-problème-potentiel-incluez-ces-discussions-dans-votre-article-de-blog&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Évaluez la précision (c’est-à-dire correctement prédite / totale) de votre modèle sur l’ensemble de validation. Que remarquez-vous ? Regardez les prédictions et discutez de vos découvertes. Quel pourrait être un problème potentiel? Incluez ces discussions dans votre article de blog.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;Pour cette question, nous chargeons un Dataset avec 80% des données de 2015 à 2018 réservées à l’entraînement et les 20% restant à la validation.
+Les données de 2019 sont reservée à l’ensemble de test du Dataset.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q3/accuracy.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Analyse&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;La précision de notre algorithme est excellentissime avec une accuracy de plus de 90% ! C’est magnifique ! Pas besoin d’aller plus loin..&lt;/p&gt;
+
+  &lt;p&gt;MAIS que prédit-on ?&lt;/p&gt;
+
+  &lt;p&gt;La table des prédictions est remplie de 0 avec 62222 “non buts” contre 0 buts.
+Le nombre total de prédiction est également 62222.
+Juste pour être sûr, on compte le nombre de prédiction exacte : 56350.
+Et quel est le nombre de “non but” : 56350.&lt;/p&gt;
+
+  &lt;p&gt;Finalement, on ne fait que prédire la classe majoritaire. Un premier problème est que le nombre de “non buts” est très important face au nombre de buts.
+Par ailleurs, il se peut que les features à notre disposition ne soient pas suffisante pour faire la différence.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
+
+&lt;h5 id=&quot;entraînez-maintenant-deux-autres-classificateurs-de-régression-logistique-en-utilisant-la-même-configuration-que-ci-dessus-mais-cette-fois-sur-la-fonction-dangle-puis-à-la-fois-sur-la-distance-et-langle-produisez-les-trois-mêmes-courbes-que-celles-décrites-dans-la-section-précédente-pour-chaque-modèle-y-compris-la-ligne-de-base-aléatoire-vous-devriez-avoir-un-total-de-4-lignes-sur-chaque-figure-régression-logistique-entraînée-sur-la-distance-uniquement-déjà-fait-ci-dessusrégression-logistique-entraînée-sur-l-angle-uniquementrégression-logistique-entraînée-sur-la-distance-et-l-angleligne-de-base-aléatoire--probabilité-prédite-est-échantillonné-à-partir-dune-distribution-uniforme-cest-à-dire-yiu01incluez-ces-quatre-figures-chacune-avec-quatre-courbes-dans-votre-article-de-blog-en-quelques-phrases-discutez-de-votre-interprétation-de-ces-résultats&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Entraînez maintenant deux autres classificateurs de régression logistique en utilisant la même configuration que ci-dessus, mais cette fois sur la fonction d’angle, puis à la fois sur la distance et l’angle. Produisez les trois mêmes courbes que celles décrites dans la section précédente pour chaque modèle. Y compris la ligne de base aléatoire, vous devriez avoir un total de 4 lignes sur chaque figure :&lt;br /&gt;Régression logistique, entraînée sur la distance uniquement (déjà fait ci-dessus)&lt;br /&gt;Régression logistique, entraînée sur l’ angle uniquement&lt;br /&gt;Régression logistique, entraînée sur la distance et l’ angle&lt;br /&gt;Ligne de base aléatoire : probabilité prédite est échantillonné à partir d’une distribution uniforme, c’est-à-dire yiU(0,1)&lt;br /&gt;Incluez ces quatre figures (chacune avec quatre courbes) dans votre article de blog. En quelques phrases, discutez de votre interprétation de ces résultats.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;Courbes ROC et métrique AUC&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q3/courbe_ROC_Q3.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Analyse&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Le meilleur tends à se placer dans le coin supérieur gauche de la courbe ROC avec un fort taux de vrai positif et un faible taux de faux positifs&lt;/p&gt;
+
+  &lt;p&gt;Avec la Regression Logistique basée sur l’angle de tir, un faible taux de faux positifs entraîne également un faible taux de vrai positifs.
+Lorsque le taux de faux positif dépasse environ 50%, le taux de vrai positif passe enfin la barre des 50%.
+Cet estimateur est donc moins bon que l’estimateur aléatoire sur la moitié de la courbe ROC et meilleur sur l’autre moitiée.&lt;br /&gt;
+On est loin de l’estimateur idéal.&lt;/p&gt;
+
+  &lt;p&gt;Les modèles basés sur la distance et sur la combinaison de l’angle et de la distance ont des performances confondues. Globalement, ces modèles performent mieux que l’aléatoire.
+En effet, leurs courbes sont placée au dessus de la première bisectrice. Pour un même taux de faux positif, le taux de vrai positif est plus important.&lt;/p&gt;
+
+  &lt;p&gt;Compte tenu du fait que ces deux modèles performent de la même façon, nous pouvons conclure que la mesure de l’angle n’apporte pas une information cruciale pour la prédiction.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Taux de buts (#buts / (#non_buts + #buts)) en fonction du centile du modèle de probabilité de tir&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q3/courbe_goal_rate_Q3.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Analyse&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;En toute logique, un classifieur aléatoire prédit le même pourcentage de but pour chaque centile. C’est confirmé par notre tracé.&lt;/p&gt;
+
+  &lt;p&gt;Pour le classifieur basé sur l’angle uniquement, le taux de but est plus important que&lt;/p&gt;
 
 &lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Question 5</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html" rel="alternate" type="text/html" title="Question 5" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
@@ -246,107 +318,6 @@ Le slider permet de selectionner le numéro de l’événement par ordre tempore
 Le widget affiche la date du match et les noms des équipes qui affrontent.
 Pour chaque événement, sont affichés : le tuype d’événement (but / tir), les coordonnées sur la glace, le nom du tireur et celui du goal.
 Le widget affiche également une représentation du terrain avec un point magenta à l’emplacement correspondant à l’événement.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Acquisition de données</title><link href="http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models.html" rel="alternate" type="text/html" title="Acquisition de données" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
-
-&lt;h5 id=&quot;rédigez-un-bref-tutoriel-sur-la-façon-dont-votre-équipe-a-téléchargé-lensemble-de-données-imaginez--que-vous-cherchiez-un-guide-sur-la-façon-de-télécharger-les-données-play-by-play--votre-guide-devrait-vous-faire-dire-parfait---cest-exactement-ce-que-je-cherchais-cela-peut-être-aussi-simple-que-de-copier-votre-fonction-et-un-exemple-dutilisation-et-décrire-une-ou-deux-phrases-la-décrivant&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Rédigez un bref tutoriel sur la façon dont votre équipe a téléchargé l’ensemble de données. Imaginez :) que vous cherchiez un guide sur la façon de télécharger les données play-by-play ; votre guide devrait vous faire dire “Parfait - c’est exactement ce que je cherchais!”. Cela peut être aussi simple que de copier votre fonction et un exemple d’utilisation, et d’écrire une ou deux phrases la décrivant.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;L’API qui permet d’accéder aux données des parties de la LNH est assez facile d’utilisation. L’url de l’API a le format suivant : https://statsapi.web.nhl.com/api/v1/game/ID/feed/live où ID représente l’identifiant unique de la partie.
-L’identifiant de la partie est séparé en trois parties. L’année de la saison, le type de partie (01 pour la pré-saison, 02 pour la saison régulière, et 03 pour les séries éliminatoires), et l’identifiant de la partie comme tel.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour la saison régulière, l’identifiant de la partie est un nombre à 4 chiffres, de 0001 à 1271 (puisqu’il y a 1271 parties dans une saison régulière depuis la saison 2016-2017). Ainsi, pour prendre un exemple, la quatrième partie de la saison régulière de 2016-2017 aurait l’identifiant 2017020004.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Les choses se compliquent un peu pour l’identifiant de partie des séries éliminatoires. Les séries éliminatoires voient s’affronter 16 équipes et se déroule en 4 tours. Chaque tour (round) les équipes s’affronter dans un 4 de 7. La première à remporter 4 parties (game) l’emporte. Lors du premier tour, il y a 8 affrontements (matchup) entre 2 équipes, puis 4 au tour suivant, puis 2 et finalement 1. L’identifiant d’une partie en série éliminatoire est aussi un nombre de 4 chiffre. Le premier chiffre est un 0, le second est le numéro du tour, le troisième le numéro de l’affrontement, puis le dernier est le numéro de partie. Ainsi, pour prendre un exemple, le troisième match du deuxième affrontement du premier tour des séries éliminatoire de la saison 2016-2017 aurait l’identifiant 2017030123.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;En python, on peut faire des requêtes à un API grâce à la librairie &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requests&lt;/code&gt; et sa méthode &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get()&lt;/code&gt;. En passant l’url de la requête en paramètre, on recevra les données sous format json. Voici le code que l’on peut utiliser pour aller chercher toutes les données des parties pour une année en saison réguliere.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;game_data = {}
-max_game = 1271
-season_type = &quot;02&quot;
-for i in range(1, (max_game+1)):
-    gameId = str(year) + season_type + str(i).zfill(4)
-    response = requests.get(url=(self.api_url + gameId +&quot;/feed/live&quot;))
-    game_data[&quot;regular&quot; + gameId] = response.json()
-    time.sleep(0.1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Il est recommandé une faire un time.sleep() d’au moins un dixième de seconde entre chaque requête afin de ne pas surchargé l’API et risquer de se faire bannir.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour aller chercher les données pour les séries éliminatoires, on peut utiliser le code suivant :&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;game_data = {}
-first_digit = 0
-season_type = &quot;03&quot;
-
-for round in range(1, 5):
-    for matchup in range(1, ((8 // (2 ** (round - 1))) + 1)):
-        for game in range(1, 8):
-            game_id = str(year) + season_type + str(first_digit) + str(round) + str(matchup) + str(game)
-            url = (self.api_url + game_id + &quot;/feed/live&quot;)
-            print(url)
-            response = requests.get(url=(self.api_url + game_id + &quot;/feed/live&quot;))
-            if (response.status_code == 404):
-                time.sleep(0.1)
-                break
-            game_data[&quot;playoff&quot; + game_id] = response.json()
-            time.sleep(0.1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;partie-pratique&quot;&gt;Partie pratique&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour récupérer les données de la NHL avec nos fonctions, il suffit de procéder ainsi:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;from ift6758.data.question_2 import *
-
-dataGetter = DataAquirer()
-dataGetter.get_all_games_data_for_a_year(2017)
-
-regularGames = dataGetter.season_data
-playoffGames = dataGetter.playoffs_data
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;regularGames contient alors l’ensemble des match de la saison régulière correspondant à 2017, indexés par id.
-playoffGames, quant à lui, contient les match des playoffs et présente la même structure.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Mais nous pouvons aller plus loin ! Travailler avec des données tidyfiée est beaucoup plus pratique dans certains cas. Vous pouvez choisir votre propre méthode mais nous en proposons également une.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;par-exemple&quot;&gt;Par exemple:&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;from ift6758.data.question_4 import Tidyer
-
-tdf = Tidyer()
-dfs = tdf.game_event_to_panda_df(2019)
-
-regular = dfs[&apos;regular&apos;]
-playoff = dfs[&apos;playoff&apos;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Ici, dfs est un dictionnaire indexé par type de saison (regular et playoff).
-regular = dfs[‘regular’] contient alors un DataFrame de la saison régulière et il en même avec playoff = dfs[‘playoff’] et les données de la saison pllayoff.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;note-sur-loptimisation&quot;&gt;Note sur l’optimisation&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;La récupération des données est optimisée. Si notre Tidyer a déjà tidyfié les données d’une saison, il va directement récupérer les fichiers .csv du dossier database/panda correspondant à la saison voulue. Sinon, il demande à récupérer les données brut en .json. Une fois encore, si les fichiers .json correspondant existent dans le dossier database, ils sont directement récupérés. Sinon, l’apiRequester récupère les données via l’API de la NHL.&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Échauffement</title><link href="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html" rel="alternate" type="text/html" title="Échauffement" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;triez-les-gardiens-de-but-par-leur-pourcentage-darrêts--vs---qui-est-le-rapport-de-leurs-tirs-sauvés-sur-le-nombre-total-de-tirs-auxquels-ils-ont-fait-face-quels-problèmes-remarquez-vous-en-utilisant-cette-métrique-pour-classer-les-gardiens-de-but--que-pourrait-on-faire-pour-y-faire-face--ajoutez-cette-discussion-à-votre-article-de-blog-pas-encore-besoin-de-cadre-de-données-ou-de-tracé-remarque--vous-navez-pas-besoin-de-créer-une-nouvelle-métrique-sophistiquée-ici-si-vous-le-souhaitez-vous-pouvez-effectuer-un-contrôle-de-cohérence-par-rapport-à-la-page-web-officielle-des-statistiques-de-la-lnh-vous-navez-pas-non-plus-besoin-de-reproduire-un-classement-particulier-sur-la-page-de-la-lnh--si-votre-approche-est-raisonnable-vous-obtiendrez-toutes-les-notes&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Triez les gardiens de but par leur pourcentage d’arrêts (« VS % »), qui est le rapport de leurs tirs sauvés sur le nombre total de tirs auxquels ils ont fait face. Quels problèmes remarquez-vous en utilisant cette métrique pour classer les gardiens de but ? Que pourrait-on faire pour y faire face ? Ajoutez cette discussion à votre article de blog (pas encore besoin de cadre de données ou de tracé). &lt;br /&gt;Remarque : Vous n’avez pas besoin de créer une nouvelle métrique sophistiquée ici. Si vous le souhaitez, vous pouvez effectuer un contrôle de cohérence par rapport à la &lt;a href=&quot;http://www.nhl.com/stats/goalies?reportType=season&amp;amp;seasonFrom=20172018&amp;amp;seasonTo=20172018&quot; title=&quot;page Web officielle des statistiques de la LNH&quot;&gt;page Web officielle des statistiques de la LNH&lt;/a&gt;. Vous n’avez pas non plus besoin de reproduire un classement particulier sur la page de la LNH ; si votre approche est raisonnable, vous obtiendrez toutes les notes.&lt;/span&gt;&lt;/h5&gt;
