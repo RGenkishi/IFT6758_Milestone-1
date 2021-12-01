@@ -2,6 +2,7 @@ from comet_ml import Experiment
 import pickle
 import os
 from ift6758.data.milestone2.question_3 import *
+from ift6758.data.tidyDataKeys import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -15,9 +16,9 @@ def angle_feature(features_df):
     #     project_name='milestone_2',
     #     workspace= 'genkishi',
     # )
-    X = features_df[['Angle_from_net']]
+    X = features_df[[ANGLE_FROM_NET]]
     X.fillna(X.median(), inplace=True)
-    Y = features_df['is_goal']
+    Y = features_df[IS_GOAL]
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
     X_train = X_train.to_numpy().reshape(-1, 1)
     X_test = X_test.to_numpy().reshape(-1, 1)

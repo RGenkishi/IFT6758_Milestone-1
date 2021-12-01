@@ -9,14 +9,26 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
 
-
 ''' decommentez et executer la ligne qui suit si vous n'avez pas encore les donner au format pkl'''
-dataformodelpath = os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features')+"/data_for_models"
+'''dataformodelpath = os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features')+"/data_for_models"
 #ftz = Featurizer(2015, 2019)
 #features_df = ftz.get_feature()
 #features_df.to_pickle(dataformodelpath + "/features_df.pkl")
 
 features_df = pd.read_pickle(os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features') + "/data_for_models/features_df.pkl")
+'''
+
+
+''' decommentez et executer la ligne qui suit si vous n'avez pas encore les donner au format pkl'''
+#dataformodelpath = os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features')+"/data_for_models"
+dataformodelpath = "data_for_models/"
+ftz = Featurizer(2015, 2018)
+features_df = ftz.get_feature()
+features_df.to_pickle(dataformodelpath + "features_df.pkl")
+
+print(dataformodelpath + "features_df.pkl")
+
+features_df = pd.read_pickle(dataformodelpath + "features_df.pkl")
 
 random_baseline(features_df)
 distance_feature(features_df)
