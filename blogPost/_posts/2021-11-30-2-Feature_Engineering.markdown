@@ -1,49 +1,60 @@
 ---
 layout: post
-title:  "Ingenierie des caracteristiques"
+title:  "Ingénierie des caractéristiques"
 date:   2021-11-30 17:55:00
 categories: jekyll update
 ---
 
 # Question 1
 
-##### <span style="color:grey">Dans votre article de blog, incluez un petit extrait de votre cadre de données final (par exemple, en utilisant head(10)). Vous pouvez simplement inclure une capture d'écran plutôt que de vous battre pour que les tableaux soient soigneusement formatés en HTML/markdown.</span>
+##### <span style="color:grey">Créez et incluez les figures suivantes dans votre billet de blog et discutez brièvement de vos observations (quelques phrases).</span>
+####  -Un histogramme de nombre de tirs (buts et non-buts séparés), regroupées (binned) par distance
+<p align="center">
+  <img src="/assets/Feature_Engineering/question_1_1_a.png" alt="Shot_binned_by_distance"/>
+</p>
 
 <br>
 
-####  Tableau des 10 premiers éléments de la saison 2019-2020 rangés selon les indications
+####  -Un histogramme de nombre de tirs (buts et non-buts séparés), binned par angle
+<p align="center">
+  <img src="/assets/Feature_Engineering/question_1_1_b.png" alt="Shot_binned_by_angle"/>
+</p>
 
+<br>
 
-
-
+####  -Un histogramme 2D où un axe est la distance et l'autre est l'angle. Vous n'avez pas besoin de séparer les buts et les non-buts.
+<p align="center">
+  <img src="/assets/Feature_Engineering/question_1_1_c.png" alt="2D_histogram"/>
+</p>
 
 <br>
 
 ---
-
 # Question 2
 
-##### <span style="color:grey">Vous remarquerez que le champ de « force » (c.-à-d. égal, avantage numérique, en désavantage numérique) n'existe que pour les buts, pas pour les tirs. De plus, il n'inclut pas la force réelle des joueurs sur la glace (c'est-à-dire 5 contre 4, ou 5 contre 3, etc.). Discutez de la façon dont vous pourriez ajouter les informations sur la force réelle (c'est-à-dire 5 contre 4, etc.) aux tirs et aux buts, compte tenu des autres types d'événements (au-delà des tirs et des buts) et des fonctionnalités disponibles. Vous n'avez pas besoin de l'implémenter pour ce jalon. </span>
-<br>
-
-Comment obtenir une information plus précise sur la force réelle des joueurs sur la glace ?
-
-> Pour chaque game, dans le json retourné par l'API, dans gameData/Players, on a accès à la liste des joueurs participants. Il est égallement possible de récupéré l'équipe pour chaque joueur avec la clé 'currentTeam' qui existe pour chacune des personnes participant au match.
->A partir de ces données, on peut compter le nombre de joueurs qui apparaissent dans les événements pour chaque équipe jusqu'a ce qu'un but soit marqué. On estime alors le nombre de joueur présent dans chaque équipe. Cependant on ne sait pas vraiment quand réinitilialiser les compte des joueurs.
->
-> Une meilleure méthode consisterai à considérer qu'il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d'un but, on pourrait compter le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
-> On fait de même pour les pénalités majeure survenues dans les 5 minutes avant le but et pour les Inconduite dans les 10 minutes. Pour chaque équipe, on compte un nombre maximum de pénalité de 2 puiqu'une équipe ne peut avoir moins de 4 joueurs sur la glace.
-> Ainsi, si l'équipe A a eu deux pénalités, et l'équipe B une seule, alors l'équipe A a encore 4 joueurs sur la glace et l'équipe B en a 5. Si le but est de l'équipe A, elle a donc marqué un but à 4 contre 5.
-
+##### <span style="color:grey">Maintenant, créez deux autres figures reliant le taux de but, c'est-à-dire #buts / (#pad_de_buts + #buts), à la distance et le taux de but à l'angle du tir. Incluez ces figures dans votre article de blog et discutez brièvement de vos observations. </span>
+####  -Taux de buts par rapport à la distance
+<p align="center">
+  <img src="/assets/Feature_Engineering/question_1_2_a.png" alt="Goal_rate_by_distance"/>
+</p>
 
 <br>
 
+####  -Taux de buts par rapport à l'angle
+<p align="center">
+  <img src="/assets/Feature_Engineering/question_1_2_b.png" alt="Goal_rate_by_angle"/>
+</p>
 
+<br>
+
+---
 # Question 3
 
-##### <span style="color:grey">En quelques phrases, discutez de certaines fonctionnalités supplémentaires que vous pourriez envisager de créer à partir des données disponibles dans cet ensemble de données. Nous ne cherchons pas de réponses particulières, mais si vous avez besoin d'inspiration, un tir ou un but pourrait-il être classé comme un rebond ou un tir dans le rush?</span>
+##### <span style="color:grey">créez un autre histogramme, cette fois de buts uniquement, classés par distance, et séparez les événements nets vides et non vides. Incluez ce chiffre dans votre article de blog et discutez de vos observations. Pouvez-vous trouver des événements qui ont des caractéristiques incorrectes (par exemple, de mauvaises coordonnées x/y) ? Si oui, prouvez qu'un événement a des caractéristiques incorrectes.</span>
+####  -histograme de but par filet vide et non vide
+<p align="center">
+  <img src="/assets/Feature_Engineering/question_1_3_a.png" alt="Goal_by_empty_net_or_not"/>
+</p>
 <br>
 
->Dans la base de données de la LNH à laquelle on a accès, il y plusieurs autres attributs que l'on pourrait aller chercher qui permettraient d'ajouter d'autres analyses. Un premier attribut que l’on pourrait ajouter est la rôle du joueur qui fait le tir, à savoir s’il s’agit d’un défenseur ou d’un attaquant (ou même d'un gardien). Grâce à cette donnée, on pourrait faire plusieurs comparaisons. Par exemple, quel est le ratio de tir entre les défenseurs et les attaquants. Cela permettrait de répondre à la question de savoir si les équipes qui marquent beaucoup ont tendance à avoir un ratio qui penche plus en faveur des attaquants que des défenseurs ou bien est-ce que le ratio est essentiellement le même pour toutes les équipes? Est-ce qu’au final, c’est le nombre absolu de tir qui compte? On pourrait aussi regarder où les attaquants ont tendance à se trouver sur la patinoire lorsqu’ils marquent, et comparer cela avec la position des défenseurs.
 
->D’autres informations à propos des joueurs pourraient aussi être intéressantes. Par exemple, leur taille et leur âge. On pourrait, par exemple, faire des analyses corrélationnelles entre la taille, l’âge et la tendance à marquer. On pourrait ainsi agréger ces mesures par équipe en faisant la moyenne par exemple. Cela nous permettrait de voir si la moyenne d’âge d’une équipe a une influence sur leur perfomances ou si les équipes avec de grands joueurs sont généralement meilleurs que les équipes avec des joueurs plus petit. On pourrait aussi s'intéresser à la distribution de ces attributs. On pourrait calculer la variance de la taille et de l'âge d'une équipe. Cela nous permettrait, par exemple, de voir si une équipe qui à une grande variance sur le plan de l'âge et de la grandeurs performe généralement mieux qu'une équipe avec uniquement des jeunes, ou uniquement des vieux.

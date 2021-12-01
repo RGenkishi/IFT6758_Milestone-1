@@ -1,45 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-30T18:41:43-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingenierie des caracteristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingenierie des caracteristiques" /><published>2021-11-30T12:55:00-05:00</published><updated>2021-11-30T12:55:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T03:29:49-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingénierie des caractéristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques" /><published>2021-11-30T12:55:00-05:00</published><updated>2021-11-30T12:55:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
-&lt;h5 id=&quot;dans-votre-article-de-blog-incluez-un-petit-extrait-de-votre-cadre-de-données-final-par-exemple-en-utilisant-head10-vous-pouvez-simplement-inclure-une-capture-décran-plutôt-que-de-vous-battre-pour-que-les-tableaux-soient-soigneusement-formatés-en-htmlmarkdown&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Dans votre article de blog, incluez un petit extrait de votre cadre de données final (par exemple, en utilisant head(10)). Vous pouvez simplement inclure une capture d’écran plutôt que de vous battre pour que les tableaux soient soigneusement formatés en HTML/markdown.&lt;/span&gt;&lt;/h5&gt;
+&lt;h5 id=&quot;créez-et-incluez-les-figures-suivantes-dans-votre-billet-de-blog-et-discutez-brièvement-de-vos-observations-quelques-phrases&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Créez et incluez les figures suivantes dans votre billet de blog et discutez brièvement de vos observations (quelques phrases).&lt;/span&gt;&lt;/h5&gt;
+&lt;h4 id=&quot;-un-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-regroupées-binned-par-distance&quot;&gt;-Un histogramme de nombre de tirs (buts et non-buts séparés), regroupées (binned) par distance&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Feature_Engineering/question_1_1_a.png&quot; alt=&quot;Shot_binned_by_distance&quot; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;tableau-des-10-premiers-éléments-de-la-saison-2019-2020-rangés-selon-les-indications&quot;&gt;Tableau des 10 premiers éléments de la saison 2019-2020 rangés selon les indications&lt;/h4&gt;
+&lt;h4 id=&quot;-un-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-binned-par-angle&quot;&gt;-Un histogramme de nombre de tirs (buts et non-buts séparés), binned par angle&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Feature_Engineering/question_1_1_b.png&quot; alt=&quot;Shot_binned_by_angle&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-un-histogramme-2d-où-un-axe-est-la-distance-et-lautre-est-langle-vous-navez-pas-besoin-de-séparer-les-buts-et-les-non-buts&quot;&gt;-Un histogramme 2D où un axe est la distance et l’autre est l’angle. Vous n’avez pas besoin de séparer les buts et les non-buts.&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Feature_Engineering/question_1_1_c.png&quot; alt=&quot;2D_histogram&quot; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
-
 &lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
 
-&lt;h5 id=&quot;vous-remarquerez-que-le-champ-de--force--c-à-d-égal-avantage-numérique-en-désavantage-numérique-nexiste-que-pour-les-buts-pas-pour-les-tirs-de-plus-il-ninclut-pas-la-force-réelle-des-joueurs-sur-la-glace-cest-à-dire-5-contre-4-ou-5-contre-3-etc-discutez-de-la-façon-dont-vous-pourriez-ajouter-les-informations-sur-la-force-réelle-cest-à-dire-5-contre-4-etc-aux-tirs-et-aux-buts-compte-tenu-des-autres-types-dévénements-au-delà-des-tirs-et-des-buts-et-des-fonctionnalités-disponibles-vous-navez-pas-besoin-de-limplémenter-pour-ce-jalon-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Vous remarquerez que le champ de « force » (c.-à-d. égal, avantage numérique, en désavantage numérique) n’existe que pour les buts, pas pour les tirs. De plus, il n’inclut pas la force réelle des joueurs sur la glace (c’est-à-dire 5 contre 4, ou 5 contre 3, etc.). Discutez de la façon dont vous pourriez ajouter les informations sur la force réelle (c’est-à-dire 5 contre 4, etc.) aux tirs et aux buts, compte tenu des autres types d’événements (au-delà des tirs et des buts) et des fonctionnalités disponibles. Vous n’avez pas besoin de l’implémenter pour ce jalon. &lt;/span&gt;&lt;/h5&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Comment obtenir une information plus précise sur la force réelle des joueurs sur la glace ?&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour chaque game, dans le json retourné par l’API, dans gameData/Players, on a accès à la liste des joueurs participants. Il est égallement possible de récupéré l’équipe pour chaque joueur avec la clé ‘currentTeam’ qui existe pour chacune des personnes participant au match.
-A partir de ces données, on peut compter le nombre de joueurs qui apparaissent dans les événements pour chaque équipe jusqu’a ce qu’un but soit marqué. On estime alors le nombre de joueur présent dans chaque équipe. Cependant on ne sait pas vraiment quand réinitilialiser les compte des joueurs.&lt;/p&gt;
-
-  &lt;p&gt;Une meilleure méthode consisterai à considérer qu’il y a 6 joueurs par équipe sur la glace au début du match. Puis, lors d’un but, on pourrait compter le nombre de pénalités mineure par équipe dans les 2 minutes qui précèdent le goal.
-On fait de même pour les pénalités majeure survenues dans les 5 minutes avant le but et pour les Inconduite dans les 10 minutes. Pour chaque équipe, on compte un nombre maximum de pénalité de 2 puiqu’une équipe ne peut avoir moins de 4 joueurs sur la glace.
-Ainsi, si l’équipe A a eu deux pénalités, et l’équipe B une seule, alors l’équipe A a encore 4 joueurs sur la glace et l’équipe B en a 5. Si le but est de l’équipe A, elle a donc marqué un but à 4 contre 5.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h5 id=&quot;maintenant-créez-deux-autres-figures-reliant-le-taux-de-but-cest-à-dire-buts--pad_de_buts--buts-à-la-distance-et-le-taux-de-but-à-langle-du-tir-incluez-ces-figures-dans-votre-article-de-blog-et-discutez-brièvement-de-vos-observations-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Maintenant, créez deux autres figures reliant le taux de but, c’est-à-dire #buts / (#pad_de_buts + #buts), à la distance et le taux de but à l’angle du tir. Incluez ces figures dans votre article de blog et discutez brièvement de vos observations. &lt;/span&gt;&lt;/h5&gt;
+&lt;h4 id=&quot;-taux-de-buts-par-rapport-à-la-distance&quot;&gt;-Taux de buts par rapport à la distance&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Feature_Engineering/question_1_2_a.png&quot; alt=&quot;Goal_rate_by_distance&quot; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
+&lt;h4 id=&quot;-taux-de-buts-par-rapport-à-langle&quot;&gt;-Taux de buts par rapport à l’angle&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Feature_Engineering/question_1_2_b.png&quot; alt=&quot;Goal_rate_by_angle&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 &lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
 
-&lt;h5 id=&quot;en-quelques-phrases-discutez-de-certaines-fonctionnalités-supplémentaires-que-vous-pourriez-envisager-de-créer-à-partir-des-données-disponibles-dans-cet-ensemble-de-données-nous-ne-cherchons-pas-de-réponses-particulières-mais-si-vous-avez-besoin-dinspiration-un-tir-ou-un-but-pourrait-il-être-classé-comme-un-rebond-ou-un-tir-dans-le-rush&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;En quelques phrases, discutez de certaines fonctionnalités supplémentaires que vous pourriez envisager de créer à partir des données disponibles dans cet ensemble de données. Nous ne cherchons pas de réponses particulières, mais si vous avez besoin d’inspiration, un tir ou un but pourrait-il être classé comme un rebond ou un tir dans le rush?&lt;/span&gt;&lt;/h5&gt;
+&lt;h5 id=&quot;créez-un-autre-histogramme-cette-fois-de-buts-uniquement-classés-par-distance-et-séparez-les-événements-nets-vides-et-non-vides-incluez-ce-chiffre-dans-votre-article-de-blog-et-discutez-de-vos-observations-pouvez-vous-trouver-des-événements-qui-ont-des-caractéristiques-incorrectes-par-exemple-de-mauvaises-coordonnées-xy--si-oui-prouvez-quun-événement-a-des-caractéristiques-incorrectes&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;créez un autre histogramme, cette fois de buts uniquement, classés par distance, et séparez les événements nets vides et non vides. Incluez ce chiffre dans votre article de blog et discutez de vos observations. Pouvez-vous trouver des événements qui ont des caractéristiques incorrectes (par exemple, de mauvaises coordonnées x/y) ? Si oui, prouvez qu’un événement a des caractéristiques incorrectes.&lt;/span&gt;&lt;/h5&gt;
+&lt;h4 id=&quot;-histograme-de-but-par-filet-vide-et-non-vide&quot;&gt;-histograme de but par filet vide et non vide&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Feature_Engineering/question_1_3_a.png&quot; alt=&quot;Goal_by_empty_net_or_not&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Donnez-lui votre meilleur coup</title><link href="http://localhost:4000/jekyll/update/2021/11/30/6-Give_it_your_best_shot.html" rel="alternate" type="text/html" title="Donnez-lui votre meilleur coup" /><published>2021-11-30T06:30:00-05:00</published><updated>2021-11-30T06:30:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/6-Give_it_your_best_shot</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/6-Give_it_your_best_shot.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+
+&lt;h5 id=&quot;dans-votre-article-de-blog-discutez-des-différentes-techniques-et-méthodes-que-vous-avez-essayées-incluez-les-quatre-mêmes-figures-que-dans-la-partie-3-courbe-rocauc-taux-de-buts-par-rapport-au-centile-de-probabilité-proportion-cumulée-de-buts-par-rapport-au-centile-de-probabilité-et-courbe-de-fiabilité-les-mesures-quantitatives-ne-sont-nécessaires-que-pour-quelques-ensembles-dexpériences-vous-navez-donc-besoin-dinclure-que-quelques-courbes-sur-chaque-tracé-par-exemple-des-choses-que-vous-avez-trouvées-intéressantes-ou-des-modèles-qui-ont-particulièrement-bien-fonctionné-assurez-vous-dinclure-et-de-mettre-en-évidence-ce-que-vous-considérez-comme-votre-meilleur-modèle-final-pour-les-méthodes-qui-nont-pas-été-très-efficaces-ou-intéressantes-vous-pouvez-simplement-les-inclure-sous-forme-de-brève-discussion-qualitative&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Dans votre article de blog, discutez des différentes techniques et méthodes que vous avez essayées. Incluez les quatre mêmes figures que dans la Partie 3 (courbe ROC/AUC, taux de buts par rapport au centile de probabilité, proportion cumulée de buts par rapport au centile de probabilité et courbe de fiabilité). Les mesures quantitatives ne sont nécessaires que pour quelques ensembles d’expériences, vous n’avez donc besoin d’inclure que quelques courbes sur chaque tracé (par exemple, des choses que vous avez trouvées intéressantes ou des modèles qui ont particulièrement bien fonctionné). Assurez-vous d’inclure et de mettre en évidence ce que vous considérez comme votre meilleur modèle «final». Pour les méthodes qui n’ont pas été très efficaces ou intéressantes, vous pouvez simplement les inclure sous forme de brève discussion qualitative.&lt;/span&gt;&lt;/h5&gt;
+&lt;h4 id=&quot;-les-courbes-receiver-operating-characteristic-roc-et-la-métrique-auc-de-la-courbe-roc&quot;&gt;-Les courbes Receiver Operating Characteristic (ROC) et la métrique AUC de la courbe ROC&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_1.png&quot; alt=&quot;ROC_AUC_cureve&quot; /&gt;
+&lt;/p&gt;
+
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Dans la base de données de la LNH à laquelle on a accès, il y plusieurs autres attributs que l’on pourrait aller chercher qui permettraient d’ajouter d’autres analyses. Un premier attribut que l’on pourrait ajouter est la rôle du joueur qui fait le tir, à savoir s’il s’agit d’un défenseur ou d’un attaquant (ou même d’un gardien). Grâce à cette donnée, on pourrait faire plusieurs comparaisons. Par exemple, quel est le ratio de tir entre les défenseurs et les attaquants. Cela permettrait de répondre à la question de savoir si les équipes qui marquent beaucoup ont tendance à avoir un ratio qui penche plus en faveur des attaquants que des défenseurs ou bien est-ce que le ratio est essentiellement le même pour toutes les équipes? Est-ce qu’au final, c’est le nombre absolu de tir qui compte? On pourrait aussi regarder où les attaquants ont tendance à se trouver sur la patinoire lorsqu’ils marquent, et comparer cela avec la position des défenseurs.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h4 id=&quot;-les-courbes-du-taux-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes du taux de buts en fonction du centile du modèle de probabilité de tir&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_2.png&quot; alt=&quot;Goal_rate_percentile&quot; /&gt;
+&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;D’autres informations à propos des joueurs pourraient aussi être intéressantes. Par exemple, leur taille et leur âge. On pourrait, par exemple, faire des analyses corrélationnelles entre la taille, l’âge et la tendance à marquer. On pourrait ainsi agréger ces mesures par équipe en faisant la moyenne par exemple. Cela nous permettrait de voir si la moyenne d’âge d’une équipe a une influence sur leur perfomances ou si les équipes avec de grands joueurs sont généralement meilleurs que les équipes avec des joueurs plus petit. On pourrait aussi s’intéresser à la distribution de ces attributs. On pourrait calculer la variance de la taille et de l’âge d’une équipe. Cela nous permettrait, par exemple, de voir si une équipe qui à une grande variance sur le plan de l’âge et de la grandeurs performe généralement mieux qu’une équipe avec uniquement des jeunes, ou uniquement des vieux.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Question 5</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html" rel="alternate" type="text/html" title="Question 5" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-courbes-de-la-proportion-cumulée-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes de la proportion cumulée de buts en fonction du centile du modèle de probabilité de tir.&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_3.png&quot; alt=&quot;Goal_cumulative_proportion_percentile&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-diagrammes-de-fiabilité-courbe-de-calibration&quot;&gt;-Les diagrammes de fiabilité (courbe de calibration)&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_4.png&quot; alt=&quot;calibration_curve&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
+&lt;h5 id=&quot;à-côté-des-figures-incluez-des-liens-vers-lentrée-dexpérience-dans-vos-projets-cometml-pour-lesquels-vous-avez-inclus-des-métriques-quantitatives-environ-3-4connectez-les-modèles-aux-expériences-sur-cometml-exemple-ici-et-inscrivez-les-avec-des-balises-informatives&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;À côté des figures, incluez des liens vers l’entrée d’expérience dans vos projets comet.ml pour lesquels vous avez inclus des métriques quantitatives (environ 3-4).Connectez les modèles aux expériences sur comet.ml (exemple ici) et inscrivez-les avec des balises informatives.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-basé-sur-les-arbres-de-decision-est-disponible-ici&quot;&gt;-Le modèle basé sur les arbres de decision est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/4db124cb82f648cab4f9e53c62bfc846?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-basé-sur-les-réseaux-de-neurones-est-disponible-ici&quot;&gt;-Le modèle basé sur les réseaux de neurones est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/11fed86d708d4988a28d7233ff8f527f?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-basé-sur-le-bagging-est-disponible-ici&quot;&gt;-Le modèle basé sur le bagging est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/e35380f848584d2fa5a7da255ccfbce1?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Modèles de base</title><link href="http://localhost:4000/jekyll/update/2021/11/30/3-Baseline_models.html" rel="alternate" type="text/html" title="Modèles de base" /><published>2021-11-30T06:20:00-05:00</published><updated>2021-11-30T06:20:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/3-Baseline_models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/3-Baseline_models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+
+&lt;h5 id=&quot;à-laide-de-votre-ensemble-de-données-rappelez-vous-ne-touchez-pas-à-lensemble-de-test--créez-une-division-dentraînement-et-de-validation-comme-bon-vous-sembleutilisant-seulement-la-de-fonctiondistanceformationun-logistic-regressisur-classifieur-avec-les-paramètres-complètement-par-défautévaluez-la-précision-cest-à-dire-correctement-prédite--totale-de-votre-modèle-sur-lensemble-de-validation-que-remarquez-vous--regardez-les-prédictions-et-discutez-de-vos-découvertes-quel-pourrait-être-un-problème-potentiel-incluez-ces-discussions-dans-votre-article-de-blog&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;À l’aide de votre ensemble de données (rappelez-vous, ne touchez pas à l’ensemble de test !), créez une division d’entraînement et de validation comme bon vous semble.utilisant seulement la de fonctiondistance,formationun Logistic Regressisur classifieur avec les paramètres complètement par défaut.Évaluez la précision (c’est-à-dire correctement prédite / totale) de votre modèle sur l’ensemble de validation. Que remarquez-vous ? Regardez les prédictions et discutez de vos découvertes. Quel pourrait être un problème potentiel? Incluez ces discussions dans votre article de blog.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;question-2-3&quot;&gt;Question 2-3&lt;/h1&gt;
+
+&lt;h5 id=&quot;incluez-ces-quatre-figures-chacune-avec-quatre-courbes-dans-votre-article-de-blog-en-quelques-phrases-discutez-de-votre-interprétation-de-ces-résultats&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Incluez ces quatre figures (chacune avec quatre courbes) dans votre article de blog. En quelques phrases, discutez de votre interprétation de ces résultats.&lt;/span&gt;&lt;/h5&gt;
+&lt;h4 id=&quot;-les-courbes-receiver-operating-characteristic-roc-et-la-métrique-auc-de-la-courbe-roc&quot;&gt;-Les courbes Receiver Operating Characteristic (ROC) et la métrique AUC de la courbe ROC&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Baseline_modeles/Figure_1.png&quot; alt=&quot;ROC_AUC_cureve&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-courbes-du-taux-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes du taux de buts en fonction du centile du modèle de probabilité de tir&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Baseline_modeles/Figure_2.png&quot; alt=&quot;Goal_rate_percentile&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-courbes-de-la-proportion-cumulée-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes de la proportion cumulée de buts en fonction du centile du modèle de probabilité de tir.&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Baseline_modeles/Figure_3.png&quot; alt=&quot;Goal_cumulative_proportion_percentile&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-diagrammes-de-fiabilité-courbe-de-calibration&quot;&gt;-Les diagrammes de fiabilité (courbe de calibration)&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Baseline_modeles/Figure_4.png&quot; alt=&quot;calibration_curve&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;question-4&quot;&gt;Question 4&lt;/h1&gt;
+&lt;h5 id=&quot;à-côté-des-figures-incluez-des-liens-vers-les-trois-entrées-dexpérience-dans-vos-projets-cometml-qui-ont-produit-ces-trois-modèles-enregistrez-les-trois-modèles-dans-les-trois-expériences-sur-cometml-exemple-ici-et-inscrivez-les-avec-des-balises-informatives-car-vous-en-aurez-besoin-pour-la-section-finale&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;À côté des figures, incluez des liens vers les trois entrées d’expérience dans vos projets comet.ml qui ont produit ces trois modèles. Enregistrez les trois modèles dans les trois expériences sur comet.ml (exemple ici) et inscrivez-les avec des balises informatives, car vous en aurez besoin pour la section finale.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-entrainé-avec-les-distances-est-disponible-ici&quot;&gt;-Le modèle entrainé avec les distances est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/0baf66b30afe41df8afe49c02e8da4e1?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-entrainé-avec-les-angles-est-disponible-ici&quot;&gt;-Le modèle entrainé avec les angles est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/ee33cb808231438dbccd8ff6348650a6?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-entrainé-avec-les-distances-et-les-angles-est-disponible-ici&quot;&gt;-Le modèle entrainé avec les distances et les angles est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/750e55985bd24586a5df9de4af2bbaa6?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Question 5</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html" rel="alternate" type="text/html" title="Question 5" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;exportez-le-tracé-au-format-html-et-intégrez-le-dans-votre-article-de-blog-votre-parcelle-doit-permettre-aux-utilisateurs-de-sélectionner-nimporte-quelle-saison-entre-2016-17-et-2020-2021-ainsi-que-nimporte-quelle-équipe-au-cours-de-la-saison-sélectionnée&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Exportez le tracé au format HTML et intégrez-le dans votre article de blog. Votre parcelle doit permettre aux utilisateurs de sélectionner n’importe quelle saison entre 2016-17 et 2020-2021, ainsi que n’importe quelle équipe au cours de la saison sélectionnée.&lt;/span&gt;&lt;/h5&gt;
 
@@ -58,68 +160,7 @@ Ainsi, si l’équipe A a eu deux pénalités, et l’équipe B une seule, alors
 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt;
   &lt;img src=&quot;/assets/question_5/XGBoost_HT_roc_curve.png&quot; alt=&quot;roc_curve&quot; /&gt;
-&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Visualisations simples</title><link href="http://localhost:4000/jekyll/update/2021/10/15/6-Give_it_your_best_shot.html" rel="alternate" type="text/html" title="Visualisations simples" /><published>2021-10-15T10:49:00-04:00</published><updated>2021-10-15T10:49:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/6-Give_it_your_best_shot</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/6-Give_it_your_best_shot.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
-
-&lt;h5 id=&quot;produisez-un-histogramme-ou-un-barplot--des-types-de-tirs-sur-toutes-les-équipes-dans-une-saison-de-votre-choix-superposez-le-nombre-de-buts-sur-le-nombre-de-tirs-quel-semble-être-le-type-de-tir-le-plus-dangereux--le-type-de-tir-le-plus-courant--ajoutez-cette-figure-et-cette-discussion-à-votre-article-de-blog&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Produisez un histogramme ou un BARPLOT  des types de tirs sur toutes les équipes dans une saison de votre choix. Superposez le nombre de buts sur le nombre de tirs. Quel semble être le type de tir le plus dangereux ? Le type de tir le plus courant ? Ajoutez cette figure et cette discussion à votre article de blog.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;analyse-des-types-de-tirs&quot;&gt;Analyse des types de tirs&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/simpleVisualisation/nombre_de_tire_et_de_but_par_type_de_tire.png&quot; alt=&quot;Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/percentageByShotType.png&quot; alt=&quot;Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Les tirs les plus courants et de très loin sont les tirs du poignet suivis dans l’ordre : des tirs frappés, des tirs du rever, des tirs pointé, des tirs déviés et enfin des tirs enroulés.
-Bien que les tirs du poignet sont les plus fréquent, ce ne sont pas les tirs les plus dangereux. Pour celà il faut regarder le pourcentage de tirs réussi par type de tir. Le grand vainceur est le tir pointé avec presque 20% de réussite, suivi du tir dévié avec presque 18% de réussite.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
-
-&lt;h5 id=&quot;quelle-est-la-relation-entre-la-distance-à-laquelle-un-tir-a-été-effectué-et-la-chance-quil-sagisse-dun-but--produisez-un-graphique-pour-chaque-saison-entre-2018-19-et-2020-21-pour-répondre-à-cette-question-et-ajoutez-le-à-votre-article-de-blog-avec-quelques-phrases-décrivant-votre-silhouette-y-a-t-il-eu-beaucoup-de-changements-au-cours-des-trois-dernières-saisons-remarque--il-existe-plusieurs-façons-de-montrer-cette-relation--si-votre-personnage-raconte-la-bonne-histoire-vous-obtiendrez-tous-les-points&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Quelle est la relation entre la distance à laquelle un tir a été effectué et la chance qu’il s’agisse d’un but ? Produisez un graphique pour chaque saison entre 2018-19 et 2020-21 pour répondre à cette question, et ajoutez-le à votre article de blog avec quelques phrases décrivant votre silhouette. Y a-t-il eu beaucoup de changements au cours des trois dernières saisons? Remarque : il existe plusieurs façons de montrer cette relation ! Si votre personnage raconte la bonne histoire, vous obtiendrez tous les points.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;histogramme-du-nombre-de-but-en-fonction-de-la-distance-du-tir&quot;&gt;Histogramme du nombre de but en fonction de la distance du tir&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/distanceBut.png&quot; alt=&quot;Distance des buts&quot; /&gt;
-&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Nous pouvons remarquer que la majorité des buts sont marqué grâce à des tirs près de la ligne bleue. Une fois que l’on s’éloigne de cette ligne bleue, le nombre de but marqués chute drastiquement pour remonter petit à petit lorsque l’on se rapproche des cages pour atteindre un nouveau pic. À l’inverse, si l’on s’éloigne des cages on compte très peu de but marqués depuis l’autre côté du terrain. On remarque cependant que la la majorité des buts marqués de l’autre côté du terrain sont tiré depuis la distance la plus grande, quasiment depuis les cages de l’équipe qui marque. (Le goal doit alors certainement profiter de l’effet de surprise pour marquer lui même)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;remarque-dolivier-sur-la-cohérence-de-la-répartition-des-tirs-&quot;&gt;Remarque d’Olivier sur la cohérence de la répartition des tirs :&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Ouais ca a du sens avec le heatmap. 
-La case qui a le plus de tirs c’est près de la ligne bleu. 
-C’est de là d’où tirent les défenseurs&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;question-3&quot;&gt;Question 3&lt;/h1&gt;
-
-&lt;h5 id=&quot;combinez-les-informations-des-sections-précédentes-pour-produire-un-graphique-qui-montre-le-pourcentage-de-buts--buts---tirs-en-fonction-à-la-fois-de-la-distance-par-rapport-au-filet-et-de-la-catégorie-de-types-de-tirs-vous-pouvez-choisir-une-seule-saison-de-votre-choix-brièvement-discutez-de-vos-conclusions--par-exemple-quels-pourraient-être-les-types-de-tirs-les-plus-dangereux-&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Combinez les informations des sections précédentes pour produire un graphique qui montre le pourcentage de buts (# buts / # tirs) en fonction à la fois de la distance par rapport au filet et de la catégorie de types de tirs (vous pouvez choisir une seule saison de votre choix) brièvement Discutez de vos conclusions ; Par exemple, quels pourraient être les types de tirs les plus dangereux ?&lt;/span&gt;&lt;/h5&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Outils de débogage interactif</title><link href="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html" rel="alternate" type="text/html" title="Outils de débogage interactif" /><published>2021-10-15T10:16:00-04:00</published><updated>2021-10-15T10:16:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Outils de débogage interactif</title><link href="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html" rel="alternate" type="text/html" title="Outils de débogage interactif" /><published>2021-10-15T10:16:00-04:00</published><updated>2021-10-15T10:16:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;prenez-une-capture-décran-de-loutil-et-ajoutez-la-au-blog-post-accompagné-dune-brève-description-1-2-phrases-de-ce-que-fait-votre-outil-vous-navez-pas-à-vous-soucier-dintégrer-loutil-dans-le-blog&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Prenez une capture d’écran de l’outil et ajoutez-la au blog post, accompagné d’une brève description (1-2 phrases) de ce que fait votre outil. Vous n’avez pas à vous soucier d’intégrer l’outil dans le blog.&lt;/span&gt;&lt;/h5&gt;
 
@@ -137,107 +178,6 @@ Le slider permet de selectionner le numéro de l’événement par ordre tempore
 Le widget affiche la date du match et les noms des équipes qui affrontent.
 Pour chaque événement, sont affichés : le tuype d’événement (but / tir), les coordonnées sur la glace, le nom du tireur et celui du goal.
 Le widget affiche également une représentation du terrain avec un point magenta à l’emplacement correspondant à l’événement.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Acquisition de données</title><link href="http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models.html" rel="alternate" type="text/html" title="Acquisition de données" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/3-Baseline_models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
-
-&lt;h5 id=&quot;rédigez-un-bref-tutoriel-sur-la-façon-dont-votre-équipe-a-téléchargé-lensemble-de-données-imaginez--que-vous-cherchiez-un-guide-sur-la-façon-de-télécharger-les-données-play-by-play--votre-guide-devrait-vous-faire-dire-parfait---cest-exactement-ce-que-je-cherchais-cela-peut-être-aussi-simple-que-de-copier-votre-fonction-et-un-exemple-dutilisation-et-décrire-une-ou-deux-phrases-la-décrivant&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Rédigez un bref tutoriel sur la façon dont votre équipe a téléchargé l’ensemble de données. Imaginez :) que vous cherchiez un guide sur la façon de télécharger les données play-by-play ; votre guide devrait vous faire dire “Parfait - c’est exactement ce que je cherchais!”. Cela peut être aussi simple que de copier votre fonction et un exemple d’utilisation, et d’écrire une ou deux phrases la décrivant.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;L’API qui permet d’accéder aux données des parties de la LNH est assez facile d’utilisation. L’url de l’API a le format suivant : https://statsapi.web.nhl.com/api/v1/game/ID/feed/live où ID représente l’identifiant unique de la partie.
-L’identifiant de la partie est séparé en trois parties. L’année de la saison, le type de partie (01 pour la pré-saison, 02 pour la saison régulière, et 03 pour les séries éliminatoires), et l’identifiant de la partie comme tel.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour la saison régulière, l’identifiant de la partie est un nombre à 4 chiffres, de 0001 à 1271 (puisqu’il y a 1271 parties dans une saison régulière depuis la saison 2016-2017). Ainsi, pour prendre un exemple, la quatrième partie de la saison régulière de 2016-2017 aurait l’identifiant 2017020004.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Les choses se compliquent un peu pour l’identifiant de partie des séries éliminatoires. Les séries éliminatoires voient s’affronter 16 équipes et se déroule en 4 tours. Chaque tour (round) les équipes s’affronter dans un 4 de 7. La première à remporter 4 parties (game) l’emporte. Lors du premier tour, il y a 8 affrontements (matchup) entre 2 équipes, puis 4 au tour suivant, puis 2 et finalement 1. L’identifiant d’une partie en série éliminatoire est aussi un nombre de 4 chiffre. Le premier chiffre est un 0, le second est le numéro du tour, le troisième le numéro de l’affrontement, puis le dernier est le numéro de partie. Ainsi, pour prendre un exemple, le troisième match du deuxième affrontement du premier tour des séries éliminatoire de la saison 2016-2017 aurait l’identifiant 2017030123.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;En python, on peut faire des requêtes à un API grâce à la librairie &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requests&lt;/code&gt; et sa méthode &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get()&lt;/code&gt;. En passant l’url de la requête en paramètre, on recevra les données sous format json. Voici le code que l’on peut utiliser pour aller chercher toutes les données des parties pour une année en saison réguliere.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;game_data = {}
-max_game = 1271
-season_type = &quot;02&quot;
-for i in range(1, (max_game+1)):
-    gameId = str(year) + season_type + str(i).zfill(4)
-    response = requests.get(url=(self.api_url + gameId +&quot;/feed/live&quot;))
-    game_data[&quot;regular&quot; + gameId] = response.json()
-    time.sleep(0.1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Il est recommandé une faire un time.sleep() d’au moins un dixième de seconde entre chaque requête afin de ne pas surchargé l’API et risquer de se faire bannir.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour aller chercher les données pour les séries éliminatoires, on peut utiliser le code suivant :&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;game_data = {}
-first_digit = 0
-season_type = &quot;03&quot;
-
-for round in range(1, 5):
-    for matchup in range(1, ((8 // (2 ** (round - 1))) + 1)):
-        for game in range(1, 8):
-            game_id = str(year) + season_type + str(first_digit) + str(round) + str(matchup) + str(game)
-            url = (self.api_url + game_id + &quot;/feed/live&quot;)
-            print(url)
-            response = requests.get(url=(self.api_url + game_id + &quot;/feed/live&quot;))
-            if (response.status_code == 404):
-                time.sleep(0.1)
-                break
-            game_data[&quot;playoff&quot; + game_id] = response.json()
-            time.sleep(0.1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;partie-pratique&quot;&gt;Partie pratique&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour récupérer les données de la NHL avec nos fonctions, il suffit de procéder ainsi:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;from ift6758.data.question_2 import *
-
-dataGetter = DataAquirer()
-dataGetter.get_all_games_data_for_a_year(2017)
-
-regularGames = dataGetter.season_data
-playoffGames = dataGetter.playoffs_data
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;regularGames contient alors l’ensemble des match de la saison régulière correspondant à 2017, indexés par id.
-playoffGames, quant à lui, contient les match des playoffs et présente la même structure.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Mais nous pouvons aller plus loin ! Travailler avec des données tidyfiée est beaucoup plus pratique dans certains cas. Vous pouvez choisir votre propre méthode mais nous en proposons également une.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;par-exemple&quot;&gt;Par exemple:&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;from ift6758.data.question_4 import Tidyer
-
-tdf = Tidyer()
-dfs = tdf.game_event_to_panda_df(2019)
-
-regular = dfs['regular']
-playoff = dfs['playoff']
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Ici, dfs est un dictionnaire indexé par type de saison (regular et playoff).
-regular = dfs[‘regular’] contient alors un DataFrame de la saison régulière et il en même avec playoff = dfs[‘playoff’] et les données de la saison pllayoff.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;note-sur-loptimisation&quot;&gt;Note sur l’optimisation&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;La récupération des données est optimisée. Si notre Tidyer a déjà tidyfié les données d’une saison, il va directement récupérer les fichiers .csv du dossier database/panda correspondant à la saison voulue. Sinon, il demande à récupérer les données brut en .json. Une fois encore, si les fichiers .json correspondant existent dans le dossier database, ils sont directement récupérés. Sinon, l’apiRequester récupère les données via l’API de la NHL.&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Échauffement</title><link href="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html" rel="alternate" type="text/html" title="Échauffement" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;triez-les-gardiens-de-but-par-leur-pourcentage-darrêts--vs---qui-est-le-rapport-de-leurs-tirs-sauvés-sur-le-nombre-total-de-tirs-auxquels-ils-ont-fait-face-quels-problèmes-remarquez-vous-en-utilisant-cette-métrique-pour-classer-les-gardiens-de-but--que-pourrait-on-faire-pour-y-faire-face--ajoutez-cette-discussion-à-votre-article-de-blog-pas-encore-besoin-de-cadre-de-données-ou-de-tracé-remarque--vous-navez-pas-besoin-de-créer-une-nouvelle-métrique-sophistiquée-ici-si-vous-le-souhaitez-vous-pouvez-effectuer-un-contrôle-de-cohérence-par-rapport-à-la-page-web-officielle-des-statistiques-de-la-lnh-vous-navez-pas-non-plus-besoin-de-reproduire-un-classement-particulier-sur-la-page-de-la-lnh--si-votre-approche-est-raisonnable-vous-obtiendrez-toutes-les-notes&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Triez les gardiens de but par leur pourcentage d’arrêts (« VS % »), qui est le rapport de leurs tirs sauvés sur le nombre total de tirs auxquels ils ont fait face. Quels problèmes remarquez-vous en utilisant cette métrique pour classer les gardiens de but ? Que pourrait-on faire pour y faire face ? Ajoutez cette discussion à votre article de blog (pas encore besoin de cadre de données ou de tracé). &lt;br /&gt;Remarque : Vous n’avez pas besoin de créer une nouvelle métrique sophistiquée ici. Si vous le souhaitez, vous pouvez effectuer un contrôle de cohérence par rapport à la &lt;a href=&quot;http://www.nhl.com/stats/goalies?reportType=season&amp;amp;seasonFrom=20172018&amp;amp;seasonTo=20172018&quot; title=&quot;page Web officielle des statistiques de la LNH&quot;&gt;page Web officielle des statistiques de la LNH&lt;/a&gt;. Vous n’avez pas non plus besoin de reproduire un classement particulier sur la page de la LNH ; si votre approche est raisonnable, vous obtiendrez toutes les notes.&lt;/span&gt;&lt;/h5&gt;

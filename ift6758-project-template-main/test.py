@@ -17,11 +17,11 @@ import seaborn as sns
 sns.set()
 from scipy.stats import pointbiserialr
 
-
+features_df = pd.read_pickle(os.path.dirname('/Users/macbook/Documents/GitHub/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features') + "/data_for_models/features_df.pkl")
 def test_MS2_q2():
 
-    ftz = Featurizer(2015,2019)
-    features_df = ftz.get_feature()
+    #ftz = Featurizer(2015,2019)
+    #features_df = ftz.get_feature()
     #print(features_df)
     '''nombre de tire(but et tire separé) regroupé par distance'''
     sns.displot(features_df, x="Distance_from_net", col="is_goal")
@@ -39,11 +39,11 @@ def test_MS2_q2():
     goal_rate_distance['distance_binned'] = goal_rate_distance.distance_binned.astype(str)
     goal_rate_distance.plot.bar(x='distance_binned',
                                 y='is_goal',
-                                xlabel='binned distance',
+                                xlabel='Distances',
                                 legend=False,
                                 figsize=(8, 7),
-                                ylabel='Goal rate',
-                                title='goal rate by distance', rot=20, fontsize=8)
+                                ylabel='Taux de buts',
+                                title='Taux de buts regroupé par distance', rot=20, fontsize=8)
     '''goal rate by angle'''
     features_df['angle_binned'] = pd.cut(features_df['Angle_from_net'], 10)
     goal = features_df[['is_goal', 'angle_binned']].groupby(by=["angle_binned"]).sum()
@@ -53,14 +53,15 @@ def test_MS2_q2():
     goal_rate_distance['angle_binned'] = goal_rate_distance.angle_binned.astype(str)
     goal_rate_distance.plot.bar(x='angle_binned',
                                 y='is_goal',
-                                xlabel='binned angle',
+                                xlabel='Angles',
                                 legend=False,
                                 figsize=(8, 7),
-                                ylabel='Goal rate',
-                                title='goal rate by angle', rot=20, fontsize=8)
+                                ylabel='Taux de buts',
+                                title='Taux de buts regroupé par angle', rot=20, fontsize=8)
     ''' histograme de but par filet vide et non vide '''
     features_by_goal = features_df[features_df['is_goal'] == 1]
-    sns.displot(features_by_goal, x="Distance_from_net", hue="Empty_net")
+    en = sns.displot(features_by_goal, x="Distance_from_net", hue="Empty_net")
+    plt.ylabel('Goal count')
 
 test_MS2_q2()
 
