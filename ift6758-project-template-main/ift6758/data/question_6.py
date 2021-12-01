@@ -1,11 +1,8 @@
-
-from ift6758.data import *
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import seaborn as sns
-from ift6758.data.question_2 import DataAquirer
 from ift6758.data.question_4 import Tidyer
 from ift6758.data.tidyDataKeys import *
 
@@ -75,7 +72,7 @@ class HeatMapShots:
 
     def plot_heat_map(self, team):
 
-        team_average_difference = heatmaper.get_above_average_for_team(team)
+        team_average_difference = self.get_above_average_for_team(team)  # was heatmaper.get_above_average_for_team(team)
         team_average_difference = round(team_average_difference, 2)
         img = mpimg.imread('./figures/nhl_rink.png')
         matrix_for_heatmap = np.array(team_average_difference.counts_per_hour).reshape((10, 5))
