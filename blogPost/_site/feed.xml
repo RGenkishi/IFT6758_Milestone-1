@@ -1,47 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T05:09:07-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Donnez-lui votre meilleur coup</title><link href="http://localhost:4000/jekyll/update/2021/11/30/6-Give_it_your_best_shot.html" rel="alternate" type="text/html" title="Donnez-lui votre meilleur coup" /><published>2021-11-30T06:30:00-05:00</published><updated>2021-11-30T06:30:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/6-Give_it_your_best_shot</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/6-Give_it_your_best_shot.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
-
-&lt;h5 id=&quot;dans-votre-article-de-blog-discutez-des-différentes-techniques-et-méthodes-que-vous-avez-essayées-incluez-les-quatre-mêmes-figures-que-dans-la-partie-3-courbe-rocauc-taux-de-buts-par-rapport-au-centile-de-probabilité-proportion-cumulée-de-buts-par-rapport-au-centile-de-probabilité-et-courbe-de-fiabilité-les-mesures-quantitatives-ne-sont-nécessaires-que-pour-quelques-ensembles-dexpériences-vous-navez-donc-besoin-dinclure-que-quelques-courbes-sur-chaque-tracé-par-exemple-des-choses-que-vous-avez-trouvées-intéressantes-ou-des-modèles-qui-ont-particulièrement-bien-fonctionné-assurez-vous-dinclure-et-de-mettre-en-évidence-ce-que-vous-considérez-comme-votre-meilleur-modèle-final-pour-les-méthodes-qui-nont-pas-été-très-efficaces-ou-intéressantes-vous-pouvez-simplement-les-inclure-sous-forme-de-brève-discussion-qualitative&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Dans votre article de blog, discutez des différentes techniques et méthodes que vous avez essayées. Incluez les quatre mêmes figures que dans la Partie 3 (courbe ROC/AUC, taux de buts par rapport au centile de probabilité, proportion cumulée de buts par rapport au centile de probabilité et courbe de fiabilité). Les mesures quantitatives ne sont nécessaires que pour quelques ensembles d’expériences, vous n’avez donc besoin d’inclure que quelques courbes sur chaque tracé (par exemple, des choses que vous avez trouvées intéressantes ou des modèles qui ont particulièrement bien fonctionné). Assurez-vous d’inclure et de mettre en évidence ce que vous considérez comme votre meilleur modèle «final». Pour les méthodes qui n’ont pas été très efficaces ou intéressantes, vous pouvez simplement les inclure sous forme de brève discussion qualitative.&lt;/span&gt;&lt;/h5&gt;
-&lt;h4 id=&quot;-les-courbes-receiver-operating-characteristic-roc-et-la-métrique-auc-de-la-courbe-roc&quot;&gt;-Les courbes Receiver Operating Characteristic (ROC) et la métrique AUC de la courbe ROC&lt;/h4&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_1.png&quot; alt=&quot;ROC_AUC_cureve&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;-les-courbes-du-taux-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes du taux de buts en fonction du centile du modèle de probabilité de tir&lt;/h4&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_2.png&quot; alt=&quot;Goal_rate_percentile&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;-les-courbes-de-la-proportion-cumulée-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes de la proportion cumulée de buts en fonction du centile du modèle de probabilité de tir.&lt;/h4&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_3.png&quot; alt=&quot;Goal_cumulative_proportion_percentile&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;-les-diagrammes-de-fiabilité-courbe-de-calibration&quot;&gt;-Les diagrammes de fiabilité (courbe de calibration)&lt;/h4&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_4.png&quot; alt=&quot;calibration_curve&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
-&lt;h5 id=&quot;à-côté-des-figures-incluez-des-liens-vers-lentrée-dexpérience-dans-vos-projets-cometml-pour-lesquels-vous-avez-inclus-des-métriques-quantitatives-environ-3-4connectez-les-modèles-aux-expériences-sur-cometml-exemple-ici-et-inscrivez-les-avec-des-balises-informatives&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;À côté des figures, incluez des liens vers l’entrée d’expérience dans vos projets comet.ml pour lesquels vous avez inclus des métriques quantitatives (environ 3-4).Connectez les modèles aux expériences sur comet.ml (exemple ici) et inscrivez-les avec des balises informatives.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;-le-modèle-basé-sur-les-arbres-de-decision-est-disponible-ici&quot;&gt;-Le modèle basé sur les arbres de decision est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/4db124cb82f648cab4f9e53c62bfc846?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;-le-modèle-basé-sur-les-réseaux-de-neurones-est-disponible-ici&quot;&gt;-Le modèle basé sur les réseaux de neurones est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/11fed86d708d4988a28d7233ff8f527f?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;-le-modèle-basé-sur-le-bagging-est-disponible-ici&quot;&gt;-Le modèle basé sur le bagging est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/e35380f848584d2fa5a7da255ccfbce1?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Ingénierie des caractéristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques" /><published>2021-11-30T06:27:11-05:00</published><updated>2021-11-30T06:27:11-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T05:38:39-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingénierie des caractéristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques" /><published>2021-11-30T06:27:11-05:00</published><updated>2021-11-30T06:27:11-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;créez-et-comprennent-les-figures-suivants-dans-votre-blogpost-et-brièvement-discutez-vos-observations-quelques-phrases-un-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-regroupées-binned-par-distanceun-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-binned-par-angle-un-histogramme-2d-où-un-axe-est-la-distance-et-lautre-est-langle-vous-navez-pas-besoin-de-séparer-les-buts-et-les-non-buts&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Créez et comprennent les figures suivants dans votre blogpost et brièvement discutez vos observations (quelques phrases): &lt;br /&gt;Un histogramme de nombre de tirs (buts et non-buts séparés), regroupées (binned) par distance&lt;br /&gt;Un histogramme de nombre de tirs (buts et non-buts séparés), binned par angle &lt;br /&gt;Un histogramme 2D où un axe est la distance et l’autre est l’angle. Vous n’avez pas besoin de séparer les buts et les non-buts.&lt;/span&gt;&lt;/h5&gt;
 
@@ -328,7 +285,76 @@ Notons cependant que les courbes de qualibration de nos modèles ne sont pas con
 &lt;h4 id=&quot;-le-modèle-entrainé-avec-les-angles-est-disponible-ici&quot;&gt;-Le modèle entrainé avec les angles est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/ee33cb808231438dbccd8ff6348650a6?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;-le-modèle-entrainé-avec-les-distances-et-les-angles-est-disponible-ici&quot;&gt;-Le modèle entrainé avec les distances et les angles est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/750e55985bd24586a5df9de4af2bbaa6?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Question 5</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html" rel="alternate" type="text/html" title="Question 5" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+&lt;h4 id=&quot;-le-modèle-entrainé-avec-les-distances-et-les-angles-est-disponible-ici&quot;&gt;-Le modèle entrainé avec les distances et les angles est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/750e55985bd24586a5df9de4af2bbaa6?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Ingénierie des caractéristiques II</title><link href="http://localhost:4000/jekyll/update/2021/11/28/4-Feature_Engineering_two.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques II" /><published>2021-11-28T09:16:00-05:00</published><updated>2021-11-28T09:16:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/28/4-Feature_Engineering_two</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/28/4-Feature_Engineering_two.html">&lt;h1 id=&quot;question-5&quot;&gt;Question 5&lt;/h1&gt;
+
+&lt;h5 id=&quot;dans-votre-article-de-blog-ajoutez-une-liste-de-toutes-les-caractéristiques-que-vous-avez-créées-pour-cette-section-répertoriez-chaque-caractéristique-à-la-fois-par-le-nom-de-la-colonne-dans-votre-cadre-de-données-et-par-une-explication-simple-et-lisible-par-lhumain-cest-à-dire-game_sec--nombre-total-de-secondes-écoulées-dans-le-jeu-si-vous-avez-créé-de-nouvelles-caractéristiques-décrivez-brièvement-ce-quelles-sont-ajoutez-un-lien-vers-lexpérience-qui-stocke-lartefact-dataframe-filtré-pour-le-jeu-spécifié-notez-quil-ne-doit-y-avoir-quun-seul-dataframe-inscrit-avec-ce-nom-voir-l-annexe-pour-un-exemple-de-ce-que-nous-recherchons&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Dans votre article de blog, ajoutez une liste de toutes les caractéristiques que vous avez créées pour cette section. Répertoriez chaque caractéristique à la fois par le nom de la colonne dans votre cadre de données ET par une explication simple et lisible par l’humain (c’est-à-dire game_sec : nombre total de secondes écoulées dans le jeu). Si vous avez créé de nouvelles caractéristiques, décrivez brièvement ce qu’elles sont. Ajoutez un lien vers l’expérience qui stocke l’artefact DataFrame filtré pour le jeu spécifié. Notez qu’il ne doit y avoir qu’un seul DataFrame inscrit avec ce nom. Voir l’ annexe pour un exemple de ce que nous recherchons.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;Liste des caractéristiques:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“&lt;strong&gt;event_type&lt;/strong&gt;” : type de l’événement&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;shot_type&lt;/strong&gt;” : type de tir&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;game_seconds&lt;/strong&gt;” : secondes écoulées dans le jeu&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;coord_x&lt;/strong&gt;” : coordonnée X&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;coord_y&lt;/strong&gt;” : coordonnée Y&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;distance_from_net&lt;/strong&gt;” : distance au filet en pieds&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;angle_from_net&lt;/strong&gt;” : angle de tir en radian (0 : en face du filet)&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;which_period&lt;/strong&gt;” : période de jeu&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;“&lt;strong&gt;empty_net&lt;/strong&gt;” : True si le filet est vide, False sino&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;pre_event_type&lt;/strong&gt;” : type de l’événement précédent&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;rebound&lt;/strong&gt;” : True si le coup est un rebond (i.e. le coup précédent est un Shot), False sinon.&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;pre_coord_x&lt;/strong&gt;” : coordonnée X de l’événement précédent&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;pre_coord_y&lt;/strong&gt;” : coordonnée Y de l’événement précédent&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;time_since_last_event&lt;/strong&gt;” : temps en seconde écoulé depuis le dernier événement&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;distance_from_last_event&lt;/strong&gt;” : distance en pieds de l’événement par rapport au récédent&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;change_in_shot_angle&lt;/strong&gt;” : diférence absolue entre l’angle de tir précédent et le nouveau. 0 si le coup n’est pas un rebond.&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;speed&lt;/strong&gt;” : vitesse de déplacement en pieds par secondes&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 5</summary></entry><entry><title type="html">Donnez-lui votre meilleur coup</title><link href="http://localhost:4000/jekyll/update/2021/11/27/6-Give_it_your_best_shot.html" rel="alternate" type="text/html" title="Donnez-lui votre meilleur coup" /><published>2021-11-27T06:30:00-05:00</published><updated>2021-11-27T06:30:00-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/27/6-Give_it_your_best_shot</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/27/6-Give_it_your_best_shot.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+
+&lt;h5 id=&quot;dans-votre-article-de-blog-discutez-des-différentes-techniques-et-méthodes-que-vous-avez-essayées-incluez-les-quatre-mêmes-figures-que-dans-la-partie-3-courbe-rocauc-taux-de-buts-par-rapport-au-centile-de-probabilité-proportion-cumulée-de-buts-par-rapport-au-centile-de-probabilité-et-courbe-de-fiabilité-les-mesures-quantitatives-ne-sont-nécessaires-que-pour-quelques-ensembles-dexpériences-vous-navez-donc-besoin-dinclure-que-quelques-courbes-sur-chaque-tracé-par-exemple-des-choses-que-vous-avez-trouvées-intéressantes-ou-des-modèles-qui-ont-particulièrement-bien-fonctionné-assurez-vous-dinclure-et-de-mettre-en-évidence-ce-que-vous-considérez-comme-votre-meilleur-modèle-final-pour-les-méthodes-qui-nont-pas-été-très-efficaces-ou-intéressantes-vous-pouvez-simplement-les-inclure-sous-forme-de-brève-discussion-qualitative&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Dans votre article de blog, discutez des différentes techniques et méthodes que vous avez essayées. Incluez les quatre mêmes figures que dans la Partie 3 (courbe ROC/AUC, taux de buts par rapport au centile de probabilité, proportion cumulée de buts par rapport au centile de probabilité et courbe de fiabilité). Les mesures quantitatives ne sont nécessaires que pour quelques ensembles d’expériences, vous n’avez donc besoin d’inclure que quelques courbes sur chaque tracé (par exemple, des choses que vous avez trouvées intéressantes ou des modèles qui ont particulièrement bien fonctionné). Assurez-vous d’inclure et de mettre en évidence ce que vous considérez comme votre meilleur modèle «final». Pour les méthodes qui n’ont pas été très efficaces ou intéressantes, vous pouvez simplement les inclure sous forme de brève discussion qualitative.&lt;/span&gt;&lt;/h5&gt;
+&lt;h4 id=&quot;-les-courbes-receiver-operating-characteristic-roc-et-la-métrique-auc-de-la-courbe-roc&quot;&gt;-Les courbes Receiver Operating Characteristic (ROC) et la métrique AUC de la courbe ROC&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_1.png&quot; alt=&quot;ROC_AUC_cureve&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-courbes-du-taux-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes du taux de buts en fonction du centile du modèle de probabilité de tir&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_2.png&quot; alt=&quot;Goal_rate_percentile&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-courbes-de-la-proportion-cumulée-de-buts-en-fonction-du-centile-du-modèle-de-probabilité-de-tir&quot;&gt;-Les courbes de la proportion cumulée de buts en fonction du centile du modèle de probabilité de tir.&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_3.png&quot; alt=&quot;Goal_cumulative_proportion_percentile&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-les-diagrammes-de-fiabilité-courbe-de-calibration&quot;&gt;-Les diagrammes de fiabilité (courbe de calibration)&lt;/h4&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/Give_it_your_best_shot/question_6_Figure_4.png&quot; alt=&quot;calibration_curve&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;question-2&quot;&gt;Question 2&lt;/h1&gt;
+&lt;h5 id=&quot;à-côté-des-figures-incluez-des-liens-vers-lentrée-dexpérience-dans-vos-projets-cometml-pour-lesquels-vous-avez-inclus-des-métriques-quantitatives-environ-3-4connectez-les-modèles-aux-expériences-sur-cometml-exemple-ici-et-inscrivez-les-avec-des-balises-informatives&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;À côté des figures, incluez des liens vers l’entrée d’expérience dans vos projets comet.ml pour lesquels vous avez inclus des métriques quantitatives (environ 3-4).Connectez les modèles aux expériences sur comet.ml (exemple ici) et inscrivez-les avec des balises informatives.&lt;/span&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-basé-sur-les-arbres-de-decision-est-disponible-ici&quot;&gt;-Le modèle basé sur les arbres de decision est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/4db124cb82f648cab4f9e53c62bfc846?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-basé-sur-les-réseaux-de-neurones-est-disponible-ici&quot;&gt;-Le modèle basé sur les réseaux de neurones est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/11fed86d708d4988a28d7233ff8f527f?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-le-modèle-basé-sur-le-bagging-est-disponible-ici&quot;&gt;-Le modèle basé sur le bagging est disponible &lt;a href=&quot;https://www.comet.ml/genkishi/milestone-2/e35380f848584d2fa5a7da255ccfbce1?experiment-tab=chart&amp;amp;showOutliers=true&amp;amp;smoothing=0&amp;amp;transformY=smoothing&amp;amp;xAxis=wall&quot;&gt;ici&lt;/a&gt;&lt;/h4&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Question 5</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html" rel="alternate" type="text/html" title="Question 5" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;exportez-le-tracé-au-format-html-et-intégrez-le-dans-votre-article-de-blog-votre-parcelle-doit-permettre-aux-utilisateurs-de-sélectionner-nimporte-quelle-saison-entre-2016-17-et-2020-2021-ainsi-que-nimporte-quelle-équipe-au-cours-de-la-saison-sélectionnée&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Exportez le tracé au format HTML et intégrez-le dans votre article de blog. Votre parcelle doit permettre aux utilisateurs de sélectionner n’importe quelle saison entre 2016-17 et 2020-2021, ainsi que n’importe quelle équipe au cours de la saison sélectionnée.&lt;/span&gt;&lt;/h5&gt;
 
@@ -347,25 +373,7 @@ Notons cependant que les courbes de qualibration de nos modèles ne sont pas con
 &lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt;
   &lt;img src=&quot;/assets/question_5/XGBoost_HT_roc_curve.png&quot; alt=&quot;roc_curve&quot; /&gt;
-&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Outils de débogage interactif</title><link href="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html" rel="alternate" type="text/html" title="Outils de débogage interactif" /><published>2021-10-15T10:16:00-04:00</published><updated>2021-10-15T10:16:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/4-Feature_Engineering_two.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
-
-&lt;h5 id=&quot;prenez-une-capture-décran-de-loutil-et-ajoutez-la-au-blog-post-accompagné-dune-brève-description-1-2-phrases-de-ce-que-fait-votre-outil-vous-navez-pas-à-vous-soucier-dintégrer-loutil-dans-le-blog&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Prenez une capture d’écran de l’outil et ajoutez-la au blog post, accompagné d’une brève description (1-2 phrases) de ce que fait votre outil. Vous n’avez pas à vous soucier d’intégrer l’outil dans le blog.&lt;/span&gt;&lt;/h5&gt;
-
-&lt;h3 id=&quot;capture-decran-de-loutil-de-debogage&quot;&gt;Capture d’ecran de l’outil de debogage&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;/assets/debugTool/debugTool.jpg&quot; alt=&quot;debugTool&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Les différents menus dropdown permettent de choisir l’année, le type de saison et un match en particulier.
-Le slider permet de selectionner le numéro de l’événement par ordre temporel pour les tirs et les buts.
-Le widget affiche la date du match et les noms des équipes qui affrontent.
-Pour chaque événement, sont affichés : le tuype d’événement (but / tir), les coordonnées sur la glace, le nom du tireur et celui du goal.
-Le widget affiche également une représentation du terrain avec un point magenta à l’emplacement correspondant à l’événement.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Échauffement</title><link href="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html" rel="alternate" type="text/html" title="Échauffement" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Échauffement</title><link href="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html" rel="alternate" type="text/html" title="Échauffement" /><published>2021-10-01T07:27:11-04:00</published><updated>2021-10-01T07:27:11-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/01/7-Evaluate_test_set.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;triez-les-gardiens-de-but-par-leur-pourcentage-darrêts--vs---qui-est-le-rapport-de-leurs-tirs-sauvés-sur-le-nombre-total-de-tirs-auxquels-ils-ont-fait-face-quels-problèmes-remarquez-vous-en-utilisant-cette-métrique-pour-classer-les-gardiens-de-but--que-pourrait-on-faire-pour-y-faire-face--ajoutez-cette-discussion-à-votre-article-de-blog-pas-encore-besoin-de-cadre-de-données-ou-de-tracé-remarque--vous-navez-pas-besoin-de-créer-une-nouvelle-métrique-sophistiquée-ici-si-vous-le-souhaitez-vous-pouvez-effectuer-un-contrôle-de-cohérence-par-rapport-à-la-page-web-officielle-des-statistiques-de-la-lnh-vous-navez-pas-non-plus-besoin-de-reproduire-un-classement-particulier-sur-la-page-de-la-lnh--si-votre-approche-est-raisonnable-vous-obtiendrez-toutes-les-notes&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Triez les gardiens de but par leur pourcentage d’arrêts (« VS % »), qui est le rapport de leurs tirs sauvés sur le nombre total de tirs auxquels ils ont fait face. Quels problèmes remarquez-vous en utilisant cette métrique pour classer les gardiens de but ? Que pourrait-on faire pour y faire face ? Ajoutez cette discussion à votre article de blog (pas encore besoin de cadre de données ou de tracé). &lt;br /&gt;Remarque : Vous n’avez pas besoin de créer une nouvelle métrique sophistiquée ici. Si vous le souhaitez, vous pouvez effectuer un contrôle de cohérence par rapport à la &lt;a href=&quot;http://www.nhl.com/stats/goalies?reportType=season&amp;amp;seasonFrom=20172018&amp;amp;seasonTo=20172018&quot; title=&quot;page Web officielle des statistiques de la LNH&quot;&gt;page Web officielle des statistiques de la LNH&lt;/a&gt;. Vous n’avez pas non plus besoin de reproduire un classement particulier sur la page de la LNH ; si votre approche est raisonnable, vous obtiendrez toutes les notes.&lt;/span&gt;&lt;/h5&gt;
 
