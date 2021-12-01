@@ -142,4 +142,4 @@ dmypy.json
 API_KEY
 
 blogPost/.jekyll-cache/
-ift6758-project-template-main/ift6758/features/models/*
+*.joblib
