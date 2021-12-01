@@ -104,4 +104,6 @@ def calibration_display_curve(proba, Y_test,label):
     ax = plt.gca()
     CalibrationDisplay.from_predictions(Y_test, proba[:, 1], name=label,ax=ax)
     ax.legend(loc='upper left')
+    plt.ylim((0.05, 0.15))
+    plt.xlim((0, 0.25))
     plt.title("Calibration")

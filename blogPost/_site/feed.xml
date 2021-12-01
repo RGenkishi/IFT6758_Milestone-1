@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T00:59:31-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingénierie des caractéristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques" /><published>2021-11-30T06:27:11-05:00</published><updated>2021-11-30T06:27:11-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T04:30:40-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projet IFT-6758 _ Milestone 1</title><subtitle>Science des données appliquées au jeu de hockey</subtitle><entry><title type="html">Ingénierie des caractéristiques</title><link href="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html" rel="alternate" type="text/html" title="Ingénierie des caractéristiques" /><published>2021-11-30T06:27:11-05:00</published><updated>2021-11-30T06:27:11-05:00</updated><id>http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/11/30/2-Feature_Engineering.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;créez-et-comprennent-les-figures-suivants-dans-votre-blogpost-et-brièvement-discutez-vos-observations-quelques-phrases-un-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-regroupées-binned-par-distanceun-histogramme-de-nombre-de-tirs-buts-et-non-buts-séparés-binned-par-angle-un-histogramme-2d-où-un-axe-est-la-distance-et-lautre-est-langle-vous-navez-pas-besoin-de-séparer-les-buts-et-les-non-buts&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Créez et comprennent les figures suivants dans votre blogpost et brièvement discutez vos observations (quelques phrases): &lt;br /&gt;Un histogramme de nombre de tirs (buts et non-buts séparés), regroupées (binned) par distance&lt;br /&gt;Un histogramme de nombre de tirs (buts et non-buts séparés), binned par angle &lt;br /&gt;Un histogramme 2D où un axe est la distance et l’autre est l’angle. Vous n’avez pas besoin de séparer les buts et les non-buts.&lt;/span&gt;&lt;/h5&gt;
 
@@ -218,8 +218,44 @@ En effet, leurs courbes sont placée au dessus de la première bisectrice. Pour 
 &lt;blockquote&gt;
   &lt;p&gt;En toute logique, un classifieur aléatoire prédit le même pourcentage de but pour chaque centile. C’est confirmé par notre tracé.&lt;/p&gt;
 
-  &lt;p&gt;Pour le classifieur basé sur l’angle uniquement, le taux de but est plus important que&lt;/p&gt;
+  &lt;p&gt;Pour le classifieur basé sur l’angle uniquement, pour les probabilité de prédiction supérieures au 50ième centile, le taux de buts réels est inférieur à celui du classifieurs aléatoire. Le taux remonte en prennant en compte les probabilité supérieures à des centiles inférieurs à 50.&lt;/p&gt;
 
+  &lt;p&gt;Encore une fois, les classieurs basés sur la distance seule et sur la combinaison angle-distance performent de la même manière. Au delà du 90ème centile, le taux de but est inférieur au classifieur aléatoire mais le reste du temps, il est supérieur. Le maximum est atteint entre les 60 et 70èmes centiles.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q3/courbe_perc_cumul_but_Q3.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Analyse&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cette courbe est une réplique de la courbe ROC.&lt;br /&gt;
+En effet, on a affiché le taux de positif prédit / nombre total de positif réel. Cette valeur est proportionnelle au taux de vrai positif.
+Du point de vue des centiles, plus le centile baisse, plus la proportion de faux positif dans l’ensemble pris en compte augmente.
+Les deux axes sont donc proportionnels au taux de vrai positif et au taux de faux positif. L’échelle étant la même, les courbes sont semblables.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q3/courbe_calibration.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+  &lt;img src=&quot;/assets/milestone_2/Q3/courbe_calibration_zoom.png&quot; alt=&quot;Nombre de tirs regroupés par distance&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Analyse&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Vu l’étendue des probabilités retorunée par nos différents modèles, il est difficile de statuer sur ce graphique.&lt;br /&gt;
+Notons cependant que les courbes de qualibration de nos modèles ne sont pas confondu avec la courbe optimale et penchent plus du côté de la courbe du classifieur aléatoire.&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Question 1</summary></entry><entry><title type="html">Question 5</title><link href="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html" rel="alternate" type="text/html" title="Question 5" /><published>2021-10-15T10:52:00-04:00</published><updated>2021-10-15T10:52:00-04:00</updated><id>http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/10/15/5-Advanced_Models.html">&lt;h1 id=&quot;question-1&quot;&gt;Question 1&lt;/h1&gt;
 
 &lt;h5 id=&quot;exportez-le-tracé-au-format-html-et-intégrez-le-dans-votre-article-de-blog-votre-parcelle-doit-permettre-aux-utilisateurs-de-sélectionner-nimporte-quelle-saison-entre-2016-17-et-2020-2021-ainsi-que-nimporte-quelle-équipe-au-cours-de-la-saison-sélectionnée&quot;&gt;&lt;span style=&quot;color:grey&quot;&gt;Exportez le tracé au format HTML et intégrez-le dans votre article de blog. Votre parcelle doit permettre aux utilisateurs de sélectionner n’importe quelle saison entre 2016-17 et 2020-2021, ainsi que n’importe quelle équipe au cours de la saison sélectionnée.&lt;/span&gt;&lt;/h5&gt;

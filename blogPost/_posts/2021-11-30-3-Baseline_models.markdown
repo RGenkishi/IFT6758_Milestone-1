@@ -81,5 +81,41 @@ Analyse
 
 > En toute logique, un classifieur aléatoire prédit le même pourcentage de but pour chaque centile. C'est confirmé par notre tracé.
 > 
-> Pour le classifieur basé sur l'angle uniquement, le taux de but est plus important que 
+> Pour le classifieur basé sur l'angle uniquement, pour les probabilité de prédiction supérieures au 50ième centile, le taux de buts réels est inférieur à celui du classifieurs aléatoire. Le taux remonte en prennant en compte les probabilité supérieures à des centiles inférieurs à 50.
 > 
+> Encore une fois, les classieurs basés sur la distance seule et sur la combinaison angle-distance performent de la même manière. Au delà du 90ème centile, le taux de but est inférieur au classifieur aléatoire mais le reste du temps, il est supérieur. Le maximum est atteint entre les 60 et 70èmes centiles.
+>
+
+<br>
+
+
+Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir
+
+<p align="center">
+  <img src="/assets/milestone_2/Q3/courbe_perc_cumul_but_Q3.png" alt="Nombre de tirs regroupés par distance"/>
+</p>
+
+
+Analyse
+
+> Cette courbe est une réplique de la courbe ROC.\
+> En effet, on a affiché le taux de positif prédit / nombre total de positif réel. Cette valeur est proportionnelle au taux de vrai positif.
+> Du point de vue des centiles, plus le centile baisse, plus la proportion de faux positif dans l'ensemble pris en compte augmente.
+> Les deux axes sont donc proportionnels au taux de vrai positif et au taux de faux positif. L'échelle étant la même, les courbes sont semblables.
+>
+
+<br>
+
+
+Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir
+
+<p align="center">
+  <img src="/assets/milestone_2/Q3/courbe_calibration.png" alt="Nombre de tirs regroupés par distance"/>
+  <img src="/assets/milestone_2/Q3/courbe_calibration_zoom.png" alt="Nombre de tirs regroupés par distance"/>
+</p>
+
+
+Analyse
+
+> Vu l'étendue des probabilités retorunée par nos différents modèles, il est difficile de statuer sur ce graphique.\
+> Notons cependant que les courbes de qualibration de nos modèles ne sont pas confondu avec la courbe optimale et penchent plus du côté de la courbe du classifieur aléatoire.
