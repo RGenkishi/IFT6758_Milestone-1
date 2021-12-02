@@ -1,5 +1,5 @@
 from ift6758.data.tidyer import *
-from ift6758.data.question_6 import HeatMapShots
+from ift6758.data.heatMapShots import HeatMapShots
 import os
 pd.set_option("display.max_columns", 100)
 from sklearn import preprocessing
