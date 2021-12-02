@@ -46,9 +46,9 @@ Courbes ROC et métrique AUC
 Analyse
 >la courbe ROC et la métrique AUCqui est l'air sous la courbe ROC permettent d'évaluer la capacité d'un modèle et effectuer de bonne prédictions, ainsi un modèle parfait tendrait à se placer dans le coin supérieur gauche de la courbe ROC avec un fort taux de vrai positif et un faible taux de faux positifs
 
-> le modèle basé sur la distance est le moins bon de tous les modèles, mais meilleur que le modèle aléatoire, avec un taux de faux positif plus important aux début de la courbe mais qui s'améliore le long du reste. Selon moi cela pourrais être dû aux valeurs aberrantes tels que les tires effectuées depuis la zone de défense de l'équipe qui attaque.
+> le modèle basé sur la distance est le moins bon de tous les modèles, mais meilleur que le modèle aléatoire, avec un taux de faux positif plus important aux début de la courbe mais qui s'améliore le long du reste. Nous croyons que cela pourrait être dû aux valeurs aberrantes tels que les tires effectuées depuis la zone de défense de l'équipe en attaque.
 
-> Les modèles basés sur l'angle et sur la combinaison de l'angle et de la distance ont des performances confondues. Globalement, ces modèles performent mieux que celui basé sur la distance
+> Les modèles basés sur l'angle et sur la combinaison de l'angle et de la distance ont des performances presqu'identiques. Globalement, ces modèles performent mieux que celui basé sur la distance uniquement.
 > En effet, Pour un même taux de faux positif, le taux de vrai positif est plus important.
 
 > Compte tenu du fait que ces deux modèles performent
@@ -68,8 +68,8 @@ Analyse
 > En toute logique, un classifieur
  aléatoire prédit le même pourcentage de but pour chaque centile. C'est confirmé par notre tracé.
  
->De manière générale pour les modèles de logistique régression, les courbes sont croissantes et convergent vers vers le 100ieme
- centile. Cela s'explique par le fait que plus un tire est susceptible d'être un but, plus la probabilité que lui attribue le modèle est elevée,ainsi plus la probabilité est élevée plus il y a de but
+>De manière générale pour les modèles de régression logistique, les courbes sont croissantes et convergent vers vers le 100ieme
+ centile. Cela s'explique par le fait que plus un tire est susceptible d'être un but, plus la probabilité que lui attribue le modèle est elevée,ainsi plus la probabilité est élevée plus il y a de buts.
 
 > Encore une fois, les modèles basés sur l'angle seul et sur la combinaison angle-distance performent
  de la même manière et beaucoup mieux car leur croissance est plus harmonieuse.

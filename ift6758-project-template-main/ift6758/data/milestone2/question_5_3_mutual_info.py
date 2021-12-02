@@ -1,16 +1,13 @@
 #Comet wants to be logged before I import xgboos and sklearn
 from comet_ml import Experiment
 from ift6758.data.milestone2.question_3 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve, calibration_display_curve
-from ift6758.features.question_5_3_cross_validator import *
+from ift6758.data.milestone2.question_5_3_cross_validator import *
 import pandas as pd
 import os
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 import sklearn.feature_selection as fs
-from sklearn.feature_selection import SelectFromModel
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_auc_score
-
 
 with open("API_KEY", "r") as f:
     API_KEY = f.readline()
@@ -27,7 +24,7 @@ param["scale_pos_weight"] = 5
 param['min_child_weight'] = 4
 param["eval_metric"] = "auc"
 
-__file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
+__file__ = '/ift6758/features/'
 data = pd.read_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
 
 cross_validator = CrossValidator(data, param)

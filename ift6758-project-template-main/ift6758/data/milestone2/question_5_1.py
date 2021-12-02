@@ -20,7 +20,7 @@ exp = Experiment(
     project_name='milestone_2',
     workspace="genkishi"
 )
-__file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
+__file__ = '/ift6758/features/'
 data = pd.read_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
 
 

@@ -16,7 +16,7 @@ exp = Experiment(
     workspace="genkishi"
 )
 
-__file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
+__file__ = '/ift6758/features/'
 data = pd.read_pickle(os.path.dirname(__file__) + "/data_for_models/data.pkl")
 
 train_feature = ~data.columns.isin(['event_type_0', 'event_type_1'])

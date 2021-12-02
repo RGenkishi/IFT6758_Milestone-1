@@ -1,59 +1,64 @@
 ---
 layout: post
-title:  "Évaluer sur l'ensemble de test"
+title:  " Évaluer sur l'ensemble de test"
 date:   2021-11-30 10:30:02
 categories: jekyll update
 ---
 
-# Question 1
+# Question 1 (la saison régulière)
 
-##### <span style="color:grey">Triez les gardiens de but par leur pourcentage d'arrêts (« VS % »), qui est le rapport de leurs tirs sauvés sur le nombre total de tirs auxquels ils ont fait face. Quels problèmes remarquez-vous en utilisant cette métrique pour classer les gardiens de but ? Que pourrait-on faire pour y faire face ? Ajoutez cette discussion à votre article de blog (pas encore besoin de cadre de données ou de tracé). <br>Remarque : Vous n'avez pas besoin de créer une nouvelle métrique sophistiquée ici. Si vous le souhaitez, vous pouvez effectuer un contrôle de cohérence par rapport à la [page Web officielle des statistiques de la LNH](http://www.nhl.com/stats/goalies?reportType=season&seasonFrom=20172018&seasonTo=20172018 "page Web officielle des statistiques de la LNH"). Vous n'avez pas non plus besoin de reproduire un classement particulier sur la page de la LNH ; si votre approche est raisonnable, vous obtiendrez toutes les notes.</span>
+Plusieurs choses intéressante émanent de ce test sur les données d'une nouvelle saison (qui n'ont pas été utilisées pour entraîner le modèle). Nous nous concentrerons ici sur la comparaison du modèle XGBoost et MLP. Dans les deux cas, les modèles performent moins biens que sur les données d'entraînement. On passe en effet, pour la mesure AUC, de 0.75 à 0.72 pour MLP, et de 0.75 à 0.73 pour XGBoost. Chose étrange, MLP semble être très bien calibré pour les probabilités prédites entre 0.0 et 0.75, mais il devient extrêmement mauvais par la suite. Cela semble signifier qu'il se met à donner des très haute probabilités à des tirs qui ne sont pas de buts. XGBoost n'a pas ce problème. En effet, ces prédictions semblent d'améliorer lorsque les probabilités qu'il attribue à un tir sont hautes. Pour ce qui est de la régression linéaire, on voit que ses performances ne changent à peu près pas (on reste à 0.70 d'AUC). Ce modèle est moins performant mais il ne perd pas en perfomance lorsqu'il rencontre de nouvelles données
 
-Trions les goals en fonction de leur SV%
-
-[//]: <>  Trie des goal en fonction de leurs SV%
-
+\\
+ \\
+Les diagrammes de fiabilité (courbe de calibration)
 <p align="center">
-  <img src="/assets/echauffement/trie_des_goal_en_fonction_du_sv.png" alt="Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens"/>
+  <img src="/assets/question_7/regular_calibration.png" alt="Calibration"/>
 </p>
-
-<br>
-
-> Quelques problèmes apparaîssent puisque qu'en classant les goals comme nous l'avons fait, on se rend compte que ceux en tete de classement n'ont pas beaucoup de matchs à leurs actifs (un seul en l'occurence pour les trois premiers).Ensuite la majorité d'entre eux n'ont remporté aucun match , il serait donc paradoxal qu'ils soient les meilleurs.
-> Il serait interessant de considérer leurs classement en fonction de leurs parties gagnées et de leurs SV%
-
-<br>
-
----
-
-# Question 2
-
-##### <span style="color:grey">Filtrez les gardiens en utilisant l'approche proposée ci-dessus et produisez un graphique à barres avec les noms des joueurs sur l'axe des y et enregistrer le pourcentage ('SV%') sur l'axe des x. Vous pouvez garder les 20 meilleurs gardiens. Incluez ce chiffre dans votre article de blog; assurez-vous que tous les axes sont étiquetés et que le titre est approprié.</span>
-
-Trions les goals en fonction de leur victoires puis de leur SV%
- nous obtenons le graphique suivant :
-
-<br>
-
-[//]: <>  Graphique des pourcentage d'arrêts sur le classement des 20 meilleurs gardiens
-
+ \\
+ \\
+Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir
 <p align="center">
-  <img src="/assets/echauffement/pourcentage_d'arrets_sur_le_classement_des_20_meilleurs_gardiens.png" alt="Pourcentage d'arrêts sur le classement des 20 meilleurs gardiens"/>
+  <img src="/assets/question_7/regular_goal_cumul.png" alt="Goal cumul"/>
+</p>
+ \\
+ \\
+Taux de buts (#buts / (#non_buts + #buts)) en fonction du centile du modèle de probabilité de tir
+<p align="center">
+  <img src="/assets/question_7/regular_rate_curve.png" alt="rate curve6"/>
+</p>
+ \\
+ \\
+Courbes ROC et métrique AUC
+<p align="center">
+  <img src="/assets/question_7/regular_roc_curve.png" alt="roc_curve"/>
 </p>
 
 
-<br>
+# Question 2 (les séries éliminatoires)
 
----
-
-# Question 3
-
-##### <span style="color:grey">Le pourcentage d'économies n'est évidemment pas une fonctionnalité très complète. Discutez des autres caractéristiques qui pourraient être utiles pour déterminer la performance d'un gardien de but. Vous n'avez pas besoin de mettre en œuvre quoi que ce soit à moins que vous ne le vouliez vraiment, tout ce qui est requis est un court paragraphe de discussion.</span>
-<br>
-
-
-Comment améliorer notre classement ?
-
-> Une première amélioration de notre classement consisterait à prendre en compte le nombre de match joué. Plus de poids pourrait être accordé aux performances des goals qui démontré leurs compétences sur un nombre de match important. Les performances des goals n'ayant fait qu'un match ou deux peuvent relever de la chance et sont moins significative.
->
-> Le nombre d'attaques subies par un goal pourrait égamelent être pris en compte. Pour deux goals avec le même SV%, celui ayant subi le plus d'attaques gagnerait des places dans le classement.
+Ce qu'on peut remarquer, pour les séries éliminatoires, c'est la totale déconfiture de MLP. On doit pouvoir en conclure que ce modèle souffre d'un surapprentissage sur les données des saisons régulières. XGBoost s'en sort, quant à lui, assez bien en passant à un AUC de 0.72. Chose intéressante est la stabilité des modèles de régression logistique. On doit pouvoir en conclure que les caractéristiques sur lesquels sont entraînés ces modèles sont relativement fiables, peu importe si l'on se trouve en séries éliminatoire ou en saison régulière.
+\\
+ \\
+Les diagrammes de fiabilité (courbe de calibration)
+<p align="center">
+  <img src="/assets/question_7/playoff_calibration.png" alt="Calibration"/>
+</p>
+ \\
+ \\
+Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir
+<p align="center">
+  <img src="/assets/question_7/playoff_goal_cumul.png" alt="Goal cumul"/>
+</p>
+ \\
+ \\
+Taux de buts (#buts / (#non_buts + #buts)) en fonction du centile du modèle de probabilité de tir
+<p align="center">
+  <img src="/assets/question_7/playoff_rate_curve.png" alt="rate curve6"/>
+</p>
+ \\
+ \\
+Courbes ROC et métrique AUC
+<p align="center">
+  <img src="/assets/question_7/playoff_roc_curve.png" alt="roc_curve"/>
+</p>

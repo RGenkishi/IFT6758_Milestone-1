@@ -1,6 +1,5 @@
 import xgboost as xgb
-import os
-from ift6758.features.question_4 import *
+from ift6758.data.milestone2.question_4 import *
 from ift6758.data.milestone2.question_2 import *
 from ift6758.data.milestone2.question_3_angle import *
 from ift6758.data.milestone2.question_3_distance import *
@@ -8,8 +7,7 @@ from ift6758.data.milestone2.question_3_dist_ang import *
 from ift6758.data.milestone2.question_3 import roc_curve_and_auc_metrique, goal_rate_curve, goal_cumulative_proportion_curve, calibration_display_curve
 import matplotlib.pyplot as plt
 from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import cross_val_score,cross_val_predict
-from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import cross_val_predict
 from sklearn.preprocessing import power_transform
 
 
@@ -48,7 +46,7 @@ def create_comparing_graphs(season_type):
         median = np.median(season_data.loc[~season_data[col].isna(),col])
         season_data.loc[season_data[col].isna(),col] = median
 
-    __file__ = '/home/olivier/Documents/IFT6758/IFT6758_Milestone-1/ift6758-project-template-main/ift6758/features/'
+    __file__ = '/ift6758/features/'
     clf_xgb = xgb.XGBClassifier()
     clf_xgb.load_model(os.path.dirname(__file__) + "/models/XGBoost_hyper_tuning/model.json")
 

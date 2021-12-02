@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 from ift6758.data.question_4 import *
 from ift6758.data.question_6 import HeatMapShots
 import os
@@ -125,3 +126,17 @@ if __name__ == "__main__":
         os.makedirs(dataformodelpath)
 
     data.to_pickle(dataformodelpath + "/data.pkl")
+    shots_and_goals, other_events = load_data(2017)
+    with open("API_KEY", "r") as f:
+        API_KEY = f.readline()
+    exp = Experiment(
+        api_key=APIKEY,
+        project_name='milestone_2',
+        workspace="genkishi"
+    )
+    exp.log_dataframe_profile(
+        data[data.index.isin(shots_and_goals[shots_and_goals.game_id == "regular2017021065"].index)].iloc[142:213],
+        name='wpg_v_wsh_2017021065',  # keep this name
+        dataframe_format='csv'  # ensure you set this flag!
+    )
+
