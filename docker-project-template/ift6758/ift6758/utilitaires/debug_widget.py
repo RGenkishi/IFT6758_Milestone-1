@@ -67,3 +67,8 @@ class DebugWidget:
         y = widgets.Dropdown(options=range(1917, 2021), value=2017, description='Year:', disabled=False)
         drop_down_year_select = widgets.interactive(self.select_year, y=y)
         display(drop_down_year_select)
+
+
+if __name__ == "__main__":
+    dw = DebugWidget()
+    dw.launch_widget()
