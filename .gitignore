@@ -136,3 +136,6 @@ API_KEY
 
 # IDE (added by NL)
 *.idea
+
+# Database
+*.database
