@@ -1,7 +1,7 @@
 import os.path
 import json
 
-from api_requester import *
+from ift6758.data.api_requester import *
 from ift6758.utilitaires.logger import *
 
 
