@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,6 +18,7 @@ class HeatMapShots:
         self.playoffs_data = dfs['playoff']
 
     def prepare_data(self):
+        """ prépare les données pour la heatMap"""
         self.season_data = self.rearange_coordinates(self.season_data)
         self.playoffs_data = self.rearange_coordinates(self.playoffs_data)
         self.season_data = self.divise_rink(self.season_data)
@@ -27,6 +27,7 @@ class HeatMapShots:
         self.counts_for_playoffs = self.get_count_per_season(self.playoffs_data)
 
     def rearange_coordinates(self, tidy_data):
+        """ Mappage des coordonnées en fonction du côté du terrain """
         right_side_x_coordinates = tidy_data[tidy_data.rink_side == "right"][COORD_X]
         tidy_data.loc[tidy_data.rink_side == "right", COORD_X] = right_side_x_coordinates - (2 * right_side_x_coordinates)
 
@@ -47,6 +48,7 @@ class HeatMapShots:
 
 
     def divise_rink(self, tidy_data):
+        """ divise le terrain en plusieurs sections """
         tidy_data["x_case"] = tidy_data[COORD_X] // 20
         tidy_data["y_case"] = (tidy_data[COORD_Y] + 42.5) // 17
         return tidy_data
@@ -75,7 +77,7 @@ class HeatMapShots:
 
         team_average_difference = self.get_above_average_for_team(team)
         team_average_difference = round(team_average_difference, 2)
-        img = mpimg.imread('./figures/nhl_rink.png')
+        img = mpimg.imread('../../../figures/nhl_rink.png')
         matrix_for_heatmap = np.array(team_average_difference.counts_per_hour).reshape((10, 5))
 
         ## Inspiré par https://stackoverflow.com/questions/50091591/plotting-seaborn-heatmap-on-top-of-a-background-picture
@@ -98,3 +100,8 @@ class HeatMapShots:
         hmax.set_title("Nombre de tirs au dessus de la moyenne\n" + team + " saison " + str(self.year) + "-" + str(self.year + 1))
         plt.show()
 
+
+if __name__ == "__main__":
+    hms = HeatMapShots(2015)
+    hms.prepare_data()
+    hms.plot_heat_map("Sharks de San Jose")
