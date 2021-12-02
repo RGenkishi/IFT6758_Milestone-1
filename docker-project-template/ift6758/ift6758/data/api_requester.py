@@ -3,9 +3,12 @@ import requests
 
 from abc import abstractmethod
 
+from ift6758.utilitaires.logger import ConsoleLogger
+
 
 class ApiRequester:
-    def __init__(self, api_url):
+    def __init__(self, api_url, logger=ConsoleLogger):
+        self.logger = logger()
         self.season_type = None
         self.api_url = api_url
 
@@ -13,17 +16,20 @@ class ApiRequester:
     def get_data(self, year):
         pass
 
+    def log(self, *kwargs):
+        self.logger.log(kwargs)
+
 
 class ApiGameSeasonRequester(ApiRequester):
     def __init__(self, api_url):
         self.season_type = "02"
         self.api_url = api_url
+        self.max_game = 1271
 
     def get_data(self, year):
         game_data = {}
-        max_game = 1271
-        for i in range(1, (max_game + 1)):
-            print("ApiGameSeasonRequester : " + str(i))
+        for i in range(1, (self.max_game + 1)):
+            self.log("ApiGameSeasonRequester : " + str(i))
             game_id = str(year) + self.season_type + str(i).zfill(4)
             response = requests.get(url=(self.api_url + game_id + "/feed/live"))
             game_data["regular" + game_id] = response.json()
