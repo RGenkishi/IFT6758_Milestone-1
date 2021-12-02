@@ -76,7 +76,7 @@ def goal_cumulative_proportion_curve(proba, Y_test, label):
     goal_prop_arr = []
     while val >= 0:
         percent = np.percentile(label_proba_concate['proba'].to_numpy(), val)
-        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] > percent]
+        goal_percent = label_proba_concate['label'][label_proba_concate['proba'] < percent]
         goal_nb_all = label_proba_concate['label'][label_proba_concate['label'] == 1]
         goal_prop = (goal_percent.sum() / goal_nb_all.count()) * 100
         percent_arr.append(val)
@@ -103,3 +103,4 @@ def calibration_display_curve(proba, Y_test,label):
     plt.figure(4)
     ax = plt.gca()
     CalibrationDisplay.from_predictions(Y_test, proba[:, 1], name=label,ax=ax)
+    plt.legend(loc="upper left")

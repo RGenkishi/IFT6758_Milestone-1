@@ -9,26 +9,22 @@ categories: jekyll update
 
 ##### <span style="color:grey">Évaluez la précision (c'est-à-dire correctement prédite / totale) de votre modèle sur l'ensemble de validation. Que remarquez-vous ? Regardez les prédictions et discutez de vos découvertes. Quel pourrait être un problème potentiel? Incluez ces discussions dans votre article de blog.</span>
 
-Pour cette question, nous chargeons un Dataset avec 80% des données de 2015 à 2018 réservées à l'entraînement et les 20% restant à la validation.
+Pour cette question, nous chargeons un Dataset avec 70% des données de 2015 à 2018 réservées à l'entraînement et les 30% restant à la validation.
 
 <p align="center">
-  <img src="/assets/milestone_2/Q3/accuracy.png" alt="Nombre de tirs regroupés par distance"/>
+    <img src="/assets/Baseline_modeles/accuracy.png" alt="baseline model accuracy"/>
+    <img src="/assets/Baseline_modeles/confusion_matrix.png" alt="baseline model confusion atrix"/>
 </p>
 
 
 Analyse
 
-> La précision de notre algorithme est excellentissime avec une accuracy de plus de 90% ! C'est magnifique ! Pas besoin d'aller plus loin..
+> La précision de notre algorithme est excellentissime avec une accuracyde plus de 90% ! C'est magnifique ! Pas besoin d'aller plus loin...
 >
 > MAIS que prédit-on ?
->
-> La table des prédictions est remplie de 0 avec 62222 "non buts" contre 0 buts.
-> Le nombre total de prédiction est également 62222.
-> Juste pour être sûr, on compte le nombre de prédiction exacte : 56350.
-> Et quel est le nombre de "non but" : 56350.
->
-> Finalement, on ne fait que prédire la classe majoritaire. Un premier problème est que le nombre de "non buts" est très important face au nombre de buts.
-> Par ailleurs, il se peut que les features à notre disposition ne soient pas suffisante pour faire la différence.
+> 
+> le modèle prédit tous les tires comme n'étant pas des buts.
+> Finalement, on ne fait que prédire la classe majoritaire. Un premier problème est que le nombre de "non-buts" est très important face au nombre de buts.
 
 
 
@@ -43,95 +39,68 @@ Analyse
 Courbes ROC et métrique AUC
 
 <p align="center">
-  <img src="/assets/milestone_2/Q3/courbe_ROC_Q3.png" alt="Nombre de tirs regroupés par distance"/>
+  <img src="/assets/Baseline_modeles/Figure_1.png" alt="ROC curve and AUC metrics"/>
 </p>
 
 
 Analyse
+>la courbe ROC et la métrique AUCqui est l'air sous la courbe ROC permettent d'évaluer la capacité d'un modèle et effectuer de bonne prédictions, ainsi un modèle parfait tendrait à se placer dans le coin supérieur gauche de la courbe ROC avec un fort taux de vrai positif et un faible taux de faux positifs
 
-> Le meilleur tends à se placer dans le coin supérieur gauche de la courbe ROC avec un fort taux de vrai positif et un faible taux de faux positifs
->
-> Avec la Regression Logistique basée sur l'angle de tir, un faible taux de faux positifs entraîne également un faible taux de vrai positifs.
-> Lorsque le taux de faux positif dépasse environ 50%, le taux de vrai positif passe enfin la barre des 50%.
-> Cet estimateur est donc moins bon que l'estimateur aléatoire sur la moitié de la courbe ROC et meilleur sur l'autre moitiée.\
-> On est loin de l'estimateur idéal.
->
-> Les modèles basés sur la distance et sur la combinaison de l'angle et de la distance ont des performances confondues. Globalement, ces modèles performent mieux que l'aléatoire.
-> En effet, leurs courbes sont placée au dessus de la première bisectrice. Pour un même taux de faux positif, le taux de vrai positif est plus important.
->
-> Compte tenu du fait que ces deux modèles performent de la même façon, nous pouvons conclure que la mesure de l'angle n'apporte pas une information cruciale pour la prédiction.
+> le modèle basé sur la distance est le moins bon de tous les modèles, mais meilleur que le modèle aléatoire, avec un taux de faux positif plus important aux début de la courbe mais qui s'améliore le long du reste. Selon moi cela pourrais être dû aux valeurs aberrantes tels que les tires effectuées depuis la zone de défense de l'équipe qui attaque.
+
+> Les modèles basés sur l'angle et sur la combinaison de l'angle et de la distance ont des performances confondues. Globalement, ces modèles performent mieux que celui basé sur la distance
+> En effet, Pour un même taux de faux positif, le taux de vrai positif est plus important.
+
+> Compte tenu du fait que ces deux modèles performent
+ de la même façon, nous pouvons conclure que non seulement l'angle est une meilleure caractéristique mais en plus la distance n'apporte pas une information cruciale pour la prédiction.
 
 <br>
 
-<!--
-####  -Les courbes du taux de buts en fonction du centile du modèle de probabilité de tir
+Taux de buts (#buts / (#non_buts + #buts)) en fonction du centile du modèle de probabilité de tir
+
 <p align="center">
   <img src="/assets/Baseline_modeles/Figure_2.png" alt="Goal_rate_percentile"/>
 </p>
 
 
-<br>
--->
-
-
-Taux de buts (#buts / (#non_buts + #buts)) en fonction du centile du modèle de probabilité de tir
-
-<p align="center">
-  <img src="/assets/milestone_2/Q3/courbe_goal_rate_Q3.png" alt="Nombre de tirs regroupés par distance"/>
-</p>
-
-
 Analyse
 
-> En toute logique, un classifieur aléatoire prédit le même pourcentage de but pour chaque centile. C'est confirmé par notre tracé.
->
-> Pour le classifieur basé sur l'angle uniquement, pour les probabilité de prédiction supérieures au 50ième centile, le taux de buts réels est inférieur à celui du classifieurs aléatoire. Le taux remonte en prennant en compte les probabilité supérieures à des centiles inférieurs à 50.
->
-> Encore une fois, les classieurs basés sur la distance seule et sur la combinaison angle-distance performent de la même manière. Au delà du 90ème centile, le taux de but est inférieur au classifieur aléatoire mais le reste du temps, il est supérieur. Le maximum est atteint entre les 60 et 70èmes centiles.
->
+> En toute logique, un classifieur
+ aléatoire prédit le même pourcentage de but pour chaque centile. C'est confirmé par notre tracé.
+ 
+>De manière générale pour les modèles de logistique régression, les courbes sont croissantes et convergent vers vers le 100ieme
+ centile. Cela s'explique par le fait que plus un tire est susceptible d'être un but, plus la probabilité que lui attribue le modèle est elevée,ainsi plus la probabilité est élevée plus il y a de but
+
+> Encore une fois, les modèles basés sur l'angle seul et sur la combinaison angle-distance performent
+ de la même manière et beaucoup mieux car leur croissance est plus harmonieuse.
 
 <br>
-
-<!--
-####  -Les courbes de la proportion cumulée de buts en fonction du centile du modèle de probabilité de tir.
-<p align="center">
-  <img src="/assets/Baseline_modeles/Figure_3.png" alt="Goal_cumulative_proportion_percentile"/>
-</p>
--->
 
 
 Proportion cumulée de buts (pas de tirs) en fonction du centile du modèle de probabilité de tir
 
 <p align="center">
-  <img src="/assets/milestone_2/Q3/courbe_perc_cumul_but_Q3.png" alt="Nombre de tirs regroupés par distance"/>
+  <img src="/assets/Baseline_modeles/Figure_3.png" alt="Goal_cumulative_proportion_percentile"/>
 </p>
 
 
 Analyse
 
-> Cette courbe est une réplique de la courbe ROC.\
+> Cette courbe est assez similaire a la courbe ROC.\
 > En effet, on a affiché le taux de positif prédit / nombre total de positif réel. Cette valeur est proportionnelle au taux de vrai positif.
 > Du point de vue des centiles, plus le centile baisse, plus la proportion de faux positif dans l'ensemble pris en compte augmente.
 > Les deux axes sont donc proportionnels au taux de vrai positif et au taux de faux positif. L'échelle étant la même, les courbes sont semblables.
->
 
 <br>
 
 
-Courbes de Calibration
-
-<!--
-####  -Les diagrammes de fiabilité (courbe de calibration)
-<p align="center">
-  <img src="/assets/Baseline_modeles/Figure_4.png" alt="calibration_curve"/>
-</p>
--->
+Les diagrammes de fiabilité (courbe de calibration)
 
 <p align="center">
-  <img src="/assets/milestone_2/Q3/courbe_calibration.png" alt="Nombre de tirs regroupés par distance"/>
-  <img src="/assets/milestone_2/Q3/courbe_calibration_zoom.png" alt="Nombre de tirs regroupés par distance"/>
+    <img src="/assets/Baseline_modeles/Figure_4.png" alt="calibration_curve" />
+    <img src="/assets/Baseline_modeles/Figure_4_zoom.png" alt="calibration_curve_zoom" />
 </p>
-
+ 
 
 Analyse
 

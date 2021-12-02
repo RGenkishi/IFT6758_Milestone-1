@@ -44,11 +44,7 @@ Analyse
 > Nous pouvont constater que la majorité des tirs se font avec un angle compris entre 0 et 1 radian (0 et 57 degrés) par rapport à la normale au filet (i.e. La droite passant par les 2 filets).
 > En résumé, Les tirs qui ont le plus de succès sont ceux tentés bien en face du filet et les joueurs le savent : c'est leur angle de tir favori.
 
-
 <br>
-
----
-# Question 2
 
 ####  Un histogramme 2D où un axe est la distance et l'autre est l'angle
 
@@ -78,8 +74,8 @@ Analyse
 Taux de buts en fonction de la distance et de l'angle
 
 <p align="center">
-  <img src="/assets/milestone_2/Q2/goal_rate_by_distance.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
-  <img src="/assets/milestone_2/Q2/goal_rate_by_angle.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
+  <img src="/assets/Feature_Engineering/question_1_2_a.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:left;"/>
+  <img src="/assets/Feature_Engineering/question_1_2_b.png" alt="Nombre de tirs regroupés par distance" style="display:inline-block; width:50%; float:right;"/>
 </p>
 
 

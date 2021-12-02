@@ -4,9 +4,7 @@ import os
 from ift6758.data.milestone2.question_3 import *
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-import seaborn as sns
-sns.set()
+from sklearn.metrics import accuracy_score,ConfusionMatrixDisplay
 
 
 def distance_feature(features_df):
@@ -25,7 +23,9 @@ def distance_feature(features_df):
     log_reg.fit(X_train, Y_train)
     proba = log_reg.predict_proba(X_test)
     accuracy = accuracy_score(Y_test, log_reg.predict(X_test))
-    print(accuracy)
+    print('Accuracy :'+ str(accuracy))
+    #ConfusionMatrixDisplay.from_predictions(Y_test, log_reg.predict(X_test))
+    #plt.show()
     metrics = {"accuracy": accuracy}
     # pickle.dump(log_reg, open('log-reg_distance.pkl', 'wb'))
     # exp.log_model("log-reg_distance", "log-reg_distance.pkl")
