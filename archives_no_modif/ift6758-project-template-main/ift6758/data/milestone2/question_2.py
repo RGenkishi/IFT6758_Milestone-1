@@ -11,7 +11,7 @@ exp = Experiment(
 import matplotlib.pyplot as plt
 
 from ift6758.data.tidyer import Tidyer
-from ift6758.data.question_6 import HeatMapShots
+from ift6758.data.heatMapShots import HeatMapShots
 from ift6758.data.tidyDataKeys import *
 import pandas as pd
 import numpy as np
