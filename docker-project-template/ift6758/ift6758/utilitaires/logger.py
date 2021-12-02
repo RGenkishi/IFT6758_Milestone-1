@@ -8,7 +8,7 @@ class Logger:
         self.reset_all = Style.RESET_ALL
 
     def log(self, *kwargs):
-        self.log_func(*kwargs, f"{lg.reset_all}")
+        self.log_func(*kwargs, f"{self.reset_all}")
 
     def log_warn(self, *kwargs):
         if len(kwargs) > 1:
@@ -29,3 +29,5 @@ if __name__ == "__main__":
     lg.log_warn("hello")
     lg.log_warn("my", "dear")
     print("my", "dear")
+
+    lg.log("hello" + "1")
