@@ -16,14 +16,14 @@ class ApiRequester:
     def get_data(self, year):
         pass
 
-    def log(self, *kwargs):
+    def log(self, kwargs):
         self.logger.log(kwargs)
 
 
 class ApiGameSeasonRequester(ApiRequester):
-    def __init__(self, api_url):
+    def __init__(self, api_url, logger=ConsoleLogger):
+        super().__init__(api_url)
         self.season_type = "02"
-        self.api_url = api_url
         self.max_game = 1271
 
     def get_data(self, year):
@@ -39,7 +39,8 @@ class ApiGameSeasonRequester(ApiRequester):
 
 
 class ApiGamePlayoffsRequester(ApiRequester):
-    def __init__(self, api_url):
+    def __init__(self, api_url, logger=ConsoleLogger):
+        super().__init__(api_url,logger)
         self.season_type = "03"
         self.api_url = api_url
 
