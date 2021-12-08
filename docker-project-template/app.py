@@ -11,19 +11,26 @@ gunicorn can be installed via:
 import os
 from pathlib import Path
 import logging
+import json as jsn
+
+from IPython.core.display import JSON
 from flask import Flask, jsonify, request, abort
 import sklearn
 import pandas as pd
+import numpy as np
 import joblib
 
+from ift6758.ift6758.models.CometModelManager import CometModelManager
 
 import ift6758
 
 
 LOG_FILE = os.environ.get("FLASK_LOG", "flask.log")
 
-
 app = Flask(__name__)
+
+cmm = CometModelManager()
+model = None
 
 
 @app.before_first_request
@@ -32,8 +39,10 @@ def before_first_request():
     Hook to handle any initialization before the first request (e.g. load model,
     setup logging handler, etc.)
     """
-    # TODO: setup basic logging configuration
-    logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
+    logging.basicConfig(filename=LOG_FILE,
+                        level=logging.INFO,
+                        format="{'time':'%(asctime)s', 'name': '%(name)s', 'level': '%(levelname)s', 'message': '%(message)s'}")
+    logging.log(logging.INFO, "logging initialized")
 
     # TODO: any other initialization before the first request (e.g. load default model)
     pass
@@ -42,11 +51,18 @@ def before_first_request():
 @app.route("/logs", methods=["GET"])
 def logs():
     """Reads data from the log file and returns them as the response"""
-    
-    # TODO: read the log file specified and return the data
-    raise NotImplementedError("TODO: implement this endpoint")
+    # pour tester dans un navigateur:
+    # http://0.0.0.0:8080/logs
 
-    response = None
+    logs = []
+    with open(LOG_FILE, 'r') as log_file:
+        c_log = log_file.readline()
+        while c_log:
+            logs.append(c_log)
+            c_log = log_file.read()
+    logs = [eval(line.strip('\n\r')) for line in logs]  # suprime les '\n' et '\r' en fin de ligne et évalue les dico
+    response = logs
+
     return jsonify(response)  # response must be json serializable!
 
 
@@ -67,9 +83,23 @@ def download_registry_model():
         }
     
     """
+    global model
+    # Pour tester sur iris
+    # Tester dans le terminal avec :
+    # curl -v -H "Content-Type: application/json" -X POST -d '{"model_name": "iris-model"}' http://0.0.0.0:8080/download_registry_model
+
     # Get POST json data
     json = request.get_json()
-    app.logger.info(json)
+    app.logger.info(jsn.dumps(json))
+
+    if not 'model_name' in json:
+        app.logger.info("la clé model_name doit être spécifié pour download_registry_model")
+        response = "la clé model_name doit être spécifié pour download_registry_model"
+    else:
+        force = json['force'] if 'force' in json else False
+
+        model = cmm.download_model(json['model_name'])
+
 
     # TODO: check to see if the model you are querying for is already downloaded
 
@@ -83,11 +113,10 @@ def download_registry_model():
     # Tip: you can implement a "CometMLClient" similar to your App client to abstract all of this
     # logic and querying of the CometML servers away to keep it clean here
 
-    raise NotImplementedError("TODO: implement this endpoint")
+        response = "modèle " + json['model_name'] + " téléchargé"
+    print(model)
 
-    response = None
-
-    app.logger.info(response)
+    app.logger.info(jsn.dumps(response))
     return jsonify(response)  # response must be json serializable!
 
 
@@ -98,14 +127,49 @@ def predict():
 
     Returns predictions
     """
+    global model
+
+    # Pour tester sur iris
+    # Tester une bonne prédiction dans le terminal:
+    # curl -v -H "Content-Type: application/json" -X POST -d '{"features":[5.8, 2.8, 5.1, 2.4]}' http://0.0.0.0:8080/predict
+    # retourne 2 pour
+
+    # Tester une bonne prédiction dans le terminal:
+    # curl -v -H "Content-Type: application/json" -X POST -d '{"features":[5.6, 2.8, 4.9, 2.0]}' http://0.0.0.0:8080/predict
+    # retourne 1 au lieu de 2
+
+
     # Get POST json data
     json = request.get_json()
     app.logger.info(json)
 
-    # TODO:
-    raise NotImplementedError("TODO: implement this enpdoint")
+    if not 'features' in json:
+        app.logger.info("la clé features doit être spécifié pour predict et pointer vers une liste")
+        response = "la clé features doit être spécifié pour predict et pointer vers une liste"
+    else:
     
-    response = None
+        pred = model.predict(np.array(json['features']).reshape(1, -1))[0]
+        response = {'predicted_class': str(pred)}
+
+    print("resp")
+    print(type(response))
+    print(response)
+    app.logger.info(response)
+    return jsonify(response)  # response must be json serializable!
+
+
+@app.route("/test", methods=["POST"])
+def test():
+    """
+    Handles POST requests made to http://IP_ADDRESS:PORT/test
+
+    Returns the request
+    """
+    # Get POST json data
+    json = request.get_json()
+    app.logger.info(json)
+
+    response = json
 
     app.logger.info(response)
     return jsonify(response)  # response must be json serializable!
