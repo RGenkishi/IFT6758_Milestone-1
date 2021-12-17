@@ -54,13 +54,29 @@ def logs():
     # pour tester dans un navigateur:
     # http://0.0.0.0:8080/logs
 
-    logs = []
+    raw_logs = []
     with open(LOG_FILE, 'r') as log_file:
         c_log = log_file.readline()
         while c_log:
-            logs.append(c_log)
-            c_log = log_file.read()
-    logs = [eval(line.strip('\n\r')) for line in logs]  # suprime les '\n' et '\r' en fin de ligne et évalue les dico
+            raw_logs.append(c_log.strip('\n\r'))
+            c_log = log_file.readline()
+
+    logs = []
+    in_irregular_log = False
+    irregular_log_index = 0
+    for log_line in raw_logs:
+        if log_line[0] == '{':
+            in_irregular_log = False
+            logs.append(eval(log_line))  # évalue le dico
+        else:
+            if not in_irregular_log:
+                irregular_log_index = 0
+                logs.append({'time': 'UNKNOWN', 'name': 'app', 'level': 'Python Traceback', 'message': log_line})
+                in_irregular_log = True
+            else:
+                logs[-1]['message' + str('{0:03}'.format(irregular_log_index))] = log_line
+                irregular_log_index += 1
+
     response = logs
 
     return jsonify(response)  # response must be json serializable!
@@ -141,7 +157,7 @@ def predict():
 
     # Get POST json data
     json = request.get_json()
-    app.logger.info(json)
+    app.logger.info(str(json).replace("'", '"'))
 
     if not 'features' in json:
         app.logger.info("la clé features doit être spécifié pour predict et pointer vers une liste")
