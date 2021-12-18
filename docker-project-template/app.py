@@ -89,7 +89,10 @@ def download_registry_model():
         force = json['force'] if 'force' in json else False
         try:
             model_name = json['model_name']
-            model = cmm.download_model(model_name, force=force)
+            if 'workspace' in json:
+                model = cmm.download_model(model_name, workspace=json['workspace'], force=force)
+            else:
+                model = cmm.download_model(model_name, force=force)
             response = {'status': "success",
                         'message': MSG_MODEL_LOADED_SUCCESSFULLY(model_name)
                         }
@@ -185,9 +188,10 @@ def predict():
         logger.log_warn(LOG_MISSING_KEY('features'), transmission=response)
     else:
         if model is not None:
-            pred = model.predict(np.array(json['features']).reshape(1, -1))[0]
+            frame = pd.json_normalize(json['features'])
+            preds = model.predict(pd.DataFrame(json['features']))
             response = {'status': "success",
-                        'predicted_class': repr(pred)}
+                        'predictions': preds.tolist()}
             logger.log(LOG_PREDICTION_SENT_TO_CLIENT(), transmission=response)
 
         else:

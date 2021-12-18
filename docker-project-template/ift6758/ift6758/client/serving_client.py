@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 class ServingClient:
-    def __init__(self, ip: str = "0.0.0.0", port: int = 5000, features=None):
+    def __init__(self, ip: str = "0.0.0.0", port: int = 8080, features=None):
         self.base_url = f"http://{ip}:{port}"
         logger.info(f"Initializing client; base URL: {self.base_url}")
 
@@ -28,14 +28,28 @@ class ServingClient:
             X (Dataframe): Input dataframe to submit to the prediction service.
         """
 
-        raise NotImplementedError("TODO: implement this function")
+        res = requests.post(url=self.base_url+"/predict", json={'features': X.values.tolist()})
+
+        predictions = pd.DataFrame(res.json()['predictions'])
+        print(predictions)
+
+        return predictions
 
     def logs(self) -> dict:
         """Get server logs"""
 
-        raise NotImplementedError("TODO: implement this function")
+        res = requests.get(url=self.base_url + "/logs")
 
-    def download_registry_model(self, workspace: str, model: str, version: str) -> dict:
+        logs_list = res.json()
+        logs_dict = {key: logs_list[key] for key in range(len(logs_list))}
+        for key in logs_dict:
+            print(key, ":", logs_dict[key])
+
+        return logs_dict
+
+
+    # def download_registry_model(self, workspace: str, model: str, version: str) -> dict:
+    def download_registry_model(self, workspace: str, model: str) -> dict:
         """
         Triggers a "model swap" in the service; the workspace, model, and model version are
         specified and the service looks for this model in the model registry and tries to
@@ -51,4 +65,23 @@ class ServingClient:
             version (str): The model version to download
         """
 
-        raise NotImplementedError("TODO: implement this function")
+        res = requests.post(url=self.base_url + "/download_registry_model",
+                            json={'workspace': workspace, 'model_name': model})
+
+        res = res.json()
+        print(res)
+
+        return res
+
+
+if __name__ == "__main__":
+    sc = ServingClient()
+
+    sc.download_registry_model(workspace="genkishi", model="iris-model")
+    print()
+
+    sc.predict(pd.DataFrame([[5.8, 2.8, 5.1, 2.4],
+                             [5.6, 2.8, 4.9, 2.0]]))
+    print()
+
+    sc.logs()

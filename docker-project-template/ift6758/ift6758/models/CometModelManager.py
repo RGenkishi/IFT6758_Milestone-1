@@ -86,7 +86,7 @@ class CometModelManager:
         # register the model for future use
         self.register_model(model_name)
 
-    def download_model(self, model_name, force=False):
+    def download_model(self, model_name, workspace="genkishi", force=False):
         """
         Télécharge un modèle de Model Registry sur Comet ML
         """
@@ -95,7 +95,7 @@ class CometModelManager:
                 self.logger.log(LOG_ATTEMPT_TO_FORCE_DOWNLOAD_MODEL(model_name))
             else:
                 self.logger.log(LOG_ATTEMPT_TO_DOWNLOAD_MODEL(model_name))
-            self.api.download_registry_model(workspace="genkishi",
+            self.api.download_registry_model(workspace=workspace,
                                              registry_name=model_name,
                                              output_path=self.model_database,
                                              expand=True)
