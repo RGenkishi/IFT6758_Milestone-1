@@ -17,6 +17,7 @@ class Logger:
     def log_err(self, *kwargs):
         pass
 
+
 class LoggingLogger(Logger):
     def __init__(self):
         super().__init__(log_func=logging.log)
