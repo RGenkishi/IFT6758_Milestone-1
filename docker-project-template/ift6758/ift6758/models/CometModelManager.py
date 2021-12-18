@@ -4,6 +4,7 @@ import joblib
 import time
 import os
 from ift6758.ift6758.utilitaires.logger import LoggingLogger
+from ift6758.LANG.log_string import *
 
 module_path = os.path.dirname(__file__) + '/'
 default_model_dataBase = os.path.dirname(__file__) + "/modelDatabase/"
@@ -91,15 +92,15 @@ class CometModelManager:
         """
         if force or not os.path.exists(self.get_model_path(model_name)):
             if force:
-                self.logger.log("Tentative de telechargement forcee du model (" + model_name + ")")
+                self.logger.log(LOG_ATTEMPT_TO_FORCE_DOWNLOAD_MODEL(model_name))
             else:
-                self.logger.log("Tentative de telechargement du modele non present en local (" + model_name + ")" )
+                self.logger.log(LOG_ATTEMPT_TO_DOWNLOAD_MODEL(model_name))
             self.api.download_registry_model(workspace="genkishi",
                                              registry_name=model_name,
                                              output_path=self.model_database,
                                              expand=True)
         else:
-            self.logger.log("Model (" + model_name + ")" + " deja present en local")
+            self.logger.log(LOG_MODEL_ALREADY_DOWNLOADED(model_name))
         return self.file_to_sklear_model(model_name=model_name)
 
     def download_model_from_experiment(self, model_name, force=False):

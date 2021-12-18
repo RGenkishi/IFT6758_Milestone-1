@@ -3,7 +3,7 @@ import inspect
 
 module_base = "ift6758.LANG."
 
-LANG_MSG_SOURCE = 'LANG_MSG_FRA'
+LANG_MSG_SOURCE = 'LANG_MSG_ANG'
 LANG_MSG_SOURCE_ROLLBACK = 'LANG_MSG_ANG'
 
 try:

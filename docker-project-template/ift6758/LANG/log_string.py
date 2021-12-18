@@ -3,7 +3,7 @@ import inspect
 
 module_base = "ift6758.LANG."
 
-LANG_LOG_SOURCE = 'LANG_LOG_FRA'
+LANG_LOG_SOURCE = 'LANG_LOG_ANG'
 LANG_LOG_SOURCE_ROLLBACK = 'LANG_LOG_ANG'
 
 try:
@@ -47,6 +47,18 @@ def LOG_SENDING_RESPONSE_TO_CLIENT():
 
 def LOG_REQUEST_RECEIVED():
     return construct_string(inspect.stack()[1][3])
+
+
+def LOG_ATTEMPT_TO_FORCE_DOWNLOAD_MODEL(model_name):
+    return construct_string(model_name)
+
+
+def LOG_ATTEMPT_TO_DOWNLOAD_MODEL(model_name):
+    return construct_string(model_name)
+
+
+def LOG_MODEL_ALREADY_DOWNLOADED(model_name):
+    return construct_string(model_name)
 
 
 def LOG_MODEL_LOADED_SUCCESSFULLY(model_name):
