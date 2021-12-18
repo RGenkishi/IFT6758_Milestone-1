@@ -22,6 +22,7 @@ import numpy as np
 import joblib
 
 from ift6758.LANG.log_string import *
+from ift6758.LANG.msg_string import *
 from ift6758.ift6758.models.CometModelManager import CometModelManager
 
 import ift6758
@@ -35,6 +36,7 @@ cmm = CometModelManager()
 model = None
 logger = None
 
+
 @app.before_first_request
 def before_first_request():
     """
@@ -46,7 +48,7 @@ def before_first_request():
                         level=logging.INFO,
                         format="{'time':'%(asctime)s', 'name': '%(name)s', 'level': '%(levelname)s', 'message': %(message)s, 'transmission': %(transmission)s,'file': '%(caller_file)s', 'function': '%(caller_func)s'}")
     logger = LoggingLogger()
-    logger.log(LOGGER_INITIALIZED())
+    logger.log(LOG_LOGGER_INITIALIZED())
 
     # DONE: any other initialization before the first request (e.g. load default model)
     pass
@@ -76,21 +78,29 @@ def download_registry_model():
 
     # Get POST json data
     json = request.get_json()
-    logger.log(REQUEST_RECEIVED(), transmission=json)
+    logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     if not 'model_name' in json:
-        response = "la clé model_name doit être spécifié pour download_registry_model"
-        logger.log_warn(MISSING_KEY('model_name'), transmission=response)
+        response = {'status': "warning",
+                    'message': MSG_MISSING_KEY('model_name', example='\'iris-model\'')
+                    }
+        logger.log_warn(LOG_MISSING_KEY('model_name'), transmission=response)
     else:
         force = json['force'] if 'force' in json else False
         try:
             model_name = json['model_name']
             model = cmm.download_model(model_name, force=force)
-            response = "Modele (" + model_name + ") charge avec succes"
-            logger.log(MODEL_LOADED_SUCCESSFULLY(model_name), transmission=response)
+            response = {'status': "success",
+                        'message': MSG_MODEL_LOADED_SUCCESSFULLY(model_name)
+                        }
+            logger.log(LOG_MODEL_LOADED_SUCCESSFULLY(model_name), transmission=response)
         except Exception as e:
-            response = {'error': str(e)}
-            logger.log_err({'message': MODEL_LOAD_ERROR(model_name), 'error': str(e)}, transmission=response)
+            response = {'status': "error",
+                        'message': MSG_MODEL_LOAD_ERROR(model_name),
+                        'error': str(e)}
+            logger.log_err({'message': LOG_MODEL_LOAD_ERROR(model_name),
+                            'error': str(e)},
+                           transmission=response)
 
     '''
     # DONE: check to see if the model you are querying for is already downloaded
@@ -115,8 +125,8 @@ def logs():
     # pour tester dans un navigateur:
     # http://0.0.0.0:8080/logs
 
-    logger.log(REQUEST_RECEIVED())
-    logger.log(SENDING_LOGS_TO_CLIENT())  # before doing it in order to include it in the return for consistency
+    logger.log(LOG_REQUEST_RECEIVED())
+    logger.log(LOG_SENDING_LOGS_TO_CLIENT())  # before doing it in order to include it in the return for consistency
 
     raw_logs = []
     with open(LOG_FILE, 'r') as log_file:
@@ -141,7 +151,7 @@ def logs():
                 logs[-1]['message' + str('{0:03}'.format(irregular_log_index))] = log_line
                 irregular_log_index += 1
 
-    response = logs
+    response = logs  # raw format for easy display in firefox
 
     return jsonify(response)  # response must be json serializable!
 
@@ -166,20 +176,24 @@ def predict():
 
     # Get POST json data
     json = request.get_json()
-    logger.log(REQUEST_RECEIVED(), transmission=json)
+    logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     if not 'features' in json:
-        response = "la cle features doit etre specifie pour predict et pointer vers une liste"
-        logger.log(MISSING_KEY('features'), transmission=response)
+        response = {'status': "warning",
+                    'message': MSG_MISSING_KEY('features', example="[5.8, 2.8, 5.1, 2.4]")
+                    }
+        logger.log_warn(LOG_MISSING_KEY('features'), transmission=response)
     else:
         if model is not None:
             pred = model.predict(np.array(json['features']).reshape(1, -1))[0]
-            response = {'predicted_class': str(pred)}
-            logger.log(PREDICTION_SENT_TO_CLIENT(), transmission=response)
+            response = {'status': "success",
+                        'predicted_class': repr(pred)}
+            logger.log(LOG_PREDICTION_SENT_TO_CLIENT(), transmission=response)
 
         else:
-            logger.log_err(PREDICTION_ATTEMPT_ON_NONE_MODEL())
-            response = {'error': 'Un model doit etre charge'}
+            response = {'status': 'error',
+                        'message': MSG_PREDICTION_ATTEMPT_ON_NONE_MODEL()}
+            logger.log_err(LOG_PREDICTION_ATTEMPT_ON_NONE_MODEL())
 
     return jsonify(response)  # response must be json serializable!
 
@@ -194,11 +208,12 @@ def test():
 
     # Get POST json data
     json = request.get_json()
-    logger.log(REQUEST_RECEIVED(), transmission=json)
+    logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
-    response = json
-
-    logger.log(SENDING_RESPONSE_TO_CLIENT(), transmission=json)
+    response = {'status': "success",
+                'request': json
+                }
+    logger.log(LOG_SENDING_RESPONSE_TO_CLIENT(), transmission=json)
     return jsonify(response)  # response must be json serializable!
 
 
@@ -211,18 +226,60 @@ def set_log_lang():
     """
 
     json = request.get_json()
-    logger.log(REQUEST_RECEIVED(), transmission=json)
+    logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     if not 'LANG' in json:
-        response = "la cle LANG doit etre specifiee"
-        logger.log(MISSING_KEY('LANG'), transmission=response)
+        response = {'status': "warning",
+                    'message': MSG_MISSING_KEY('LANG', example='\'LANG_LOG_FRA\'')
+                    }
+        logger.log_warn(LOG_MISSING_KEY('LANG'), transmission=response)
     else:
         try:
-            launch_lang(json['LANG'])
-            response = {'LANG': get_lang_log_source()}
-            logger.log(LANG_CHANGED_SUCCESSFULLY(get_lang_log_source()), transmission=response)
+            launch_log_lang(json['LANG'])
+            response = {'status': "success",
+                        'message': MSG_LOG_LANG_CHANGED_SUCCESSFULLY(get_lang_log_source()),
+                        'LANG': get_lang_log_source()}
+            logger.log(LOG_LOG_LANG_CHANGED_SUCCESSFULLY(get_lang_log_source()), transmission=response)
         except Exception as e:
-            response = {'error': "La langue n'a pas pu etre change"}
-            logger.log_err(str(e), transmission=response)
+            response = {'status': "error",
+                        'message': MSG_LOG_LANG_CHANGE_ERROR(get_lang_log_source()),
+                        'LANG': get_lang_log_source()}
+            logger.log_err({'message': LOG_LOG_LANG_CHANGE_ERROR(get_lang_log_source()),
+                            'error': str(e)},
+                           transmission=response)
+
+    return jsonify(response)  # response must be json serializable!
+
+
+@app.route("/set_lang", methods=["POST"])
+def set_lang():
+    """
+    Handles POST requests made to http://IP_ADDRESS:PORT/set_lang
+
+    Returns the language of the responses to the client after setting it
+    """
+
+    json = request.get_json()
+    logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
+
+    if not 'LANG' in json:
+        response = {'status': "warning",
+                    'message': MSG_MISSING_KEY('LANG', example='\'LANG_LOG_FRA\'')
+                    }
+        logger.log_warn(LOG_MISSING_KEY('LANG'), transmission=response)
+    else:
+        try:
+            launch_msg_lang(json['LANG'])
+            response = {'status': "success",
+                        'message': MSG_MSG_LANG_CHANGED_SUCCESSFULLY(get_lang_msg_source()),
+                        'LANG': get_lang_msg_source()}
+            logger.log(LOG_MSG_LANG_CHANGED_SUCCESSFULLY(get_lang_msg_source()), transmission=response)
+        except Exception as e:
+            response = {'status': "error",
+                        'message': MSG_MSG_LANG_CHANGE_ERROR(get_lang_msg_source()),
+                        'LANG': get_lang_log_source()}
+            logger.log_err({'message': LOG_MSG_LANG_CHANGE_ERROR(get_lang_msg_source()),
+                            'error': str(e)},
+                           transmission=response)
 
     return jsonify(response)  # response must be json serializable!
