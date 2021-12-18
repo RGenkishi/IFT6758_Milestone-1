@@ -3,6 +3,7 @@ from comet_ml import API
 import joblib
 import time
 import os
+from ift6758.ift6758.utilitaires.logger import LoggingLogger
 
 module_path = os.path.dirname(__file__) + '/'
 default_model_dataBase = os.path.dirname(__file__) + "/modelDatabase/"
@@ -17,6 +18,7 @@ class CometModelManager:
         with open(module_path + "API_KEY", "r") as f:
             self.API_KEY = f.readline()
         self.api = API(api_key=self.API_KEY)
+        self.logger = LoggingLogger()
 
     def get_model_path(self, model_name):
         """
@@ -88,10 +90,16 @@ class CometModelManager:
         Télécharge un modèle de Model Registry sur Comet ML
         """
         if force or not os.path.exists(self.get_model_path(model_name)):
+            if force:
+                self.logger.log("Tentative de telechargement forcee du model (" + model_name + ")")
+            else:
+                self.logger.log("Tentative de telechargement du modele non present en local (" + model_name + ")" )
             self.api.download_registry_model(workspace="genkishi",
                                              registry_name=model_name,
                                              output_path=self.model_database,
                                              expand=True)
+        else:
+            self.logger.log("Model (" + model_name + ")" + " deja present en local")
         return self.file_to_sklear_model(model_name=model_name)
 
     def download_model_from_experiment(self, model_name, force=False):

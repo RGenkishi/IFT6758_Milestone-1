@@ -11,6 +11,7 @@ gunicorn can be installed via:
 import os
 from pathlib import Path
 import logging
+from ift6758.ift6758.utilitaires.logger import LoggingLogger
 import json as jsn
 
 from IPython.core.display import JSON
@@ -20,18 +21,19 @@ import pandas as pd
 import numpy as np
 import joblib
 
+from ift6758.LANG.log_string import *
 from ift6758.ift6758.models.CometModelManager import CometModelManager
 
 import ift6758
 
-
+# Chemin du fichier de log
 LOG_FILE = os.environ.get("FLASK_LOG", "flask.log")
 
 app = Flask(__name__)
 
 cmm = CometModelManager()
 model = None
-
+logger = None
 
 @app.before_first_request
 def before_first_request():
@@ -39,13 +41,72 @@ def before_first_request():
     Hook to handle any initialization before the first request (e.g. load model,
     setup logging handler, etc.)
     """
+    global logger
     logging.basicConfig(filename=LOG_FILE,
                         level=logging.INFO,
-                        format="{'time':'%(asctime)s', 'name': '%(name)s', 'level': '%(levelname)s', 'message': '%(message)s'}")
-    logging.log(logging.INFO, "logging initialized")
+                        format="{'time':'%(asctime)s', 'name': '%(name)s', 'level': '%(levelname)s', 'message': %(message)s, 'transmission': %(transmission)s,'file': '%(caller_file)s', 'function': '%(caller_func)s'}")
+    logger = LoggingLogger()
+    logger.log(LOGGER_INITIALIZED())
 
-    # TODO: any other initialization before the first request (e.g. load default model)
+    # DONE: any other initialization before the first request (e.g. load default model)
     pass
+
+
+@app.route("/download_registry_model", methods=["POST"])
+def download_registry_model():
+    """
+    Handles POST requests made to http://IP_ADDRESS:PORT/download_registry_model
+
+    The comet API key should be retrieved from the ${COMET_API_KEY} environment variable.
+
+    Recommend (but not required) json with the schema:
+
+        {
+            workspace: (required),
+            model: (required),
+            version: (required),
+            ... (other fields if needed) ...
+        }
+
+    # Pour tester sur iris
+    # Tester dans le terminal avec :
+    # curl -v -H "Content-Type: application/json" -X POST -d '{"model_name": "iris-model"}' http://0.0.0.0:8080/download_registry_model
+    """
+    global model
+
+    # Get POST json data
+    json = request.get_json()
+    logger.log(REQUEST_RECEIVED(), transmission=json)
+
+    if not 'model_name' in json:
+        response = "la clé model_name doit être spécifié pour download_registry_model"
+        logger.log_warn(MISSING_KEY('model_name'), transmission=response)
+    else:
+        force = json['force'] if 'force' in json else False
+        try:
+            model_name = json['model_name']
+            model = cmm.download_model(model_name, force=force)
+            response = "Modele (" + model_name + ") charge avec succes"
+            logger.log(MODEL_LOADED_SUCCESSFULLY(model_name), transmission=response)
+        except Exception as e:
+            response = {'error': str(e)}
+            logger.log_err({'message': MODEL_LOAD_ERROR(model_name), 'error': str(e)}, transmission=response)
+
+    '''
+    # DONE: check to see if the model you are querying for is already downloaded
+
+    # DONE: if yes, load that model and write to the log about the model change.
+    # eg: app.logger.info(<LOG STRING>, extra={'caller_file': 'hihi', 'caller_func': 'hoho'})
+
+    # DONE: if no, try downloading the model: if it succeeds, load that model and write to the log
+    # about the model change. If it fails, write to the log about the failure and keep the
+    # currently loaded model
+
+    # Tip: you can implement a "CometMLClient" similar to your App client to abstract all of this
+    # logic and querying of the CometML servers away to keep it clean here
+    '''
+
+    return jsonify(response)  # response must be json serializable!
 
 
 @app.route("/logs", methods=["GET"])
@@ -53,6 +114,9 @@ def logs():
     """Reads data from the log file and returns them as the response"""
     # pour tester dans un navigateur:
     # http://0.0.0.0:8080/logs
+
+    logger.log(REQUEST_RECEIVED())
+    logger.log(SENDING_LOGS_TO_CLIENT())  # before doing it in order to include it in the return for consistency
 
     raw_logs = []
     with open(LOG_FILE, 'r') as log_file:
@@ -82,68 +146,12 @@ def logs():
     return jsonify(response)  # response must be json serializable!
 
 
-@app.route("/download_registry_model", methods=["POST"])
-def download_registry_model():
-    """
-    Handles POST requests made to http://IP_ADDRESS:PORT/download_registry_model
-
-    The comet API key should be retrieved from the ${COMET_API_KEY} environment variable.
-
-    Recommend (but not required) json with the schema:
-
-        {
-            workspace: (required),
-            model: (required),
-            version: (required),
-            ... (other fields if needed) ...
-        }
-    
-    """
-    global model
-    # Pour tester sur iris
-    # Tester dans le terminal avec :
-    # curl -v -H "Content-Type: application/json" -X POST -d '{"model_name": "iris-model"}' http://0.0.0.0:8080/download_registry_model
-
-    # Get POST json data
-    json = request.get_json()
-    app.logger.info(jsn.dumps(json))
-
-    if not 'model_name' in json:
-        app.logger.info("la clé model_name doit être spécifié pour download_registry_model")
-        response = "la clé model_name doit être spécifié pour download_registry_model"
-    else:
-        force = json['force'] if 'force' in json else False
-
-        model = cmm.download_model(json['model_name'])
-
-
-    # TODO: check to see if the model you are querying for is already downloaded
-
-    # TODO: if yes, load that model and write to the log about the model change.  
-    # eg: app.logger.info(<LOG STRING>)
-    
-    # TODO: if no, try downloading the model: if it succeeds, load that model and write to the log
-    # about the model change. If it fails, write to the log about the failure and keep the 
-    # currently loaded model
-
-    # Tip: you can implement a "CometMLClient" similar to your App client to abstract all of this
-    # logic and querying of the CometML servers away to keep it clean here
-
-        response = "modèle " + json['model_name'] + " téléchargé"
-    print(model)
-
-    app.logger.info(jsn.dumps(response))
-    return jsonify(response)  # response must be json serializable!
-
-
 @app.route("/predict", methods=["POST"])
 def predict():
     """
     Handles POST requests made to http://IP_ADDRESS:PORT/predict
 
     Returns predictions
-    """
-    global model
 
     # Pour tester sur iris
     # Tester une bonne prédiction dans le terminal:
@@ -153,24 +161,26 @@ def predict():
     # Tester une bonne prédiction dans le terminal:
     # curl -v -H "Content-Type: application/json" -X POST -d '{"features":[5.6, 2.8, 4.9, 2.0]}' http://0.0.0.0:8080/predict
     # retourne 1 au lieu de 2
-
+    """
+    global model
 
     # Get POST json data
     json = request.get_json()
-    app.logger.info(str(json).replace("'", '"'))
+    logger.log(REQUEST_RECEIVED(), transmission=json)
 
     if not 'features' in json:
-        app.logger.info("la clé features doit être spécifié pour predict et pointer vers une liste")
-        response = "la clé features doit être spécifié pour predict et pointer vers une liste"
+        response = "la cle features doit etre specifie pour predict et pointer vers une liste"
+        logger.log(MISSING_KEY('features'), transmission=response)
     else:
-    
-        pred = model.predict(np.array(json['features']).reshape(1, -1))[0]
-        response = {'predicted_class': str(pred)}
+        if model is not None:
+            pred = model.predict(np.array(json['features']).reshape(1, -1))[0]
+            response = {'predicted_class': str(pred)}
+            logger.log(PREDICTION_SENT_TO_CLIENT(), transmission=response)
 
-    print("resp")
-    print(type(response))
-    print(response)
-    app.logger.info(response)
+        else:
+            logger.log_err(PREDICTION_ATTEMPT_ON_NONE_MODEL())
+            response = {'error': 'Un model doit etre charge'}
+
     return jsonify(response)  # response must be json serializable!
 
 
@@ -181,11 +191,38 @@ def test():
 
     Returns the request
     """
+
     # Get POST json data
     json = request.get_json()
-    app.logger.info(json)
+    logger.log(REQUEST_RECEIVED(), transmission=json)
 
     response = json
 
-    app.logger.info(response)
+    logger.log(SENDING_RESPONSE_TO_CLIENT(), transmission=json)
+    return jsonify(response)  # response must be json serializable!
+
+
+@app.route("/set_log_lang", methods=["POST"])
+def set_log_lang():
+    """
+    Handles POST requests made to http://IP_ADDRESS:PORT/set_log_lang
+
+    Returns the log language after setting it
+    """
+
+    json = request.get_json()
+    logger.log(REQUEST_RECEIVED(), transmission=json)
+
+    if not 'LANG' in json:
+        response = "la cle LANG doit etre specifiee"
+        logger.log(MISSING_KEY('LANG'), transmission=response)
+    else:
+        try:
+            launch_lang(json['LANG'])
+            response = {'LANG': get_lang_log_source()}
+            logger.log(LANG_CHANGED_SUCCESSFULLY(get_lang_log_source()), transmission=response)
+        except Exception as e:
+            response = {'error': "La langue n'a pas pu etre change"}
+            logger.log_err(str(e), transmission=response)
+
     return jsonify(response)  # response must be json serializable!

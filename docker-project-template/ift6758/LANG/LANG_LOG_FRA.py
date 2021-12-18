@@ -1,0 +1,11 @@
+STRINGS_LOG = {'MISSING_KEY': "La clé (%s) est manquante dans la requête",
+               'LOGGER_INITIALIZED': "Logger initialisé",
+               'SENDING_LOGS_TO_CLIENT': "Envois des logs au client",
+               'SENDING_RESPONSE_TO_CLIENT': "Envois de la réponse au client",
+               'REQUEST_RECEIVED': "Requête reçue : %s",
+               'MODEL_LOADED_SUCCESSFULLY': "Modèle (%s) chargé avec succès",
+               'MODEL_LOAD_ERROR': "Le modèle (%s) n'a pas pu être chargé",
+               'PREDICTION_SENT_TO_CLIENT': "Prédictions envoyées au client",
+               'PREDICTION_ATTEMPT_ON_NONE_MODEL': "Une tentative de prédiction sur un modèle None s'est produite",
+               'LANG_CHANGED_SUCCESSFULLY': "Langue changée pour %s avec succès",
+               }
