@@ -48,7 +48,7 @@ class LoggingLogger(Logger):
 
     def log(self, msg, level=logging.INFO, transmission=None):
         caller_info = self.get_caller_info()
-        extra = {'transmission' : repr(transmission)}
+        extra = {'transmission': repr(transmission)}
         extra.update(caller_info)
         self.log_func(msg=repr(msg), level=level, extra=extra)
 

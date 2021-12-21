@@ -1,4 +1,5 @@
 STRINGS_LOG = {'LOG_MISSING_KEY': "La clé ({0}) est manquante dans la requête",
+               'LOG_ENV_VAR_NOT_SET': "La variable d'environnement {0} n'est pas configurée",
                'LOG_LOGGER_INITIALIZED': "Logger initialisé",
                'LOG_SENDING_LOGS_TO_CLIENT': "Envois des logs au client",
                'LOG_SENDING_RESPONSE_TO_CLIENT': "Envois de la réponse au client",

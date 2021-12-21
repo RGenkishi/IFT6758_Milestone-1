@@ -4,20 +4,6 @@
 # Le code répondant à une question devrait être directement
 # dans le fichier correspondant à la question
 # avec un "if __name__ == "__main__"
+from ift6758.models.CometModelManager import CometModelManager
 
-
-import numpy as np
-
-
-def test_1():
-    print("Hi Orlando")
-    pass
-    pass
-
-
-var = 12
-
-if __name__ == "__main__":
-    arr = np.ones(10) * var
-    test_1()
-    print(arr)
+CometModelManager()

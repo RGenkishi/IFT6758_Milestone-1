@@ -32,7 +32,7 @@ LOG_FILE = os.environ.get("FLASK_LOG", "flask.log")
 
 app = Flask(__name__)
 
-cmm = CometModelManager()
+cmm = None
 model = None
 logger = None
 
@@ -43,12 +43,13 @@ def before_first_request():
     Hook to handle any initialization before the first request (e.g. load model,
     setup logging handler, etc.)
     """
-    global logger
+    global logger, cmm
     logging.basicConfig(filename=LOG_FILE,
                         level=logging.INFO,
                         format="{'time':'%(asctime)s', 'name': '%(name)s', 'level': '%(levelname)s', 'message': %(message)s, 'transmission': %(transmission)s,'file': '%(caller_file)s', 'function': '%(caller_func)s'}")
     logger = LoggingLogger()
     logger.log(LOG_LOGGER_INITIALIZED())
+    cmm = CometModelManager()
 
     # DONE: any other initialization before the first request (e.g. load default model)
     pass
@@ -215,7 +216,8 @@ def test():
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     response = {'status': "success",
-                'request': json
+                'request': json,
+                'API-KEY': os.environ["COMET_API_KEY"]
                 }
     logger.log(LOG_SENDING_RESPONSE_TO_CLIENT(), transmission=json)
     return jsonify(response)  # response must be json serializable!

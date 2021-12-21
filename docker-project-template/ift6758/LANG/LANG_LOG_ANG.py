@@ -1,4 +1,5 @@
 STRINGS_LOG = {'LOG_MISSING_KEY': "({0}) key is missing in request",
+               'LOG_ENV_VAR_NOT_SET': "the {0} environment variable is not set",
                'LOG_LOGGER_INITIALIZED': "logger initialized",
                'LOG_SENDING_LOGS_TO_CLIENT': "sending logs to client",
                'LOG_SENDING_RESPONSE_TO_CLIENT': "Sending Response to client",

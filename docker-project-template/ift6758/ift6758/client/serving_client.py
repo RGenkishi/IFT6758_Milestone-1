@@ -31,7 +31,6 @@ class ServingClient:
         res = requests.post(url=self.base_url+"/predict", json={'features': X.values.tolist()})
 
         predictions = pd.DataFrame(res.json()['predictions'])
-        print(predictions)
 
         return predictions
 
@@ -42,8 +41,6 @@ class ServingClient:
 
         logs_list = res.json()
         logs_dict = {key: logs_list[key] for key in range(len(logs_list))}
-        for key in logs_dict:
-            print(key, ":", logs_dict[key])
 
         return logs_dict
 
@@ -69,7 +66,6 @@ class ServingClient:
                             json={'workspace': workspace, 'model_name': model})
 
         res = res.json()
-        print(res)
 
         return res
 
@@ -77,11 +73,11 @@ class ServingClient:
 if __name__ == "__main__":
     sc = ServingClient()
 
-    sc.download_registry_model(workspace="genkishi", model="iris-model")
+    print(sc.download_registry_model(workspace="genkishi", model="iris-model"))
     print()
 
-    sc.predict(pd.DataFrame([[5.8, 2.8, 5.1, 2.4],
-                             [5.6, 2.8, 4.9, 2.0]]))
+    print(sc.predict(pd.DataFrame([[5.8, 2.8, 5.1, 2.4],
+                             [5.6, 2.8, 4.9, 2.0]])))
     print()
 
-    sc.logs()
+    print(sc.logs())

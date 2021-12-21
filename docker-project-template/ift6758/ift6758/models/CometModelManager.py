@@ -3,8 +3,10 @@ from comet_ml import API
 import joblib
 import time
 import os
+
 from ift6758.ift6758.utilitaires.logger import LoggingLogger
 from ift6758.LANG.log_string import *
+
 
 module_path = os.path.dirname(__file__) + '/'
 default_model_dataBase = os.path.dirname(__file__) + "/modelDatabase/"
@@ -13,13 +15,19 @@ default_model_dataBase = os.path.dirname(__file__) + "/modelDatabase/"
 class CometModelManager:
     def __init__(self, workspace="genkishi", project_name="milestone-3", model_database=default_model_dataBase):
         os.makedirs(model_database, exist_ok=True)
+        self.logger = LoggingLogger()
         self.workspace = workspace
         self.project_name = project_name
         self.model_database = model_database
-        with open(module_path + "API_KEY", "r") as f:
-            self.API_KEY = f.readline()
-        self.api = API(api_key=self.API_KEY)
-        self.logger = LoggingLogger()
+        if "COMET_API_KEY" in os.environ:
+            self.API_KEY = os.environ["COMET_API_KEY"]
+            self.api = API(api_key=self.API_KEY)
+        else:
+            self.API_KEY = None
+            self.api = None
+            self.logger.log_err(LOG_ENV_VAR_NOT_SET("COMET_API_KEY"))
+            #raise Exception("COMET_API_KEY environment variable must be set")
+
 
     def get_model_path(self, model_name):
         """

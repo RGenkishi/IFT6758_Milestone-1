@@ -33,6 +33,10 @@ def LOG_MISSING_KEY(key_Name):
     return construct_string(key_Name)
 
 
+def LOG_ENV_VAR_NOT_SET(env_var_name):
+    return construct_string(env_var_name)
+
+
 def LOG_LOGGER_INITIALIZED():
     return construct_string()
 
