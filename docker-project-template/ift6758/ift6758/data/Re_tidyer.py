@@ -15,9 +15,6 @@ class Tidyer:
         self.logger = logger()
         self.verbose = verbose
 
-    def log(self,*kwargs):
-        if self.verbose:
-            self.logger.log(kwargs)
 
     def log_warn(self, *kwargs):
         self.logger.log_warn(kwargs)
@@ -161,14 +158,7 @@ class Tidyer:
                 for column in games.items():
                     column = pd.Series(column)
 
-            for gameType, games in tidyData.items():
-                for column in games.items():
-                    self.log(column[0], len(column[1]))
-                self.log("//////////////")
-
             dfs = {gameType : pd.DataFrame(games) for gameType, games in tidyData.items()}
-            for gameType, games in dfs.items():
-                games.to_csv(filePaths[gameType], index=False, header=True)
 
             return dfs  # DataFrameS (dictionnaire de dataFrames)
 
@@ -286,10 +276,6 @@ class Tidyer:
                 for column in games.items():
                     column = pd.Series(column)
 
-            for gameType, games in tidyData.items():
-                for column in games.items():
-                    self.log(column[0], len(column[1]))
-                self.log("//////////////")
 
             dfs = {gameType : pd.DataFrame(games) for gameType, games in tidyData.items()}
 

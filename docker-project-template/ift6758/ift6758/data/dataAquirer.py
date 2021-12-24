@@ -47,7 +47,7 @@ class DataAquirer:
 
         self.season_data = season_requester.get_data(year)
         self.playoffs_data = playoff_requester.get_data(year)
-        self.save_data(year)
+       # self.save_data(year)
 
     def save_data(self, year):
         self.log("Saving")

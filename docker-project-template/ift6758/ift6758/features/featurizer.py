@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 
 from ift6758.data.tidyer import Tidyer
 from ift6758.data.tidyDataKeys import *
+from ift6758.data.heatMapShots import HeatMapShots
 import pandas as pd
 import numpy as np
 
@@ -25,9 +26,9 @@ class Featurizer:
         self.period_start = period_start
         self.period_end = period_end
 
-    def get_all_in_one(self, period_start, period_end):
+    def get_all_in_one(self):
         tfd = Tidyer()
-        for period in range(period_start, period_end + 1):
+        for period in range(self.period_start, self.period_end):
             print("----------" + str(period) + "----------")
             dfs = tfd.game_event_to_panda_df(period)
             if period == self.period_start:
@@ -50,8 +51,8 @@ class Featurizer:
             season_data.coord_y < 0, ANGLE_FROM_NET]
         return season_data
 
-    def get_feature(self):
-        df = self.get_all_in_one(self.period_start, self.period_end)
+    def get_feature(self,):
+        df = self.get_all_in_one()
         df[IS_GOAL] = df[IS_GOAL].astype(int)
         df = df.assign(distance_from_net=0)
         df = df.assign(angle_from_net=0)
@@ -59,7 +60,6 @@ class Featurizer:
         feature_df = self.calculate_distance_from_net(df)
         feature_df = self.calculate_angle(feature_df)
         feature_df.loc[:, EMPTY_NET] = df.goalie_name.isna()
-
         return feature_df
 
 
