@@ -45,7 +45,7 @@ class ServingClient:
 
         return logs_dict
 
-    def get_new_data_for_prediction(self,last_marker):
+    def get_new_data_for_prediction(self, last_marker):
         last_game_time = last_marker
         dict_shot_goals, dict_other_event = load_data(2021)
         if last_game_time == None:

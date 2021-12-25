@@ -2,7 +2,15 @@ import pandas as pd
 import ipywidgets as widgets
 from IPython.display import display
 
-from serving_client import *
+
+# An horrible thing is following..
+try:  # when running on docker
+    from ift6758.ift6758.client.serving_client import *
+    from ift6758.ift6758.utilitaires.keys import *
+except:  # when editing (running ?) "locally"
+    from ift6758.client.serving_client import *
+    from ift6758.utilitaires.keys import *
+# Please don't look too much above..
 
 
 class ClientApp:
@@ -40,6 +48,8 @@ class ClientApp:
         self.workspace = self.w_workspace.value
         self.model = self.w_model.value
         res = self.client_serving.download_registry_model(workspace=self.workspace, model=self.model)
+        if res[STATUS] == SUCCESS:
+            print(res[MESSAGE])
 
         print(res)
 
@@ -58,3 +68,7 @@ class ClientApp:
         w_box = widgets.VBox([self.w_features, self.w_predict])
         self.w_predict.on_click(self.predict)
         display(w_box)
+
+
+    def logs(self):
+        return self.client_serving.logs()

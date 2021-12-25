@@ -95,3 +95,9 @@ def LOG_MSG_LANG_CHANGED_SUCCESSFULLY(lang_name):
 
 def LOG_MSG_LANG_CHANGE_ERROR(lang_name):
     return construct_string(lang_name)
+
+def LOG_NO_NEW_DATA_AVAILABLE(last_game_time):
+    return construct_string(last_game_time)
+
+def LOG_NEW_DATA_SENT(last_game_time):
+    return construct_string(last_game_time)

@@ -14,5 +14,6 @@ STRINGS_LOG = {'LOG_MISSING_KEY': "La clé ({0}) est manquante dans la requête"
                'LOG_LOG_LANG_CHANGED_SUCCESSFULLY': "Langue des logs changée pour {0} avec succès",
                'LOG_LOG_LANG_CHANGE_ERROR': "La langue des logs n'a pas pu être changée pour {0}",
                'LOG_MSG_LANG_CHANGED_SUCCESSFULLY': "Langue des messages changée pour {0} avec succès",
-               'LOG_MSG_LANG_CHANGE_ERROR': "La langue des messages n'a pas pu être changée pour {0}"
+               'LOG_MSG_LANG_CHANGE_ERROR': "La langue des messages n'a pas pu être changée pour {0}",
+               'LOG_NO_NEW_DATA_AVAILABLE': "Aucune nouvelle donnée depuis {0} en réponse à la requête"
                }

@@ -5,5 +5,10 @@ STRINGS_MSG = {'MSG_MISSING_KEY': "the ({0}) key should be specified for request
                'MSG_LOG_LANG_CHANGED_SUCCESSFULLY': "The logs language has been successfully set to {0}",
                'MSG_LOG_LANG_CHANGE_ERROR': "The logs language couldn't have been set to {0}",
                'MSG_MSG_LANG_CHANGED_SUCCESSFULLY': "The messages language has been successfully set to {0}",
-               'MSG_MSG_LANG_CHANGE_ERROR': "The messages language couldn't have been set to {0}"
+               'MSG_MSG_LANG_CHANGE_ERROR': "The messages language couldn't have been set to {0}",
+               'MSG_NO_NEW_DATA_AVAILABLE': "No new data since the last prediction",
+               'MSG_NEW_DATA_DOWNLOADED': "New data since {0} successfully downloaded"
                }
+
+
+# gametime

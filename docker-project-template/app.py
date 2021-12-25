@@ -12,6 +12,8 @@ import os
 from pathlib import Path
 import logging
 from ift6758.ift6758.utilitaires.logger import LoggingLogger
+from ift6758.ift6758.utilitaires.keys import *
+from ift6758.ift6758.features.re_featurizer import *
 import json as jsn
 
 from IPython.core.display import JSON
@@ -82,8 +84,8 @@ def download_registry_model():
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     if not 'model_name' in json:
-        response = {'status': "warning",
-                    'message': MSG_MISSING_KEY('model_name', example='\'iris-model\'')
+        response = {STATUS: WARNING,
+                    MESSAGE: MSG_MISSING_KEY('model_name', example='\'iris-model\'')
                     }
         logger.log_warn(LOG_MISSING_KEY('model_name'), transmission=response)
     else:
@@ -94,16 +96,16 @@ def download_registry_model():
                 model = cmm.download_model(model_name, workspace=json['workspace'], force=force)
             else:
                 model = cmm.download_model(model_name, force=force)
-            response = {'status': "success",
-                        'message': MSG_MODEL_LOADED_SUCCESSFULLY(model_name)
+            response = {STATUS: SUCCESS,
+                        MESSAGE: MSG_MODEL_LOADED_SUCCESSFULLY(model_name)
                         }
             logger.log(LOG_MODEL_LOADED_SUCCESSFULLY(model_name), transmission=response)
         except Exception as e:
-            response = {'status': "error",
-                        'message': MSG_MODEL_LOAD_ERROR(model_name),
-                        'error': str(e)}
-            logger.log_err({'message': LOG_MODEL_LOAD_ERROR(model_name),
-                            'error': str(e)},
+            response = {STATUS: ERROR,
+                        MESSAGE: MSG_MODEL_LOAD_ERROR(model_name),
+                        ERROR: str(e)}
+            logger.log_err({MESSAGE: LOG_MODEL_LOAD_ERROR(model_name),
+                            ERROR: str(e)},
                            transmission=response)
 
     '''
@@ -121,6 +123,50 @@ def download_registry_model():
     '''
 
     return jsonify(response)  # response must be json serializable!
+
+
+@app.route("/download_registry_model", methods=["POST"])
+def get_new_data_for_prediction():
+    # Get POST json data
+    json = request.get_json()
+    logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
+
+    if not 'last_marker' in json:
+        last_game_time = None
+    else:
+        last_game_time = json['last_marker']
+    dict_shot_goals, dict_other_event = load_data(2021)
+    if last_game_time is None:
+        df_shot_goals = dict_shot_goals['regular']
+        last_game_time = df_shot_goals.game_time.iloc[-1]
+        df_other_event = dict_other_event['regular']
+        df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
+        dfs = engineer_features(df)
+    else:
+        dfs = pd.DataFrame()
+        df_shot_goals = dict_shot_goals['regular']
+        df_shot_goals = df_shot_goals[df_shot_goals['game_time'] >= last_game_time]
+        if df_shot_goals.shape[0] > 1:
+            last_game_time = df_shot_goals.game_time.iloc[-1]
+            df_other_event = dict_other_event['regular']
+            df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
+            dfs = engineer_features(df)
+            df.drop(0, inplace=True)
+            response = {STATUS: WARNING,
+                        MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
+                        }
+            logger.log_err({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)},
+                           transmission=response)
+            print(LOG_NO_NEW_DATA_AVAILABLE(last_game_time))
+        else:
+            response = {STATUS: SUCCESS,
+                        MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
+                        }
+            logger.log_err({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)},
+                           transmission=response)
+            print(LOG_NEW_DATA_SENT(last_game_time))
+
+    return response  # dfs
 
 
 @app.route("/logs", methods=["GET"])
@@ -183,21 +229,21 @@ def predict():
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     if not 'features' in json:
-        response = {'status': "warning",
-                    'message': MSG_MISSING_KEY('features', example="[5.8, 2.8, 5.1, 2.4]")
+        response = {STATUS: WARNING,
+                    MESSAGE: MSG_MISSING_KEY('features', example="[5.8, 2.8, 5.1, 2.4]")
                     }
         logger.log_warn(LOG_MISSING_KEY('features'), transmission=response)
     else:
         if model is not None:
             frame = pd.json_normalize(json['features'])
             preds = model.predict(pd.DataFrame(json['features']))
-            response = {'status': "success",
+            response = {STATUS: SUCCESS,
                         'predictions': preds.tolist()}
             logger.log(LOG_PREDICTION_SENT_TO_CLIENT(), transmission=response)
 
         else:
-            response = {'status': 'error',
-                        'message': MSG_PREDICTION_ATTEMPT_ON_NONE_MODEL()}
+            response = {STATUS: ERROR,
+                        MESSAGE: MSG_PREDICTION_ATTEMPT_ON_NONE_MODEL()}
             logger.log_err(LOG_PREDICTION_ATTEMPT_ON_NONE_MODEL())
 
     return jsonify(response)  # response must be json serializable!
@@ -215,7 +261,7 @@ def test():
     json = request.get_json()
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
-    response = {'status': "success",
+    response = {STATUS: SUCCESS,
                 'request': json,
                 'API-KEY': os.environ["COMET_API_KEY"]
                 }
@@ -235,23 +281,23 @@ def set_log_lang():
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     if not 'LANG' in json:
-        response = {'status': "warning",
-                    'message': MSG_MISSING_KEY('LANG', example='\'LANG_LOG_FRA\'')
+        response = {STATUS: WARNING,
+                    MESSAGE: MSG_MISSING_KEY('LANG', example='\'LANG_LOG_FRA\'')
                     }
         logger.log_warn(LOG_MISSING_KEY('LANG'), transmission=response)
     else:
         try:
             launch_log_lang(json['LANG'])
-            response = {'status': "success",
-                        'message': MSG_LOG_LANG_CHANGED_SUCCESSFULLY(get_lang_log_source()),
+            response = {STATUS: SUCCESS,
+                        MESSAGE: MSG_LOG_LANG_CHANGED_SUCCESSFULLY(get_lang_log_source()),
                         'LANG': get_lang_log_source()}
             logger.log(LOG_LOG_LANG_CHANGED_SUCCESSFULLY(get_lang_log_source()), transmission=response)
         except Exception as e:
-            response = {'status': "error",
-                        'message': MSG_LOG_LANG_CHANGE_ERROR(get_lang_log_source()),
+            response = {STATUS: ERROR,
+                        MESSAGE: MSG_LOG_LANG_CHANGE_ERROR(get_lang_log_source()),
                         'LANG': get_lang_log_source()}
-            logger.log_err({'message': LOG_LOG_LANG_CHANGE_ERROR(get_lang_log_source()),
-                            'error': str(e)},
+            logger.log_err({MESSAGE: LOG_LOG_LANG_CHANGE_ERROR(get_lang_log_source()),
+                            ERROR: str(e)},
                            transmission=response)
 
     return jsonify(response)  # response must be json serializable!
@@ -269,23 +315,23 @@ def set_lang():
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
     if not 'LANG' in json:
-        response = {'status': "warning",
-                    'message': MSG_MISSING_KEY('LANG', example='\'LANG_LOG_FRA\'')
+        response = {STATUS: WARNING,
+                    MESSAGE: MSG_MISSING_KEY('LANG', example='\'LANG_LOG_FRA\'')
                     }
         logger.log_warn(LOG_MISSING_KEY('LANG'), transmission=response)
     else:
         try:
             launch_msg_lang(json['LANG'])
-            response = {'status': "success",
-                        'message': MSG_MSG_LANG_CHANGED_SUCCESSFULLY(get_lang_msg_source()),
+            response = {STATUS: SUCCESS,
+                        MESSAGE: MSG_MSG_LANG_CHANGED_SUCCESSFULLY(get_lang_msg_source()),
                         'LANG': get_lang_msg_source()}
             logger.log(LOG_MSG_LANG_CHANGED_SUCCESSFULLY(get_lang_msg_source()), transmission=response)
         except Exception as e:
-            response = {'status': "error",
-                        'message': MSG_MSG_LANG_CHANGE_ERROR(get_lang_msg_source()),
+            response = {STATUS: ERROR,
+                        MESSAGE: MSG_MSG_LANG_CHANGE_ERROR(get_lang_msg_source()),
                         'LANG': get_lang_log_source()}
-            logger.log_err({'message': LOG_MSG_LANG_CHANGE_ERROR(get_lang_msg_source()),
-                            'error': str(e)},
+            logger.log_err({MESSAGE: LOG_MSG_LANG_CHANGE_ERROR(get_lang_msg_source()),
+                            ERROR: str(e)},
                            transmission=response)
 
     return jsonify(response)  # response must be json serializable!

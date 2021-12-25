@@ -47,6 +47,7 @@ WORKDIR /code
 COPY ./requirements.txt requirements.txt
 COPY ./ift6758/ift6758/client ./ift6758/ift6758/client
 COPY ./ift6758/LANG ./ift6758/LANG
+COPY ./notebook.ipynb ./notebook.ipynb
 
 # TODO: install libs
 RUN pip3 install -r ./requirements.txt
