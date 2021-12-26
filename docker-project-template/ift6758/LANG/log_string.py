@@ -7,10 +7,30 @@ LANG_LOG_SOURCE = 'LANG_LOG_ANG'
 LANG_LOG_SOURCE_ROLLBACK = 'LANG_LOG_ANG'
 
 try:
-    STRINGS_LOG = importlib.import_module(module_base + LANG_LOG_SOURCE).STRINGS_LOG
+    try:
+        STRINGS_LOG = importlib.import_module(module_base + LANG_LOG_SOURCE).STRINGS_LOG
+    except:
+        try:
+            STRINGS_LOG = importlib.import_module('ift6758.' + module_base + LANG_LOG_SOURCE).STRINGS_LOG
+        except:
+            STRINGS_LOG = importlib.import_module('LANG.' + LANG_LOG_SOURCE).STRINGS_LOG
+
 except:
-    STRINGS_LOG = importlib.import_module(module_base + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
-STRING_LOG_ROLLBACK = importlib.import_module(module_base + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
+    try:
+        STRINGS_LOG = importlib.import_module(module_base + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
+    except:
+        try:
+            STRINGS_LOG = importlib.import_module('ift6758.' + module_base + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
+        except:
+            STRINGS_LOG = importlib.import_module('LANG.' + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
+
+try:
+    STRING_LOG_ROLLBACK = importlib.import_module(module_base + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
+except:
+    try:
+        STRINGS_LOG = importlib.import_module('ift6758.' + module_base + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
+    except:
+        STRINGS_LOG = importlib.import_module('LANG.' + LANG_LOG_SOURCE_ROLLBACK).STRINGS_LOG
 
 
 def launch_log_lang(lang_source):

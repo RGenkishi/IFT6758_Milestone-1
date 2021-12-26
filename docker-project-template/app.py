@@ -22,6 +22,7 @@ import sklearn
 import pandas as pd
 import numpy as np
 import joblib
+import datetime
 
 from ift6758.LANG.log_string import *
 from ift6758.LANG.msg_string import *
@@ -125,23 +126,45 @@ def download_registry_model():
     return jsonify(response)  # response must be json serializable!
 
 
-@app.route("/download_registry_model", methods=["POST"])
+@app.route("/get_new_data_for_prediction", methods=["POST"])
 def get_new_data_for_prediction():
     # Get POST json data
     json = request.get_json()
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
-
-    if not 'last_marker' in json:
+    logger.log({MESSAGE: 'json type', 'json': json, 'jsonType': str(type(json))})
+    if json is None or not LAST_MARKER in json:
         last_game_time = None
+        logger.log({MESSAGE: 'in not LAST_MARKER in json'})
     else:
-        last_game_time = json['last_marker']
-    dict_shot_goals, dict_other_event = load_data(2021)
+        logger.log({MESSAGE: 'in LAST_MARKER in json'})
+        last_game_time = json[LAST_MARKER]
+    logger.log({MESSAGE: 'before load_data'})
+    try:
+        dict_shot_goals, dict_other_event = load_data(datetime.datetime.now().date().strftime("%Y"))
+    except Exception as e:
+        response = {STATUS: ERROR,
+                    MESSAGE: 'ERROR UNKNOWN',
+                    ERROR: e
+                    }
+        logger.log_err({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)},
+                        transmission=response)
+        return jsonify(response)
+    logger.log({MESSAGE: 'after load_data'})
     if last_game_time is None:
+        logger.log({MESSAGE: 'in last_game_time is None'})
         df_shot_goals = dict_shot_goals['regular']
         last_game_time = df_shot_goals.game_time.iloc[-1]
         df_other_event = dict_other_event['regular']
         df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
         dfs = engineer_features(df)
+        logger.log({MESSAGE: 'after dfs'})
+        response = {STATUS: SUCCESS,
+                    MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
+                    NEW_DATA: dfs
+                    }
+        logger.log({MESSAGE: LOG_NEW_DATA_SENT('forever')},
+                       transmission=response)
+        print(LOG_NEW_DATA_SENT('forever'))
     else:
         dfs = pd.DataFrame()
         df_shot_goals = dict_shot_goals['regular']
@@ -155,18 +178,21 @@ def get_new_data_for_prediction():
             response = {STATUS: WARNING,
                         MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
                         }
-            logger.log_err({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)},
+            logger.log_warn({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)},
                            transmission=response)
             print(LOG_NO_NEW_DATA_AVAILABLE(last_game_time))
         else:
             response = {STATUS: SUCCESS,
                         MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
+                        NEW_DATA: dfs
                         }
-            logger.log_err({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)},
+            logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)},
                            transmission=response)
             print(LOG_NEW_DATA_SENT(last_game_time))
 
-    return response  # dfs
+        logger.log({MESSAGE: 'patate'})
+
+    return jsonify(response)  # dfs
 
 
 @app.route("/logs", methods=["GET"])

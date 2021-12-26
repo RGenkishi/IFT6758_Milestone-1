@@ -1,9 +1,14 @@
 import os
 import numpy as np
 import pandas as pd
-from ift6758.data.dataAquirer import DataAquirer
-from ift6758.data.tidyDataKeys import *
-from ift6758.utilitaires.logger import ConsoleLogger
+try:
+    from ift6758.data.dataAquirer import DataAquirer
+    from ift6758.data.tidyDataKeys import *
+    from ift6758.utilitaires.logger import ConsoleLogger
+except:
+    from ift6758.ift6758.data.dataAquirer import DataAquirer
+    from ift6758.ift6758.data.tidyDataKeys import *
+    from ift6758.ift6758.utilitaires.logger import ConsoleLogger
 
 # chemin pour l'enregistrement des données tidyfiées : dans le sous-dossier database du dossier contenant le module
 pandasDatabasePath = os.path.dirname(__file__)+"/database/panda"

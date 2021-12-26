@@ -3,8 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import seaborn as sns
-from ift6758.data.tidyer import Tidyer
-from ift6758.data.tidyDataKeys import *
+
+try:
+    from ift6758.data.tidyer import Tidyer
+    from ift6758.data.tidyDataKeys import *
+except:
+    from ift6758.ift6758.data.tidyer import Tidyer
+    from ift6758.ift6758.data.tidyDataKeys import *
 
 pd.set_option("display.max_columns", None)
 

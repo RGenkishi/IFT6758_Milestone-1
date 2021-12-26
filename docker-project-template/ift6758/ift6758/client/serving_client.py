@@ -2,7 +2,14 @@ import json
 import requests
 import pandas as pd
 import logging
-from ift6758.features.re_featurizer import *
+try:
+    from ift6758.utilitaires.keys import *
+    from LANG.log_string import *
+    from LANG.msg_string import *
+except:
+    from ift6758.ift6758.utilitaires.keys import *
+    from ift6758.LANG.log_string import *
+    from ift6758.LANG.msg_string import *
 
 
 logger = logging.getLogger(__name__)
@@ -45,29 +52,25 @@ class ServingClient:
 
         return logs_dict
 
-    def get_new_data_for_prediction(self, last_marker):
-        last_game_time = last_marker
-        dict_shot_goals, dict_other_event = load_data(2021)
-        if last_game_time == None:
-            df_shot_goals = dict_shot_goals['regular']
-            last_game_time = df_shot_goals.game_time.iloc[-1]
-            df_other_event = dict_other_event['regular']
-            df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
-            dfs = engineer_features(df)
+    def get_new_data_for_prediction(self, last_marker=None):
+        if last_marker is None:
+            res = requests.post(url=self.base_url + "/get_new_data_for_prediction")
         else:
-            dfs = pd.DataFrame()
-            df_shot_goals = dict_shot_goals['regular']
-            df_shot_goals = df_shot_goals[df_shot_goals['game_time'] >= last_game_time]
-            if df_shot_goals.shape[0] > 1:
-                last_game_time = df_shot_goals.game_time.iloc[-1]
-                df_other_event = dict_other_event['regular']
-                df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
-                dfs = engineer_features(df)
-                df.drop(0, inplace=True)
-            else:
-                print("pas de nouvelles donnees depuis la derniere prediction ")
+            res = requests.post(url=self.base_url + "/get_new_data_for_prediction", data={LAST_MARKER: last_marker})
+        print(res)
+        json = res.json()
 
-        return dfs
+        if not STATUS in json:
+            print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
+            return None
+
+        if STATUS == SUCCESS:
+            print(json[MESSAGE])
+            return json[NEW_DATA]
+        else:
+            print(STATUS, json[STATUS])
+            print(json[MESSAGE])
+            return None
 
     # def download_registry_model(self, workspace: str, model: str, version: str) -> dict:
     def download_registry_model(self, workspace: str, model: str) -> dict:
@@ -102,6 +105,8 @@ if __name__ == "__main__":
 
     print(sc.predict(pd.DataFrame([[5.8, 2.8, 5.1, 2.4],
                              [5.6, 2.8, 4.9, 2.0]])))
+
+    print(sc.get_new_data_for_prediction())
     print()
 
     print(sc.logs())

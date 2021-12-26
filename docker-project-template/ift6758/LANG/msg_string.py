@@ -7,10 +7,28 @@ LANG_MSG_SOURCE = 'LANG_MSG_ANG'
 LANG_MSG_SOURCE_ROLLBACK = 'LANG_MSG_ANG'
 
 try:
-    STRINGS_MSG = importlib.import_module(module_base + LANG_MSG_SOURCE).STRINGS_MSG
+    try:
+        STRINGS_MSG = importlib.import_module(module_base + LANG_MSG_SOURCE).STRINGS_MSG
+    except:
+        try:
+            STRINGS_MSG = importlib.import_module('ift6758.' + module_base + LANG_MSG_SOURCE).STRINGS_MSG
+        except:
+            STRINGS_MSG = importlib.import_module('LANG.' + LANG_MSG_SOURCE).STRINGS_MSG
 except:
-    STRINGS_MSG = importlib.import_module(module_base + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
-STRING_MSG_ROLLBACK = importlib.import_module(module_base + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
+    try:
+        STRINGS_MSG = importlib.import_module(module_base + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
+    except:
+        try:
+            STRINGS_MSG = importlib.import_module('ift6758.' + module_base + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
+        except:
+            STRINGS_MSG = importlib.import_module('LANG.' + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
+try:
+    STRING_MSG_ROLLBACK = importlib.import_module(module_base + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
+except:
+    try:
+        STRING_MSG_ROLLBACK = importlib.import_module('ift6758.' + module_base + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
+    except:
+        STRING_MSG_ROLLBACK = importlib.import_module('LANG.' + LANG_MSG_SOURCE_ROLLBACK).STRINGS_MSG
 
 
 def launch_msg_lang(lang_source):

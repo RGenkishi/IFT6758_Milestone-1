@@ -1,8 +1,12 @@
 import os.path
 import json
 
-from ift6758.data.api_requester import *
-from ift6758.utilitaires.logger import *
+try:
+    from ift6758.data.api_requester import *
+    from ift6758.utilitaires.logger import *
+except:
+    from ift6758.ift6758.data.api_requester import *
+    from ift6758.ift6758.utilitaires.logger import *
 
 
 # chemin pour l'enregistrement des données : dans le sous-dossier database du dossier contenant le module

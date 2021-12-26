@@ -10,11 +10,13 @@ try:  # when running on docker
 except:  # when editing (running ?) "locally"
     from ift6758.client.serving_client import *
     from ift6758.utilitaires.keys import *
-# Please don't look too much above..
+
 
 
 class ClientApp:
     def __init__(self, ip="0.0.0.0", port=8080):
+        self.last_marker = None
+        self.new_data = None
         self.client_serving = ServingClient(ip=ip, port=port)
         self.w_workspace = widgets.Text(placeholder='genkishi',
                                         description='Workspace:',
@@ -59,15 +61,21 @@ class ClientApp:
         display(w_box)
 
     def predict(self, _):
+        # Ending point : prediction_widget
         self.features = self.w_features.value
         pred = self.client_serving.predict(pd.DataFrame(eval(self.features)))
         print(pred)
 
     def prediction_widget(self):
+        # Entry Point : prediction_widget
         self.download_model(None)
         w_box = widgets.VBox([self.w_features, self.w_predict])
         self.w_predict.on_click(self.predict)
         display(w_box)
+
+    def get_new_data_for_prediction(self):
+        self.new_data = self.client_serving.get_new_data_for_prediction(self.last_marker)
+        return self.new_data
 
 
     def logs(self):

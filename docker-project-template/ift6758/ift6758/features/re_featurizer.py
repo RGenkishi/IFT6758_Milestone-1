@@ -1,5 +1,9 @@
-from ift6758.data.Re_tidyer  import *
-from ift6758.data.heatMapShots import HeatMapShots
+try:
+    from ift6758.data.Re_tidyer import *
+    from ift6758.data.heatMapShots import HeatMapShots
+except:
+    from ift6758.ift6758.data.Re_tidyer import *
+    from ift6758.ift6758.data.heatMapShots import HeatMapShots
 import os
 from sklearn import preprocessing
 from sklearn import feature_extraction
@@ -113,4 +117,6 @@ def engineer_features(season_data):
     return engineered_data
 
 
-
+if __name__ == "__main__":
+    print("hi")
+    load_data(2021)

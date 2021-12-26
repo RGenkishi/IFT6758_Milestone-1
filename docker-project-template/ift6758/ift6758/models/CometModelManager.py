@@ -4,8 +4,12 @@ import joblib
 import time
 import os
 
-from ift6758.ift6758.utilitaires.logger import LoggingLogger
-from ift6758.LANG.log_string import *
+try:
+    from ift6758.ift6758.utilitaires.logger import LoggingLogger
+    from ift6758.LANG.log_string import *
+except:
+    from ift6758.utilitaires.logger import LoggingLogger
+    from LANG.log_string import *
 
 
 module_path = os.path.dirname(__file__) + '/'
@@ -119,3 +123,7 @@ class CometModelManager:
             experiment = self.api.get(self.workspace, self.project_name, model_name)
             experiment.download_model(model_name, output_path=self.model_database, expand=True)
         return self.file_to_sklear_model(model_name=model_name)
+
+
+if __name__ == "__main__":
+    cmm = CometModelManager()
