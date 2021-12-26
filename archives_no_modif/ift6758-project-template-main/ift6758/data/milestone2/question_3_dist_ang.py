@@ -27,8 +27,8 @@ def angle_distance_feature(features_df):
     accuracy = accuracy_score(Y_test, log_reg.predict(X_test))
     print(accuracy)
     metrics = {"accuracy": accuracy}
-    # pickle.dump(log_reg, open('log-reg_distance_angle.pkl', 'wb'))
-    # exp.log_model("log-reg_distance_angle", "log-reg_distance_angle.pkl")
+    # pickle.dump(log_reg, open('log-reg-distance-angle.pkl', 'wb'))
+    # exp.log_model("log-reg_distance_angle", "log-reg-distance-angle.pkl")
     # exp.log_dataset_hash(X_train)
     # exp.log_metrics(metrics)
     # tracage de courbe

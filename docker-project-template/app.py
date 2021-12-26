@@ -131,14 +131,11 @@ def get_new_data_for_prediction():
     # Get POST json data
     json = request.get_json()
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
-    logger.log({MESSAGE: 'json type', 'json': json, 'jsonType': str(type(json))})
+
     if json is None or not LAST_MARKER in json:
-        last_game_time = None
-        logger.log({MESSAGE: 'in not LAST_MARKER in json'})
+        last_game_time = 'forever'
     else:
-        logger.log({MESSAGE: 'in LAST_MARKER in json'})
         last_game_time = json[LAST_MARKER]
-    logger.log({MESSAGE: 'before load_data'})
     try:
         dict_shot_goals, dict_other_event = load_data(datetime.datetime.now().date().strftime("%Y"))
     except Exception as e:
@@ -146,24 +143,20 @@ def get_new_data_for_prediction():
                     MESSAGE: 'ERROR UNKNOWN',
                     ERROR: e
                     }
-        logger.log_err({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)},
-                        transmission=response)
+        logger.log_err({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)})
         return jsonify(response)
-    logger.log({MESSAGE: 'after load_data'})
-    if last_game_time is None:
-        logger.log({MESSAGE: 'in last_game_time is None'})
+    if last_game_time == "forever":
         df_shot_goals = dict_shot_goals['regular']
         last_game_time = df_shot_goals.game_time.iloc[-1]
         df_other_event = dict_other_event['regular']
         df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
         dfs = engineer_features(df)
-        logger.log({MESSAGE: 'after dfs'})
         response = {STATUS: SUCCESS,
-                    MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
-                    NEW_DATA: dfs
+                    MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
+                    NEW_DATA: dfs.values.tolist(),
+                    LAST_MARKER: last_game_time
                     }
-        logger.log({MESSAGE: LOG_NEW_DATA_SENT('forever')},
-                       transmission=response)
+        logger.log({MESSAGE: LOG_NEW_DATA_SENT('forever')})
         print(LOG_NEW_DATA_SENT('forever'))
     else:
         dfs = pd.DataFrame()
@@ -175,24 +168,25 @@ def get_new_data_for_prediction():
             df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
             dfs = engineer_features(df)
             df.drop(0, inplace=True)
-            response = {STATUS: WARNING,
-                        MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
+            response = {STATUS: SUCCESS,
+                        MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
+                        NEW_DATA: dfs.values.tolist(),
+                        LAST_MARKER: last_game_time
                         }
-            logger.log_warn({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)},
-                           transmission=response)
-            print(LOG_NO_NEW_DATA_AVAILABLE(last_game_time))
+            logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)})
+            print(LOG_NEW_DATA_SENT(last_game_time))
         else:
             response = {STATUS: SUCCESS,
-                        MESSAGE: MSG_NEW_DATA_DOWNLOADED(),
-                        NEW_DATA: dfs
+                        MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
+                        NEW_DATA: dfs.values.tolist(),
+                        LAST_MARKER: last_game_time
                         }
-            logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)},
-                           transmission=response)
+            logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)})
             print(LOG_NEW_DATA_SENT(last_game_time))
 
         logger.log({MESSAGE: 'patate'})
 
-    return jsonify(response)  # dfs
+    return jsonify(response)
 
 
 @app.route("/logs", methods=["GET"])
@@ -217,6 +211,7 @@ def logs():
     for log_line in raw_logs:
         if log_line[0] == '{':
             in_irregular_log = False
+            nan = None
             logs.append(eval(log_line))  # évalue le dico
         else:
             if not in_irregular_log:

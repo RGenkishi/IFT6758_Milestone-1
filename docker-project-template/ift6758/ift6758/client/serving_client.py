@@ -38,6 +38,7 @@ class ServingClient:
 
         res = requests.post(url=self.base_url+"/predict", json={'features': X.values.tolist()})
 
+        print(res)
         predictions = pd.DataFrame(res.json()['predictions'])
 
         return predictions
@@ -63,13 +64,11 @@ class ServingClient:
         if not STATUS in json:
             print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
             return None
-
-        if STATUS == SUCCESS:
-            print(json[MESSAGE])
-            return json[NEW_DATA]
+        print(STATUS, json[STATUS])
+        print(json[MESSAGE])
+        if json[STATUS] == SUCCESS:
+            return json[LAST_MARKER], json[NEW_DATA]
         else:
-            print(STATUS, json[STATUS])
-            print(json[MESSAGE])
             return None
 
     # def download_registry_model(self, workspace: str, model: str, version: str) -> dict:

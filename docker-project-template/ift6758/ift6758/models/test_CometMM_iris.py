@@ -61,7 +61,7 @@ print()
 continuer()
 print()
 print("log du modèle dans les expériences comet")
-cmm.log_model(model_name="iris-model")
+cmm.log_model(_model_name="iris-model")
 
 print("Récupération du model depuis les expériences comet_ML")
 clf = cmm.download_model_from_experiment("iris-model")

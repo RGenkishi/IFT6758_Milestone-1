@@ -1,3 +1,5 @@
+import pickle
+
 from comet_ml import Experiment
 from comet_ml import API
 import joblib
@@ -33,11 +35,11 @@ class CometModelManager:
             #raise Exception("COMET_API_KEY environment variable must be set")
 
 
-    def get_model_path(self, model_name):
+    def get_model_path(self, model_name, extension='.joblib'):
         """
         retourne le chemin vers le fichier où le model model_name devrait être enregistré
         """
-        return self.model_database + model_name + '.joblib'
+        return self.model_database + model_name + extension
 
     def sklearn_model_to_file(self, sklearn_model, model_name):
         """
@@ -52,9 +54,13 @@ class CometModelManager:
         """
         Retourne le model sklearn enregistré dans le fichier self.model_database + model_name + ".joblib"
         """
-        return joblib.load(self.get_model_path(model_name))
+        try:
+            return joblib.load(self.get_model_path(model_name))
+        except:
+            with open(self.get_model_path(model_name, extension='.pkl'), "rb") as file_handle:
+                return pickle.load(file_handle)
 
-    def log_model(self, model_name, experience_name=None, model_path=None):
+    def log_model(self, _model_name, _experience_name=None, _model_path=None):
         """
         Enregistre le model dans les expériences Comet_ml
         Lorsque l'on veut garder une trace d'un modèle sans savoir si on le réutilisera vraiment plus tard
@@ -63,10 +69,10 @@ class CometModelManager:
                          project_name=self.project_name,
                          workspace=self.workspace,
                          )
-        exp.set_name(model_name if experience_name is None else model_name)
+        exp.set_name(_model_name if _experience_name is None else _experience_name)
 
-        model_path = self.get_model_path(model_name) if model_path is None else model_path
-        exp.log_model(name=model_name, file_or_folder=model_path)
+        _model_path = self.get_model_path(_model_name) if _model_path is None else _model_path
+        exp.log_model(name=_model_name, file_or_folder=_model_path)
 
     def register_model(self, model_name):
         """
@@ -84,7 +90,7 @@ class CometModelManager:
         Lorsque l'on est sûr que le modèle est intéressant
         """
         # log the model
-        self.log_model(self, model_name=model_name, experience_name=experience_name, model_path=model_path)
+        self.log_model(self, _model_name=model_name, _experience_name=experience_name, _model_path=model_path)
 
         # give some time to the model to be availaible on Comet_ML
         experiment = self.api.get(self.workspace, self.project_name, model_name)
@@ -102,7 +108,7 @@ class CometModelManager:
         """
         Télécharge un modèle de Model Registry sur Comet ML
         """
-        if force or not os.path.exists(self.get_model_path(model_name)):
+        if force or not (os.path.exists(self.get_model_path(model_name)) or os.path.exists(self.get_model_path(model_name, extension=".pkl"))):
             if force:
                 self.logger.log(LOG_ATTEMPT_TO_FORCE_DOWNLOAD_MODEL(model_name))
             else:
@@ -126,4 +132,14 @@ class CometModelManager:
 
 
 if __name__ == "__main__":
-    cmm = CometModelManager()
+    cmm = CometModelManager(project_name='milestone-3')
+    #cmm.register_model("log-reg-distance-angle")
+    #cmm.log_model("log-reg-distance-angle")
+
+    #cmm.log_model("log-reg-distance-angle")
+    cmm.register_model("log-reg-distance-angle")
+    #model = cmm.download_model(model_name="log-reg-distance-angle")
+    #print(type(model))
+    #cmm.sklearn_model_to_file(model, model_name="log-reg-distance-angle")
+
+

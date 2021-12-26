@@ -1,3 +1,5 @@
+import datetime
+
 try:
     from ift6758.data.Re_tidyer import *
     from ift6758.data.heatMapShots import HeatMapShots
@@ -38,7 +40,7 @@ def prepare_data_for_feature_engineering(shots_and_goals, other_events):
 
 
 def calculate_distance_from_net(season_data):
-    heatmap_function = HeatMapShots(2017)
+    heatmap_function = HeatMapShots(datetime.datetime.now().date().strftime("%Y"))
     season_data = heatmap_function.rearange_coordinates(season_data)
     season_data["distance_from_net"] = np.sqrt((season_data.coord_x - X_NET_COORDINATE) ** 2 + season_data.coord_y ** 2)
     return season_data

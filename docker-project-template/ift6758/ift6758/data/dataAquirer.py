@@ -8,9 +8,8 @@ except:
     from ift6758.ift6758.data.api_requester import *
     from ift6758.ift6758.utilitaires.logger import *
 
-
 # chemin pour l'enregistrement des données : dans le sous-dossier database du dossier contenant le module
-databasePath = os.path.dirname(__file__)+"/database/"
+databasePath = os.path.dirname(__file__) + "/database/"
 
 
 class DataAquirer:
@@ -29,6 +28,22 @@ class DataAquirer:
     def get_all_games_data_for_a_year(self, year):
         if self.file_exists(year):
             self.download_existing_file(year)
+            if len(list(self.season_data.keys())) != 0:
+                latest_local_season_game_api_i = int(list(self.season_data.keys())[-1][-4:]) + 1
+            else:
+                latest_local_season_game_api_i = 1
+
+            if len(list(self.playoffs_data.keys())) != 0:
+                print()
+                latest_local_round_api = int(self.playoffs_data[list(self.playoffs_data.keys())[-1]]['_round_api']) + 1
+                latest_local_matchup_api = int(self.playoffs_data[list(self.playoffs_data.keys())[-1]]['matchup_api']) + 1
+            else:
+                latest_local_round_api = latest_local_matchup_api = 1
+            self.get_data_from_api(year,
+                                   latest_season_i=latest_local_season_game_api_i,
+                                   latest_round_api=latest_local_round_api,
+                                   latest_matchup_api=latest_local_matchup_api
+                                   )
         else:
             self.get_data_from_api(year)
 
@@ -45,13 +60,15 @@ class DataAquirer:
         with open(playoffs_data_path, "r") as file:
             self.playoffs_data = json.load(file)
 
-    def get_data_from_api(self, year):
+    def get_data_from_api(self, year, latest_season_i=1, latest_round_api=1, latest_matchup_api=1):
         season_requester = ApiGameSeasonRequester("https://statsapi.web.nhl.com/api/v1/game/")
         playoff_requester = ApiGamePlayoffsRequester("https://statsapi.web.nhl.com/api/v1/game/")
 
-        self.season_data = season_requester.get_data(year)
-        self.playoffs_data = playoff_requester.get_data(year)
-       # self.save_data(year)
+        self.season_data.update(season_requester.get_data(year, latest_season_i=latest_season_i))
+        self.playoffs_data.update(playoff_requester.get_data(year,
+                                                             latest_round_api=latest_round_api,
+                                                             latest_matchup_api=latest_matchup_api))
+        self.save_data(year)
 
     def save_data(self, year):
         self.log("Saving")

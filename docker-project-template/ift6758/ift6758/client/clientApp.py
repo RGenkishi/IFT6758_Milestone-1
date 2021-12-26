@@ -17,18 +17,24 @@ class ClientApp:
     def __init__(self, ip="0.0.0.0", port=8080):
         self.last_marker = None
         self.new_data = None
+        self.w_pred_output = widgets.Output()
+        self.w_dl_model_output = widgets.Output()
         self.client_serving = ServingClient(ip=ip, port=port)
         self.w_workspace = widgets.Text(placeholder='genkishi',
+                                        value='genkishi',
                                         description='Workspace:',
                                         disabled=False
                                         )
         self.workspace = None
-        self.w_model = widgets.Text(placeholder='iris-model',
+        # iris-model is a valid model for testing with iris
+        self.w_model = widgets.Text(placeholder='log-reg-distance-angle',
+                                    value='iris-model',
                                     description='Model:',
                                     disabled=False
                                     )
         self.model = None
-        self.w_features = widgets.Text(placeholder='[[5.8, 2.8, 5.1, 2.4], [5.6, 2.8, 4.9, 2.0]]',
+        self.w_features = widgets.Text(placeholder='[[5.8, 2.8, 5.1, 2.4], [5.6, 2.8, 4.9, 2.0]',
+                                       value='[[5.8, 2.8, 5.1, 2.4], [5.6, 2.8, 4.9, 2.0]]',
                                        description='Feature values:',
                                        disabled=False
                                        )
@@ -47,34 +53,40 @@ class ClientApp:
                                         )
 
     def download_model(self, _):
-        self.workspace = self.w_workspace.value
-        self.model = self.w_model.value
-        res = self.client_serving.download_registry_model(workspace=self.workspace, model=self.model)
-        if res[STATUS] == SUCCESS:
-            print(res[MESSAGE])
-
-        print(res)
+        with self.w_dl_model_output:
+            print("clicked")
+            self.workspace = self.w_workspace.value
+            self.model = self.w_model.value
+            res = self.client_serving.download_registry_model(workspace=self.workspace, model=self.model)
+            if res[STATUS] == SUCCESS:
+                print(res[MESSAGE])
+            else:
+                print(res)
 
     def lauchWidget(self):
-        w_box = widgets.VBox([self.w_workspace, self.w_model, self.w_download_model])
         self.w_download_model.on_click(self.download_model)
+        w_box = widgets.VBox([self.w_workspace, self.w_model, self.w_download_model, self.w_dl_model_output])
         display(w_box)
 
     def predict(self, _):
         # Ending point : prediction_widget
-        self.features = self.w_features.value
-        pred = self.client_serving.predict(pd.DataFrame(eval(self.features)))
-        print(pred)
+        with self.w_pred_output:
+            self.features = self.w_features.value
+            nan = 0
+            pred = self.client_serving.predict(pd.DataFrame(eval(self.features)))
+            pd.options.display.max_rows = 500
+            print(pred)
 
     def prediction_widget(self):
         # Entry Point : prediction_widget
-        self.download_model(None)
-        w_box = widgets.VBox([self.w_features, self.w_predict])
+        self.lauchWidget()
         self.w_predict.on_click(self.predict)
+        w_box = widgets.VBox([self.w_features, self.w_predict, self.w_pred_output])
         display(w_box)
 
     def get_new_data_for_prediction(self):
-        self.new_data = self.client_serving.get_new_data_for_prediction(self.last_marker)
+        self.last_marker, self.new_data = self.client_serving.get_new_data_for_prediction(self.last_marker)
+
         return self.new_data
 
 
