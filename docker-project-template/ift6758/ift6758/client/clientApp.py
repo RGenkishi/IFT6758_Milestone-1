@@ -54,14 +54,10 @@ class ClientApp:
 
     def download_model(self, _):
         with self.w_dl_model_output:
-            print("clicked")
             self.workspace = self.w_workspace.value
             self.model = self.w_model.value
             res = self.client_serving.download_registry_model(workspace=self.workspace, model=self.model)
-            if res[STATUS] == SUCCESS:
-                print(res[MESSAGE])
-            else:
-                print(res)
+            print(res[MESSAGE])
 
     def lauchWidget(self):
         self.w_download_model.on_click(self.download_model)
@@ -85,7 +81,8 @@ class ClientApp:
         display(w_box)
 
     def get_new_data_for_prediction(self):
-        self.last_marker, self.new_data = self.client_serving.get_new_data_for_prediction(self.last_marker)
+        self.last_marker, self.new_data = self.client_serving.get_new_data_for_prediction(last_marker=self.last_marker,
+                                                                                          model_name=self.model)
 
         return self.new_data
 

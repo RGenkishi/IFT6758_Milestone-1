@@ -53,11 +53,10 @@ class ServingClient:
 
         return logs_dict
 
-    def get_new_data_for_prediction(self, last_marker=None):
-        if last_marker is None:
-            res = requests.post(url=self.base_url + "/get_new_data_for_prediction")
-        else:
-            res = requests.post(url=self.base_url + "/get_new_data_for_prediction", data={LAST_MARKER: last_marker})
+    def get_new_data_for_prediction(self, last_marker=None, model_name=None):
+        print(last_marker)
+        res = requests.post(url=self.base_url + "/get_new_data_for_prediction", json={LAST_MARKER: last_marker,
+                                                                                      MODEL_NAME: model_name})
         print(res)
         json = res.json()
 

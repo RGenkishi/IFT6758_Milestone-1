@@ -38,6 +38,7 @@ app = Flask(__name__)
 cmm = None
 model = None
 logger = None
+columns_for_model = {'log-reg-distance-angle': [DISTANCE_FROM_NET, ANGLE_FROM_NET]}
 
 
 @app.before_first_request
@@ -84,15 +85,15 @@ def download_registry_model():
     json = request.get_json()
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
-    if not 'model_name' in json:
+    if not MODEL_NAME in json:
         response = {STATUS: WARNING,
-                    MESSAGE: MSG_MISSING_KEY('model_name', example='\'iris-model\'')
+                    MESSAGE: MSG_MISSING_KEY(MODEL_NAME, example='\'iris-model\'')
                     }
-        logger.log_warn(LOG_MISSING_KEY('model_name'), transmission=response)
+        logger.log_warn(LOG_MISSING_KEY(MODEL_NAME), transmission=response)
     else:
         force = json['force'] if 'force' in json else False
         try:
-            model_name = json['model_name']
+            model_name = json[MODEL_NAME]
             if 'workspace' in json:
                 model = cmm.download_model(model_name, workspace=json['workspace'], force=force)
             else:
@@ -132,10 +133,15 @@ def get_new_data_for_prediction():
     json = request.get_json()
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
-    if json is None or not LAST_MARKER in json:
+    if (json is None) or (not LAST_MARKER in json) or (json[LAST_MARKER] is None):
         last_game_time = 'forever'
     else:
         last_game_time = json[LAST_MARKER]
+    print(json)
+    if (json is None) or (not MODEL_NAME in json) or (json[MODEL_NAME] is None):
+        model_name = None
+    else:
+        model_name = json[MODEL_NAME]
     try:
         dict_shot_goals, dict_other_event = load_data(datetime.datetime.now().date().strftime("%Y"))
     except Exception as e:
@@ -153,7 +159,6 @@ def get_new_data_for_prediction():
         dfs = engineer_features(df)
         response = {STATUS: SUCCESS,
                     MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
-                    NEW_DATA: dfs.values.tolist(),
                     LAST_MARKER: last_game_time
                     }
         logger.log({MESSAGE: LOG_NEW_DATA_SENT('forever')})
@@ -184,7 +189,12 @@ def get_new_data_for_prediction():
             logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)})
             print(LOG_NEW_DATA_SENT(last_game_time))
 
-        logger.log({MESSAGE: 'patate'})
+    if response[STATUS] == SUCCESS:
+        print(model_name)
+        if model_name in columns_for_model:
+            print("dropping columns")
+            dfs = dfs[columns_for_model[model_name]]
+        response[NEW_DATA] = dfs.values.tolist()
 
     return jsonify(response)
 
