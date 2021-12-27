@@ -41,6 +41,8 @@ model_name = 'None'
 logger = None
 columns_for_model = {'log-reg-distance-angle': [DISTANCE_FROM_NET, ANGLE_FROM_NET]}
 
+# load_data(datetime.datetime.now().date().strftime("%Y"))
+
 
 @app.before_first_request
 def before_first_request():
@@ -278,10 +280,12 @@ def predict():
         if model is not None:
             frame = pd.json_normalize(json['features'])
             try:
+                df = pd.DataFrame(json['features'])
+                df.fillna(0.0)
                 try:
-                    preds = model.predict_proba(pd.DataFrame(json['features']))
+                    preds = model.predict_proba(df)
                 except:
-                    preds = model.predict(pd.DataFrame(json['features']))
+                    preds = model.predict(df)
                 response = {STATUS: SUCCESS,
                             MESSAGE: MSG_PREDICTION_RECEIVED(),
                             'predictions': preds.tolist()}

@@ -33,8 +33,8 @@ class ApiGameSeasonRequester(ApiRequester):
         '''for i in range(10):
             print(inspect.stack()[i][3])'''
         game_data = {}
-        for i in range(latest_season_i, (self.max_game + 1)):
-            self.log("ApiGameSeasonRequester : " + str(i))
+        for i in range(latest_season_i-1, (self.max_game + 1)):
+            self.log("ApiGameSeasonRequester : " + str(i) + " / " + str(self.max_game))
             game_id = str(year) + self.season_type + str(i).zfill(4)
             response = requests.get(url=(self.api_url + game_id + "/feed/live"))
             response = response.json()
@@ -60,7 +60,7 @@ class ApiGamePlayoffsRequester(ApiRequester):
                 for game in range(1, 8):
                     game_id = str(year) + self.season_type + str(first_digit) + str(_round) + str(matchup) + str(game)
                     url = (self.api_url + game_id + "/feed/live")
-                    print(url)
+                    print(url, str(_round) + "_" + str(matchup), "/", str(5) + "_" + str(((8 // (2 ** (_round - 1))) + 1)))
                     response = requests.get(url=(self.api_url + game_id + "/feed/live"))
                     if response.status_code == 404:
                         time.sleep(0.1)
