@@ -16,5 +16,6 @@ STRINGS_LOG = {'LOG_MISSING_KEY': "({0}) key is missing in request",
                'LOG_MSG_LANG_CHANGED_SUCCESSFULLY': "messages language successfully changed to {0}",
                'LOG_MSG_LANG_CHANGE_ERROR': "messages language couldn't have been changed to {0}",
                'LOG_NO_NEW_DATA_AVAILABLE': "A request for new data has nothing new to return since {0}",
-               'LOG_NEW_DATA_SENT': "New data since {0} successfully downloaded"
+               'LOG_NEW_DATA_SENT': "New data since {0} successfully downloaded",
+               'LOG_PREDICTION_IMPOSSIBLE': "The {0} model has been unable to make a prediction with the given values"
                }

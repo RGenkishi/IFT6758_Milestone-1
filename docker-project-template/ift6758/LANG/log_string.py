@@ -121,3 +121,6 @@ def LOG_NO_NEW_DATA_AVAILABLE(last_game_time):
 
 def LOG_NEW_DATA_SENT(last_game_time):
     return construct_string(last_game_time)
+
+def LOG_PREDICTION_IMPOSSIBLE(model_name):
+    return construct_string(model_name)

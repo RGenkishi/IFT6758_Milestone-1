@@ -1,7 +1,7 @@
-import json
 import requests
 import pandas as pd
 import logging
+
 try:
     from ift6758.utilitaires.keys import *
     from LANG.log_string import *
@@ -10,7 +10,6 @@ except:
     from ift6758.ift6758.utilitaires.keys import *
     from ift6758.LANG.log_string import *
     from ift6758.LANG.msg_string import *
-
 
 logger = logging.getLogger(__name__)
 
@@ -36,12 +35,18 @@ class ServingClient:
             X (Dataframe): Input dataframe to submit to the prediction service.
         """
 
-        res = requests.post(url=self.base_url+"/predict", json={'features': X.values.tolist()})
+        res = requests.post(url=self.base_url + "/predict", json={'features': X.values.tolist()}).json()
 
-        print(res)
-        predictions = pd.DataFrame(res.json()['predictions'])
-
-        return predictions
+        if not STATUS in res:
+            print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
+            return None
+        if res[STATUS] == SUCCESS:
+            print(res[MESSAGE])
+            predictions = pd.DataFrame(res['predictions'])
+            return predictions
+        else:
+            print(STATUS, res[STATUS])
+            print(res[MESSAGE])
 
     def logs(self) -> dict:
         """Get server logs"""
@@ -53,23 +58,25 @@ class ServingClient:
 
         return logs_dict
 
-    def get_new_data_for_prediction(self, last_marker=None):
-        if last_marker is None:
-            res = requests.post(url=self.base_url + "/get_new_data_for_prediction")
-        else:
-            res = requests.post(url=self.base_url + "/get_new_data_for_prediction", data={LAST_MARKER: last_marker})
-        print(res)
-        json = res.json()
+    def get_new_data_for_prediction(self, last_marker=None, verbose=False, output=None):
+        with output:
 
-        if not STATUS in json:
-            print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
-            return None
-        print(STATUS, json[STATUS])
-        print(json[MESSAGE])
-        if json[STATUS] == SUCCESS:
-            return json[LAST_MARKER], json[NEW_DATA]
-        else:
-            return None
+            print(MSG_LAST_GAME_TIME_IS(last_marker if not last_marker is None else 'forever'))
+            print(MSG_WAIT_FOR_THE_DOWNLOAD("60 sec"))
+            res = requests.post(url=self.base_url + "/get_new_data_for_prediction", json={LAST_MARKER: last_marker})
+            if verbose:
+                print(res)
+            res = res.json()
+
+            if not STATUS in res:
+                print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
+                return None
+                print(STATUS, res[STATUS])
+            print(res[MESSAGE])
+            if res[STATUS] == SUCCESS:
+                return res[LAST_MARKER], res[NEW_DATA]
+            else:
+                return res[LAST_MARKER], None
 
     # def download_registry_model(self, workspace: str, model: str, version: str) -> dict:
     def download_registry_model(self, workspace: str, model: str) -> dict:
@@ -95,11 +102,33 @@ class ServingClient:
 
         return res
 
+    def change_log_lang(self, new_log_lang):
+        res = requests.post(url=self.base_url + "/set_log_lang",
+                            json={'LANG': new_log_lang})
+        res = res.json()
+        if MESSAGE in res:
+            return res[MESSAGE]
+        else:
+            return res
+
+    def change_msg_lang(self, new_log_lang):
+        try:
+            launch_msg_lang(new_log_lang)
+        except:
+            print(MSG_MSG_LOCAL_LANG_CHANGE_ERROR(new_log_lang))
+        res = requests.post(url=self.base_url + "/set_lang",
+                            json={'LANG': new_log_lang})
+        res = res.json()
+        if MESSAGE in res:
+            return res[MESSAGE]
+        else:
+            return res
+
 
 if __name__ == "__main__":
     sc = ServingClient()
 
-    print(sc.download_registry_model(workspace="genkishi", model="iris-model"))
+    '''print(sc.download_registry_model(workspace="genkishi", model="iris-model"))
     print()
 
     print(sc.predict(pd.DataFrame([[5.8, 2.8, 5.1, 2.4],
@@ -108,4 +137,5 @@ if __name__ == "__main__":
     print(sc.get_new_data_for_prediction())
     print()
 
-    print(sc.logs())
+    print(sc.logs())'''
+    sc.change_log_lang('LANG_LOG_FRA')

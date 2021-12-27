@@ -37,7 +37,11 @@ app = Flask(__name__)
 
 cmm = None
 model = None
+model_name = 'None'
 logger = None
+columns_for_model = {'log-reg-distance-angle': [DISTANCE_FROM_NET, ANGLE_FROM_NET]}
+
+# load_data(datetime.datetime.now().date().strftime("%Y"))
 
 
 @app.before_first_request
@@ -78,21 +82,21 @@ def download_registry_model():
     # Tester dans le terminal avec :
     # curl -v -H "Content-Type: application/json" -X POST -d '{"model_name": "iris-model"}' http://0.0.0.0:8080/download_registry_model
     """
-    global model
+    global model, model_name
 
     # Get POST json data
     json = request.get_json()
     logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
-    if not 'model_name' in json:
+    if not MODEL_NAME in json:
         response = {STATUS: WARNING,
-                    MESSAGE: MSG_MISSING_KEY('model_name', example='\'iris-model\'')
+                    MESSAGE: MSG_MISSING_KEY(MODEL_NAME, example='\'iris-model\'')
                     }
-        logger.log_warn(LOG_MISSING_KEY('model_name'), transmission=response)
+        logger.log_warn(LOG_MISSING_KEY(MODEL_NAME), transmission=response)
     else:
         force = json['force'] if 'force' in json else False
         try:
-            model_name = json['model_name']
+            model_name = json[MODEL_NAME]
             if 'workspace' in json:
                 model = cmm.download_model(model_name, workspace=json['workspace'], force=force)
             else:
@@ -128,65 +132,83 @@ def download_registry_model():
 
 @app.route("/get_new_data_for_prediction", methods=["POST"])
 def get_new_data_for_prediction():
+    global model_name
     # Get POST json data
-    json = request.get_json()
-    logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
 
-    if json is None or not LAST_MARKER in json:
-        last_game_time = 'forever'
-    else:
-        last_game_time = json[LAST_MARKER]
     try:
-        dict_shot_goals, dict_other_event = load_data(datetime.datetime.now().date().strftime("%Y"))
-    except Exception as e:
-        response = {STATUS: ERROR,
-                    MESSAGE: 'ERROR UNKNOWN',
-                    ERROR: e
-                    }
-        logger.log_err({MESSAGE: LOG_NO_NEW_DATA_AVAILABLE(last_game_time)})
-        return jsonify(response)
-    if last_game_time == "forever":
-        df_shot_goals = dict_shot_goals['regular']
-        last_game_time = df_shot_goals.game_time.iloc[-1]
-        df_other_event = dict_other_event['regular']
-        df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
-        dfs = engineer_features(df)
-        response = {STATUS: SUCCESS,
-                    MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
-                    NEW_DATA: dfs.values.tolist(),
-                    LAST_MARKER: last_game_time
-                    }
-        logger.log({MESSAGE: LOG_NEW_DATA_SENT('forever')})
-        print(LOG_NEW_DATA_SENT('forever'))
-    else:
-        dfs = pd.DataFrame()
-        df_shot_goals = dict_shot_goals['regular']
-        df_shot_goals = df_shot_goals[df_shot_goals['game_time'] >= last_game_time]
-        if df_shot_goals.shape[0] > 1:
+        json = request.get_json()
+        logger.log(LOG_REQUEST_RECEIVED(), transmission=json)
+
+        if (json is None) or (not LAST_MARKER in json) or (json[LAST_MARKER] is None):
+            last_game_time = 'forever'
+        else:
+            last_game_time = json[LAST_MARKER]
+        print(json)
+        try:
+            dict_shot_goals, dict_other_event = load_data(datetime.datetime.now().date().strftime("%Y"))
+        except Exception as e:
+            response = {STATUS: ERROR,
+                        MESSAGE: 'ERROR UNKNOWN',
+                        ERROR: e
+                        }
+            logger.log_err({MESSAGE: 'ERROW UNKNOWN durring attempt to download new data',
+                            ERROR: str(e)})
+            return jsonify(response)
+        if last_game_time == "forever":
+            df_shot_goals = dict_shot_goals['regular']
             last_game_time = df_shot_goals.game_time.iloc[-1]
             df_other_event = dict_other_event['regular']
             df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
             dfs = engineer_features(df)
-            df.drop(0, inplace=True)
             response = {STATUS: SUCCESS,
                         MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
-                        NEW_DATA: dfs.values.tolist(),
                         LAST_MARKER: last_game_time
                         }
-            logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)})
-            print(LOG_NEW_DATA_SENT(last_game_time))
+            logger.log({MESSAGE: LOG_NEW_DATA_SENT('forever')})
+            print(LOG_NEW_DATA_SENT('forever'))
         else:
-            response = {STATUS: SUCCESS,
-                        MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
-                        NEW_DATA: dfs.values.tolist(),
-                        LAST_MARKER: last_game_time
-                        }
-            logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)})
-            print(LOG_NEW_DATA_SENT(last_game_time))
 
-        logger.log({MESSAGE: 'patate'})
+            dfs = pd.DataFrame()
+            df_shot_goals = dict_shot_goals['regular']
+            df_shot_goals = df_shot_goals[df_shot_goals['game_time'] >= last_game_time]
+            if df_shot_goals.shape[0] > 1:
+                last_game_time = df_shot_goals.game_time.iloc[-1]
+                df_other_event = dict_other_event['regular']
+                df = prepare_data_for_feature_engineering(df_shot_goals, df_other_event)
+                dfs = engineer_features(df)
+                df.drop(0, inplace=True)
+                response = {STATUS: SUCCESS,
+                            MESSAGE: MSG_NEW_DATA_DOWNLOADED(last_game_time),
+                            NEW_DATA: dfs.values.tolist(),
+                            LAST_MARKER: last_game_time
+                            }
+                logger.log({MESSAGE: LOG_NEW_DATA_SENT(last_game_time)})
+                print(LOG_NEW_DATA_SENT(last_game_time))
+            else:
+                response = {STATUS: WARNING,
+                            MESSAGE: MSG_NO_NEW_DATA_AVAILABLE(),
+                            NEW_DATA: None,
+                            LAST_MARKER: last_game_time
+                            }
+                logger.log(LOG_NO_NEW_DATA_AVAILABLE(last_game_time))
+                print(LOG_NEW_DATA_SENT(last_game_time))
 
-    return jsonify(response)
+        if response[STATUS] == SUCCESS:
+            print(model_name)
+            if model_name in columns_for_model:
+                print("dropping columns")
+                dfs = dfs[columns_for_model[model_name]]
+            response[NEW_DATA] = dfs.values.tolist()
+
+        return jsonify(response)
+    except Exception as e2:
+        response = {STATUS: ERROR,
+                    MESSAGE: 'ERROR UNKNOWN in get_new_data_for_prediction',
+                    ERROR: e2
+                    }
+        logger.log_err({MESSAGE: 'ERROW UNKNOWN in get_new_data_for_prediction',
+                        ERROR: str(e2)})
+        return jsonify(response)
 
 
 @app.route("/logs", methods=["GET"])
@@ -243,7 +265,7 @@ def predict():
     # curl -v -H "Content-Type: application/json" -X POST -d '{"features":[5.6, 2.8, 4.9, 2.0]}' http://0.0.0.0:8080/predict
     # retourne 1 au lieu de 2
     """
-    global model
+    global model, model_name
 
     # Get POST json data
     json = request.get_json()
@@ -257,11 +279,25 @@ def predict():
     else:
         if model is not None:
             frame = pd.json_normalize(json['features'])
-            preds = model.predict(pd.DataFrame(json['features']))
-            response = {STATUS: SUCCESS,
-                        'predictions': preds.tolist()}
-            logger.log(LOG_PREDICTION_SENT_TO_CLIENT(), transmission=response)
-
+            try:
+                df = pd.DataFrame(json['features'])
+                df.fillna(0.0)
+                try:
+                    preds = model.predict_proba(df)
+                except:
+                    preds = model.predict(df)
+                response = {STATUS: SUCCESS,
+                            MESSAGE: MSG_PREDICTION_RECEIVED(),
+                            'predictions': preds.tolist()}
+                logger.log(LOG_PREDICTION_SENT_TO_CLIENT(), transmission=response)
+            except Exception as e:
+                response = {STATUS: ERROR,
+                            MESSAGE: MSG_PREDICTION_IMPOSSIBLE(model_name),
+                            }
+                logger.log({MESSAGE: LOG_PREDICTION_IMPOSSIBLE(model_name),
+                            ERROR: str(e),
+                            'features': json['features']},
+                           transmission=response)
         else:
             response = {STATUS: ERROR,
                         MESSAGE: MSG_PREDICTION_ATTEMPT_ON_NONE_MODEL()}

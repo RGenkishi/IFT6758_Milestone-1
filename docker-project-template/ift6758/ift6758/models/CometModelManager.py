@@ -134,12 +134,14 @@ class CometModelManager:
 if __name__ == "__main__":
     cmm = CometModelManager(project_name='milestone-3')
     #cmm.register_model("log-reg-distance-angle")
-    #cmm.log_model("log-reg-distance-angle")
+    #cmm.log_model("MLPClassifier")
 
-    #cmm.log_model("log-reg-distance-angle")
-    cmm.register_model("log-reg-distance-angle")
-    #model = cmm.download_model(model_name="log-reg-distance-angle")
+    #cmm.log_model("mlp-classifier")
+    #cmm.register_model("mlp-classifier")
     #print(type(model))
     #cmm.sklearn_model_to_file(model, model_name="log-reg-distance-angle")
+
+    model = cmm.download_model("mlp-classifier")
+    print(type(model))
 
 
