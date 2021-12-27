@@ -7,7 +7,9 @@ STRINGS_MSG = {'MSG_MISSING_KEY': "the ({0}) key should be specified for request
                'MSG_MSG_LANG_CHANGED_SUCCESSFULLY': "The messages language has been successfully set to {0}",
                'MSG_MSG_LANG_CHANGE_ERROR': "The messages language couldn't have been set to {0}",
                'MSG_NO_NEW_DATA_AVAILABLE': "No new data since the last prediction",
-               'MSG_NEW_DATA_DOWNLOADED': "New data since {0} successfully downloaded"
+               'MSG_NEW_DATA_DOWNLOADED': "New data since {0} successfully downloaded",
+               'MSG_PREDICTION_RECEIVED': "Predictions successfully received !",
+               'MSG_PREDICTION_IMPOSSIBLE': "The {0} model have been unable to make a prediction with the given values"
                }
 
 

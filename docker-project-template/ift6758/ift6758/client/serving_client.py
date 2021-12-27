@@ -1,4 +1,3 @@
-import json
 import requests
 import pandas as pd
 import logging
@@ -36,12 +35,18 @@ class ServingClient:
             X (Dataframe): Input dataframe to submit to the prediction service.
         """
 
-        res = requests.post(url=self.base_url+"/predict", json={'features': X.values.tolist()})
+        res = requests.post(url=self.base_url+"/predict", json={'features': X.values.tolist()}).json()
 
-        print(res)
-        predictions = pd.DataFrame(res.json()['predictions'])
-
-        return predictions
+        if not STATUS in res:
+            print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
+            return None
+        if res[STATUS] == SUCCESS:
+            print(res[MESSAGE])
+            predictions = pd.DataFrame(res['predictions'])
+            return predictions
+        else:
+            print(STATUS, res[STATUS])
+            print(res[MESSAGE])
 
     def logs(self) -> dict:
         """Get server logs"""
@@ -53,22 +58,24 @@ class ServingClient:
 
         return logs_dict
 
-    def get_new_data_for_prediction(self, last_marker=None, model_name=None):
-        print(last_marker)
-        res = requests.post(url=self.base_url + "/get_new_data_for_prediction", json={LAST_MARKER: last_marker,
-                                                                                      MODEL_NAME: model_name})
-        print(res)
-        json = res.json()
+    def get_new_data_for_prediction(self, last_marker=None, verbose=False, output=None):
+        with output:
+            print('last time : ', last_marker if not last_marker is None else 'forever')
+            print('Please WAIT for the download to complete')
+            res = requests.post(url=self.base_url + "/get_new_data_for_prediction", json={LAST_MARKER: last_marker})
+            if verbose:
+                print(res)
+            res = res.json()
 
-        if not STATUS in json:
-            print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
-            return None
-        print(STATUS, json[STATUS])
-        print(json[MESSAGE])
-        if json[STATUS] == SUCCESS:
-            return json[LAST_MARKER], json[NEW_DATA]
-        else:
-            return None
+            if not STATUS in res:
+                print(MSG_MISSING_KEY(STATUS, example="\'success\'"))
+                return None
+                print(STATUS, res[STATUS])
+            print(res[MESSAGE])
+            if res[STATUS] == SUCCESS:
+                return res[LAST_MARKER], res[NEW_DATA]
+            else:
+                return res[LAST_MARKER], None
 
     # def download_registry_model(self, workspace: str, model: str, version: str) -> dict:
     def download_registry_model(self, workspace: str, model: str) -> dict:

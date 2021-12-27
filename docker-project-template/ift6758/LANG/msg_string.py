@@ -83,5 +83,14 @@ def MSG_MSG_LANG_CHANGE_ERROR(lang_name):
 def MSG_NO_NEW_DATA_AVAILABLE():
     return construct_string()
 
+
 def MSG_NEW_DATA_DOWNLOADED(last_game_time):
     return construct_string(last_game_time)
+
+
+def MSG_PREDICTION_RECEIVED():
+    return construct_string()
+
+
+def MSG_PREDICTION_IMPOSSIBLE(model_name):
+    return construct_string(model_name)
